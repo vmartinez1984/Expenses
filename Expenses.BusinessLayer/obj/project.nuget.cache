@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "AGFlZoKirhovtTsc4wF1vzw+lj3DdT9rzdJ7CxCnJ6e5JHcIoEK/U5Zrop9QVidr8z+V68M75WcJSxtQ85zWfA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vmartinez\\source\\repos\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vmartinez\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\vmartinez\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\vmartinez\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\vmartinez\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\vmartinez\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
