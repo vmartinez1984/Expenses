@@ -906,3 +906,4 @@ C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\refint\Expens
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Expenses.pdb
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Expenses.genruntimeconfig.cache
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\ref\Expenses.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Periods\Activate.cshtml.g.cs

@@ -50,6 +50,8 @@ namespace Expenses.Controllers
                     .Where(x => x.Id == id)
                     .FirstOrDefaultAsync();
             }
+            ViewBag.PeriodId = period.Id;
+            ViewData["ListCategories"] = new SelectList(_context.Category.Where(x => x.IsActive), "Id", "Name");
             if (period == null)
             {
                 return NotFound();
@@ -156,6 +158,35 @@ namespace Expenses.Controllers
         {
             var period = await _context.Period.FindAsync(id);
             period.IsActive = false;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        
+        // GET: Periods/Delete/5
+        public async Task<IActionResult> Activate(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var period = await _context.Period
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (period == null)
+            {
+                return NotFound();
+            }
+
+            return View(period);
+        }
+
+        // POST: Periods/Delete/5
+        [HttpPost, ActionName("Activate")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ActivateConfirmed(int id)
+        {
+            var period = await _context.Period.FindAsync(id);
+            period.IsActive = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

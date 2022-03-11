@@ -47,11 +47,18 @@ else
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateStop)
-                </td>                
+                </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    @if (ViewBag.IsActive)
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Activate" asp-route-id="@item.Id">Activar</a>
+                    }
                 </td>
             </tr>
         }

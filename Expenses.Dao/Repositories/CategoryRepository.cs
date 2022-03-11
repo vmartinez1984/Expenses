@@ -40,5 +40,87 @@ namespace Expenses.Repository.Repositories
                 throw;
             }
         }
-    }
+
+        public CategoryEntity Get(int id)
+        {
+            try
+            {
+                CategoryEntity entity;
+                string query;
+
+                query = $"SELECT * FROM Category WHERE IsActive = 1 AND  Id = {id}";
+                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                {
+                    entity = db.Query<CategoryEntity>(query).FirstOrDefault();
+                }
+
+                return entity;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public int Add(CategoryEntity entity)
+        {
+            try
+            {
+                string query;
+
+                query = "INSERT INTO Category (Name, IsActive) VALUES(@Name, 1)  SELECT SCOPE_IDENTITY()";
+                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                {
+                    entity.Id = db.Query<int>(query, entity).FirstOrDefault();
+                }
+
+                return entity.Id;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void Update(CategoryEntity entity)
+        {
+            try
+            {
+                string query;
+
+                query = "UPDATE Category SET Name = @Name WHERE Id  = @Id";
+                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                {
+                    db.Query(query, entity);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void Delete(int id)
+        {
+            try
+            {
+                string query;
+
+                query = $"UPDATE Category SET IsActive = 0 WHERE Id  = {id}";
+                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                {
+                    db.Query(query);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+    }//end class
 }

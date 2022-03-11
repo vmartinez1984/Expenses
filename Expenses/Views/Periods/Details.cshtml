@@ -2,9 +2,9 @@
 
 @{
     ViewData["Title"] = "Balance";
-    int balance;    
+    int balance;
 
-    balance = Model.ListEntries.Sum(x => x.Amount) - Model.ListExpenses.Sum(x => x.Amount);    
+    balance = Model.ListEntries.Sum(x => x.Amount) - Model.ListExpenses.Sum(x => x.Amount);
 }
 
 <div>
@@ -52,7 +52,8 @@
 <hr />
 <h2 class="text-danger">Gastos</h2>
 <p>
-    <a asp-action="Create" asp-controller="Expenses" asp-route-periodId="@Model.Id">Agregar ingreso</a>
+    @await Html.PartialAsync("_AgregarIngreso", new Expenses.Models.Expense())
+    @* <a asp-action="Create" asp-controller="Expenses" asp-route-periodId="@Model.Id">Agregar ingreso</a>*@
 </p>
 @await Html.PartialAsync("_ListExpenses", Model.ListExpenses)
 
@@ -65,3 +66,8 @@
 <div>
     <a asp-action="Index">Regresar a la lista</a>
 </div>
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
