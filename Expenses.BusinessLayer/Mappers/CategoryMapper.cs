@@ -11,9 +11,7 @@ namespace Expenses.BusinessLayer.Mappers
         {
             CreateMap<CategoryEntity, CategoryDtoOut>().ReverseMap();
 
-            CreateMap<CategoryEntity, CategoryDtoIn>().ReverseMap();
-
-            CreateMap<CategoryEntity, CategoryUpdDtoIn>().ReverseMap();
+            CreateMap<CategoryEntity, CategoryDtoIn>().ReverseMap();            
         }
     }
 }

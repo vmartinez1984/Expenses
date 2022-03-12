@@ -9,10 +9,10 @@ namespace Expenses.BusinessLayer.Bl
 {
     public class CategoryBl : ICategoryBl
     {
-        private IUnitOfWork _unitOfWork;
+        private IUnitOfWorkRepository _unitOfWork;
         private IMapper _mapper;
 
-        public CategoryBl(IMapper mapper, IUnitOfWork unitOfWork)
+        public CategoryBl(IMapper mapper, IUnitOfWorkRepository unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -50,11 +50,12 @@ namespace Expenses.BusinessLayer.Bl
             return entity.Id;
         }
 
-        public void Update(CategoryUpdDtoIn item)
+        public void Update(CategoryDtoIn item, int id)
         {
             CategoryEntity entity;
 
             entity = _mapper.Map<CategoryEntity>(item);
+            entity.Id = id;
 
             _unitOfWork.Category.Update(entity);            
         }

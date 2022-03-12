@@ -7,15 +7,9 @@ using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Entities
 {
-    public class CategoryEntity
+    public class CategoryEntity : BaseAEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         public string Name { get; set; }
-
-        [Required]
-        public bool IsActive { get; set; } = true;
     }
 }

@@ -28,25 +28,25 @@ namespace Expenses.Api.Controllers
             return list;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
-        {
-            try
-            {
-                CategoryDtoOut item;
+        //[HttpGet("{id}")]
+        //public IActionResult Get(int id)
+        //{
+        //    try
+        //    {
+        //        CategoryDtoOut item;
 
-                item = _unitOfWorkBl.Category.Get(id);
-                if (item == null)
-                    return NotFound();
+        //        item = _unitOfWorkBl.Category.Get(id);
+        //        if (item == null)
+        //            return NotFound();
 
-                return Ok(item);
-            }
-            catch (System.Exception)
-            {
+        //        return Ok(item);
+        //    }
+        //    catch (System.Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
         [HttpPost]
         public IActionResult Post(CategoryDtoIn item)
@@ -74,16 +74,16 @@ namespace Expenses.Api.Controllers
             }
         }
 
-        [HttpPut]
-        public IActionResult Put(CategoryUpdDtoIn item)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, CategoryDtoIn item)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _unitOfWorkBl.Category.Update(item);
+                    _unitOfWorkBl.Category.Update(item, id);
 
-                    return Accepted($"/Categories/{item.Id}", new { IsSuccess = true });
+                    return NotFound();
                 }
                 else
                 {

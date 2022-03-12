@@ -10,7 +10,7 @@ namespace Expenses.BusinessLayer.Interfaces
         void Delete(int id);
         List<CategoryDtoOut> Get();
         CategoryDtoOut Get(int id);
-        void Update(CategoryUpdDtoIn item);
+        void Update(CategoryDtoIn item, int id);
 
     }//end class
 }

@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 
 namespace Expenses.BusinessLayer.Interfaces
 {
     public interface IUnitOfWorkBl
     {
         ICategoryBl Category { get; }
+
+        IPeriodBl Period { get; }
+
+        IEntryBl Entry { get; }
+
+        IExpensesBl Expense { get; }
     }
 }

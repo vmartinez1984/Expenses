@@ -1,6 +1,8 @@
 using AutoMapper;
 using Expenses.BusinessLayer.Bl;
 using Expenses.BusinessLayer.Interfaces;
+using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
 using Expenses.BusinessLayer.Mappers;
 using Expenses.Repository;
 using Expenses.Repository.Repositories;
@@ -36,8 +38,14 @@ namespace Expenses.Api
             services.AddControllers();
             services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
             services.AddScoped<ICategoryBl, CategoryBl>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IPeriodBl, PeriodBl>();
+            services.AddScoped<IExpensesBl, ExpenseBl>();
+            services.AddScoped<IEntryBl, EntryBl>();
+            services.AddScoped<IUnitOfWorkRepository, UnitOfWork>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IPeriodRepository, PeriodRepository>();
+            services.AddScoped<IEntryRepositoy, EntryRepository>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Expenses.Api", Version = "v1" });
@@ -51,6 +59,9 @@ namespace Expenses.Api
             var mapperConfig = new MapperConfiguration(mapperConfig =>
             {
                 mapperConfig.AddProfile<CategoryMapper>();
+                mapperConfig.AddProfile<PeriodMapper>();
+                mapperConfig.AddProfile<EntryMapper>();
+                mapperConfig.AddProfile<ExpenseMapper>();
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
