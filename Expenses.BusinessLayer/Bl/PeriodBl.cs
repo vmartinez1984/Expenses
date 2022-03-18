@@ -57,6 +57,9 @@ namespace Expenses.BusinessLayer.Bl
 
             entities = _unitOfWorkRepository.Period.Get(isActive);
             list = _mapper.Map<List<PeriodDtoOut>>(entities);
+            list.ForEach(item => {
+                item.Balance = _unitOfWorkRepository.Period.GetBalance(item.Id);
+            });
 
             return list;
         }
@@ -68,7 +71,7 @@ namespace Expenses.BusinessLayer.Bl
 
             entity = _unitOfWorkRepository.Period.Get(id);
             item = _mapper.Map<PeriodDtoOut>(entity);
-
+            
             return item;
         }  
 
@@ -89,6 +92,7 @@ namespace Expenses.BusinessLayer.Bl
 
             entity = await _unitOfWorkRepository.Period.GetActiveAsync();
             item = _mapper.Map<PeriodDtoOut>(entity);
+            item.Balance = _unitOfWorkRepository.Period.GetBalance(entity.Id);
 
             return item;
         }

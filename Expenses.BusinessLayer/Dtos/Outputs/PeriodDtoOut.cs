@@ -17,7 +17,9 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
         [DataType(DataType.Date)]
         [Display(Name = "Fecha de inicio")]
         public DateTime DateStart { get; set; } = DateTime.Now;
-                
+
+        public int Balance { get; set; }
+
         [DataType(DataType.Date)]
         [Display(Name = "Fecha fin")]
         public DateTime? DateStop { get; set; }

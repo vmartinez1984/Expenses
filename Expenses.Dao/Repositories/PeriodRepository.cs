@@ -154,5 +154,38 @@ namespace Expenses.Repository.Repositories
                 throw;
             }
         }
+
+        public int GetBalance(int id)
+        {
+            try
+            {
+                int balance;
+                string query;
+
+                query = $@"SELECT 
+                IIF(
+                 (SELECT SUM(Amount) FROM Entry Where PeriodId = {id} AND IsActive = 1) IS NULL,
+                 0,
+                 (SELECT SUM(Amount) FROM Entry Where PeriodId = {id} AND IsActive = 1)
+                 ) 
+                 - 
+                 IIF(
+                 (SELECT SUM(Amount) FROM Expense Where PeriodId = {id} AND IsActive = 1) IS NULL,
+                 0,
+                 (SELECT SUM(Amount) FROM Expense Where PeriodId = {id} AND IsActive = 1)
+                 )";
+                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                {
+                    balance = db.Query<int>(query).FirstOrDefault();
+                }
+
+                return balance;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

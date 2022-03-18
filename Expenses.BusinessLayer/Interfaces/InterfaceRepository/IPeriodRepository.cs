@@ -10,5 +10,6 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceRepository
     public interface IPeriodRepository : IGenericRepository<PeriodEntity>
     {
         Task<PeriodEntity> GetActiveAsync();
+        int GetBalance(int id);
     }
 }
