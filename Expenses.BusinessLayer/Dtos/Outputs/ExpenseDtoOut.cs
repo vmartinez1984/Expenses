@@ -22,6 +22,8 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
         [Display(Name = "Categoria")]
         public int CategoryId { get; set; }
 
+        [Display(Name = "Categoria")]
+        public string CategoryName { get; set; }
 
         [Required]
         [Display(Name = "Periodo")]

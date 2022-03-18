@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Dtos.Outputs
 {
@@ -25,5 +21,7 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
         [DataType(DataType.Date)]
         [Display(Name = "Fecha fin")]
         public DateTime? DateStop { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

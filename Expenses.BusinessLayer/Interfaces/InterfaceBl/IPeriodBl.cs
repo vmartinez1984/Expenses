@@ -7,10 +7,12 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
 {
     public interface IPeriodBl
     {
-        List<PeriodDtoOut> Get(bool isActive = true);
+        List<PeriodDtoOut> Get(bool? isActive);
         int Add(PeriodDtoIn item);
         void Update(PeriodDtoIn item, int id);
         PeriodDtoOut Get(int id);
-        Task<PeriodDtoOut> GetFullAsync(int id);        
+        Task<PeriodDtoOut> GetFullAsync(int id);             
+        void Delete(int id);        
+        Task<PeriodDtoOut> GetActive();
     }
 }

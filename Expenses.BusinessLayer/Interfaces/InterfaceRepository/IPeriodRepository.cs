@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Interfaces.InterfaceRepository
 {
-    public interface IPeriodRepository: IGenericRepository<PeriodEntity>
+    public interface IPeriodRepository : IGenericRepository<PeriodEntity>
     {
-
+        Task<PeriodEntity> GetActiveAsync();
     }
 }

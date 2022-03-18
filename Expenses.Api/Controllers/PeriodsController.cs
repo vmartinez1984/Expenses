@@ -23,7 +23,7 @@ namespace Expenses.Api.Controllers
 
         // GET: api/<PeriodsController>
         [HttpGet]
-        public IActionResult Get(bool isActive = true)
+        public IActionResult Get(bool? isActive = null)
         {
             try
             {
@@ -40,35 +40,25 @@ namespace Expenses.Api.Controllers
             }
         }
 
-        //// GET api/<PeriodsController>/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Get(int id, bool isFull = false)
-        //{
-        //    try
-        //    {
-        //        if (isFull)
-        //        {
-        //            PeriodDtoOut item;
+        // GET api/<PeriodsController>/5
+        [HttpGet("/api/Periods/Active")]
+        public async Task<IActionResult> GetACtive()
+        {
+            try
+            {
 
-        //            item = await _unitOfWorkBl.Period.GetFullAsync(id);
+                PeriodDtoOut item;
 
-        //            return Ok(item);
-        //        }
-        //        else
-        //        {
-        //            PeriodDtoOut item;
+                item = await _unitOfWorkBl.Period.GetActive();
+                
+                return Ok(item);
+            }
+            catch (Exception)
+            {
 
-        //            item =  _unitOfWorkBl.Period.Get(id);
-
-        //            return Ok(item);
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
+                throw;
+            }
+        }
 
         // POST api/<PeriodsController>
         [HttpPost]
@@ -76,11 +66,17 @@ namespace Expenses.Api.Controllers
         {
             try
             {
-                int id;
+                if (ModelState.IsValid)
+                {
 
-                id = _unitOfWorkBl.Period.Add(item);
+                    int id;
 
-                return Created($"/Periods/{id}", new { Id = id });
+                    id = _unitOfWorkBl.Period.Add(item);
+
+                    return Created($"/Periods/{id}", new { Id = id });
+                }
+
+                return BadRequest();
             }
             catch (System.Exception)
             {
@@ -106,10 +102,21 @@ namespace Expenses.Api.Controllers
             }
         }
 
-        //// DELETE api/<PeriodsController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<PeriodsController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _unitOfWorkBl.Period.Delete(id);
+
+                return NoContent();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

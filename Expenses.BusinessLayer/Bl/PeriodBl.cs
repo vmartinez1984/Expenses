@@ -6,6 +6,7 @@ using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Bl
@@ -49,7 +50,7 @@ namespace Expenses.BusinessLayer.Bl
             _unitOfWorkRepository.Period.Update(entity);
         }
 
-        public List<PeriodDtoOut> Get(bool isActive = true)
+        public List<PeriodDtoOut> Get(bool? isActive)
         {
             List<PeriodDtoOut> list;
             List<PeriodEntity> entities;
@@ -74,6 +75,22 @@ namespace Expenses.BusinessLayer.Bl
         public Task<PeriodDtoOut> GetFullAsync(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            _unitOfWorkRepository.Period.Delete(id);
+        }
+
+        public async Task<PeriodDtoOut> GetActive()
+        {
+            PeriodEntity entity;
+            PeriodDtoOut item;
+
+            entity = await _unitOfWorkRepository.Period.GetActiveAsync();
+            item = _mapper.Map<PeriodDtoOut>(entity);
+
+            return item;
         }
     }
 }

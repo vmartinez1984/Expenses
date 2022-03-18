@@ -1,0 +1,12 @@
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\bin\Release\net5.0\Expenses.BusinessLayer.deps.json
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\bin\Release\net5.0\Expenses.BusinessLayer.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\bin\Release\net5.0\Expenses.BusinessLayer.pdb
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\Expenses.BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\Expenses.BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\Expenses.BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\Expenses.BusinessLayer.AssemblyInfo.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\Expenses.BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\Expenses.BusinessLayer.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\refint\Expenses.BusinessLayer.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\Expenses.BusinessLayer.pdb
+C:\Users\vmartinez\source\repos\Expenses\Expenses.BusinessLayer\obj\Release\net5.0\ref\Expenses.BusinessLayer.dll

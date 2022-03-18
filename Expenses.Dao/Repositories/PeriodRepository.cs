@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Expenses.Repository.Repositories
 {
@@ -19,7 +20,7 @@ namespace Expenses.Repository.Repositories
             _configuration = configuration;
         }
 
-        public List<PeriodEntity> Get(bool isActive = true)
+        public List<PeriodEntity> Get(bool? isActive)
         {
             try
             {
@@ -27,7 +28,10 @@ namespace Expenses.Repository.Repositories
                 string query;
                 int _isActive = isActive == true ? 1 : 0;
 
-                query = $"SELECT * FROM Period WHERE IsActive = {_isActive}";
+                if (isActive == null)
+                    query = $"SELECT * FROM Period";
+                else
+                    query = $"SELECT * FROM Period WHERE IsActive = {_isActive}";
                 using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
                 {
                     entities = db.Query<PeriodEntity>(query).ToList();
@@ -115,6 +119,34 @@ namespace Expenses.Repository.Repositories
                 {
                     db.Query(query);
                 }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<PeriodEntity> GetActiveAsync()
+        {
+            try
+            {
+                PeriodEntity entity;
+                string query;
+
+                query = $"SELECT TOP(1) * FROM Period WHERE IsActive = 1 ORDER BY Id DESC";
+
+                entity = await Task.Run(() =>
+                {
+                    using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                    {
+                        entity = db.Query<PeriodEntity>(query).FirstOrDefault();
+                    }
+
+                    return entity;
+                });
+
+                return entity;
             }
             catch (Exception)
             {

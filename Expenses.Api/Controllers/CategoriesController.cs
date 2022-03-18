@@ -83,7 +83,7 @@ namespace Expenses.Api.Controllers
                 {
                     _unitOfWorkBl.Category.Update(item, id);
 
-                    return NotFound();
+                    return Accepted();
                 }
                 else
                 {
