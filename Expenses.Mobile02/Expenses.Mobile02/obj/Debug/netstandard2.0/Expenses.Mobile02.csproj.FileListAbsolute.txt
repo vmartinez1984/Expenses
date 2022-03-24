@@ -1,0 +1,15 @@
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\bin\Debug\netstandard2.0\Expenses.Mobile02.deps.json
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\bin\Debug\netstandard2.0\Expenses.Mobile02.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\bin\Debug\netstandard2.0\Expenses.Mobile02.pdb
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\Expenses.Mobile02.csproj.AssemblyReference.cache
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\Expenses.Mobile02.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\Expenses.Mobile02.AssemblyInfoInputs.cache
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\Expenses.Mobile02.AssemblyInfo.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\Expenses.Mobile02.csproj.CoreCompileInputs.cache
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\Expenses.Mobile02.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\refint\Expenses.Mobile02.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\Expenses.Mobile02.pdb
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Mobile02\Expenses.Mobile02\obj\Debug\netstandard2.0\ref\Expenses.Mobile02.dll

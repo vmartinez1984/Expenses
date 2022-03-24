@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Expenses.Models
 {
@@ -13,5 +14,7 @@ namespace Expenses.Models
 
         [Required]
         public bool IsActive { get; set; } = true;
+
+        public virtual List<Subcategory> ListSubcategory { get; set; }
     }
 }

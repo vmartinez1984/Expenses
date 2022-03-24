@@ -35,7 +35,7 @@ namespace Expenses.Controllers
             {
                 period = await _context.Period
                      .Include(x => x.ListExpenses.Where(x => x.IsActive))
-                         .ThenInclude(x => x.Category)
+                         .ThenInclude(x => x.Subcategory)
                      .Include(x => x.ListEntries.Where(x => x.IsActive))
                      .Where(x => x.IsActive)
                      .OrderBy(x => x.Id)
@@ -45,16 +45,16 @@ namespace Expenses.Controllers
             {
                 period = await _context.Period
                     .Include(x => x.ListExpenses.Where(x => x.IsActive))
-                        .ThenInclude(x => x.Category)
+                        .ThenInclude(x => x.Subcategory)
                     .Include(x => x.ListEntries.Where(x => x.IsActive))
                     .Where(x => x.Id == id)
                     .FirstOrDefaultAsync();
             }
-            ViewBag.PeriodId = period.Id;
+            ViewBag.PeriodId = period == null ? 0 : period.Id;
             ViewData["ListCategories"] = new SelectList(_context.Category.Where(x => x.IsActive), "Id", "Name");
             if (period == null)
             {
-                return NotFound();
+                return RedirectToAction("Index","Home");
             }
 
             return View(period);
@@ -161,7 +161,7 @@ namespace Expenses.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        
+
         // GET: Periods/Delete/5
         public async Task<IActionResult> Activate(int? id)
         {

@@ -36,6 +36,126 @@ namespace Expenses.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsActive = true,
+                            Name = "Pagos"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsActive = true,
+                            Name = "Ahorros"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsActive = true,
+                            Name = "Alimentación"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsActive = true,
+                            Name = "Gatos"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsActive = true,
+                            Name = "Servicios"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsActive = true,
+                            Name = "Educación"
+                        });
+                });
+
+            modelBuilder.Entity("Expenses.Models.Deposit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryId1")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateRegister")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DepositPlanId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SubcategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId1");
+
+                    b.HasIndex("DepositPlanId");
+
+                    b.HasIndex("SubcategoryId");
+
+                    b.ToTable("Deposit");
+                });
+
+            modelBuilder.Entity("Expenses.Models.DepositPlan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryId1")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateRegister")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Goal")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("SubcategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId1");
+
+                    b.HasIndex("SubcategoryId");
+
+                    b.ToTable("DepositPlan");
                 });
 
             modelBuilder.Entity("Expenses.Models.Entry", b =>
@@ -78,11 +198,14 @@ namespace Expenses.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId1")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateRegister")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -94,11 +217,16 @@ namespace Expenses.Migrations
                     b.Property<int>("PeriodId")
                         .HasColumnType("int");
 
+                    b.Property<int>("SubcategoryId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategoryId1");
 
                     b.HasIndex("PeriodId");
+
+                    b.HasIndex("SubcategoryId");
 
                     b.ToTable("Expense");
                 });
@@ -130,6 +258,208 @@ namespace Expenses.Migrations
                     b.ToTable("Period");
                 });
 
+            modelBuilder.Entity("Expenses.Models.Subcategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Subcategory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            IsActive = true,
+                            Name = "TDC"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            IsActive = true,
+                            Name = "Doña $1200"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            IsActive = true,
+                            Name = "Mili $400"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Plan sabatico $200"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Plan Afore $500"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Plan Seminario $350"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Camioneta $100"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Libros Tec $100"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Ropa $100"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Tlaxc $400"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Gastos Medicos $400"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 2,
+                            IsActive = true,
+                            Name = "Ahorron $200"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoryId = 3,
+                            IsActive = true,
+                            Name = "Alimentación corriente"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CategoryId = 3,
+                            IsActive = true,
+                            Name = "Por App"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CategoryId = 3,
+                            IsActive = true,
+                            Name = "Golosinas"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CategoryId = 4,
+                            IsActive = true,
+                            Name = "Gatos"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CategoryId = 5,
+                            IsActive = true,
+                            Name = "Internet"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CategoryId = 5,
+                            IsActive = true,
+                            Name = "Agua"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CategoryId = 5,
+                            IsActive = true,
+                            Name = "Luz"
+                        });
+                });
+
+            modelBuilder.Entity("Expenses.Models.Deposit", b =>
+                {
+                    b.HasOne("Expenses.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId1");
+
+                    b.HasOne("Expenses.Models.DepositPlan", "DepositPlan")
+                        .WithMany()
+                        .HasForeignKey("DepositPlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Expenses.Models.Subcategory", "Subcategory")
+                        .WithMany()
+                        .HasForeignKey("SubcategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("DepositPlan");
+
+                    b.Navigation("Subcategory");
+                });
+
+            modelBuilder.Entity("Expenses.Models.DepositPlan", b =>
+                {
+                    b.HasOne("Expenses.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId1");
+
+                    b.HasOne("Expenses.Models.Subcategory", "Subcategory")
+                        .WithMany()
+                        .HasForeignKey("SubcategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Subcategory");
+                });
+
             modelBuilder.Entity("Expenses.Models.Entry", b =>
                 {
                     b.HasOne("Expenses.Models.Period", "Period")
@@ -145,9 +475,7 @@ namespace Expenses.Migrations
                 {
                     b.HasOne("Expenses.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId1");
 
                     b.HasOne("Expenses.Models.Period", "Period")
                         .WithMany("ListExpenses")
@@ -155,9 +483,33 @@ namespace Expenses.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Expenses.Models.Subcategory", "Subcategory")
+                        .WithMany()
+                        .HasForeignKey("SubcategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
 
                     b.Navigation("Period");
+
+                    b.Navigation("Subcategory");
+                });
+
+            modelBuilder.Entity("Expenses.Models.Subcategory", b =>
+                {
+                    b.HasOne("Expenses.Models.Category", "Category")
+                        .WithMany("ListSubcategory")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Expenses.Models.Category", b =>
+                {
+                    b.Navigation("ListSubcategory");
                 });
 
             modelBuilder.Entity("Expenses.Models.Period", b =>

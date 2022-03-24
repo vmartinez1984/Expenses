@@ -59,16 +59,45 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CategoryId,PeriodId,Amount,DateRegister,IsActive")] Expense expense)
+        public async Task<IActionResult> Create([Bind("Id,Name,CategoryId, SubcategoryId,PeriodId,Amount,DateRegister,IsActive")] Expense expense)
         {
             if (ModelState.IsValid)
             {
+                SetDeposit(expense);
                 _context.Add(expense);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), "Periods", new { Id = expense.PeriodId });
             }
             ViewData["PeriodId"] = new SelectList(_context.Period, "Id", "Name", expense.PeriodId);
             return View(expense);
+        }
+
+        private void SetDeposit(Expense expense)
+        {
+            Deposit deposit;
+
+            deposit = new Deposit
+            {
+                Amount = expense.Amount,
+                SubcategoryId = expense.SubcategoryId,
+                DateRegister = expense.DateRegister,
+                Guid = Guid.NewGuid(),
+                DepositPlanId = GetDepositPlanId(expense.SubcategoryId),
+                IsActive = true,
+                Name = string.Empty
+            };
+            _context.Deposit.Add(deposit);
+
+            _context.SaveChanges();
+        }
+
+        private int GetDepositPlanId(int subcategoryId)
+        {
+            DepositPlan depostiPlanId;
+
+            depostiPlanId = _context.DepositPlan.Where(x => x.SubcategoryId == subcategoryId).FirstOrDefault();
+
+            return depostiPlanId.Id;
         }
 
         // GET: Expenses/Edit/5
@@ -137,7 +166,7 @@ namespace Expenses.Controllers
 
             var expense = await _context.Expense
                 .Include(e => e.Period)
-                .Include(e => e.Category)
+                .Include(e => e.Subcategory)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (expense == null)
             {

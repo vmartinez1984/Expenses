@@ -10,6 +10,8 @@ namespace Expenses.Models
         [Key]
         public int Id { get; set; }
 
+        public Guid Guid { get; set; } = Guid.NewGuid();
+
         [Required]
         [Display(Name = "Nombre")]
         public string Name { get; set; }
@@ -17,14 +19,23 @@ namespace Expenses.Models
         [Required]
         [Display(Name = "Cantidad")]
         [DataType(DataType.Currency)]
+        [Range(1,4000)]
         public int Amount { get; set; }
 
+        [NotMapped]
         [Required]
         [Display(Name = "Categoria")]
-        [ForeignKey(nameof(Category))]
+        //[ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
         [Display(Name = "Categoria")]
         public virtual Category Category { get; set; }
+
+        [Required]
+        [Display(Name = "Subcategoria")]
+        [ForeignKey(nameof(Subcategory))]
+        public int SubcategoryId { get; set; }
+        [Display(Name = "Subcategoria")]
+        public virtual Subcategory Subcategory { get; set; }
 
         [Required]
         [ForeignKey(nameof(Period))]

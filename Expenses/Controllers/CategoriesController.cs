@@ -21,7 +21,7 @@ namespace Expenses.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.ToListAsync());
+            return View(await _context.Category.Where(x=>x.IsActive).ToListAsync());
         }
 
         // GET: Categories/Details/5
@@ -139,7 +139,7 @@ namespace Expenses.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var category = await _context.Category.FindAsync(id);
-            _context.Category.Remove(category);
+            category.IsActive = false;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
