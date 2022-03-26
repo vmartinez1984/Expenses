@@ -75,29 +75,25 @@ namespace Expenses.Controllers
         private void SetDeposit(Expense expense)
         {
             Deposit deposit;
-
-            deposit = new Deposit
-            {
-                Amount = expense.Amount,
-                SubcategoryId = expense.SubcategoryId,
-                DateRegister = expense.DateRegister,
-                Guid = Guid.NewGuid(),
-                DepositPlanId = GetDepositPlanId(expense.SubcategoryId),
-                IsActive = true,
-                Name = string.Empty
-            };
-            _context.Deposit.Add(deposit);
-
-            _context.SaveChanges();
-        }
-
-        private int GetDepositPlanId(int subcategoryId)
-        {
             DepositPlan depostiPlanId;
 
-            depostiPlanId = _context.DepositPlan.Where(x => x.SubcategoryId == subcategoryId).FirstOrDefault();
+            depostiPlanId = _context.DepositPlan.Where(x => x.SubcategoryId == expense.SubcategoryId).FirstOrDefault();
+            if (depostiPlanId != null)
+            {
+                deposit = new Deposit
+                {
+                    Amount = expense.Amount,
+                    SubcategoryId = expense.SubcategoryId,
+                    DateRegister = expense.DateRegister,
+                    Guid = Guid.NewGuid(),
+                    DepositPlanId = depostiPlanId.Id,
+                    IsActive = true,
+                    Name = string.Empty
+                };
+                _context.Deposit.Add(deposit);
 
-            return depostiPlanId.Id;
+                _context.SaveChanges();
+            }
         }
 
         // GET: Expenses/Edit/5

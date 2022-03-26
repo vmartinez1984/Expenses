@@ -23,7 +23,7 @@ namespace Expenses.Controllers
         {
             ViewBag.IsActive = isActive;
 
-            return View(await _context.Period.Where(x => x.IsActive == isActive).ToListAsync());
+            return View(await _context.Period.ToListAsync());
         }
 
         // GET: Periods/Details/5

@@ -922,3 +922,13 @@ C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\D
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Deposits\Details.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Deposits\Edit.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Deposits\Index.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\Create.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\Delete.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\Details.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\Edit.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\Index.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterestDetails\Create.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterestDetails\Delete.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterestDetails\Details.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterestDetails\Edit.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterestDetails\Index.cshtml.g.cs

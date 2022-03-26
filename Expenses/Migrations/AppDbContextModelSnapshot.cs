@@ -156,6 +156,98 @@ namespace Expenses.Migrations
                     b.HasIndex("SubcategoryId");
 
                     b.ToTable("DepositPlan");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 200,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(5813),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Sabatico",
+                            SubcategoryId = 4
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Amount = 500,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6191),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Afore",
+                            SubcategoryId = 5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Amount = 350,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6197),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Seminario",
+                            SubcategoryId = 6
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Amount = 100,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6202),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Camioneta",
+                            SubcategoryId = 7
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Amount = 100,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6207),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Libros Tec",
+                            SubcategoryId = 8
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Amount = 100,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6212),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Ropa",
+                            SubcategoryId = 9
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Amount = 400,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6217),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Tlax",
+                            SubcategoryId = 10
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Amount = 100,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6222),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Gastos medicos",
+                            SubcategoryId = 11
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Amount = 100,
+                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6226),
+                            Goal = 2000,
+                            IsActive = true,
+                            Name = "Ahorro N",
+                            SubcategoryId = 12
+                        });
                 });
 
             modelBuilder.Entity("Expenses.Models.Entry", b =>
@@ -229,6 +321,64 @@ namespace Expenses.Migrations
                     b.HasIndex("SubcategoryId");
 
                     b.ToTable("Expense");
+                });
+
+            modelBuilder.Entity("Expenses.Models.MontsWithoutInterest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ExpensesTotal")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MontsWithoutInterest");
+                });
+
+            modelBuilder.Entity("Expenses.Models.MontsWithoutInterestDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ExpenseNumber")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MontsWithoutInterestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MontsWithoutInterestId");
+
+                    b.ToTable("MontsWithoutInterestDetails");
                 });
 
             modelBuilder.Entity("Expenses.Models.Period", b =>
@@ -358,7 +508,7 @@ namespace Expenses.Migrations
                             Id = 11,
                             CategoryId = 2,
                             IsActive = true,
-                            Name = "Gastos Medicos $400"
+                            Name = "Gastos Medicos $100"
                         },
                         new
                         {
@@ -425,7 +575,7 @@ namespace Expenses.Migrations
                         .HasForeignKey("CategoryId1");
 
                     b.HasOne("Expenses.Models.DepositPlan", "DepositPlan")
-                        .WithMany()
+                        .WithMany("ListDeposits")
                         .HasForeignKey("DepositPlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -496,6 +646,17 @@ namespace Expenses.Migrations
                     b.Navigation("Subcategory");
                 });
 
+            modelBuilder.Entity("Expenses.Models.MontsWithoutInterestDetails", b =>
+                {
+                    b.HasOne("Expenses.Models.MontsWithoutInterest", "MontsWithoutInterest")
+                        .WithMany()
+                        .HasForeignKey("MontsWithoutInterestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MontsWithoutInterest");
+                });
+
             modelBuilder.Entity("Expenses.Models.Subcategory", b =>
                 {
                     b.HasOne("Expenses.Models.Category", "Category")
@@ -510,6 +671,11 @@ namespace Expenses.Migrations
             modelBuilder.Entity("Expenses.Models.Category", b =>
                 {
                     b.Navigation("ListSubcategory");
+                });
+
+            modelBuilder.Entity("Expenses.Models.DepositPlan", b =>
+                {
+                    b.Navigation("ListDeposits");
                 });
 
             modelBuilder.Entity("Expenses.Models.Period", b =>

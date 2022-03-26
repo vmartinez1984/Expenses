@@ -5,7 +5,7 @@
 }
 
 <h1>Lista de periodos</h1>
-@if (ViewBag.IsActive)
+@*@if (ViewBag.IsActive)
 {
     <p>
         <a asp-action="index" asp-route-isActive="false">Ver los borrados</a>
@@ -16,7 +16,7 @@ else
     <p>
         <a asp-action="index" asp-route-isActive="true">Ver los activos</a>
     </p>
-}
+}*@
 <p>
     <a asp-action="Create">Agregar nuevo periodo</a>
 </p>
@@ -31,6 +31,9 @@ else
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateStop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
             </th>
             <th></th>
         </tr>
@@ -47,6 +50,9 @@ else
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateStop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |

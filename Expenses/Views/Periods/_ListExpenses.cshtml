@@ -7,12 +7,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateRegister)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
@@ -24,13 +19,19 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateRegister)
+                    <div class="row">
+                        <div class="col-md-4">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </div>
+
+                        <div class="col-md-4 text-info">
+                            @Html.DisplayFor(modelItem => item.Subcategory.Name)
+                        </div>
+
+                        <div class="col-md-4 text-info">
+                            @Html.DisplayFor(modelItem => item.DateRegister)
+                        </div>
+                    </div>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Amount)
@@ -41,9 +42,7 @@
                 </td>
             </tr>
         }
-        <tr>
-            <td>
-            </td>
+        <tr>            
             <td>
             </td>
             <td>

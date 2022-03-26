@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -47,7 +45,7 @@ namespace Expenses.Controllers
         // GET: Entries/Create
         public IActionResult Create(int periodId)
         {
-            ViewData["ListPeriods"] = new SelectList(_context.Period.Where(x => x.IsActive), "Id", "Name");
+            ViewData["ListPeriods"] = new SelectList(_context.Period, "Id", "Name");
             ViewBag.PeriodId = periodId;
 
             return View();
