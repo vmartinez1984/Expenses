@@ -5,20 +5,9 @@
     <div class="row">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input asp-for="PeriodId" value="@ViewBag.PeriodId" type="hidden" />
-
-        <div class="form-group col-md-3">
-            <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" autofocus />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-        <div class="form-group col-md-3">
-            <label asp-for="Amount" class="control-label"></label>
-            <input asp-for="Amount" class="form-control" />
-            <span asp-validation-for="Amount" class="text-danger"></span>
-        </div>
         <div class="form-group col-md-3">
             <label asp-for="CategoryId" class="control-label"></label>
-            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.ListCategories" onchange="loadLisSubcateries();">
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.ListCategories" onchange="loadLisSubcateries();" autofocus>
                 <option value="">Seleccione</option>
             </select>
             <span asp-validation-for="CategoryId" class="text-danger"></span>
@@ -29,6 +18,17 @@
                 <option value="">Seleccione</option>
             </select>
             <span asp-validation-for="SubcategoryId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="Amount" class="control-label"></label>
+            <input asp-for="Amount" class="form-control" />
+            <span asp-validation-for="Amount" class="text-danger"></span>
         </div>
         <div class="form-group col-md-3">
             <label class="control-label">&nbsp;</label>

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Meses sin interese</h1>
+<h1 class="text-info">Meses sin intereses</h1>
 
 <p>
     <a asp-action="Create">Agregar nuevo</a>
@@ -21,39 +21,60 @@
             <th>
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
+            <th>Pago mensual</th>
+            <th>Último pago</th>
             <th>
                 @Html.DisplayNameFor(model => model.DateStart)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @{
+            double pagoMensual;
+            double pagoTotalMensual = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpensesTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @{
+                        pagoMensual = item.Amount / item.ExpensesTotal;
+                        pagoTotalMensual += pagoMensual;
+                    }
+                    @pagoMensual.ToString("c")
+                </td>
+                <td></td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.DateStart)*@
+                    @item.DateStart.ToShortDateString()
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                </td>
+            </tr>
+        }
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpensesTotal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateStart)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            <td></td>
+            <td>Total</td>
+            <td>@Model.Sum(x=> x.Amount).ToString("c")</td>
+            <td>@pagoTotalMensual.ToString("c")</td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
-}
     </tbody>
 </table>

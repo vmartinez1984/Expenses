@@ -14,8 +14,14 @@ namespace Expenses.Models
         public DbSet<DepositPlan> DepositPlan { get; set; }
         public DbSet<Entry> Entry { get; set; }
         public DbSet<Expense> Expense { get; set; }
+        public DbSet<ExpenseTdc> ExpenseTdc { get; set; }
+        public DbSet<Expenses.Models.MontsWithoutInterest> MontsWithoutInterest { get; set; }
+        public DbSet<Expenses.Models.MontsWithoutInterestDetails> MontsWithoutInterestDetails { get; set; }
         public DbSet<Subcategory> Subcategory { get; set; }
         public DbSet<Period> Period { get; set; }
+        public DbSet<TermAccount> TermAccount { get; set; }
+
+
 
         public AppDbContext(IConfiguration configuration)
         {
@@ -81,11 +87,6 @@ namespace Expenses.Models
                 new DepositPlan { Id = 8, Amount = 100, SubcategoryId = 11, Goal = 2000, IsActive = true, Name = "Gastos medicos", DateRegister = DateTime.Now },
                 new DepositPlan { Id = 9, Amount = 100, SubcategoryId = 12, Goal = 2000, IsActive = true, Name = "Ahorro N", DateRegister = DateTime.Now }
             );
-        }
-
-        public DbSet<Expenses.Models.MontsWithoutInterest> MontsWithoutInterest { get; set; }
-
-        public DbSet<Expenses.Models.MontsWithoutInterestDetails> MontsWithoutInterestDetails { get; set; }
-
+        }       
     }//end class
 }

@@ -23,7 +23,8 @@ namespace Expenses.Controllers
         {
             var appDbContext = _context.DepositPlan
                 .Include(x => x.ListDeposits.Where(x => x.IsActive))
-                .Include(d => d.Subcategory);
+                .Include(d => d.Subcategory)
+                .OrderBy(x=> x.Name);
             return View(await appDbContext.ToListAsync());
         }
 

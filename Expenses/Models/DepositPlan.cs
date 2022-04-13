@@ -18,11 +18,13 @@ namespace Expenses.Models
         [Required]
         [Display(Name = "Cantidad")]
         [Range(1, 4000)]
+        [DataType(DataType.Currency)]
         public int Amount { get; set; }
 
         [Required]
         [Display(Name = "Meta")]
         [Range(1, 50000)]
+        [DataType(DataType.Currency)]
         public int Goal { get; set; }
 
         [NotMapped]

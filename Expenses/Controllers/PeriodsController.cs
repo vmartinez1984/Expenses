@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -51,7 +49,7 @@ namespace Expenses.Controllers
                     .FirstOrDefaultAsync();
             }
             ViewBag.PeriodId = period == null ? 0 : period.Id;
-            ViewData["ListCategories"] = new SelectList(_context.Category.Where(x => x.IsActive), "Id", "Name");
+            ViewData["ListCategories"] = new SelectList(_context.Category.Where(x => x.IsActive).OrderBy(x=> x.Name), "Id", "Name");
             if (period == null)
             {
                 return RedirectToAction("Index","Home");

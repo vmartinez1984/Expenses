@@ -1,7 +1,7 @@
 ﻿@model Expenses.Models.Subcategory
 
 @{
-    ViewData["Title"] = "Subcategoria";
+    ViewData["Title"] = "Subcategorias";
 }
 
 <h1>Editar</h1>
@@ -15,14 +15,14 @@
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="IsActive" />
             <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId" autofocus></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
 
 
@@ -34,7 +34,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Regresar a la lista</a>
 </div>
 
 @section Scripts {

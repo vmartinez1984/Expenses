@@ -16,7 +16,7 @@ namespace Expenses.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.14")
+                .HasAnnotation("ProductVersion", "5.0.15")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Expenses.Models.Category", b =>
@@ -162,7 +162,7 @@ namespace Expenses.Migrations
                         {
                             Id = 1,
                             Amount = 200,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(5813),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(4921),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Sabatico",
@@ -172,7 +172,7 @@ namespace Expenses.Migrations
                         {
                             Id = 2,
                             Amount = 500,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6191),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5254),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Afore",
@@ -182,7 +182,7 @@ namespace Expenses.Migrations
                         {
                             Id = 3,
                             Amount = 350,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6197),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5261),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Seminario",
@@ -192,7 +192,7 @@ namespace Expenses.Migrations
                         {
                             Id = 4,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6202),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5266),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Camioneta",
@@ -202,7 +202,7 @@ namespace Expenses.Migrations
                         {
                             Id = 5,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6207),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5271),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Libros Tec",
@@ -212,7 +212,7 @@ namespace Expenses.Migrations
                         {
                             Id = 6,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6212),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5276),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Ropa",
@@ -222,7 +222,7 @@ namespace Expenses.Migrations
                         {
                             Id = 7,
                             Amount = 400,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6217),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5281),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Tlax",
@@ -232,7 +232,7 @@ namespace Expenses.Migrations
                         {
                             Id = 8,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6222),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5286),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Gastos medicos",
@@ -242,7 +242,7 @@ namespace Expenses.Migrations
                         {
                             Id = 9,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 3, 25, 12, 15, 44, 10, DateTimeKind.Local).AddTicks(6226),
+                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5291),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Ahorro N",
@@ -321,6 +321,32 @@ namespace Expenses.Migrations
                     b.HasIndex("SubcategoryId");
 
                     b.ToTable("Expense");
+                });
+
+            modelBuilder.Entity("Expenses.Models.ExpenseTdc", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateRegistration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExpenseTdc");
                 });
 
             modelBuilder.Entity("Expenses.Models.MontsWithoutInterest", b =>
@@ -566,6 +592,35 @@ namespace Expenses.Migrations
                             IsActive = true,
                             Name = "Luz"
                         });
+                });
+
+            modelBuilder.Entity("Expenses.Models.TermAccount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateRegistration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Term")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TermAccount");
                 });
 
             modelBuilder.Entity("Expenses.Models.Deposit", b =>

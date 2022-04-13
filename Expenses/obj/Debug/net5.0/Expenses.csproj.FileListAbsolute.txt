@@ -889,7 +889,6 @@ C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\P
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Periods\Details.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Periods\Edit.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Periods\Index.cshtml.g.cs
-C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Periods\_AgregarIngreso.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Periods\_ListEntries.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Periods\_ListExpenses.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -932,3 +931,14 @@ C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\M
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterestDetails\Details.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterestDetails\Edit.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterestDetails\Index.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Periods\_AddExpense.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\ExpenseTdcs\Create.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\ExpenseTdcs\Delete.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\ExpenseTdcs\Details.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\ExpenseTdcs\Edit.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\ExpenseTdcs\Index.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\TermAccounts\Create.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\TermAccounts\Delete.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\TermAccounts\Details.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\TermAccounts\Edit.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\TermAccounts\Index.cshtml.g.cs

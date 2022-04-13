@@ -5,18 +5,6 @@
 }
 
 <h1>Lista de periodos</h1>
-@*@if (ViewBag.IsActive)
-{
-    <p>
-        <a asp-action="index" asp-route-isActive="false">Ver los borrados</a>
-    </p>
-}
-else
-{
-    <p>
-        <a asp-action="index" asp-route-isActive="true">Ver los activos</a>
-    </p>
-}*@
 <p>
     <a asp-action="Create">Agregar nuevo periodo</a>
 </p>

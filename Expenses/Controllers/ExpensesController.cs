@@ -104,13 +104,15 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var expense = await _context.Expense.FindAsync(id);
+            var expense = await _context.Expense.Include(x => x.Subcategory).Where(x => x.Id == id).FirstOrDefaultAsync();
             if (expense == null)
             {
                 return NotFound();
             }
+            expense.CategoryId = expense.Subcategory.CategoryId;
 
             ViewData["ListCategories"] = new SelectList(_context.Category.Where(x => x.IsActive), "Id", "Name");
+            ViewData["ListSubcategories"] = new SelectList(_context.Subcategory.Where(x => x.IsActive), "Id", "Name");
             ViewData["PeriodId"] = new SelectList(_context.Period.Where(x => x.IsActive), "Id", "Name");
 
             return View(expense);
@@ -121,7 +123,7 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CategoryId,PeriodId,Amount,DateRegister,IsActive")] Expense expense)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CategoryId, SubcategoryId,PeriodId,Amount,DateRegister,IsActive")] Expense expense)
         {
             if (id != expense.Id)
             {

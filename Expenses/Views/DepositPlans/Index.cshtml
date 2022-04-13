@@ -46,8 +46,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Goal)
                 </td>
-                <td>
-                    @item.ListDeposits.Sum(x=> x.Amount)
+                <td class="text-info">
+                    @item.ListDeposits.Sum(x=> x.Amount).ToString("c")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Subcategory.Name)

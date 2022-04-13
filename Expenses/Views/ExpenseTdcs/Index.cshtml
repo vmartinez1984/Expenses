@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Expenses.Models.ExpenseTdc>
+
+@{
+    ViewData["Title"] = "Gastos en TDC";
+}
+
+<h1 class="text-info">Lista de gastos en TDC</h1>
+
+<p>
+    <a asp-action="Create">Agregar nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRegistration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int monthCurrent = DateTime.Now.Month;
+            int monthTotal = 0;
+
+            if (Model.Count() > 0)
+                monthCurrent = Model.FirstOrDefault().DateRegistration.Month;
+        }
+        @foreach (var item in Model)
+        {
+            if (monthCurrent == item.DateRegistration.Month)
+            {
+                monthTotal += item.Amount;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateRegistration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+
+                </tr>
+            }
+            else
+            {
+                <tr class="table-primary">
+                    <td>Total del mes</td>
+                    <td>@monthTotal.ToString("c")</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                monthCurrent = item.DateRegistration.Month;
+                monthTotal = 0;
+            }
+        }
+        <tr class="table-primary">
+            <td>Total del mes</td>
+            <td>@monthTotal.ToString("c")</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="table-secondary">
+            <td>Total</td>
+            <td>@Model.Sum(x=>x.Amount).ToString("c")</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
