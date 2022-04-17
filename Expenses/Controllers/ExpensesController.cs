@@ -64,12 +64,24 @@ namespace Expenses.Controllers
             if (ModelState.IsValid)
             {
                 SetDeposit(expense);
+                SetBudget(expense);
                 _context.Add(expense);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Details), "Periods", new { Id = expense.PeriodId });
             }
             ViewData["PeriodId"] = new SelectList(_context.Period, "Id", "Name", expense.PeriodId);
             return View(expense);
+        }
+
+        private void SetBudget(Expense expense)
+        {
+            Subcategory subcategory;
+
+            subcategory = _context.Subcategory.Where(x=> x.Id == expense.SubcategoryId).FirstOrDefault();
+            if (subcategory.IsBudget)
+            {
+                expense.BudgetAmount = subcategory.Amount;
+            }
         }
 
         private void SetDeposit(Expense expense)

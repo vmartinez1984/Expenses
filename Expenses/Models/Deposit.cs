@@ -17,8 +17,7 @@ namespace Expenses.Models
 
         [Required]
         [Display(Name = "Cantidad")]
-        [DataType(DataType.Currency)]
-        [Range(1, 4000)]
+        [DataType(DataType.Currency)]       
         public int Amount { get; set; }
 
         [NotMapped]

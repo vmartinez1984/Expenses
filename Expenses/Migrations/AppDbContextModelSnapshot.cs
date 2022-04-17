@@ -162,7 +162,7 @@ namespace Expenses.Migrations
                         {
                             Id = 1,
                             Amount = 200,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(4921),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(3834),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Sabatico",
@@ -172,7 +172,7 @@ namespace Expenses.Migrations
                         {
                             Id = 2,
                             Amount = 500,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5254),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4180),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Afore",
@@ -182,7 +182,7 @@ namespace Expenses.Migrations
                         {
                             Id = 3,
                             Amount = 350,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5261),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4187),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Seminario",
@@ -192,7 +192,7 @@ namespace Expenses.Migrations
                         {
                             Id = 4,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5266),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4192),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Camioneta",
@@ -202,7 +202,7 @@ namespace Expenses.Migrations
                         {
                             Id = 5,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5271),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4198),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Libros Tec",
@@ -212,7 +212,7 @@ namespace Expenses.Migrations
                         {
                             Id = 6,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5276),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4204),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Ropa",
@@ -222,7 +222,7 @@ namespace Expenses.Migrations
                         {
                             Id = 7,
                             Amount = 400,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5281),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4209),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Tlax",
@@ -232,7 +232,7 @@ namespace Expenses.Migrations
                         {
                             Id = 8,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5286),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4214),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Gastos medicos",
@@ -242,7 +242,7 @@ namespace Expenses.Migrations
                         {
                             Id = 9,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 13, 14, 11, 7, 270, DateTimeKind.Local).AddTicks(5291),
+                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4219),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Ahorro N",
@@ -288,6 +288,9 @@ namespace Expenses.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BudgetAmount")
                         .HasColumnType("int");
 
                     b.Property<int?>("CategoryId1")
@@ -441,10 +444,16 @@ namespace Expenses.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsBudget")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -464,6 +473,7 @@ namespace Expenses.Migrations
                             Id = 1,
                             CategoryId = 1,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "TDC"
                         },
                         new
@@ -471,6 +481,7 @@ namespace Expenses.Migrations
                             Id = 2,
                             CategoryId = 1,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Doña $1200"
                         },
                         new
@@ -478,6 +489,7 @@ namespace Expenses.Migrations
                             Id = 3,
                             CategoryId = 1,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Mili $400"
                         },
                         new
@@ -485,6 +497,7 @@ namespace Expenses.Migrations
                             Id = 4,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Plan sabatico $200"
                         },
                         new
@@ -492,6 +505,7 @@ namespace Expenses.Migrations
                             Id = 5,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Plan Afore $500"
                         },
                         new
@@ -499,6 +513,7 @@ namespace Expenses.Migrations
                             Id = 6,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Plan Seminario $350"
                         },
                         new
@@ -506,6 +521,7 @@ namespace Expenses.Migrations
                             Id = 7,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Camioneta $100"
                         },
                         new
@@ -513,6 +529,7 @@ namespace Expenses.Migrations
                             Id = 8,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Libros Tec $100"
                         },
                         new
@@ -520,6 +537,7 @@ namespace Expenses.Migrations
                             Id = 9,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Ropa $100"
                         },
                         new
@@ -527,6 +545,7 @@ namespace Expenses.Migrations
                             Id = 10,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Tlaxc $400"
                         },
                         new
@@ -534,6 +553,7 @@ namespace Expenses.Migrations
                             Id = 11,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Gastos Medicos $100"
                         },
                         new
@@ -541,6 +561,7 @@ namespace Expenses.Migrations
                             Id = 12,
                             CategoryId = 2,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Ahorron $200"
                         },
                         new
@@ -548,6 +569,7 @@ namespace Expenses.Migrations
                             Id = 13,
                             CategoryId = 3,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Alimentación corriente"
                         },
                         new
@@ -555,6 +577,7 @@ namespace Expenses.Migrations
                             Id = 14,
                             CategoryId = 3,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Por App"
                         },
                         new
@@ -562,6 +585,7 @@ namespace Expenses.Migrations
                             Id = 15,
                             CategoryId = 3,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Golosinas"
                         },
                         new
@@ -569,6 +593,7 @@ namespace Expenses.Migrations
                             Id = 16,
                             CategoryId = 4,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Gatos"
                         },
                         new
@@ -576,6 +601,7 @@ namespace Expenses.Migrations
                             Id = 17,
                             CategoryId = 5,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Internet"
                         },
                         new
@@ -583,6 +609,7 @@ namespace Expenses.Migrations
                             Id = 18,
                             CategoryId = 5,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Agua"
                         },
                         new
@@ -590,6 +617,7 @@ namespace Expenses.Migrations
                             Id = 19,
                             CategoryId = 5,
                             IsActive = true,
+                            IsBudget = false,
                             Name = "Luz"
                         });
                 });

@@ -19,9 +19,45 @@ namespace Expenses.Controllers
         }
 
         // GET: Subcategories
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string orderBy, string orderByName, string OrderByAmount)
         {
-            var appDbContext = _context.Subcategory.Include(s => s.Category).Where(x=> x.IsActive);
+            IQueryable<Subcategory> appDbContext;
+
+            appDbContext = _context.Subcategory.Include(s => s.Category).Where(x => x.IsActive);
+            switch (orderByName)
+            {
+                case "Asc":
+                    appDbContext = appDbContext.OrderBy(x => x.Name);
+                    ViewBag.OrderByName = "Desc";
+                    break;
+                case "Desc":
+                    appDbContext = appDbContext.OrderByDescending(x => x.Name);
+                    ViewBag.OrderByName = string.Empty;
+                    break;
+                default:
+                    ViewBag.OrderByName = "Asc";
+                    break;
+            }
+            //if (string.IsNullOrEmpty(orderByName))
+            //{
+
+            //}
+            //else
+            //    if (orderBy == "Asc")
+            //    appDbContext.OrderBy(x => x.Name);
+            //else
+            //    appDbContext.OrderByDescending(x => x.Name);
+
+            if (string.IsNullOrEmpty(OrderByAmount))
+            {
+                ViewBag.OrderByAmount = true;
+            }
+            else
+            {
+                ViewBag.OrderByAmount = string.Empty;
+                appDbContext = appDbContext.OrderBy(x => x.Amount);
+            }
+
             return View(await appDbContext.ToListAsync());
         }
 
@@ -63,7 +99,7 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CategoryId,IsActive")] Subcategory subcategory)
+        public async Task<IActionResult> Create([Bind("Id,Name,CategoryId,Amount,IsBudget,IsActive")] Subcategory subcategory)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +133,7 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CategoryId,IsActive")] Subcategory subcategory)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CategoryId,Amount,IsBudget,IsActive")] Subcategory subcategory)
         {
             if (id != subcategory.Id)
             {

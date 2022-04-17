@@ -19,6 +19,7 @@ namespace Expenses.Models
 
         [Required]
         [Display(Name = "Cantidad")]
+        [DataType(DataType.Currency)]
         public int Amount { get; set; }
 
         [Required]

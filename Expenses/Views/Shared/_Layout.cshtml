@@ -79,6 +79,8 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <script>
+        var listSubcategories = new Array();
+
         function loadLisSubcateries(){
             var categoryId;
 
@@ -101,10 +103,11 @@
                 var option;
 
                 document.getElementById("SubcategoryId").innerHTML = '';
+                listSubcategories = [];
                 if(data.length > 1){
                     option = document.createElement("option");
                     option.text = "Seleccione";
-                     option.value ="";
+                    option.value ="";
                     document.getElementById("SubcategoryId").append(option);
                 }
                 data.forEach(item =>{
@@ -112,12 +115,27 @@
                     option.text = item.name;
                     option.value = item.id;
                     document.getElementById("SubcategoryId").append(option);
+                    listSubcategories.push(item);
                     //console.log(item);
                 });
             })
             .catch(error => {
                 console.log(error);
             });
+            }
+        }
+
+        function loadSubcategory(){
+            var value;
+
+            value =  document.getElementById("SubcategoryId").value;
+            if(value != ''){
+                var item;
+                
+                item = listSubcategories.find(x=> x.id == value);
+                document.getElementById("Amount").value = item.amount;
+                document.getElementById("Name").value = item.name;
+                document.getElementById("Name").focus();
             }
         }
     </script>

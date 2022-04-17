@@ -21,6 +21,13 @@ namespace Expenses.Models
         [Display(Name = "Categoria")]
         public virtual Category Category { get; set; }
 
+        [Display(Name ="Cantidad")]
+        [DataType(DataType.Currency)]
+        public int? Amount { get; set; }
+
+        [Display(Name ="¿Es presupuesto?")]
+        public bool IsBudget { get; set; }
+
         [Required]
         public bool IsActive { get; set; } = true;
     }

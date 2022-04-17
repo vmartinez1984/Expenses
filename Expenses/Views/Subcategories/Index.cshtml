@@ -13,19 +13,22 @@
     <thead>
         <tr>
             <th>
-                <select class="form-control">
-                    <option value="Asc"><a href="/home">Nombre A-Z</a></option>
-                    <option value="Desc"><a href="/home">Nombre Z-A</a></option>
-                </select>
+                <a href="/Subcategories/Index?OrderByName=@ViewBag.OrderByName">
+                    @Html.DisplayNameFor(x=> x.Name)
+                </a>
             </th>
             <th>
                 <select class="form-control">
-                    <option class="text-primary">Categoria</option>
+                    <option>Categoria</option>
                     <option>A-Z</option>
                     <option>Z-A</option>
                 </select>
             </th>
-
+            <th>
+                <a href="/Subcategories/Index?OrderByAmount=@ViewBag.OrderByAmount">
+                    @Html.DisplayNameFor(x=> x.Amount)
+                </a>
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -40,10 +43,33 @@
                     @Html.DisplayFor(modelItem => item.Category.Name)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
                 </td>
             </tr>
         }
+        @{
+            int total = (int)Model.Sum(x => x.Amount);
+        }
+        <tr>
+            <td></td>
+            <td>Total</td>
+            <td>@total.ToString("c")</td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
+@section Scripts {
+    <script>
+        function orderByName(){
+            if(document.getElementById("selectOrderByName").value == "Asc"){
+                window.location.href = "/Subcategories/Index?OrderByName=Asc"
+            }else{
+                window.location.href = "/Subcategories/Index?OrderByName=Des"
+            }
+        }
+    </script>
+}

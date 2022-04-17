@@ -22,10 +22,14 @@ namespace Expenses.Models
         [Range(1,4000)]
         public int Amount { get; set; }
 
+        [Display(Name = "Presupuesto")]
+        [DataType(DataType.Currency)]
+        [Range(1, 4000)]
+        public int? BudgetAmount { get; set; }
+
         [NotMapped]
         [Required]
         [Display(Name = "Categoria")]
-        //[ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
         [Display(Name = "Categoria")]
         public virtual Category Category { get; set; }
