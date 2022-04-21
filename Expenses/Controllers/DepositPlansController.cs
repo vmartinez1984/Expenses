@@ -22,7 +22,7 @@ namespace Expenses.Controllers
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.DepositPlan
-                .Include(x => x.ListDeposits.Where(x => x.IsActive))
+                .Include(x => x.ListExpenses.Where(x => x.IsActive))
                 .Include(d => d.Subcategory)
                 .OrderBy(x=> x.Name);
             return View(await appDbContext.ToListAsync());

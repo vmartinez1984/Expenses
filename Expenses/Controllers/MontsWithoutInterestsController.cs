@@ -21,7 +21,19 @@ namespace Expenses.Controllers
         // GET: MontsWithoutInterests
         public async Task<IActionResult> Index()
         {
-            return View(await _context.MontsWithoutInterest.ToListAsync());
+            List<MontsWithoutInterest> list;
+
+            list = await _context.MontsWithoutInterest        
+                .Where(x=>x.IsActive)
+                .ToListAsync();
+            list.ForEach(item =>
+            {
+                item.ListPays = _context.MontsWithoutInterestDetails
+                .Where(x => x.MontsWithoutInterestId == item.Id && x.IsActive)
+                .ToList();
+            });
+
+            return View(list);
         }
 
         // GET: MontsWithoutInterests/Details/5
@@ -38,7 +50,9 @@ namespace Expenses.Controllers
             {
                 return NotFound();
             }
-
+            montsWithoutInterest.ListPays = _context.MontsWithoutInterestDetails
+                .Where(x => x.MontsWithoutInterestId == montsWithoutInterest.Id && x.IsActive)
+                .ToList();
             return View(montsWithoutInterest);
         }
 
@@ -63,7 +77,7 @@ namespace Expenses.Controllers
             }
             return View(montsWithoutInterest);
         }
-
+                
         // GET: MontsWithoutInterests/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -78,6 +92,23 @@ namespace Expenses.Controllers
                 return NotFound();
             }
             return View(montsWithoutInterest);
+        }
+
+        // POST: MontsWithoutInterestDetails/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> _AddPay([Bind("Id,Amount,ExpenseNumber,MontsWithoutInterestId,DateStart,IsActive")] MontsWithoutInterestDetails montsWithoutInterestDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(montsWithoutInterestDetails);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Details", "MontsWithoutInterests", new { Id = montsWithoutInterestDetails.MontsWithoutInterestId });
+            }
+
+            return RedirectToAction("Details", "MontsWithoutInterests", new { Id = montsWithoutInterestDetails.MontsWithoutInterestId });
         }
 
         // POST: MontsWithoutInterests/Edit/5

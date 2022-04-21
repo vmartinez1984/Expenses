@@ -54,7 +54,12 @@
                     }
                     @pagoMensual.ToString("c")
                 </td>
-                <td></td>
+                <td>
+                    @if (@item.ListPays.Count() > 0)
+                    {
+                        @item.ListPays.Last().ExpenseNumber
+                    }
+                </td>
                 <td>
                     @*@Html.DisplayFor(modelItem => item.DateStart)*@
                     @item.DateStart.ToShortDateString()

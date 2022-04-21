@@ -21,7 +21,7 @@ namespace Expenses.Controllers
         // GET: TermAccounts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TermAccount.ToListAsync());
+            return View(await _context.TermAccount.Where(x=> x.IsActive).ToListAsync());
         }
 
         // GET: TermAccounts/Details/5
@@ -139,7 +139,7 @@ namespace Expenses.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var termAccount = await _context.TermAccount.FindAsync(id);
-            _context.TermAccount.Remove(termAccount);
+            termAccount.IsActive = false;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

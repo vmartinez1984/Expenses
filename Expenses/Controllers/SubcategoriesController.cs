@@ -19,7 +19,12 @@ namespace Expenses.Controllers
         }
 
         // GET: Subcategories
-        public async Task<IActionResult> Index(string orderBy, string orderByName, string OrderByAmount)
+        public async Task<IActionResult> Index(string orderBy,
+            string orderByName,
+            string OrderByAmount,
+            string OrderbyCategory,
+            string category
+        )
         {
             IQueryable<Subcategory> appDbContext;
 
@@ -38,6 +43,9 @@ namespace Expenses.Controllers
                     ViewBag.OrderByName = "Asc";
                     break;
             }
+
+            OrderByCategory(ref appDbContext, OrderbyCategory);
+            FilterCategory(ref appDbContext, category);
             //if (string.IsNullOrEmpty(orderByName))
             //{
 
@@ -57,8 +65,38 @@ namespace Expenses.Controllers
                 ViewBag.OrderByAmount = string.Empty;
                 appDbContext = appDbContext.OrderBy(x => x.Amount);
             }
+            ViewBag.ListCategories = _context.Category.Where(Category => Category.IsActive).OrderBy(x => x.Name).ToList();
 
             return View(await appDbContext.ToListAsync());
+        }
+
+        private void FilterCategory(ref IQueryable<Subcategory> appDbContext, string category)
+        {
+            if (string.IsNullOrEmpty(category))
+            {
+
+            }
+            else
+            {
+                //var list = appDbContext.ToList();
+                appDbContext = appDbContext.Where(x => x.Category.Name == category);
+                //list = appDbContext.ToList();
+            }
+        }
+
+        private void OrderByCategory(ref IQueryable<Subcategory> appDbContext, string OrderbyCategory)
+        {
+            switch (OrderbyCategory)
+            {
+                case "Asc":
+                    appDbContext = appDbContext.OrderBy(x => x.Category.Name);
+                    break;
+                case "Desc":
+                    appDbContext = appDbContext.OrderByDescending(x => x.Category.Name);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public async Task<IActionResult> Get(int id)

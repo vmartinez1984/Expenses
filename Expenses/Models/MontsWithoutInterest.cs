@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Expenses.Models
 {
@@ -21,6 +23,10 @@ namespace Expenses.Models
         [Display(Name = "Cantidad")]
         [DataType(DataType.Currency)]
         public int Amount { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Pagos")]
+        public virtual List<MontsWithoutInterestDetails> ListPays { get; set; }
 
         [Required]
         [Display(Name = "Fecha de registro")]

@@ -4,9 +4,9 @@
     ViewData["Title"] = "Plan";
 }
 
-<h1>Agregar</h1>
+<h1 class="text-info">Agregar</h1>
 
-<h4>Ahorro Plan</h4>
+<h4 class=""text-info"">Ahorro Plan</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,7 +29,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="SubcategoryId" class="control-label"></label>
-                <select asp-for="SubcategoryId" class ="form-control" asp-items="ViewBag.SubcategoryId"></select>
+                <select asp-for="SubcategoryId" class ="form-control" asp-items="ViewBag.SubcategoryId">
+                    <option value="">Seleccione</option>
+                </select>
+                <span asp-validation-for="SubcategoryId" class="text-danger"></span>
             </div>            
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />

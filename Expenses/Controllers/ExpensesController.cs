@@ -77,35 +77,22 @@ namespace Expenses.Controllers
         {
             Subcategory subcategory;
 
-            subcategory = _context.Subcategory.Where(x=> x.Id == expense.SubcategoryId).FirstOrDefault();
-            if (subcategory.IsBudget)
-            {
-                expense.BudgetAmount = subcategory.Amount;
-            }
+            subcategory = _context.Subcategory.Where(x => x.Id == expense.SubcategoryId).FirstOrDefault();
+            if (subcategory.IsBudget)            
+                expense.BudgetAmount = subcategory.Amount;            
+            else
+                expense.BudgetAmount = null;
         }
 
         private void SetDeposit(Expense expense)
         {
-            Deposit deposit;
             DepositPlan depostiPlanId;
 
             depostiPlanId = _context.DepositPlan.Where(x => x.SubcategoryId == expense.SubcategoryId).FirstOrDefault();
-            if (depostiPlanId != null)
-            {
-                deposit = new Deposit
-                {
-                    Amount = expense.Amount,
-                    SubcategoryId = expense.SubcategoryId,
-                    DateRegister = expense.DateRegister,
-                    Guid = Guid.NewGuid(),
-                    DepositPlanId = depostiPlanId.Id,
-                    IsActive = true,
-                    Name = string.Empty
-                };
-                _context.Deposit.Add(deposit);
-
-                _context.SaveChanges();
-            }
+            if (depostiPlanId is null)
+                expense.DepositPlanId = null;
+            else
+                expense.DepositPlanId = depostiPlanId.Id;
         }
 
         // GET: Expenses/Edit/5
@@ -117,6 +104,7 @@ namespace Expenses.Controllers
             }
 
             var expense = await _context.Expense.Include(x => x.Subcategory).Where(x => x.Id == id).FirstOrDefaultAsync();
+            SetBudget(expense);
             if (expense == null)
             {
                 return NotFound();
@@ -146,6 +134,8 @@ namespace Expenses.Controllers
             {
                 try
                 {
+                    SetDeposit(expense);
+                    SetBudget(expense);
                     _context.Update(expense);
                     await _context.SaveChangesAsync();
                 }

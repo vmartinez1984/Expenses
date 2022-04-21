@@ -21,7 +21,7 @@ namespace Expenses.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.Where(x=>x.IsActive).ToListAsync());
+            return View(await _context.Category.Where(x => x.IsActive).OrderBy(x => x.Name).ToListAsync());
         }
 
         // GET: Categories/Details/5

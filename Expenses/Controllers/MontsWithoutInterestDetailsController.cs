@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -66,7 +64,7 @@ namespace Expenses.Controllers
             }
             ViewData["MontsWithoutInterestId"] = new SelectList(_context.MontsWithoutInterest, "Id", "Name", montsWithoutInterestDetails.MontsWithoutInterestId);
             return View(montsWithoutInterestDetails);
-        }
+        }        
 
         // GET: MontsWithoutInterestDetails/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -146,7 +144,7 @@ namespace Expenses.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var montsWithoutInterestDetails = await _context.MontsWithoutInterestDetails.FindAsync(id);
-            _context.MontsWithoutInterestDetails.Remove(montsWithoutInterestDetails);
+            montsWithoutInterestDetails.IsActive = false;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

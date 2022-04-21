@@ -9,8 +9,7 @@ namespace Expenses.Models
     {
         private IConfiguration _configuration;
 
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Deposit> Deposit { get; set; }
+        public DbSet<Category> Category { get; set; }        
         public DbSet<DepositPlan> DepositPlan { get; set; }
         public DbSet<Entry> Entry { get; set; }
         public DbSet<Expense> Expense { get; set; }

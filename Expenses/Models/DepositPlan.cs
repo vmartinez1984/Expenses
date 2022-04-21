@@ -31,6 +31,7 @@ namespace Expenses.Models
         [Required]
         [Display(Name = "Categoria")]
         public int CategoryId { get; set; }
+        [NotMapped]
         [Display(Name = "Categoria")]
         public virtual Category Category { get; set; }
 
@@ -48,6 +49,6 @@ namespace Expenses.Models
         [Required]
         public bool IsActive { get; set; } = true;
 
-        public List<Deposit> ListDeposits { get; set; }
+        public List<Expense> ListExpenses { get; set; }
     }
 }

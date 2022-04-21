@@ -18,11 +18,21 @@
                 </a>
             </th>
             <th>
-                <select class="form-control">
-                    <option>Categoria</option>
-                    <option>A-Z</option>
-                    <option>Z-A</option>
-                </select>
+                <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categorias
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a class="dropdown-item" href="/Subcategories/Index">Todas</a>
+                         <a class="dropdown-item" href="/Subcategories/Index?OrderbyCategory=Asc">a-z</a>
+                         <a class="dropdown-item" href="/Subcategories/Index?OrderbyCategory=Desc">z-a</a>
+                        @foreach (var item in ViewBag.ListCategories as List<Category>)
+                        {
+                            <a class="dropdown-item" href="/Subcategories/Index?category=@item.Name">@item.Name</a>
+                        }                     
+                       @* <a class="dropdown-item" href="#"><input type="checkbox" /> opcion 01</a>*@
+                    </div>
+                </div>
             </th>
             <th>
                 <a href="/Subcategories/Index?OrderByAmount=@ViewBag.OrderByAmount">
@@ -33,6 +43,15 @@
         </tr>
     </thead>
     <tbody>
+        @{
+            int total = (int)Model.Sum(x => x.Amount);
+        }
+        <tr class="table-info">
+            <td></td>
+            <td>Total</td>
+            <td>@total.ToString("c")</td>
+            <td></td>
+        </tr>
         @foreach (var item in Model)
         {
             <tr>
@@ -51,10 +70,7 @@
                 </td>
             </tr>
         }
-        @{
-            int total = (int)Model.Sum(x => x.Amount);
-        }
-        <tr>
+        <tr class="table-info">
             <td></td>
             <td>Total</td>
             <td>@total.ToString("c")</td>
@@ -64,10 +80,10 @@
 </table>
 @section Scripts {
     <script>
-        function orderByName(){
-            if(document.getElementById("selectOrderByName").value == "Asc"){
+        function orderByName() {
+            if (document.getElementById("selectOrderByName").value == "Asc") {
                 window.location.href = "/Subcategories/Index?OrderByName=Asc"
-            }else{
+            } else {
                 window.location.href = "/Subcategories/Index?OrderByName=Des"
             }
         }

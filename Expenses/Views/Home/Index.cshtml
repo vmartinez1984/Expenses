@@ -6,3 +6,26 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@section Scripts {
+    <script>
+        function getCategorySumary() {
+            var url;
+
+            url = "/Api/Charts/CategorySummary/Period/3";
+            fetch(url)
+                .then(response => {
+                    if (response.ok)
+                        return response.json();
+                    else
+                        throw response;
+                })
+                .then(response => {
+                    //console.log(response);
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        }
+    </script>
+}

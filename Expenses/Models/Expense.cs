@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,8 +30,9 @@ namespace Expenses.Models
         [Required]
         [Display(Name = "Categoria")]
         public int CategoryId { get; set; }
-        [Display(Name = "Categoria")]
-        public virtual Category Category { get; set; }
+
+        [NotMapped]
+        public Category Category { get; set; }
 
         [Required]
         [Display(Name = "Subcategoria")]
@@ -40,6 +40,10 @@ namespace Expenses.Models
         public int SubcategoryId { get; set; }
         [Display(Name = "Subcategoria")]
         public virtual Subcategory Subcategory { get; set; }
+
+        [ForeignKey(nameof(DepositPlan))]
+        public int? DepositPlanId { get; set; }
+        public virtual DepositPlan DepositPlan { get; set; }
 
         [Required]
         [ForeignKey(nameof(Period))]

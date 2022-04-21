@@ -916,11 +916,6 @@ C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\D
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\DepositPlans\Details.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\DepositPlans\Edit.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\DepositPlans\Index.cshtml.g.cs
-C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Deposits\Create.cshtml.g.cs
-C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Deposits\Delete.cshtml.g.cs
-C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Deposits\Details.cshtml.g.cs
-C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Deposits\Edit.cshtml.g.cs
-C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\Deposits\Index.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\Create.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\Delete.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\Details.cshtml.g.cs
@@ -942,3 +937,5 @@ C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\T
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\TermAccounts\Details.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\TermAccounts\Edit.cshtml.g.cs
 C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\TermAccounts\Index.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\_ListPays.cshtml.g.cs
+C:\Users\vmartinez\source\repos\Expenses\Expenses\obj\Debug\net5.0\Razor\Views\MontsWithoutInterests\_AddPay.cshtml.g.cs
