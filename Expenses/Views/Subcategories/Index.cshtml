@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                <a href="/Subcategories/Index?OrderByName=@ViewBag.OrderByName">
+                <a href="~/Subcategories/Index?OrderByName=@ViewBag.OrderByName">
                     @Html.DisplayNameFor(x=> x.Name)
                 </a>
             </th>
@@ -23,19 +23,18 @@
                         Categorias
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                         <a class="dropdown-item" href="/Subcategories/Index">Todas</a>
-                         <a class="dropdown-item" href="/Subcategories/Index?OrderbyCategory=Asc">a-z</a>
-                         <a class="dropdown-item" href="/Subcategories/Index?OrderbyCategory=Desc">z-a</a>
+                         <a class="dropdown-item" href="~/Subcategories/Index">Todas</a>
+                         <a class="dropdown-item" href="~/Subcategories/Index?OrderbyCategory=Asc">a-z</a>
+                         <a class="dropdown-item" href="~/Subcategories/Index?OrderbyCategory=Desc">z-a</a>
                         @foreach (var item in ViewBag.ListCategories as List<Category>)
                         {
-                            <a class="dropdown-item" href="/Subcategories/Index?category=@item.Name">@item.Name</a>
-                        }                     
-                       @* <a class="dropdown-item" href="#"><input type="checkbox" /> opcion 01</a>*@
+                            <a class="dropdown-item" href="~/Subcategories/Index?category=@item.Name">@item.Name</a>
+                        }                                            
                     </div>
                 </div>
             </th>
             <th>
-                <a href="/Subcategories/Index?OrderByAmount=@ViewBag.OrderByAmount">
+                <a href="~/Subcategories/Index?OrderByAmount=@ViewBag.OrderByAmount">
                     @Html.DisplayNameFor(x=> x.Amount)
                 </a>
             </th>
@@ -82,9 +81,9 @@
     <script>
         function orderByName() {
             if (document.getElementById("selectOrderByName").value == "Asc") {
-                window.location.href = "/Subcategories/Index?OrderByName=Asc"
+                window.location.href = window.location.href + "/Subcategories/Index?OrderByName=Asc"
             } else {
-                window.location.href = "/Subcategories/Index?OrderByName=Des"
+                window.location.href = "~/Subcategories/Index?OrderByName=Des"
             }
         }
     </script>

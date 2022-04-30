@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Expenses.Models;
 using System;
 
 namespace Expenses.Models

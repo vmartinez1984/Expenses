@@ -69,10 +69,10 @@ namespace Expenses.Repository.Repositories
             {
                 string query;
 
-                query = "INSERT INTO Category (Name, IsActive) VALUES(@Name, 1)  SELECT SCOPE_IDENTITY()";
+                query = "INSERT INTO Category  VALUES(@Name, 1)  SELECT SCOPE_IDENTITY()";
                 using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
                 {
-                    entity.Id = db.Query<int>(query, entity).FirstOrDefault();
+                    entity.Id = db.Query<int>(query,entity).FirstOrDefault();
                 }
 
                 return entity.Id;

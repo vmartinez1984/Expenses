@@ -147,3 +147,5 @@ C:\Users\vmartinez\source\repos\Expenses\Expenses.Api\obj\Debug\net5.0\refint\Ex
 C:\Users\vmartinez\source\repos\Expenses\Expenses.Api\obj\Debug\net5.0\Expenses.Api.pdb
 C:\Users\vmartinez\source\repos\Expenses\Expenses.Api\obj\Debug\net5.0\Expenses.Api.genruntimeconfig.cache
 C:\Users\vmartinez\source\repos\Expenses\Expenses.Api\obj\Debug\net5.0\ref\Expenses.Api.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Api\bin\Debug\net5.0\Expenses.RepositoryEF.dll
+C:\Users\vmartinez\source\repos\Expenses\Expenses.Api\bin\Debug\net5.0\Expenses.RepositoryEF.pdb

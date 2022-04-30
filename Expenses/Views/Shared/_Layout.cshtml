@@ -85,7 +85,7 @@
             if(categoryId != ''){
                 var url;
 
-                url = "/Subcategories/Get/"+categoryId;
+                url = window.location.href+"/Subcategories/Get/"+categoryId;
                 console.log(url);
                 fetch(url).
                 then( response =>{
