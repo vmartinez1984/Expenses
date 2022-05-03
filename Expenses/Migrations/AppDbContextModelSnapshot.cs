@@ -76,49 +76,6 @@ namespace Expenses.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Expenses.Models.Deposit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoryId1")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateRegister")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DepositPlanId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SubcategoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId1");
-
-                    b.HasIndex("DepositPlanId");
-
-                    b.HasIndex("SubcategoryId");
-
-                    b.ToTable("Deposit");
-                });
-
             modelBuilder.Entity("Expenses.Models.DepositPlan", b =>
                 {
                     b.Property<int>("Id")
@@ -127,9 +84,6 @@ namespace Expenses.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoryId1")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateRegister")
@@ -151,8 +105,6 @@ namespace Expenses.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId1");
-
                     b.HasIndex("SubcategoryId");
 
                     b.ToTable("DepositPlan");
@@ -162,7 +114,7 @@ namespace Expenses.Migrations
                         {
                             Id = 1,
                             Amount = 200,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(3834),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8308),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Sabatico",
@@ -172,7 +124,7 @@ namespace Expenses.Migrations
                         {
                             Id = 2,
                             Amount = 500,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4180),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8846),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Afore",
@@ -182,7 +134,7 @@ namespace Expenses.Migrations
                         {
                             Id = 3,
                             Amount = 350,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4187),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8851),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Seminario",
@@ -192,7 +144,7 @@ namespace Expenses.Migrations
                         {
                             Id = 4,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4192),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8855),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Camioneta",
@@ -202,7 +154,7 @@ namespace Expenses.Migrations
                         {
                             Id = 5,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4198),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8859),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Libros Tec",
@@ -212,7 +164,7 @@ namespace Expenses.Migrations
                         {
                             Id = 6,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4204),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8863),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Ropa",
@@ -222,7 +174,7 @@ namespace Expenses.Migrations
                         {
                             Id = 7,
                             Amount = 400,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4209),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8867),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Tlax",
@@ -232,7 +184,7 @@ namespace Expenses.Migrations
                         {
                             Id = 8,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4214),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8871),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Gastos medicos",
@@ -242,7 +194,7 @@ namespace Expenses.Migrations
                         {
                             Id = 9,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 4, 14, 13, 39, 22, 521, DateTimeKind.Local).AddTicks(4219),
+                            DateRegister = new DateTime(2022, 5, 2, 14, 28, 37, 643, DateTimeKind.Local).AddTicks(8875),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Ahorro N",
@@ -290,14 +242,14 @@ namespace Expenses.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("BudgetAmount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoryId1")
+                    b.Property<int?>("BudgetAmount")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateRegister")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("DepositPlanId")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("Guid")
                         .HasColumnType("uniqueidentifier");
@@ -317,7 +269,7 @@ namespace Expenses.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId1");
+                    b.HasIndex("DepositPlanId");
 
                     b.HasIndex("PeriodId");
 
@@ -651,44 +603,13 @@ namespace Expenses.Migrations
                     b.ToTable("TermAccount");
                 });
 
-            modelBuilder.Entity("Expenses.Models.Deposit", b =>
-                {
-                    b.HasOne("Expenses.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId1");
-
-                    b.HasOne("Expenses.Models.DepositPlan", "DepositPlan")
-                        .WithMany("ListDeposits")
-                        .HasForeignKey("DepositPlanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Expenses.Models.Subcategory", "Subcategory")
-                        .WithMany()
-                        .HasForeignKey("SubcategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("DepositPlan");
-
-                    b.Navigation("Subcategory");
-                });
-
             modelBuilder.Entity("Expenses.Models.DepositPlan", b =>
                 {
-                    b.HasOne("Expenses.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId1");
-
                     b.HasOne("Expenses.Models.Subcategory", "Subcategory")
                         .WithMany()
                         .HasForeignKey("SubcategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
 
                     b.Navigation("Subcategory");
                 });
@@ -706,9 +627,9 @@ namespace Expenses.Migrations
 
             modelBuilder.Entity("Expenses.Models.Expense", b =>
                 {
-                    b.HasOne("Expenses.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId1");
+                    b.HasOne("Expenses.Models.DepositPlan", "DepositPlan")
+                        .WithMany("ListExpenses")
+                        .HasForeignKey("DepositPlanId");
 
                     b.HasOne("Expenses.Models.Period", "Period")
                         .WithMany("ListExpenses")
@@ -722,7 +643,7 @@ namespace Expenses.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("DepositPlan");
 
                     b.Navigation("Period");
 
@@ -758,7 +679,7 @@ namespace Expenses.Migrations
 
             modelBuilder.Entity("Expenses.Models.DepositPlan", b =>
                 {
-                    b.Navigation("ListDeposits");
+                    b.Navigation("ListExpenses");
                 });
 
             modelBuilder.Entity("Expenses.Models.Period", b =>
