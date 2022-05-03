@@ -6,10 +6,10 @@
 
         public int Amount { get; set; }
 
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public int SubcategoryId { get; set; }
+        
+        public int Goal { get; set; }
 
         public int PeriodId { get; set; }
-
     }
 }

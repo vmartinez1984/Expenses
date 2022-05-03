@@ -25,12 +25,19 @@ namespace Expenses.RepositoryEF.Repositories
 
         public int Add(CategoryEntity entity)
         {
-            throw new NotImplementedException();
+            _context.Category.Add(entity);
+
+            return entity.Id;
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            CategoryEntity item;
+
+            item = _context.Category.Where(x=> x.Id == id).FirstOrDefault();
+            item.IsActive = false;
+
+            _context.SaveChanges();
         }
 
         public List<CategoryEntity> Get()
@@ -44,12 +51,21 @@ namespace Expenses.RepositoryEF.Repositories
 
         public CategoryEntity Get(int id)
         {
-            throw new NotImplementedException();
+           CategoryEntity item;
+
+           item = _context.Category.Where(x=> x.Id == id && x.IsActive).FirstOrDefault();
+
+           return item;
         }
 
         public void Update(CategoryEntity entity)
         {
-            throw new NotImplementedException();
+            CategoryEntity item;
+
+            item = _context.Category.Where(x=> x.Id == entity.Id && x.IsActive).FirstOrDefault();            
+            item.Name;
+
+            _context.SaveChanges();
         }
     }
 }

@@ -96,10 +96,10 @@ namespace Expenses.Models
                 new DepositPlan { Id = 10, Amount = 100, SubcategoryId = 12, Goal = 2000, IsActive = true, Name = "Vacaciones", DateRegister = DateTime.Now }
             );
 
-            // modelBuilder.Entity<Period>().HasData
-            // (
-            //     new Period {Id= 1,DateStart =DateTime.Now, DateStop = DateTime.Now, IsActive= false}
-            // );
+            modelBuilder.Entity<Period>().HasData
+            (
+                new Period {Id= 1,DateStart =DateTime.Now, DateStop = DateTime.Now, IsActive= false, Name= "Ahorros"}
+            );
         }       
     }//end class
 }

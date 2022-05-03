@@ -28,26 +28,6 @@ namespace Expenses.Api.Controllers
             return list;
         }
 
-        //[HttpGet("{id}")]
-        //public IActionResult Get(int id)
-        //{
-        //    try
-        //    {
-        //        CategoryDtoOut item;
-
-        //        item = _unitOfWorkBl.Category.Get(id);
-        //        if (item == null)
-        //            return NotFound();
-
-        //        return Ok(item);
-        //    }
-        //    catch (System.Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
-
         [HttpPost]
         public IActionResult Post(CategoryDtoIn item)
         {

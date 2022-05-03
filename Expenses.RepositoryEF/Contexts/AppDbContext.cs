@@ -41,6 +41,7 @@ namespace Expenses.RepositoryEF.Contexts
         public DbSet<ExpenseEntity> Expense { get; set; }
         public DbSet<PeriodEntity> Period { get; set; }
 
+        public DbSet<SubcategoryEntity> Subcategory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
