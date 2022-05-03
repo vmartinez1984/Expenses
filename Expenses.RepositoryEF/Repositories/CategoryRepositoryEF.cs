@@ -63,7 +63,7 @@ namespace Expenses.RepositoryEF.Repositories
             CategoryEntity item;
 
             item = _context.Category.Where(x=> x.Id == entity.Id && x.IsActive).FirstOrDefault();            
-            item.Name;
+            item.Name = entity.Name;
 
             _context.SaveChanges();
         }

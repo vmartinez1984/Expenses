@@ -11,5 +11,7 @@ namespace Expenses.BusinessLayer.Interfaces
         IEntryBl Entry { get; }
 
         IExpensesBl Expense { get; }
+
+        ISubcategoryBl Subcategory { get; }
     }
 }

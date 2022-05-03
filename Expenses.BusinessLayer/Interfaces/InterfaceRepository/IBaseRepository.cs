@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace Expenses.BusinessLayer.Interfaces.InterfaceRepository
 {
     public interface IBaseRepository<T> where T :class

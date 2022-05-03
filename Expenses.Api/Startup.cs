@@ -37,6 +37,7 @@ namespace Expenses.Api
             services.AddScoped<IPeriodBl, PeriodBl>();
             services.AddScoped<IExpensesBl, ExpenseBl>();
             services.AddScoped<IEntryBl, EntryBl>();
+            services.AddScoped<ISubcategoryBl, SubcategoryBl>();
             services.AddScoped<IUnitOfWorkRepository, UnitOfWork>();
             //services.AddTransient<IUnitOfWorkRepository, UnitOfWorkEF>();
             //services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -45,6 +46,7 @@ namespace Expenses.Api
             services.AddScoped<IPeriodRepository, PeriodRepository>();
             services.AddScoped<IEntryRepositoy, EntryRepository>();
             services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<ISubcategoryRepository, SubcategoryRepositoryEF>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Expenses.Api", Version = "v1" });

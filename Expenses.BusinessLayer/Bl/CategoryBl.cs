@@ -42,7 +42,7 @@ namespace Expenses.BusinessLayer.Bl
 
         public int Add(CategoryDtoIn item)
         {
-            CategoryEntity entity;
+            CategoryEntity entity;            
 
             entity = _mapper.Map<CategoryEntity>(item);
             entity.Id = _unitOfWork.Category.Add(entity);

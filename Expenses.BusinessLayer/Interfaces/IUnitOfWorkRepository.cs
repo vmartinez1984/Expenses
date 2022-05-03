@@ -11,5 +11,7 @@ namespace Expenses.BusinessLayer.Interfaces
         public IEntryRepositoy Entry { get; }
 
         public IExpenseRepository Expense { get; }
+        
+        public ISubcategoryRepository Subcategory { get; }
     }
 }

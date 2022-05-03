@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Expenses.BusinessLayer.Entities
 {
-    public class CategoryEntity : BaseBEntity
+    public class DepositPlanEntity : BaseBEntity
     {
         [Required]
         [StringLength(50)]
@@ -18,7 +19,7 @@ namespace Expenses.BusinessLayer.Entities
         public int Goal { get; set; }
 
         [Required]        
-        [ForeignKey(nameof(Subcategory))]
+        //[ForeignKey(nameof(Subcategory))]
         public int SubcategoryId { get; set; }
     }
 }

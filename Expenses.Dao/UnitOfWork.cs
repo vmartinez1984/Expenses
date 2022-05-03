@@ -10,13 +10,15 @@ namespace Expenses.Repository
             ICategoryRepository categoryRepository,
             IPeriodRepository periodRepository,
             IEntryRepositoy entryRepositoy,
-            IExpenseRepository expenseRepository
+            IExpenseRepository expenseRepository,
+            ISubcategoryRepository subcategory
         )
         {
             Category = categoryRepository;
             Period = periodRepository;
             Entry = entryRepositoy;
             Expense = expenseRepository;
+            Subcategory = subcategory;
         }
 
         public ICategoryRepository Category { get; }
@@ -26,5 +28,7 @@ namespace Expenses.Repository
         public IEntryRepositoy Entry { get; }       
 
         public IExpenseRepository Expense { get; }
+
+        public ISubcategoryRepository Subcategory { get; }
     }
 }

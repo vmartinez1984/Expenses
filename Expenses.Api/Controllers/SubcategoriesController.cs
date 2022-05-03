@@ -1,24 +1,58 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-//using Expenses.Api.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Expenses.Api.Controllers
 {
-    public class SubcategoriesController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SubcategoriesController : ControllerBase
     {
-        public SubcategoriesController()
+        private IUnitOfWorkBl _unitOfWorkBl;
+
+        public SubcategoriesController(IUnitOfWorkBl unitOfWorkBl)
+        {
+            _unitOfWorkBl = unitOfWorkBl;
+        }
+
+        // GET: api/<SubcategoriesController>
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            IReadOnlyList<SubcategoryDtoOut> list;
+
+            list = await _unitOfWorkBl.Subcategory.GetAsync();
+
+            return Ok(list);
+        }
+
+        // GET api/<SubcategoriesController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/<SubcategoriesController>
+        [HttpPost]
+        public void Post([FromBody] string value)
         {
         }
 
-        public async Task<IActionResult> Index()
+        // PUT api/<SubcategoriesController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            // TODO: Your code here
-            await Task.Yield();
+        }
 
-            return View();
+        // DELETE api/<SubcategoriesController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }

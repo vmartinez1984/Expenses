@@ -1,4 +1,6 @@
 using Expenses.BusinessLayer.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Interfaces.InterfaceRepository
 {

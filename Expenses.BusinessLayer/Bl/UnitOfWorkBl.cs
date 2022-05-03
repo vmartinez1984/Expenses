@@ -14,7 +14,8 @@ namespace Expenses.BusinessLayer.Bl
             ICategoryBl category,
             IPeriodBl period,
             IEntryBl entry,
-            IExpensesBl expensesBl
+            IExpensesBl expensesBl,
+            ISubcategoryBl subcategoryBl
         )
         {
             _configuration = configuration;
@@ -22,6 +23,7 @@ namespace Expenses.BusinessLayer.Bl
             Period = period;
             Entry = entry;
             Expense = expensesBl;
+            Subcategory = subcategoryBl;
         }
 
         public ICategoryBl Category { get; }
@@ -30,5 +32,7 @@ namespace Expenses.BusinessLayer.Bl
 
         public IEntryBl Entry { get; }
         public IExpensesBl Expense { get; }
+
+        public ISubcategoryBl Subcategory { get; }
     }
 }

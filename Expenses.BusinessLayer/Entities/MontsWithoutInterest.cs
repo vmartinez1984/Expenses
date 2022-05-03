@@ -1,7 +1,6 @@
+using Expenses.BusinessLayer.Entities;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Expenses.Models
 {
@@ -17,8 +16,5 @@ namespace Expenses.Models
         [Required]
         [Display(Name = "Fecha de registro")]
         public DateTime DateStart { get; set; } = DateTime.Now;
-
-        [Required]
-        public bool IsActive { get; set; } = true;
     }
 }
