@@ -1426,3 +1426,5 @@ C:/Users/vmartinez/source/repos/Expenses/Expenses/obj/Debug/net5.0/Razor/Views/M
 /home/vmartinez/Documents/Expenses/Expenses/obj/Debug/net5.0/Expenses.pdb
 /home/vmartinez/Documents/Expenses/Expenses/obj/Debug/net5.0/Expenses.genruntimeconfig.cache
 /home/vmartinez/Documents/Expenses/Expenses/obj/Debug/net5.0/ref/Expenses.dll
+/home/vmartinez/Documents/Expenses/Expenses/obj/Debug/net5.0/Razor/Views/DepositPlans/_ListExpenses.cshtml.g.cs
+/home/vmartinez/Documents/Expenses/Expenses/obj/Debug/net5.0/Razor/Views/DepositPlans/_AddExpense.cshtml.g.cs

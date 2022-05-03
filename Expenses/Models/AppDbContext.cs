@@ -47,31 +47,40 @@ namespace Expenses.Models
                 new Category { Id = 3, IsActive = true, Name = "Alimentación" },
                 new Category { Id = 4, IsActive = true, Name = "Gatos" },
                 new Category { Id = 5, IsActive = true, Name = "Servicios" },
-                new Category { Id = 6, IsActive = true, Name = "Educación" }
+                new Category { Id = 6, IsActive = true, Name = "Educación" },
+                new Category { Id = 7, IsActive = true, Name = "Becas" }
             );
 
             modelBuilder.Entity<Subcategory>().HasData(
                 new Subcategory { Id = 1, IsActive = true, Name = "TDC", CategoryId = 1 },
-                new Subcategory { Id = 2, IsActive = true, Name = "Doña $1200", CategoryId = 1 },
-                new Subcategory { Id = 3, IsActive = true, Name = "Mili $400", CategoryId = 1 },
+                new Subcategory { Id = 2, IsActive = true, Name = "Semana 1", CategoryId = 1,IsBudget = true, Amount= 600 },
+                new Subcategory { Id = 3, IsActive = true, Name = "Semana 2", CategoryId = 1,IsBudget = true, Amount= 600 },
 
-                new Subcategory { Id = 4, IsActive = true, Name = "Plan sabatico $200", CategoryId = 2 },
-                new Subcategory { Id = 5, IsActive = true, Name = "Plan Afore $500", CategoryId = 2 },
-                new Subcategory { Id = 6, IsActive = true, Name = "Plan Seminario $350", CategoryId = 2 },
+                new Subcategory { Id = 4, IsActive = true, Name = "Plan sabatico", CategoryId = 2, IsBudget = true, Amount= 200 },
+                new Subcategory { Id = 5, IsActive = true, Name = "Plan Afore", CategoryId = 2, IsBudget = true, Amount= 500 },
+                new Subcategory { Id = 6, IsActive = true, Name = "Plan Seminario", CategoryId = 2, IsBudget = true, Amount= 750 },
                 new Subcategory { Id = 7, IsActive = true, Name = "Camioneta $100", CategoryId = 2 },
                 new Subcategory { Id = 8, IsActive = true, Name = "Libros Tec $100", CategoryId = 2 },
                 new Subcategory { Id = 9, IsActive = true, Name = "Ropa $100", CategoryId = 2 },
                 new Subcategory { Id = 10, IsActive = true, Name = "Tlaxc $400", CategoryId = 2 },
                 new Subcategory { Id = 11, IsActive = true, Name = "Gastos Medicos $100", CategoryId = 2 },
                 new Subcategory { Id = 12, IsActive = true, Name = "Ahorron $200", CategoryId = 2 },
+                new Subcategory { Id = 22, IsActive = true, Name = "Vacaciones", CategoryId = 2, IsBudget = true, Amount= 100 },
 
                 new Subcategory { Id = 13, IsActive = true, Name = "Alimentación corriente", CategoryId = 3 },
                 new Subcategory { Id = 14, IsActive = true, Name = "Por App", CategoryId = 3 },
                 new Subcategory { Id = 15, IsActive = true, Name = "Golosinas", CategoryId = 3 },
                 new Subcategory { Id = 16, IsActive = true, Name = "Gatos", CategoryId = 4 },
-                new Subcategory { Id = 17, IsActive = true, Name = "Internet", CategoryId = 5 },
-                new Subcategory { Id = 18, IsActive = true, Name = "Agua", CategoryId = 5 },
-                new Subcategory { Id = 19, IsActive = true, Name = "Luz", CategoryId = 5 }
+
+
+                new Subcategory { Id = 17, IsActive = true, Name = "Internet Tlax", CategoryId = 5, IsBudget = true, Amount= 90 },
+                new Subcategory { Id = 18, IsActive = true, Name = "Internet CDMX", CategoryId = 5, IsBudget = true, Amount= 175 },
+                new Subcategory { Id = 19, IsActive = true, Name = "Agua CDMX", CategoryId = 5, IsBudget = true, Amount= 75  },
+                new Subcategory { Id = 20, IsActive = true, Name = "Luz Tlax", CategoryId = 5, IsBudget = true, Amount= 75 },
+                new Subcategory { Id = 21, IsActive = true, Name = "Luz CDMX", CategoryId = 5, IsBudget = true, Amount= 150 },
+
+                new Subcategory { Id = 22, IsActive = true, Name = "Doña", CategoryId = 5, IsBudget = true, Amount= 1200 },
+                new Subcategory { Id = 23, IsActive = true, Name = "Mili", CategoryId = 5, IsBudget = true, Amount= 400 }
             );
 
             modelBuilder.Entity<DepositPlan>().HasData(
@@ -83,8 +92,14 @@ namespace Expenses.Models
                 new DepositPlan { Id = 6, Amount = 100, SubcategoryId = 9, Goal = 2000, IsActive = true, Name = "Ropa", DateRegister = DateTime.Now },
                 new DepositPlan { Id = 7, Amount = 400, SubcategoryId = 10, Goal = 2000, IsActive = true, Name = "Tlax", DateRegister = DateTime.Now },
                 new DepositPlan { Id = 8, Amount = 100, SubcategoryId = 11, Goal = 2000, IsActive = true, Name = "Gastos medicos", DateRegister = DateTime.Now },
-                new DepositPlan { Id = 9, Amount = 100, SubcategoryId = 12, Goal = 2000, IsActive = true, Name = "Ahorro N", DateRegister = DateTime.Now }
+                new DepositPlan { Id = 9, Amount = 100, SubcategoryId = 12, Goal = 2000, IsActive = true, Name = "Ahorro N", DateRegister = DateTime.Now },
+                new DepositPlan { Id = 10, Amount = 100, SubcategoryId = 12, Goal = 2000, IsActive = true, Name = "Vacaciones", DateRegister = DateTime.Now }
             );
+
+            // modelBuilder.Entity<Period>().HasData
+            // (
+            //     new Period {Id= 1,DateStart =DateTime.Now, DateStop = DateTime.Now, IsActive= false}
+            // );
         }       
     }//end class
 }

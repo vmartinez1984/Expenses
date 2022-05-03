@@ -103,7 +103,9 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var expense = await _context.Expense.Include(x => x.Subcategory).Where(x => x.Id == id).FirstOrDefaultAsync();
+            var expense = await _context.Expense
+            .Include(x => x.Subcategory)
+            .Where(x => x.Id == id).FirstOrDefaultAsync();
             SetBudget(expense);
             if (expense == null)
             {
@@ -113,7 +115,7 @@ namespace Expenses.Controllers
 
             ViewData["ListCategories"] = new SelectList(_context.Category.Where(x => x.IsActive), "Id", "Name");
             ViewData["ListSubcategories"] = new SelectList(_context.Subcategory.Where(x => x.IsActive), "Id", "Name");
-            ViewData["PeriodId"] = new SelectList(_context.Period.Where(x => x.IsActive), "Id", "Name");
+            ViewData["PeriodId"] = new SelectList(_context.Period, "Id", "Name");
 
             return View(expense);
         }

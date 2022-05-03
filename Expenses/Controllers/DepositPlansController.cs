@@ -37,12 +37,14 @@ namespace Expenses.Controllers
             }
 
             var depositPlan = await _context.DepositPlan
+                .Include(x => x.ListExpenses.Where(x => x.IsActive))
                 .Include(d => d.Subcategory)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (depositPlan == null)
             {
                 return NotFound();
             }
+            ViewBag.SubcategoryId = depositPlan.SubcategoryId;
 
             return View(depositPlan);
         }
