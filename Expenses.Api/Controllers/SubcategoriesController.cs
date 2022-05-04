@@ -1,4 +1,5 @@
 ﻿using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.BusinessLayer.Dtos.Inputs;
 using Expenses.BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -31,16 +32,21 @@ namespace Expenses.Api.Controllers
         }
 
         // GET api/<SubcategoriesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        // [HttpGet("{id}")]
+        // public string Get(int id)
+        // {
+        //     return "value";
+        // }
 
         // POST api/<SubcategoriesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] SubategoryDtoIn item)
         {
+            int id;
+
+            id = await _unitOfWorkBl.Subcategory.AddAsync(item);
+
+            return Created($"Api/Subcategories/{id}",new {Id = id});
         }
 
         // PUT api/<SubcategoriesController>/5

@@ -39,14 +39,9 @@ namespace Expenses.Api
             services.AddScoped<IEntryBl, EntryBl>();
             services.AddScoped<ISubcategoryBl, SubcategoryBl>();
             services.AddScoped<IUnitOfWorkRepository, UnitOfWork>();
-            //services.AddTransient<IUnitOfWorkRepository, UnitOfWorkEF>();
-            //services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<AppDbContext>();
-            services.AddScoped<ICategoryRepository, CategoryRepositoryEF>();
-            services.AddScoped<IPeriodRepository, PeriodRepository>();
-            services.AddScoped<IEntryRepositoy, EntryRepository>();
-            services.AddScoped<IExpenseRepository, ExpenseRepository>();
-            services.AddScoped<ISubcategoryRepository, SubcategoryRepositoryEF>();
+            services.AddTransient<IUnitOfWorkRepository, UnitOfWorkEF>();           
+            AddRepository(services);
+            //AddRepositoryEF(services);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Expenses.Api", Version = "v1" });
@@ -54,7 +49,22 @@ namespace Expenses.Api
             services.AddCors(options => options.AddPolicy("AllowWebApp", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
         }
 
+        private void AddRepository(IServiceCollection services){                        
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IPeriodRepository, PeriodRepository>();
+            services.AddScoped<IEntryRepositoy, EntryRepository>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();          
+        }
 
+        private void AddRepositoryEF(IServiceCollection services){
+            services.AddScoped<AppDbContext>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();            
+            services.AddScoped<IPeriodRepository, PeriodRepository>();
+            services.AddScoped<IEntryRepositoy, EntryRepository>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();            
+        }
 
         private void AddMappers(IServiceCollection services)
         {
@@ -64,6 +74,7 @@ namespace Expenses.Api
                 mapperConfig.AddProfile<PeriodMapper>();
                 mapperConfig.AddProfile<EntryMapper>();
                 mapperConfig.AddProfile<ExpenseMapper>();
+                mapperConfig.AddProfile<SubcategoryMapper>();
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
