@@ -21,19 +21,30 @@ namespace Expenses.BusinessLayer.Bl
             _mapper = mapper;
         }
 
-        public Task<int> AddAsync(SubategoryDtoIn entity)
+        public async Task<int> AddAsync(SubategoryDtoIn item)
         {
-            throw new NotImplementedException();
+            SubcategoryEntity entity;
+
+            entity = _mapper.Map<SubcategoryEntity>(item);
+            entity.Id = await _unitOfWork.Subcategory.AddAsync(entity);
+
+            return entity.Id;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _unitOfWork.Subcategory.DeleteAsync(id);
         }
 
-        public Task<SubategoryDtoIn> GetAsync(int id)
+        public async Task<SubcategoryDtoOut> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            SubcategoryDtoOut item;
+            SubcategoryEntity entity;
+
+            entity= await _unitOfWork.Subcategory.GetAsync(id);
+            item =_mapper.Map<SubcategoryDtoOut>(entity);
+
+            return item;
         }
 
         public async Task<IReadOnlyList<SubcategoryDtoOut>> GetAsync()
@@ -47,9 +58,17 @@ namespace Expenses.BusinessLayer.Bl
             return list;
         }
 
-        public Task UpdateAsync(SubategoryDtoIn entity)
+        public async Task UpdateAsync(SubategoryDtoIn item, int id)
         {
-            throw new NotImplementedException();
+            SubcategoryEntity entity;
+
+            entity = await _unitOfWork.Subcategory.GetAsync(id);
+            entity.Amount = item.Amount;
+            entity.CategoryId = item.CategoryId;
+            entity.IsBudget = item.IsBudget;
+            entity.Name = item.Name;
+            await _unitOfWork.Subcategory.UpdateAsync(entity);
         }
-    }
+
+    }//end class
 }

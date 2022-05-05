@@ -7,7 +7,9 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
 {
     public interface IPeriodBl
     {
-        List<PeriodDtoOut> Get(bool? isActive);
+        List<PeriodDtoOut> Get();
+
+        List<PeriodFullDtoOut> GetFull();
         int Add(PeriodDtoIn item);
         void Update(PeriodDtoIn item, int id);
         PeriodDtoOut Get(int id);

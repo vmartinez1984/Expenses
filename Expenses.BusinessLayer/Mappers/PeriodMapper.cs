@@ -12,6 +12,8 @@ namespace Expenses.BusinessLayer.Mappers
             CreateMap<PeriodEntity, PeriodDtoOut>().ReverseMap();
 
             CreateMap<PeriodEntity, PeriodDtoIn>().ReverseMap();
+
+            CreateMap<PeriodDtoOut, PeriodFullDtoOut>().ReverseMap();
         }
     }
 }

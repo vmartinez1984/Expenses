@@ -50,6 +50,7 @@ namespace Expenses.RepositoryEF
             IReadOnlyList<SubcategoryEntity> list;
 
             list = await _context.Subcategory
+                .Include(x=> x.Category)
                 .Where(x => x.IsActive)
                 .ToListAsync();
 

@@ -39,7 +39,7 @@ namespace Expenses.Api
             services.AddScoped<IEntryBl, EntryBl>();
             services.AddScoped<ISubcategoryBl, SubcategoryBl>();
             services.AddScoped<IUnitOfWorkRepository, UnitOfWork>();
-            services.AddTransient<IUnitOfWorkRepository, UnitOfWorkEF>();           
+            //services.AddTransient<IUnitOfWorkRepository, UnitOfWorkEF>();           
             AddRepository(services);
             //AddRepositoryEF(services);
             services.AddSwaggerGen(c =>

@@ -51,8 +51,11 @@ namespace Expenses.Api.Controllers
 
         // PUT api/<SubcategoriesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+        public async Task<IActionResult> Put(int id, [FromBody] SubategoryDtoIn item)
+        {            
+            await _unitOfWorkBl.Subcategory.UpdateAsync(item, id);
+
+            return Accepted();
         }
 
         // DELETE api/<SubcategoriesController>/5

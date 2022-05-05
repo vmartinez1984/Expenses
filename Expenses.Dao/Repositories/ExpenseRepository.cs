@@ -70,7 +70,11 @@ namespace Expenses.Repository.Repositories
                 List<ExpenseEntity> entities;
                 string query;
 
-                query = $"SELECT Expense.*, Category.Name CategoryName FROM Expense INNER JOIN Category on Expense.CategoryId = Category.Id WHERE Expense.IsActive = 1 AND PeriodId = {periodId}";
+                query = $@"SELECT Expense.*, Category.Name CategoryName 
+                FROM Expense 
+                INNER JOIN Subcategory on Expense.SubcategoryId = Subcategory.Id 
+                INNER JOIN Category on Subcategory.CategoryId = Category.Id                 
+                WHERE Expense.IsActive = 1 AND PeriodId = {periodId}";
                 entities = await Task.Run(() =>
                 {
                     using (var db = new SqlConnection(_configuration.GetConnectionString(StringConnection.DefaultConnection)))

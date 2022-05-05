@@ -20,18 +20,14 @@ namespace Expenses.Repository.Repositories
             _configuration = configuration;
         }
 
-        public List<PeriodEntity> Get(bool? isActive)
+        public List<PeriodEntity> Get()
         {
             try
             {
                 List<PeriodEntity> entities;
                 string query;
-                int _isActive = isActive == true ? 1 : 0;
 
-                if (isActive == null)
-                    query = $"SELECT * FROM Period";
-                else
-                    query = $"SELECT * FROM Period WHERE IsActive = {_isActive}";
+                query = $"SELECT * FROM Period";
                 using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
                 {
                     entities = db.Query<PeriodEntity>(query).ToList();

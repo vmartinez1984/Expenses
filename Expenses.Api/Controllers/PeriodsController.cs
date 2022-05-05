@@ -23,15 +23,32 @@ namespace Expenses.Api.Controllers
 
         // GET: api/<PeriodsController>
         [HttpGet]
-        public IActionResult Get(bool? isActive = null)
+        public IActionResult Get([FromQuery] LevelDto levelDto)
         {
             try
             {
-                List<PeriodDtoOut> list;
+                IActionResult actionResult;
 
-                list = _unitOfWorkBl.Period.Get(isActive);
+                actionResult = null;
+                switch(levelDto.Level){
+                    case EnumLevel.Simple:
+                        List<PeriodDtoOut> list;
 
-                return Ok(list);
+                        list = _unitOfWorkBl.Period.Get();
+
+                        actionResult = Ok(list);
+                    break;
+                  
+                    case EnumLevel.Full:
+                        List<PeriodFullDtoOut> listFull;
+
+                        listFull = _unitOfWorkBl.Period.GetFull();
+
+                        actionResult = Ok(listFull);
+                    break;
+                }
+
+                return actionResult;
             }
             catch (System.Exception)
             {

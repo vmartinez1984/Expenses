@@ -716,41 +716,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vhmartinezb\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/home/vmartinez/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vhmartinezb\\source\\repos\\Expenses\\Expenses.Dao\\Expenses.Repository.csproj",
+      "projectUniqueName": "/home/vmartinez/Documents/Expenses/Expenses.Dao/Expenses.Repository.csproj",
       "projectName": "Expenses.Repository",
-      "projectPath": "C:\\Users\\vhmartinezb\\source\\repos\\Expenses\\Expenses.Dao\\Expenses.Repository.csproj",
-      "packagesPath": "C:\\Users\\vhmartinezb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vhmartinezb\\source\\repos\\Expenses\\Expenses.Dao\\obj\\",
+      "projectPath": "/home/vmartinez/Documents/Expenses/Expenses.Dao/Expenses.Repository.csproj",
+      "packagesPath": "/home/vmartinez/.nuget/packages/",
+      "outputPath": "/home/vmartinez/Documents/Expenses/Expenses.Dao/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\vhmartinezb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/vmartinez/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\vhmartinezb\\Downloads\\Local": {},
-        "http://10.10.200.2/TcsNugetServer/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\vhmartinezb\\source\\repos\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\vhmartinezb\\source\\repos\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj"
+            "/home/vmartinez/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj": {
+              "projectPath": "/home/vmartinez/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj"
             }
           }
         }
@@ -793,7 +784,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
       }
     }
   }
