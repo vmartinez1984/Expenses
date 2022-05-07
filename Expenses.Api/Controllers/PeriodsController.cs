@@ -66,8 +66,28 @@ namespace Expenses.Api.Controllers
 
                 PeriodDtoOut item;
 
-                item = await _unitOfWorkBl.Period.GetActive();
+                item = await _unitOfWorkBl.Period.GetActiveAsync();  
                 
+                return Ok(item);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+                // GET api/<PeriodsController>/5
+        [HttpGet("/api/Periods/{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            try
+            {
+
+                PeriodDtoOut item;
+
+                item = await _unitOfWorkBl.Period.GetFullAsync(id);  
+
                 return Ok(item);
             }
             catch (Exception)

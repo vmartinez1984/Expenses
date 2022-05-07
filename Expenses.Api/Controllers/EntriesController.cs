@@ -20,6 +20,7 @@ namespace Expenses.Api.Controllers
         {
             _unitOfWorkBl = unitOfWorkBl;
         }
+
         // GET: api/<EntriesController>
         [HttpGet]
         public async Task<IActionResult> Get(int periodId)
