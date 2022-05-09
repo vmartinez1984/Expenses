@@ -18,7 +18,7 @@ namespace Expenses.Models
         public DbSet<Subcategory> Subcategory { get; set; }
         public DbSet<Period> Period { get; set; }
         public DbSet<TermAccount> TermAccount { get; set; }
-
+        public DbSet<Tdc> Tdc { get; set;}
 
 
         public AppDbContext(IConfiguration configuration)
@@ -79,8 +79,8 @@ namespace Expenses.Models
                 new Subcategory { Id = 20, IsActive = true, Name = "Luz Tlax", CategoryId = 5, IsBudget = true, Amount= 75 },
                 new Subcategory { Id = 21, IsActive = true, Name = "Luz CDMX", CategoryId = 5, IsBudget = true, Amount= 150 },
 
-                new Subcategory { Id = 22, IsActive = true, Name = "Doña", CategoryId = 5, IsBudget = true, Amount= 1200 },
-                new Subcategory { Id = 23, IsActive = true, Name = "Mili", CategoryId = 5, IsBudget = true, Amount= 400 }
+                new Subcategory { Id = 23, IsActive = true, Name = "Doña", CategoryId = 5, IsBudget = true, Amount= 1200 },
+                new Subcategory { Id = 24, IsActive = true, Name = "Mili", CategoryId = 5, IsBudget = true, Amount= 400 }
             );
 
             modelBuilder.Entity<DepositPlan>().HasData(

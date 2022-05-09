@@ -17,6 +17,9 @@ namespace Expenses.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Cantidad")]
         public int Amount { get; set; }
+        
+        [Display(Name = "Meses sin intereses")]
+        public int? MonthsWithoutInterest { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

@@ -26,8 +26,10 @@ namespace Expenses.BusinessLayer.Bl
             try
             {
                 ExpenseEntity entity;
-
+               
                 entity = _mapper.Map<ExpenseEntity>(item);
+                SetDeposit(entity);
+                SetBudget(entity);
                 entity.Id = await _unitOfWork.Expense.AddAsync(entity);
 
                 return entity.Id;
@@ -37,6 +39,22 @@ namespace Expenses.BusinessLayer.Bl
 
                 throw;
             }
+        }
+
+        private void SetBudget(ExpenseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SetDeposit(ExpenseEntity entity)
+        {
+            // DepositPlan depostiPlanId;
+
+            // depostiPlanId = _context.DepositPlan.Where(x => x.SubcategoryId == expense.SubcategoryId).FirstOrDefault();
+            // if (depostiPlanId is null)
+            //     expense.DepositPlanId = null;
+            // else
+            //     expense.DepositPlanId = depostiPlanId.Id;
         }
 
         public async Task DeleteAsync(int id)

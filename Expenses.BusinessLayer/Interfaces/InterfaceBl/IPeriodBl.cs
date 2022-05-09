@@ -13,8 +13,8 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
         int Add(PeriodDtoIn item);
         void Update(PeriodDtoIn item, int id);
         PeriodDtoOut Get(int id);
-        Task<PeriodDtoOut> GetFullAsync(int id);             
+        Task<PeriodFullDtoOut> GetFullAsync(int id);             
         void Delete(int id);        
-        Task<PeriodDtoOut> GetActive();
+        Task<PeriodFullDtoOut> GetActiveAsync();
     }
 }

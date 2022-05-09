@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,11 @@ namespace Expenses.Controllers
         // GET: ExpenseTdcs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ExpenseTdc.ToListAsync());
+            List<ExpenseTdc> list;
+
+            list = await _context.ExpenseTdc.Where(x=> x.IsActive).OrderBy(x=> x.DateRegistration).ToListAsync();
+
+            return View(list);
         }
 
         // GET: ExpenseTdcs/Details/5
@@ -136,7 +141,7 @@ namespace Expenses.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var expenseTdc = await _context.ExpenseTdc.FindAsync(id);
-            _context.ExpenseTdc.Remove(expenseTdc);
+            expenseTdc.IsActive = false;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

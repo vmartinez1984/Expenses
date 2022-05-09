@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Expenses.Models
@@ -20,5 +21,7 @@ namespace Expenses.Models
         [Column("Decimal(5,2)")]
         public decimal InterestRate { get; set; }
 
+        [Required]
+        public DateTime DateCute { get; set; }
     }
 }

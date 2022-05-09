@@ -26,8 +26,9 @@ namespace Expenses.Repository.Repositories
             {
                 string query;
 
-                query = @"INSERT INTO Expense (Name, Amount, PeriodId, CategoryId, DateRegister, IsActive) 
-                          VALUES(@Name,@Amount,@PeriodId, @CategoryId,@DateRegister,@IsActive)
+                query = @"INSERT INTO Expense 
+                      (Guid, Name, Amount, BudgetAmount, SubcategoryId, DepositPlanId, PeriodId, DateRegister, IsActive) 
+                VALUES(@Guid,@Name,@Amount,@BudgetAmount,@SubcategoryId,@DepositPlanId,@PeriodId, @DateRegister,@IsActive)
                         SELECT SCOPE_IDENTITY()
                 ";
                 entity.Id = await Task.Run(() =>

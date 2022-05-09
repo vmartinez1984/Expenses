@@ -151,6 +151,34 @@ namespace Expenses.Repository.Repositories
             }
         }
 
+        public async Task<PeriodEntity> GetAsync(int periodId)
+        {
+            try
+            {
+                PeriodEntity entity;
+                string query;
+
+                query = $"SELECT TOP(1) * FROM Period WHERE Id = 1 ORDER BY Id DESC";
+
+                entity = await Task.Run(() =>
+                {
+                    using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                    {
+                        entity = db.Query<PeriodEntity>(query).FirstOrDefault();
+                    }
+
+                    return entity;
+                });
+
+                return entity;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public int GetBalance(int id)
         {
             try
