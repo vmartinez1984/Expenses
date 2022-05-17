@@ -10,7 +10,7 @@ namespace Expenses.BusinessLayer.Mappers
         public SubcategoryMapper()
         {
             CreateMap<SubcategoryEntity, SubcategoryDtoOut>().ReverseMap();
-            CreateMap<SubcategoryEntity, SubategoryDtoIn>().ReverseMap();
+            CreateMap<SubcategoryEntity, SubcategoryDtoIn>().ReverseMap();
         }
     }
 }

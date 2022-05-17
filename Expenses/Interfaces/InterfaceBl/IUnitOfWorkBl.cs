@@ -1,8 +1,9 @@
 using Expenses.Interfaces.InterfaceBl;
 
-namespace Expenses.Interfaces.InterfaceBl{
-    public class IUnitOfWorkBl
+namespace Expenses.Interfaces.InterfaceBl
+{
+    public interface IUnitOfWorkBl
     {
-         ICategoryBl Category { get; }
+        public ICategoryBl Category { get; }
     }
 }

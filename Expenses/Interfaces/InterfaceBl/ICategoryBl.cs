@@ -3,9 +3,7 @@ using Expenses.Dtos.Inputs;
 using Expenses.Dtos.Outputs;
 
 namespace Expenses.Interfaces.InterfaceBl{
-    public interface ICategoryBl{
-        int Add(CategoryDtoIn item);
+    public interface ICategoryBl: IBaseBl<CategoryDtoIn,CategoryDtoOut>{
 
-        List<CategoryDtoOut> Get();
     }
 }

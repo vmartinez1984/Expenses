@@ -40,7 +40,7 @@ namespace Expenses.Api.Controllers
 
         // POST api/<SubcategoriesController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] SubategoryDtoIn item)
+        public async Task<IActionResult> Post([FromBody] SubcategoryDtoIn item)
         {
             int id;
 
@@ -51,7 +51,7 @@ namespace Expenses.Api.Controllers
 
         // PUT api/<SubcategoriesController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] SubategoryDtoIn item)
+        public async Task<IActionResult> Put(int id, [FromBody] SubcategoryDtoIn item)
         {            
             await _unitOfWorkBl.Subcategory.UpdateAsync(item, id);
 

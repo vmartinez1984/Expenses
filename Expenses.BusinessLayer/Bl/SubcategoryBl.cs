@@ -4,7 +4,6 @@ using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Entities;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,7 +20,7 @@ namespace Expenses.BusinessLayer.Bl
             _mapper = mapper;
         }
 
-        public async Task<int> AddAsync(SubategoryDtoIn item)
+        public async Task<int> AddAsync(SubcategoryDtoIn item)
         {
             SubcategoryEntity entity;
 
@@ -58,7 +57,7 @@ namespace Expenses.BusinessLayer.Bl
             return list;
         }
 
-        public async Task UpdateAsync(SubategoryDtoIn item, int id)
+        public async Task UpdateAsync(SubcategoryDtoIn item, int id)
         {
             SubcategoryEntity entity;
 

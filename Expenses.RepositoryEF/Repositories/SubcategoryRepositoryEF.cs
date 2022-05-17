@@ -18,19 +18,23 @@ namespace Expenses.RepositoryEF
             _context = context;
         }
 
-        public SubcategoryRepositoryEF()
+        public async Task<int> AddAsync(SubcategoryEntity entity)
         {
+            entity.IsActive = true;            
+            await _context.Subcategory.AddAsync(entity);
+            await _context.SaveChangesAsync();
 
+            return entity.Id;
         }
 
-        public Task<int> AddAsync(SubcategoryEntity entity)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
-        }
+            SubcategoryEntity item;
 
-        public Task DeleteAsync(int id)
-        {
-            throw new System.NotImplementedException();
+            item = await _context.Subcategory.FindAsync(id);
+            item.IsActive = false;
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<SubcategoryEntity> GetAsync(int id)
@@ -57,9 +61,11 @@ namespace Expenses.RepositoryEF
             return list;
         }
 
-        public Task UpdateAsync(SubcategoryEntity entity)
+        public async Task UpdateAsync(SubcategoryEntity entity)
         {
-            throw new System.NotImplementedException();
+            _context.Subcategory.Update(entity);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

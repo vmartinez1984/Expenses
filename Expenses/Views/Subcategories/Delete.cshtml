@@ -1,4 +1,4 @@
-﻿@model Expenses.Models.Subcategory
+﻿@model Expenses.BusinessLayer.Dtos.Outputs.SubcategoryDtoOut
 
 @{
     ViewData["Title"] = "Subcategoria";
@@ -18,11 +18,17 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd class>      
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd class> 
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Amount)
+        </dd class> 
     </dl>
     
     <form asp-action="Delete">

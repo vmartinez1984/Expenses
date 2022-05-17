@@ -1,28 +1,24 @@
 ﻿using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Expenses.RepositoryEF
 {
     public class UnitOfWorkEF : IUnitOfWorkRepository
     {
         public UnitOfWorkEF(
-           ICategoryRepository categoryRepository,
+           ICategoryRepository categoryRepository
+           ,  ISubcategoryRepository subcategory
            //IPeriodRepository periodRepository,
            //IEntryRepositoy entryRepositoy,
            //IExpenseRepository expenseRepository
-           ISubcategoryRepository subcategory
         )
         {
             Category = categoryRepository;
+            Subcategory = subcategory;
             //Period = periodRepository;
             //Entry = entryRepositoy;
             //Expense = expenseRepository;
-            Subcategory = subcategory;
         }
 
         public ICategoryRepository Category { get; }

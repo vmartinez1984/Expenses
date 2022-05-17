@@ -1,45 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Expenses.Models;
+using System.Collections.Generic;
+using Expenses.BusinessLayer.Interfaces;
+using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.BusinessLayer.Dtos.Inputs;
 
 namespace Expenses.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IUnitOfWorkBl _unitOfWorkBl;
 
-        public CategoriesController(AppDbContext context)
+        public CategoriesController(IUnitOfWorkBl unitOfWorkBl)
         {
-            _context = context;
+            _unitOfWorkBl = unitOfWorkBl;
         }
 
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.Where(x => x.IsActive).OrderBy(x => x.Name).ToListAsync());
-        }
+            IReadOnlyList<CategoryDtoOut> list;
 
-        // GET: Categories/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            list = await _unitOfWorkBl.Category.GetAsync();
 
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
+            return View(list);
         }
 
         // GET: Categories/Create
@@ -53,13 +37,11 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,IsActive")] Category category)
+        public async Task<IActionResult> Create([Bind("Name")] CategoryDtoIn category)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                await _unitOfWorkBl.Category.AddAsync(category);
             }
             return View(category);
         }
@@ -72,7 +54,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category.FindAsync(id);
+            var category = await _unitOfWorkBl.Category.GetAsync((int)id);
             if (category == null)
             {
                 return NotFound();
@@ -85,31 +67,18 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsActive")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Name")] CategoryDtoIn category)
         {
-            if (id != category.Id)
+            var item = await _unitOfWorkBl.Category.GetAsync(id);
+            if (item == null)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(category);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoryExists(category.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _unitOfWorkBl.Category.UpdateAsync(category, id);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
@@ -123,8 +92,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var category = await _unitOfWorkBl.Category.GetAsync((int)id);
             if (category == null)
             {
                 return NotFound();
@@ -138,15 +106,9 @@ namespace Expenses.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Category.FindAsync(id);
-            category.IsActive = false;
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            await _unitOfWorkBl.Category.DeleteAsync(id);
 
-        private bool CategoryExists(int id)
-        {
-            return _context.Category.Any(e => e.Id == id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

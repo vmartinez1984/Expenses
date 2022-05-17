@@ -6,20 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Expenses.Models;
+using Expenses.BusinessLayer.Interfaces;
+using Expenses.BusinessLayer.Dtos.Inputs;
 
 namespace Expenses.Controllers
 {
     public class SubcategoriesController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IUnitOfWorkBl _unitOfWorkBl;
 
-        public SubcategoriesController(AppDbContext context)
+        public SubcategoriesController(AppDbContext context, IUnitOfWorkBl unitOfWorkBl)
         {
             _context = context;
+            _unitOfWorkBl = unitOfWorkBl;
         }
 
         // GET: Subcategories
-        public async Task<IActionResult> Index(string orderBy,
+        public async Task<IActionResult> Index(
+            string orderBy,
             string orderByName,
             string OrderByAmount,
             string OrderbyCategory,
@@ -46,15 +51,6 @@ namespace Expenses.Controllers
 
             OrderByCategory(ref appDbContext, OrderbyCategory);
             FilterCategory(ref appDbContext, category);
-            //if (string.IsNullOrEmpty(orderByName))
-            //{
-
-            //}
-            //else
-            //    if (orderBy == "Asc")
-            //    appDbContext.OrderBy(x => x.Name);
-            //else
-            //    appDbContext.OrderByDescending(x => x.Name);
 
             if (string.IsNullOrEmpty(OrderByAmount))
             {
@@ -68,6 +64,8 @@ namespace Expenses.Controllers
             ViewBag.ListCategories = _context.Category.Where(Category => Category.IsActive).OrderBy(x => x.Name).ToList();
 
             return View(await appDbContext.ToListAsync());
+
+
         }
 
         private void FilterCategory(ref IQueryable<Subcategory> appDbContext, string category)
@@ -78,9 +76,7 @@ namespace Expenses.Controllers
             }
             else
             {
-                //var list = appDbContext.ToList();
                 appDbContext = appDbContext.Where(x => x.Category.Name == category);
-                //list = appDbContext.ToList();
             }
         }
 
@@ -114,9 +110,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var subcategory = await _context.Subcategory
-                .Include(s => s.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var subcategory = await _unitOfWorkBl.Subcategory.GetAsync((int)id);
             if (subcategory == null)
             {
                 return NotFound();
@@ -126,9 +120,9 @@ namespace Expenses.Controllers
         }
 
         // GET: Subcategories/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(await _unitOfWorkBl.Category.GetAsync(), "Id", "Name");
             return View();
         }
 
@@ -137,15 +131,15 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CategoryId,Amount,IsBudget,IsActive")] Subcategory subcategory)
+        public async Task<IActionResult> Create([Bind("Id,Name,CategoryId,Amount,IsBudget")] SubcategoryDtoIn subcategory)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(subcategory);
-                await _context.SaveChangesAsync();
+                await _unitOfWorkBl.Subcategory.AddAsync(subcategory);
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", subcategory.CategoryId);
+            ViewData["CategoryId"] = new SelectList(await _unitOfWorkBl.Category.GetAsync(), "Id", "Name", subcategory.CategoryId);
             return View(subcategory);
         }
 
@@ -162,7 +156,7 @@ namespace Expenses.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", subcategory.CategoryId);
+            ViewData["CategoryId"] = new SelectList(await _unitOfWorkBl.Category.GetAsync(), "Id", "Name", subcategory.CategoryId);
             return View(subcategory);
         }
 
@@ -171,31 +165,12 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CategoryId,Amount,IsBudget,IsActive")] Subcategory subcategory)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CategoryId,Amount,IsBudget,IsActive")] SubcategoryDtoIn subcategory)
         {
-            if (id != subcategory.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(subcategory);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SubcategoryExists(subcategory.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _unitOfWorkBl.Subcategory.UpdateAsync(subcategory, id);
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", subcategory.CategoryId);
@@ -210,9 +185,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var subcategory = await _context.Subcategory
-                .Include(s => s.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var subcategory = await _unitOfWorkBl.Subcategory.GetAsync((int)id);
             if (subcategory == null)
             {
                 return NotFound();
@@ -226,9 +199,8 @@ namespace Expenses.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var subcategory = await _context.Subcategory.FindAsync(id);
-            subcategory.IsActive = false;
-            await _context.SaveChangesAsync();
+            await _unitOfWorkBl.Subcategory.DeleteAsync(id);
+             
             return RedirectToAction(nameof(Index));
         }
 

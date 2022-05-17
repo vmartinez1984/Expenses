@@ -1,10 +1,9 @@
 ﻿using Expenses.BusinessLayer.Entities;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.RepositoryEF.Contexts;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Expenses.RepositoryEF.Repositories
@@ -18,54 +17,49 @@ namespace Expenses.RepositoryEF.Repositories
             _context = context;
         }
 
-        public CategoryRepositoryEF()
-        {
-
-        }
-
-        public int Add(CategoryEntity entity)
-        {
-            _context.Category.Add(entity);
-
-            return entity.Id;
-        }
-
-        public void Delete(int id)
+        public async Task<CategoryEntity> GetAsync(int id)
         {
             CategoryEntity item;
 
-            item = _context.Category.Where(x=> x.Id == id).FirstOrDefault();
-            item.IsActive = false;
+            item = await _context.Category.Where(x => x.Id == id && x.IsActive).FirstOrDefaultAsync();
 
-            _context.SaveChanges();
+            return item;
         }
 
-        public List<CategoryEntity> Get()
+        public async Task<IReadOnlyList<CategoryEntity>> GetAsync()
         {
-            List<CategoryEntity> list;
+            IReadOnlyList<CategoryEntity> list;
 
-            list = _context.Category.Where(x => x.IsActive).ToList();
+            list = await _context.Category.Where(x => x.IsActive).ToListAsync();
 
             return list;
         }
 
-        public CategoryEntity Get(int id)
+        public async Task<int> AddAsync(CategoryEntity entity)
         {
-           CategoryEntity item;
+            await _context.Category.AddAsync(entity);
 
-           item = _context.Category.Where(x=> x.Id == id && x.IsActive).FirstOrDefault();
-
-           return item;
+            return entity.Id;
         }
 
-        public void Update(CategoryEntity entity)
+        public async Task UpdateAsync(CategoryEntity entity)
         {
             CategoryEntity item;
 
-            item = _context.Category.Where(x=> x.Id == entity.Id && x.IsActive).FirstOrDefault();            
+            item = await _context.Category.Where(x => x.Id == entity.Id && x.IsActive).FirstOrDefaultAsync();
             item.Name = entity.Name;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            CategoryEntity item;
+
+            item = await _context.Category.Where(x => x.Id == id).FirstOrDefaultAsync();
+            item.IsActive = false;
+
+            await _context.SaveChangesAsync();
         }
     }
 }

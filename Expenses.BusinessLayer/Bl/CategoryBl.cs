@@ -4,6 +4,7 @@ using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Entities;
 using Expenses.BusinessLayer.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Bl
 {
@@ -18,51 +19,51 @@ namespace Expenses.BusinessLayer.Bl
             _mapper = mapper;
         }
 
-        public List<CategoryDtoOut> Get()
-        {
-            List<CategoryEntity> entities;
-            List<CategoryDtoOut> list;
-
-            entities = _unitOfWork.Category.Get();
-            list = _mapper.Map<List<CategoryDtoOut>>(entities);
-
-            return list;
-        }
-
-        public CategoryDtoOut Get(int id)
+        public async Task<CategoryDtoOut> GetAsync(int id)
         {
             CategoryEntity entity;
             CategoryDtoOut item;
 
-            entity = _unitOfWork.Category.Get(id);
+            entity = await _unitOfWork.Category.GetAsync(id);
             item = _mapper.Map<CategoryDtoOut>(entity);
 
             return item;
         }
 
-        public int Add(CategoryDtoIn item)
+        public async Task<IReadOnlyList<CategoryDtoOut>> GetAsync()
         {
-            CategoryEntity entity;            
+            IReadOnlyList<CategoryEntity> entities;
+            IReadOnlyList<CategoryDtoOut> list;
+
+            entities = await _unitOfWork.Category.GetAsync();
+            list = _mapper.Map<List<CategoryDtoOut>>(entities);
+
+            return list;
+        }
+
+        public async Task<int> AddAsync(CategoryDtoIn item)
+        {
+            CategoryEntity entity;
 
             entity = _mapper.Map<CategoryEntity>(item);
-            entity.Id = _unitOfWork.Category.Add(entity);
+            entity.Id = await _unitOfWork.Category.AddAsync(entity);
 
             return entity.Id;
         }
 
-        public void Update(CategoryDtoIn item, int id)
+        public async Task UpdateAsync(CategoryDtoIn item, int id)
         {
             CategoryEntity entity;
 
             entity = _mapper.Map<CategoryEntity>(item);
             entity.Id = id;
 
-            _unitOfWork.Category.Update(entity);            
+            await _unitOfWork.Category.UpdateAsync(entity);
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            _unitOfWork.Category.Delete(id);
+            await _unitOfWork.Category.DeleteAsync(id);
         }
     }
 }

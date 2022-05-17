@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Expenses.BusinessLayer.Entities;
 
 namespace Expenses.BusinessLayer.Interfaces.InterfaceRepository
 {
@@ -11,4 +12,8 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceRepository
         Task UpdateAsync(T entity);
         Task DeleteAsync(int id);
     }
+
+    //Como es una linea sera más fácil manipular desde aqui
+
+    public interface ISubcategoryRepository : IBaseRepository<SubcategoryEntity> { }
 }

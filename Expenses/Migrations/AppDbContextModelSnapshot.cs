@@ -120,7 +120,7 @@ namespace Expenses.Migrations
                         {
                             Id = 1,
                             Amount = 200,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(6695),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(2656),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Sabatico",
@@ -130,7 +130,7 @@ namespace Expenses.Migrations
                         {
                             Id = 2,
                             Amount = 500,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7058),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3001),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Afore",
@@ -140,7 +140,7 @@ namespace Expenses.Migrations
                         {
                             Id = 3,
                             Amount = 350,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7063),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3007),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Seminario",
@@ -150,7 +150,7 @@ namespace Expenses.Migrations
                         {
                             Id = 4,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7067),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3012),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Camioneta",
@@ -160,7 +160,7 @@ namespace Expenses.Migrations
                         {
                             Id = 5,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7070),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3017),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Libros Tec",
@@ -170,7 +170,7 @@ namespace Expenses.Migrations
                         {
                             Id = 6,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7074),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3022),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Ropa",
@@ -180,7 +180,7 @@ namespace Expenses.Migrations
                         {
                             Id = 7,
                             Amount = 400,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7081),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3027),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Tlax",
@@ -190,7 +190,7 @@ namespace Expenses.Migrations
                         {
                             Id = 8,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7085),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3032),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Gastos medicos",
@@ -200,7 +200,7 @@ namespace Expenses.Migrations
                         {
                             Id = 9,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7089),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3037),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Ahorro N",
@@ -210,7 +210,7 @@ namespace Expenses.Migrations
                         {
                             Id = 10,
                             Amount = 100,
-                            DateRegister = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(7094),
+                            DateRegister = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(3042),
                             Goal = 2000,
                             IsActive = true,
                             Name = "Vacaciones",
@@ -411,8 +411,8 @@ namespace Expenses.Migrations
                         new
                         {
                             Id = 1,
-                            DateStart = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(8376),
-                            DateStop = new DateTime(2022, 5, 9, 9, 32, 26, 825, DateTimeKind.Local).AddTicks(8653),
+                            DateStart = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(4612),
+                            DateStop = new DateTime(2022, 5, 12, 21, 1, 1, 797, DateTimeKind.Local).AddTicks(4885),
                             IsActive = false,
                             Name = "Ahorros"
                         });
@@ -654,6 +654,35 @@ namespace Expenses.Migrations
                             IsBudget = true,
                             Name = "Mili"
                         });
+                });
+
+            modelBuilder.Entity("Expenses.Models.Tdc", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BankName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("DateCute")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("InterestRate")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Decimal(5,2)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tdc");
                 });
 
             modelBuilder.Entity("Expenses.Models.TermAccount", b =>

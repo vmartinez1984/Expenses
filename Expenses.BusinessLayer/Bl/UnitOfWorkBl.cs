@@ -7,23 +7,19 @@ namespace Expenses.BusinessLayer.Bl
 {
     public class UnitOfWorkBl : IUnitOfWorkBl
     {
-        private IConfiguration _configuration;
-
         public UnitOfWorkBl(
-            IConfiguration configuration,
-            ICategoryBl category,
-            IPeriodBl period,
-            IEntryBl entry,
-            IExpensesBl expensesBl,
-            ISubcategoryBl subcategoryBl
+            ICategoryBl category
+            , ISubcategoryBl subcategoryBl
+        //IPeriodBl period,
+        //IEntryBl entry,
+        //IExpensesBl expensesBl,
         )
         {
-            _configuration = configuration;
             Category = category;
-            Period = period;
-            Entry = entry;
-            Expense = expensesBl;
             Subcategory = subcategoryBl;
+            //Period = period;
+            //Entry = entry;
+            //Expense = expensesBl;
         }
 
         public ICategoryBl Category { get; }

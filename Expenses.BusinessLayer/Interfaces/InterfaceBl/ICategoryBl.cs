@@ -1,16 +1,8 @@
 ﻿using Expenses.BusinessLayer.Dtos.Inputs;
 using Expenses.BusinessLayer.Dtos.Outputs;
-using System.Collections.Generic;
+using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 
 namespace Expenses.BusinessLayer.Interfaces
 {
-    public interface ICategoryBl
-    {
-        int Add(CategoryDtoIn item);
-        void Delete(int id);
-        List<CategoryDtoOut> Get();
-        CategoryDtoOut Get(int id);
-        void Update(CategoryDtoIn item, int id);
-
-    }//end class
+    public interface ICategoryBl : IBaseBl<CategoryDtoIn, CategoryDtoOut> { }//end class
 }

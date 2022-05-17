@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Expenses.RepositoryEF",
+    "\\Expenses.RepositoryEF\\Contexts",
+    "\\Expenses.RepositoryEF\\Repositories",
+    "\\Expenses\\Controllers"
   ],
   "SelectedNode": "\\Expenses.sln",
   "PreviewInSolutionExplorer": false

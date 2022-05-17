@@ -1,4 +1,4 @@
-﻿@model Expenses.Models.Subcategory
+﻿@model Expenses.BusinessLayer.Dtos.Inputs.SubcategoryDtoIn
 
 @{
     ViewData["Title"] = "Subcategoria";
@@ -17,6 +17,7 @@
                 <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId">
                     <option value="">Seleccione</option>
                 </select>
+                <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
