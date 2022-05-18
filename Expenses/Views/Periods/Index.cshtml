@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Expenses.Models.Period>
+﻿@model IEnumerable<Expenses.BusinessLayer.Dtos.Outputs.PeriodDtoOut>
 
 @{
     ViewData["Title"] = "Index";
@@ -44,15 +44,7 @@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                    @if (ViewBag.IsActive)
-                    {
-                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
-                    }
-                    else
-                    {
-                        <a asp-action="Activate" asp-route-id="@item.Id">Activar</a>
-                    }
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a>                  
                 </td>
             </tr>
         }

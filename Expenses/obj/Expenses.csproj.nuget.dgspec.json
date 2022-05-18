@@ -1,32 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses\\Expenses.csproj": {}
+    "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Expenses.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj": {
+    "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj",
+        "projectUniqueName": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj",
         "projectName": "Expenses.BusinessLayer",
-        "projectPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj",
-        "packagesPath": "C:\\Users\\vmartinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\obj\\",
+        "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj",
+        "packagesPath": "/home/vmartinez/.nuget/packages/",
+        "outputPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vmartinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/vmartinez/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -37,8 +35,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -68,36 +66,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.RepositoryEF\\Expenses.RepositoryEF.csproj": {
+    "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.RepositoryEF\\Expenses.RepositoryEF.csproj",
+        "projectUniqueName": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj",
         "projectName": "Expenses.RepositoryEF",
-        "projectPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.RepositoryEF\\Expenses.RepositoryEF.csproj",
-        "packagesPath": "C:\\Users\\vmartinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.RepositoryEF\\obj\\",
+        "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj",
+        "packagesPath": "/home/vmartinez/.nuget/packages/",
+        "outputPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vmartinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/vmartinez/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj": {
-                "projectPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj"
+              "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj": {
+                "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj"
               }
             }
           }
@@ -109,8 +105,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -138,39 +134,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses\\Expenses.csproj": {
+    "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Expenses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses\\Expenses.csproj",
+        "projectUniqueName": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Expenses.csproj",
         "projectName": "Expenses",
-        "projectPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses\\Expenses.csproj",
-        "packagesPath": "C:\\Users\\vmartinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses\\obj\\",
+        "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Expenses.csproj",
+        "packagesPath": "/home/vmartinez/.nuget/packages/",
+        "outputPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vmartinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/vmartinez/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj": {
-                "projectPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj"
+              "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj": {
+                "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj"
               },
-              "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.RepositoryEF\\Expenses.RepositoryEF.csproj": {
-                "projectPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.RepositoryEF\\Expenses.RepositoryEF.csproj"
+              "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj": {
+                "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj"
               }
             }
           }
@@ -182,8 +176,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -226,7 +220,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     }

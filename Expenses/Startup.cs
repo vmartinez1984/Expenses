@@ -35,8 +35,10 @@ namespace Expenses
             services.AddScoped<Expenses.RepositoryEF.Contexts.AppDbContext>();
             services.AddScoped<ICategoryRepository, CategoryRepositoryEF>();
             services.AddScoped<ISubcategoryRepository, SubcategoryRepositoryEF>();
+            services.AddScoped<IPeriodRepository, PeriodRepositoryEF>();
             services.AddScoped<IUnitOfWorkRepository, UnitOfWorkEF>();
             //BusinessLAyer
+            services.AddScoped<IPeriodBl, PeriodBl>();
             services.AddScoped<ISubcategoryBl, SubcategoryBl>();
             services.AddScoped<ICategoryBl, CategoryBl>();
             services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
@@ -48,6 +50,7 @@ namespace Expenses
             {
                 mapperConfig.AddProfile<CategoryMapper>();
                 mapperConfig.AddProfile<SubcategoryMapper>();
+                mapperConfig.AddProfile<PeriodMapper>();
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

@@ -4,24 +4,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Expenses.Models;
+using System.Collections.Generic;
+using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.BusinessLayer.Interfaces;
 
 namespace Expenses.Controllers
 {
     public class PeriodsController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IUnitOfWorkBl _unitOfWorkBl;
 
-        public PeriodsController(AppDbContext context)
+        public PeriodsController(AppDbContext context, IUnitOfWorkBl unitOfWorkBl)
         {
             _context = context;
+            _unitOfWorkBl = unitOfWorkBl;
         }
 
         // GET: Periods
-        public async Task<IActionResult> Index(bool isActive = true)
-        {
-            ViewBag.IsActive = isActive;
+        public async Task<IActionResult> Index()
+        {           
+            IReadOnlyList<PeriodDtoOut> list;
+            
+            list = await _unitOfWorkBl.Period.GetAsync();
 
-            return View(await _context.Period.ToListAsync());
+            return View(list);
         }
 
         // GET: Periods/Details/5
@@ -88,7 +95,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var period = await _context.Period.FindAsync(id);
+            var period = await _unitOfWorkBl.Period.GetAsync((int)id);
             if (period == null)
             {
                 return NotFound();
