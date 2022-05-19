@@ -75,9 +75,9 @@ namespace Expenses.BusinessLayer.Bl
             try
             {
                 List<ExpenseDtoOut> list;
-                List<ExpenseEntity> entities;
+                IReadOnlyList<ExpenseEntity> entities;
 
-                entities = await _unitOfWork.Expense.GetAsync(periodId);
+                entities = await _unitOfWork.Expense.GetAllAsync(periodId);
                 list = _mapper.Map<List<ExpenseDtoOut>>(entities);
 
                 return list;

@@ -18,7 +18,7 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
         [Display(Name = "Categoria")]
         public string CategoryName { get; set; }
 
-        [Display(Name = "Categoria")]
+        [Display(Name = "Subcategoria")]
         public string SubcategoryName { get; set; }
 
         [Display(Name = "Periodo")]

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\ExpensesV2\\Expenses.csproj": {}
+    "/media/vmartinez/X-Files1/Documents/Expenses/ExpensesV2/Expenses.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\ExpensesV2\\Expenses.csproj": {
+    "/media/vmartinez/X-Files1/Documents/Expenses/ExpensesV2/Expenses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\ExpensesV2\\Expenses.csproj",
+        "projectUniqueName": "/media/vmartinez/X-Files1/Documents/Expenses/ExpensesV2/Expenses.csproj",
         "projectName": "Expenses",
-        "projectPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\ExpensesV2\\Expenses.csproj",
-        "packagesPath": "C:\\Users\\vmartinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\ExpensesV2\\obj\\",
+        "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/ExpensesV2/Expenses.csproj",
+        "packagesPath": "/home/vmartinez/.nuget/packages/",
+        "outputPath": "/media/vmartinez/X-Files1/Documents/Expenses/ExpensesV2/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vmartinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/vmartinez/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,6 +71,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[5.0.17, 5.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -81,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     }

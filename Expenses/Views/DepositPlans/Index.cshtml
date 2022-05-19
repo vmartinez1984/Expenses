@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Expenses.Models.DepositPlan>
+﻿@model IEnumerable<Expenses.BusinessLayer.Dtos.Outputs.DepositPlanDtoOut>
 
 @{
     ViewData["Title"] = "Ahorros";
@@ -22,10 +22,10 @@
                 @Html.DisplayNameFor(model => model.Goal)
             </th>
             <th>
-                Total
+                 @Html.DisplayNameFor(model => model.Total)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Subcategory)
+                @Html.DisplayNameFor(model => model.SubcategoryName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateRegister)
@@ -47,10 +47,10 @@
                     @Html.DisplayFor(modelItem => item.Goal)
                 </td>
                 <td class="text-info">
-                    @item.ListExpenses.Sum(x=> x.Amount).ToString("c")
+                    @Html.DisplayFor(modelItem => item.Total)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Subcategory.Name)
+                    @Html.DisplayFor(modelItem => item.SubcategoryName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateRegister)

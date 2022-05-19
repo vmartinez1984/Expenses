@@ -6,7 +6,6 @@ using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Bl
@@ -21,19 +20,19 @@ namespace Expenses.BusinessLayer.Bl
         public PeriodBl(IMapper mapper, IUnitOfWorkRepository unitOfWork)
         {
             _unitOfWorkRepository = unitOfWork;
-            _mapper = mapper;            
+            _mapper = mapper;
             _expenseBl = new ExpenseBl(_mapper, _unitOfWorkRepository);
             _entryBl = new EntryBl(_mapper, _unitOfWorkRepository);
         }
 
-        public int Add(PeriodDtoIn item)
+        public async Task<int> AddAsync(PeriodDtoIn item)
         {
             try
             {
                 PeriodEntity entity;
 
                 entity = _mapper.Map<PeriodEntity>(item);
-                entity.Id = _unitOfWorkRepository.Period.Add(entity);
+                entity.Id = await _unitOfWorkRepository.Period.AddAsync(entity);
 
                 return entity.Id;
             }
@@ -44,40 +43,41 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
-        public void Update(PeriodDtoIn item, int id)
+        public async Task UpdateAsync(PeriodDtoIn item, int id)
         {
             PeriodEntity entity;
 
             entity = _mapper.Map<PeriodEntity>(item);
             entity.Id = id;
 
-            _unitOfWorkRepository.Period.Update(entity);
+            await _unitOfWorkRepository.Period.UpdateAsync(entity);
         }
 
-        public List<PeriodDtoOut> Get()
+        public async Task<IReadOnlyList<PeriodDtoOut>> GetAsync()
         {
             List<PeriodDtoOut> list;
-            List<PeriodEntity> entities;
+            IReadOnlyList<PeriodEntity> entities;
 
-            entities = _unitOfWorkRepository.Period.Get();
+            entities = await _unitOfWorkRepository.Period.GetAsync();
             list = _mapper.Map<List<PeriodDtoOut>>(entities);
-            list.ForEach(item => {
+            list.ForEach(item =>
+            {
                 item.Balance = _unitOfWorkRepository.Period.GetBalance(item.Id);
             });
 
             return list;
         }
-        
-        public PeriodDtoOut Get(int id)
+
+        public async Task<PeriodDtoOut> GetAsync(int id)
         {
             PeriodDtoOut item;
             PeriodEntity entity;
 
-            entity = _unitOfWorkRepository.Period.Get(id);
+            entity = await _unitOfWorkRepository.Period.GetAsync(id);
             item = _mapper.Map<PeriodDtoOut>(entity);
-            
+
             return item;
-        }  
+        }
 
         public async Task<PeriodFullDtoOut> GetFullAsync(int id)
         {
@@ -90,15 +90,15 @@ namespace Expenses.BusinessLayer.Bl
             item.ListEntries = await GetListEntriesAsync(item.Id);
             item.ListExpenses = await GetListExpensesAsync(item.Id);
 
-            return item;           
+            return item;
         }
 
-        public void Delete(int id)
+        public  async Task DeleteAsync(int id)
         {
-            _unitOfWorkRepository.Period.Delete(id);
+            await _unitOfWorkRepository.Period.DeleteAsync(id);
         }
 
-        public async Task<PeriodFullDtoOut> GetActiveAsync()
+        public async Task<PeriodFullDtoOut> GetFullActiveAsync()
         {
             PeriodFullDtoOut item;
             PeriodEntity entity;
@@ -112,24 +112,11 @@ namespace Expenses.BusinessLayer.Bl
             return item;
         }
 
-        public List<PeriodFullDtoOut> GetFull()
-        {
-            List<PeriodFullDtoOut> list;
-            
-            list = _mapper.Map<List<PeriodFullDtoOut>>(Get());
-            list.ForEach(item=> {
-                item.ListExpenses = GetListExpensesAsync(item.Id).Result;        
-                item.ListEntries =  GetListEntriesAsync(item.Id).Result;        
-            });
-
-            return list;
-        }
-
         private async Task<List<EntryDtoOut>> GetListEntriesAsync(int periodId)
         {
             List<EntryDtoOut> list;
 
-            list = await  _entryBl.GetAsync(periodId);
+            list = await _entryBl.GetAsync(periodId);
 
             return list;
         }
@@ -137,7 +124,7 @@ namespace Expenses.BusinessLayer.Bl
         private async Task<List<ExpenseDtoOut>> GetListExpensesAsync(int periodId)
         {
             List<ExpenseDtoOut> list;
-            
+
             list = await _expenseBl.GetAsync(periodId);
 
             return list;

@@ -1,6 +1,4 @@
 ﻿using Expenses.BusinessLayer.Interfaces;
-using System;
-using Microsoft.Extensions.Configuration;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 
 namespace Expenses.BusinessLayer.Bl
@@ -10,16 +8,18 @@ namespace Expenses.BusinessLayer.Bl
         public UnitOfWorkBl(
             ICategoryBl category
             , ISubcategoryBl subcategoryBl
-        //IPeriodBl period,
-        //IEntryBl entry,
-        //IExpensesBl expensesBl,
+            , IPeriodBl period
+            , IEntryBl entry
+            , IExpensesBl expensesBl
+            , IDepositPlanBl depositPlanBl
         )
         {
             Category = category;
             Subcategory = subcategoryBl;
-            //Period = period;
-            //Entry = entry;
-            //Expense = expensesBl;
+            Period = period;
+            Entry = entry;
+            Expense = expensesBl;
+            DepositPlanBl = depositPlanBl;
         }
 
         public ICategoryBl Category { get; }
@@ -30,5 +30,7 @@ namespace Expenses.BusinessLayer.Bl
         public IExpensesBl Expense { get; }
 
         public ISubcategoryBl Subcategory { get; }
+
+        public IDepositPlanBl DepositPlanBl { get; set; }
     }
 }

@@ -6,8 +6,6 @@ using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Bl
@@ -50,10 +48,10 @@ namespace Expenses.BusinessLayer.Bl
         {
             try
             {
-                List<EntryEntity> entities;
+                IReadOnlyList<EntryEntity> entities;
                 List<EntryDtoOut> list;
 
-                entities = await _unitOfWork.Entry.GetAsync(periodId);
+                entities = await _unitOfWork.Entry.GetAllAsync(periodId);
                 list = _mapper.Map<List<EntryDtoOut>>(entities);
 
                 return list;

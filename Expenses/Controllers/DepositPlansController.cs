@@ -1,31 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Expenses.Models;
+using Expenses.BusinessLayer.Interfaces;
+using System.Collections.Generic;
+using Expenses.BusinessLayer.Dtos.Outputs;
 
 namespace Expenses.Controllers
 {
     public class DepositPlansController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IUnitOfWorkBl _unitOfWorkBl;
 
-        public DepositPlansController(AppDbContext context)
+        public DepositPlansController(AppDbContext context, IUnitOfWorkBl unitOfWorkBl)
         {
             _context = context;
+            _unitOfWorkBl = unitOfWorkBl;
         }
 
         // GET: DepositPlans
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.DepositPlan
-                .Include(x => x.ListExpenses.Where(x => x.IsActive))
-                .Include(d => d.Subcategory)
-                .OrderBy(x=> x.Name);
-            return View(await appDbContext.ToListAsync());
+            IReadOnlyList<DepositPlanDtoOut> list;
+            
+            list = await _unitOfWorkBl.DepositPlanBl.GetAsync();
+
+            return View(list);
         }
 
         // GET: DepositPlans/Details/5
@@ -134,9 +137,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var depositPlan = await _context.DepositPlan
-                .Include(d => d.Subcategory)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var depositPlan = await _unitOfWorkBl.DepositPlanBl.GetAsync((int)id);
             if (depositPlan == null)
             {
                 return NotFound();

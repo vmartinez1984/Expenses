@@ -24,6 +24,7 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
         [Display(Name = "Fecha fin")]
         public DateTime? DateStop { get; set; }
 
+        [Display(Name = "¿Esta activo?")]
         public bool IsActive { get; set; }
     }
 }

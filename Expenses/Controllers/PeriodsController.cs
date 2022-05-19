@@ -7,25 +7,24 @@ using Expenses.Models;
 using System.Collections.Generic;
 using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Interfaces;
+using Expenses.BusinessLayer.Dtos.Inputs;
 
 namespace Expenses.Controllers
 {
     public class PeriodsController : Controller
-    {
-        private readonly AppDbContext _context;
+    {        
         private readonly IUnitOfWorkBl _unitOfWorkBl;
 
-        public PeriodsController(AppDbContext context, IUnitOfWorkBl unitOfWorkBl)
+        public PeriodsController(IUnitOfWorkBl unitOfWorkBl)
         {
-            _context = context;
             _unitOfWorkBl = unitOfWorkBl;
         }
 
         // GET: Periods
         public async Task<IActionResult> Index()
-        {           
+        {
             IReadOnlyList<PeriodDtoOut> list;
-            
+
             list = await _unitOfWorkBl.Period.GetAsync();
 
             return View(list);
@@ -34,32 +33,21 @@ namespace Expenses.Controllers
         // GET: Periods/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            Period period;
+            PeriodFullDtoOut period;
 
             if (id == null)
             {
-                period = await _context.Period
-                     .Include(x => x.ListExpenses.Where(x => x.IsActive))
-                         .ThenInclude(x => x.Subcategory)
-                     .Include(x => x.ListEntries.Where(x => x.IsActive))
-                     .Where(x => x.IsActive)
-                     .OrderBy(x => x.Id)
-                     .FirstOrDefaultAsync();
+                period = await _unitOfWorkBl.Period.GetFullActiveAsync();
             }
             else
             {
-                period = await _context.Period
-                    .Include(x => x.ListExpenses.Where(x => x.IsActive))
-                        .ThenInclude(x => x.Subcategory)
-                    .Include(x => x.ListEntries.Where(x => x.IsActive))
-                    .Where(x => x.Id == id)
-                    .FirstOrDefaultAsync();
+                period = await _unitOfWorkBl.Period.GetFullAsync((int)id);                
             }
             ViewBag.PeriodId = period == null ? 0 : period.Id;
-            ViewData["ListCategories"] = new SelectList(_context.Category.Where(x => x.IsActive).OrderBy(x=> x.Name), "Id", "Name");
+            ViewData["ListCategories"] = new SelectList((await _unitOfWorkBl.Category.GetAsync()).OrderBy(x => x.Name), "Id", "Name");
             if (period == null)
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(period);
@@ -76,12 +64,12 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DateStart,DateStop,IsActive")] Period period)
+        public async Task<IActionResult> Create([Bind("Name,DateStart,DateStop")] PeriodDtoIn period)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(period);
-                await _context.SaveChangesAsync();
+                await _unitOfWorkBl.Period.AddAsync(period);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(period);
@@ -108,31 +96,11 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateStart,DateStop,IsActive")] Period period)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,DateStart,DateStop")] PeriodDtoIn period)
         {
-            if (id != period.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(period);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PeriodExists(period.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _unitOfWorkBl.Period.UpdateAsync(period, id);
                 return RedirectToAction(nameof(Index));
             }
             return View(period);
@@ -146,8 +114,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var period = await _context.Period
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var period = await _unitOfWorkBl.Period.GetAsync((int)id);
             if (period == null)
             {
                 return NotFound();
@@ -161,44 +128,9 @@ namespace Expenses.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var period = await _context.Period.FindAsync(id);
-            period.IsActive = false;
-            await _context.SaveChangesAsync();
+            await _unitOfWorkBl.Period.DeleteAsync(id);
+
             return RedirectToAction(nameof(Index));
-        }
-
-        // GET: Periods/Delete/5
-        public async Task<IActionResult> Activate(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var period = await _context.Period
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (period == null)
-            {
-                return NotFound();
-            }
-
-            return View(period);
-        }
-
-        // POST: Periods/Delete/5
-        [HttpPost, ActionName("Activate")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ActivateConfirmed(int id)
-        {
-            var period = await _context.Period.FindAsync(id);
-            period.IsActive = true;
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool PeriodExists(int id)
-        {
-            return _context.Period.Any(e => e.Id == id);
         }
     }
 }

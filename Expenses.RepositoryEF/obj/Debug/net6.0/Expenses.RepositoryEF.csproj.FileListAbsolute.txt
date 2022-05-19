@@ -1,0 +1,17 @@
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/bin/Debug/net6.0/Expenses.RepositoryEF.deps.json
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/bin/Debug/net6.0/Expenses.RepositoryEF.runtimeconfig.json
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/bin/Debug/net6.0/Expenses.RepositoryEF.dll
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/bin/Debug/net6.0/Expenses.RepositoryEF.pdb
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/bin/Debug/net6.0/Expenses.BusinessLayer.dll
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/bin/Debug/net6.0/Expenses.BusinessLayer.pdb
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.csproj.AssemblyReference.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.GeneratedMSBuildEditorConfig.editorconfig
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.AssemblyInfoInputs.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.AssemblyInfo.cs
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.csproj.CoreCompileInputs.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.csproj.CopyComplete
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.dll
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/refint/Expenses.RepositoryEF.dll
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.pdb
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/Expenses.RepositoryEF.genruntimeconfig.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/obj/Debug/net6.0/ref/Expenses.RepositoryEF.dll

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Expenses.RepositoryEF.Contexts
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext : DbContext
     {
         private IConfiguration _configuration;
 
@@ -37,6 +37,8 @@ namespace Expenses.RepositoryEF.Contexts
         public DbSet<PeriodEntity> Period { get; set; }
 
         public DbSet<SubcategoryEntity> Subcategory { get; set; }
+
+        public DbSet<DepositPlanEntity> DepositPlan { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

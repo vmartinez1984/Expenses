@@ -9,16 +9,18 @@ namespace Expenses.RepositoryEF
         public UnitOfWorkEF(
            ICategoryRepository categoryRepository
            ,  ISubcategoryRepository subcategory
-           //IPeriodRepository periodRepository,
-           //IEntryRepositoy entryRepositoy,
-           //IExpenseRepository expenseRepository
+           , IPeriodRepository periodRepository
+           , IEntryRepositoy entryRepositoy
+           , IExpenseRepository expenseRepository
+           , IDepositPlanRepository depositPlanRepository
         )
         {
             Category = categoryRepository;
             Subcategory = subcategory;
-            //Period = periodRepository;
-            //Entry = entryRepositoy;
-            //Expense = expenseRepository;
+            Period = periodRepository;
+            Entry = entryRepositoy;
+            Expense = expenseRepository;
+            DepositPlan = depositPlanRepository;
         }
 
         public ICategoryRepository Category { get; }
@@ -30,5 +32,7 @@ namespace Expenses.RepositoryEF
         public IExpenseRepository Expense { get; }
 
         public ISubcategoryRepository Subcategory { get; }
+
+        public IDepositPlanRepository DepositPlan { get; }
     }
 }

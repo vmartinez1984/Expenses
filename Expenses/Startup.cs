@@ -32,15 +32,21 @@ namespace Expenses
             services.AddControllersWithViews();
             services.AddScoped<AppDbContext>();
             //Repository
-            services.AddScoped<Expenses.RepositoryEF.Contexts.AppDbContext>();
+            services.AddScoped<Expenses.RepositoryEF.Contexts.AppDbContext>();            
             services.AddScoped<ICategoryRepository, CategoryRepositoryEF>();
             services.AddScoped<ISubcategoryRepository, SubcategoryRepositoryEF>();
-            services.AddScoped<IPeriodRepository, PeriodRepositoryEF>();
+            services.AddScoped<IPeriodRepository, PeriodRepositoryEF>();            
+            services.AddScoped<IEntryRepositoy, EntryRepositoryEF>();  
+            services.AddScoped<IExpenseRepository, ExpenseRepositoryEF>();  
+            services.AddScoped<IDepositPlanRepository, DepositPlanRepositoryEF>();  
             services.AddScoped<IUnitOfWorkRepository, UnitOfWorkEF>();
             //BusinessLAyer
             services.AddScoped<IPeriodBl, PeriodBl>();
             services.AddScoped<ISubcategoryBl, SubcategoryBl>();
             services.AddScoped<ICategoryBl, CategoryBl>();
+            services.AddScoped<IEntryBl, EntryBl>();  
+            services.AddScoped<IExpensesBl, ExpenseBl>();
+            services.AddScoped<IDepositPlanBl, DepositPlanBl>();
             services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
         }
 
@@ -50,7 +56,10 @@ namespace Expenses
             {
                 mapperConfig.AddProfile<CategoryMapper>();
                 mapperConfig.AddProfile<SubcategoryMapper>();
+                mapperConfig.AddProfile<EntryMapper>();
+                mapperConfig.AddProfile<ExpenseMapper>();
                 mapperConfig.AddProfile<PeriodMapper>();
+                mapperConfig.AddProfile<DepositPlanMapper>();
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

@@ -16493,11 +16493,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Activate.cshtml",
-      "TargetPath": "Views\\Periods\\Activate.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Delete.cshtml",
       "TargetPath": "Views\\Periods\\Delete.cshtml",
       "FileKind": "mvc"
