@@ -1,4 +1,7 @@
-﻿using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 
 namespace Expenses.BusinessLayer.Interfaces
 {
@@ -17,5 +20,7 @@ namespace Expenses.BusinessLayer.Interfaces
         IDepositPlanBl DepositPlanBl { get; }
 
         ITermAccountBl TermAccount {get;}
+
+        IExpenseTdcBl ExpenseTdc { get; }
     }
 }

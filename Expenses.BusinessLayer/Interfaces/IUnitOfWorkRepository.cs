@@ -17,5 +17,7 @@ namespace Expenses.BusinessLayer.Interfaces
         public IDepositPlanRepository DepositPlan { get; }
 
         public ITermAccountRepository TermAccount { get;  }
+
+        public IExpenseTdcRepository ExpenseTdc { get; }
     }
 }

@@ -44,6 +44,8 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
         Task<ExpenseDtoOut> GetByIdAsync(int id);
     }
 
+    public interface IExpenseTdcBl : IBaseBl<ExpenseTdcDtoIn, ExpenseTdcDtoOut> { }
+
     public interface ICategoryBl : IBaseBl<CategoryDtoIn, CategoryDtoOut> { }
 
     public interface ISubcategoryBl : IBaseBl<SubcategoryDtoIn, SubcategoryDtoOut> { }

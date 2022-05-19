@@ -13,6 +13,7 @@ namespace Expenses.BusinessLayer.Bl
             , IExpensesBl expensesBl
             , IDepositPlanBl depositPlanBl
             , ITermAccountBl termAccountBl
+            , IExpenseTdcBl expenseTdcBl
         )
         {
             Category = category;
@@ -22,6 +23,7 @@ namespace Expenses.BusinessLayer.Bl
             Expense = expensesBl;
             DepositPlanBl = depositPlanBl;
             TermAccount =  termAccountBl;
+            ExpenseTdc = expenseTdcBl;
         }
 
         public ICategoryBl Category { get; }
@@ -36,5 +38,7 @@ namespace Expenses.BusinessLayer.Bl
         public IDepositPlanBl DepositPlanBl { get; set; }
         
         public ITermAccountBl TermAccount { get; }
+
+        public IExpenseTdcBl ExpenseTdc { get; }
     }
 }

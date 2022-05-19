@@ -11,8 +11,14 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
 
         [Display(Name = "Categoria")]
         public string CategoryName { get; set; }
+        public int CategoryId { get; set; }
+        
 
         [Display(Name = "Cantidad")]
         public int Amount { get; set; }
+
+        [Display(Name = "¿Es presupuesto?")]
+        public bool IsBudget { get; set; }
+        
     }
 }

@@ -14,6 +14,7 @@ namespace Expenses.RepositoryEF
            , IExpenseRepository expenseRepository
            , IDepositPlanRepository depositPlanRepository
            , ITermAccountRepository termAccountRepository
+           , IExpenseTdcRepository expenseTdcRepository
         )
         {
             Category = categoryRepository;
@@ -23,6 +24,7 @@ namespace Expenses.RepositoryEF
             Expense = expenseRepository;
             DepositPlan = depositPlanRepository;
             TermAccount = termAccountRepository;
+            ExpenseTdc = expenseTdcRepository;
         }
 
         public ICategoryRepository Category { get; }
@@ -38,5 +40,7 @@ namespace Expenses.RepositoryEF
         public IDepositPlanRepository DepositPlan { get; }
         
         public ITermAccountRepository TermAccount { get; }
+        
+        public IExpenseTdcRepository ExpenseTdc { get; }
     }
 }

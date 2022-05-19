@@ -45,4 +45,6 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceRepository
     }
 
     public interface ITermAccountRepository : IBaseRepository<TermAccountEntity> { }
+
+    public interface IExpenseTdcRepository : IBaseRepository<ExpenseTdcEntity> { }
 }

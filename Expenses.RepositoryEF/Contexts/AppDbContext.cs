@@ -34,6 +34,8 @@ namespace Expenses.RepositoryEF.Contexts
         public DbSet<CategoryEntity> Category { get; set; }
         public DbSet<EntryEntity> Entry { get; set; }
         public DbSet<ExpenseEntity> Expense { get; set; }
+
+        public DbSet<ExpenseTdcEntity> ExpenseTdc { get; set; }
         public DbSet<PeriodEntity> Period { get; set; }
 
         public DbSet<SubcategoryEntity> Subcategory { get; set; }
