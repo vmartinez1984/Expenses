@@ -12,6 +12,8 @@ namespace Expenses.BusinessLayer.Mappers
             CreateMap<DepositPlanEntity, DepositPlanDtoOut>().ReverseMap();
 
             CreateMap<DepositPlanEntity, DepositPlanDtoIn>().ReverseMap();
+
+            CreateMap<DepositPlanEntity, DepositPlanFullDtoOut>().ReverseMap();
         }
     }
 }

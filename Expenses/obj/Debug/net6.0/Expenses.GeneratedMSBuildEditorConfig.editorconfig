@@ -79,16 +79,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW50cmllcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZXMvQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZXMvRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZXMvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Edit.cshtml]
@@ -125,54 +117,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3REZXRhaWxzL0NyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3REZXRhaWxzL0RlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3REZXRhaWxzL0RldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3REZXRhaWxzL0VkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3REZXRhaWxzL0luZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3RzL0NyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3RzL0RlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3RzL0RldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3RzL0VkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3RzL0luZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/_AddPay.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3RzL19BZGRQYXkuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/_ListPays.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTW9udHNXaXRob3V0SW50ZXJlc3RzL19MaXN0UGF5cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Create.cshtml]

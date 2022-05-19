@@ -52,7 +52,7 @@
 <hr />
 <h2 class="text-danger">Gastos</h2>
 <p>
-    @await Html.PartialAsync("_AddExpense", new Expenses.Models.Expense())
+    @await Html.PartialAsync("_AddExpense", new Expenses.BusinessLayer.Dtos.Inputs.ExpenseDtoIn())
 </p>
 @await Html.PartialAsync("_ListExpenses", Model.ListExpenses)
 

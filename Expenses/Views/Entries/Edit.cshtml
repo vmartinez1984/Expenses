@@ -1,7 +1,7 @@
-﻿@model Expenses.Models.Entry
+﻿@model Expenses.BusinessLayer.Dtos.Outputs.EntryDtoOut
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Ingreso";
 }
 
 <h1>Editar</h1>
@@ -23,9 +23,6 @@
                 <input asp-for="Amount" class="form-control" />
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
-
-            <input asp-for="DateRegister" type="hidden" />
-            <input asp-for="IsActive" type="hidden" />
             <input asp-for="PeriodId" type="hidden" />
 
             <div class="form-group">

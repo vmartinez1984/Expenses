@@ -43,4 +43,6 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceRepository
     {
         Task<int> GetTotalAsync(int id);
     }
+
+    public interface ITermAccountRepository : IBaseRepository<TermAccountEntity> { }
 }

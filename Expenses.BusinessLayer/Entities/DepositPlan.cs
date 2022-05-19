@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Expenses.BusinessLayer.Entities
 {
@@ -21,8 +19,6 @@ namespace Expenses.BusinessLayer.Entities
 
         [Required]        
         //[ForeignKey("SubcategoryId")]
-        public int SubcategoryId { get; set; }
-
-        //public virtual IEnumerable<ExpenseEntity> ListExpenses { get; set; }
+        public int SubcategoryId { get; set; }        
     }
 }

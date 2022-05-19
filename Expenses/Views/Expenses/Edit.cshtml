@@ -1,4 +1,4 @@
-﻿@model Expenses.Models.Expense
+﻿@model Expenses.BusinessLayer.Dtos.Outputs.ExpenseDtoOut
 
 @{
     ViewData["Title"] = "Editar gasto";
@@ -53,7 +53,7 @@
 </div>
 
 <div>
-    <a asp-action="details" asp-controller="Periods" asp-route-id="@Model.Period">Regresar</a>
+    <a asp-action="details" asp-controller="Periods" asp-route-id="@Model.PeriodId">Regresar</a>
 </div>
 
 @section Scripts {

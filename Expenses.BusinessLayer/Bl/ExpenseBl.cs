@@ -26,10 +26,10 @@ namespace Expenses.BusinessLayer.Bl
             try
             {
                 ExpenseEntity entity;
-               
+
                 entity = _mapper.Map<ExpenseEntity>(item);
-                SetDeposit(entity);
-                SetBudget(entity);
+                await SetDeposit(entity);
+                await SetBudget(entity);
                 entity.Id = await _unitOfWork.Expense.AddAsync(entity);
 
                 return entity.Id;
@@ -41,20 +41,26 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
-        private void SetBudget(ExpenseEntity entity)
+        private async Task SetBudget(ExpenseEntity expense)
         {
-            throw new NotImplementedException();
+            SubcategoryEntity subcategory;
+
+            subcategory = await _unitOfWork.Subcategory.GetAsync(expense.SubcategoryId);
+            if (subcategory != null && subcategory.IsBudget)
+                expense.BudgetAmount = subcategory.Amount;
+            else
+                expense.BudgetAmount = null;            
         }
 
-        private void SetDeposit(ExpenseEntity entity)
+        private async Task SetDeposit(ExpenseEntity expense)
         {
-            // DepositPlan depostiPlanId;
+            DepositPlanEntity depostiPlanId;
 
-            // depostiPlanId = _context.DepositPlan.Where(x => x.SubcategoryId == expense.SubcategoryId).FirstOrDefault();
-            // if (depostiPlanId is null)
-            //     expense.DepositPlanId = null;
-            // else
-            //     expense.DepositPlanId = depostiPlanId.Id;
+            depostiPlanId = await _unitOfWork.DepositPlan.GetAsync(expense.SubcategoryId);
+            if (depostiPlanId is null)
+                expense.DepositPlanId = null;
+            else
+                expense.DepositPlanId = depostiPlanId.Id;
         }
 
         public async Task DeleteAsync(int id)
@@ -89,6 +95,36 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
+        public async Task<ExpenseDtoOut> GetByIdAsync(int expenseId)
+        {
+            try
+            {
+                ExpenseDtoOut item;
+                ExpenseEntity entity;
+
+                entity = await _unitOfWork.Expense.GetAsync(expenseId);
+                await SetBudget(entity);
+                item = _mapper.Map<ExpenseDtoOut>(entity);
+                item.CategoryId = await GetCategoryId(item.SubcategoryId);
+
+                return item;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private async Task<int> GetCategoryId(int subcategoryId)
+        {
+            int categoryId;
+
+            categoryId = (await _unitOfWork.Subcategory.GetAsync(subcategoryId)).CategoryId;
+
+            return categoryId;
+        }
+
         public async Task UpdateAsync(ExpenseDtoIn item, int id)
         {
             try
@@ -97,6 +133,8 @@ namespace Expenses.BusinessLayer.Bl
 
                 entity = _mapper.Map<ExpenseEntity>(item);
                 entity.Id = id;
+                await SetBudget(entity);
+                await SetDeposit(entity);
 
                 await _unitOfWork.Expense.UpdateAsync(entity);
             }

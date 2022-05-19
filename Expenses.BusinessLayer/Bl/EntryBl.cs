@@ -63,6 +63,25 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
+        public async Task<EntryDtoOut> GetByIdAsync(int periodId)
+        {
+            try
+            {
+                EntryEntity entity;
+                EntryDtoOut item;
+
+                entity = await _unitOfWork.Entry.GetAsync(periodId);
+                item = _mapper.Map<EntryDtoOut>(entity);
+
+                return item;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public async Task UpdateAsync(EntryDtoIn item, int id)
         {
             try

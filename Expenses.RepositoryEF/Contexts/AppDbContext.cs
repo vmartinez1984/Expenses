@@ -40,6 +40,8 @@ namespace Expenses.RepositoryEF.Contexts
 
         public DbSet<DepositPlanEntity> DepositPlan { get; set; }
 
+        public DbSet<TermAccountEntity> TermAccount { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CategoryEntity>().HasData(

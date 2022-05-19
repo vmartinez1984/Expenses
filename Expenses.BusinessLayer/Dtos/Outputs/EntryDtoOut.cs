@@ -18,5 +18,7 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
                 
         [Display(Name = "Fecha de registro")]
         public DateTime DateRegister { get; set; } = DateTime.Now;
+
+        public int PeriodId {get; set;}
     }
 }

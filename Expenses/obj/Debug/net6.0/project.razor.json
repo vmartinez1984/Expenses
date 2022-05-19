@@ -16393,11 +16393,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Details.cshtml",
-      "TargetPath": "Views\\Expenses\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Categories/Create.cshtml",
       "TargetPath": "Views\\Categories\\Create.cshtml",
       "FileKind": "mvc"
@@ -16545,11 +16540,6 @@
     {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Create.cshtml",
-      "TargetPath": "Views\\Expenses\\Create.cshtml",
       "FileKind": "mvc"
     },
     {

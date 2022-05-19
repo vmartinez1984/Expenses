@@ -18,8 +18,11 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
         [Display(Name = "Categoria")]
         public string CategoryName { get; set; }
 
+        public int CategoryId { get; set; }
+
         [Display(Name = "Subcategoria")]
         public string SubcategoryName { get; set; }
+        public int SubcategoryId { get; set; }
 
         [Display(Name = "Periodo")]
         public int PeriodId { get; set; }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Expenses.BusinessLayer.Dtos.Inputs
 {
@@ -19,6 +14,7 @@ namespace Expenses.BusinessLayer.Dtos.Inputs
         public int Amount { get; set; }
 
         [Required]
+        [Display(Name = "Periodo")]
         public int PeriodId { get; set; }
     }
 }

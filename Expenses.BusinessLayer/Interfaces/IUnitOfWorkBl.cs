@@ -15,5 +15,7 @@ namespace Expenses.BusinessLayer.Interfaces
         ISubcategoryBl Subcategory { get; }
 
         IDepositPlanBl DepositPlanBl { get; }
+
+        ITermAccountBl TermAccount {get;}
     }
 }

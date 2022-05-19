@@ -38,7 +38,7 @@ namespace Expenses.BusinessLayer.Bl
 
             entities = await _unitOfWork.Category.GetAsync();
             list = _mapper.Map<List<CategoryDtoOut>>(entities);
-
+            
             return list;
         }
 

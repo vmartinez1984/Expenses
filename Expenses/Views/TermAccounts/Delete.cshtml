@@ -1,4 +1,4 @@
-﻿@model Expenses.Models.TermAccount
+﻿@model Expenses.BusinessLayer.Dtos.Outputs.TermAccountDtoOut
 
 @{
     ViewData["Title"] = "Cuenta a plazo";
@@ -39,7 +39,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <button type="submit" class="btn btn-danger" > Guardar </button> |
+        <button type="submit" class="btn btn-danger" > Borrar </button> |
         <a asp-action="Index">Regresar a la lista</a>
     </form>
 </div>

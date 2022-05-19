@@ -11,7 +11,7 @@ using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 
 namespace Expenses.BusinessLayer.Bl
 {
-    public class DepositPlanBl: IDepositPlanBl
+    public class DepositPlanBl : IDepositPlanBl
     {
         private IUnitOfWorkRepository _unitOfWork;
         private IMapper _mapper;
@@ -52,9 +52,33 @@ namespace Expenses.BusinessLayer.Bl
         {
             SubcategoryEntity entity;
 
-            entity= _unitOfWork.Subcategory.GetAsync(subcategoryId).Result;
+            entity = _unitOfWork.Subcategory.GetAsync(subcategoryId).Result;
 
             return entity.Name;
+        }
+
+        public async Task<DepositPlanFullDtoOut> GetFullAsync(int id)
+        {
+            DepositPlanEntity entity;
+            DepositPlanFullDtoOut item;
+
+            entity = await _unitOfWork.DepositPlan.GetAsync(id);
+            item = _mapper.Map<DepositPlanFullDtoOut>(entity);
+            item.SubcategoryName = GetSubcategoryName(entity.SubcategoryId);
+            item.ListExpenses= await GetListEntriesAsync(item.Id);
+
+            return item;
+        }
+
+        private async Task<List<ExpenseDtoOut>> GetListEntriesAsync(int id)
+        {
+            List<ExpenseDtoOut> list;
+            List<ExpenseEntity> entities;
+
+            entities = (await _unitOfWork.Expense.GetAllOfDepositPlanAsync(id)).ToList();
+            list = _mapper.Map<List<ExpenseDtoOut>>(entities);
+
+            return list;
         }
 
         public async Task<IReadOnlyList<DepositPlanDtoOut>> GetAsync()
@@ -71,10 +95,10 @@ namespace Expenses.BusinessLayer.Bl
         }
 
         private async Task FillTotalsAsync(IReadOnlyList<DepositPlanDtoOut> list)
-        {            
+        {
             foreach (var item in list)
             {
-                item.Total = await _unitOfWork.DepositPlan.GetTotalAsync(item.Id);                
+                item.Total = await _unitOfWork.DepositPlan.GetTotalAsync(item.Id);
             }
         }
 
@@ -83,9 +107,10 @@ namespace Expenses.BusinessLayer.Bl
             List<SubcategoryEntity> subcategories;
 
             subcategories = (await _unitOfWork.Subcategory.GetAsync()).ToList();
-            
-            list.ToList().ForEach(item =>{
-                item.SubcategoryName = subcategories.Where(x=> x.Id == item.SubcategoryId).FirstOrDefault().Name;
+
+            list.ToList().ForEach(item =>
+            {
+                item.SubcategoryName = subcategories.Where(x => x.Id == item.SubcategoryId).FirstOrDefault().Name;
             });
         }
 

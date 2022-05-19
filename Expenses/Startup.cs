@@ -39,6 +39,7 @@ namespace Expenses
             services.AddScoped<IEntryRepositoy, EntryRepositoryEF>();  
             services.AddScoped<IExpenseRepository, ExpenseRepositoryEF>();  
             services.AddScoped<IDepositPlanRepository, DepositPlanRepositoryEF>();  
+            services.AddScoped<ITermAccountRepository, TermAccountRepositoryEF>();
             services.AddScoped<IUnitOfWorkRepository, UnitOfWorkEF>();
             //BusinessLAyer
             services.AddScoped<IPeriodBl, PeriodBl>();
@@ -47,6 +48,7 @@ namespace Expenses
             services.AddScoped<IEntryBl, EntryBl>();  
             services.AddScoped<IExpensesBl, ExpenseBl>();
             services.AddScoped<IDepositPlanBl, DepositPlanBl>();
+            services.AddScoped<ITermAccountBl,TermAccountBl>();
             services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
         }
 
@@ -60,6 +62,7 @@ namespace Expenses
                 mapperConfig.AddProfile<ExpenseMapper>();
                 mapperConfig.AddProfile<PeriodMapper>();
                 mapperConfig.AddProfile<DepositPlanMapper>();
+                mapperConfig.AddProfile<TermAccountMapper>();
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

@@ -6,22 +6,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Expenses.Models;
+using Expenses.BusinessLayer.Interfaces;
+using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.BusinessLayer.Dtos.Inputs;
 
 namespace Expenses.Controllers
 {
     public class TermAccountsController : Controller
-    {
-        private readonly AppDbContext _context;
+    {        
+        private readonly IUnitOfWorkBl _unitOfWorkBl;
 
-        public TermAccountsController(AppDbContext context)
-        {
-            _context = context;
+        public TermAccountsController(IUnitOfWorkBl unitOfWorkBl)
+        {            
+            _unitOfWorkBl = unitOfWorkBl;
         }
 
         // GET: TermAccounts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TermAccount.Where(x=> x.IsActive).ToListAsync());
+            IReadOnlyList<TermAccountDtoOut> list;
+
+            list = await _unitOfWorkBl.TermAccount.GetAsync();
+
+            return View(list);
         }
 
         // GET: TermAccounts/Details/5
@@ -32,8 +39,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var termAccount = await _context.TermAccount
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var termAccount = await _unitOfWorkBl.TermAccount.GetAsync((int)id);
             if (termAccount == null)
             {
                 return NotFound();
@@ -53,12 +59,11 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Amount,DateRegistration,Term,IsActive")] TermAccount termAccount)
+        public async Task<IActionResult> Create([Bind("Id,Name,Amount,DateRegistration,Term")] TermAccountDtoIn termAccount)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(termAccount);
-                await _context.SaveChangesAsync();
+                await _unitOfWorkBl.TermAccount.AddAsync(termAccount);
                 return RedirectToAction(nameof(Index));
             }
             return View(termAccount);
@@ -72,7 +77,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var termAccount = await _context.TermAccount.FindAsync(id);
+            var termAccount = await _unitOfWorkBl.TermAccount.GetAsync((int)id);
             if (termAccount == null)
             {
                 return NotFound();
@@ -85,31 +90,12 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Amount,DateRegistration,Term,IsActive")] TermAccount termAccount)
-        {
-            if (id != termAccount.Id)
-            {
-                return NotFound();
-            }
-
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Amount,DateRegistration,Term")] TermAccountDtoIn termAccount)
+        {            
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(termAccount);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TermAccountExists(termAccount.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _unitOfWorkBl.TermAccount.UpdateAsync(termAccount, id);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(termAccount);
@@ -123,8 +109,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var termAccount = await _context.TermAccount
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var termAccount = await _unitOfWorkBl.TermAccount.GetAsync((int)id);
             if (termAccount == null)
             {
                 return NotFound();
@@ -138,15 +123,9 @@ namespace Expenses.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var termAccount = await _context.TermAccount.FindAsync(id);
-            termAccount.IsActive = false;
-            await _context.SaveChangesAsync();
+            var termAccount = await _unitOfWorkBl.TermAccount.GetAsync(id);
+            await _unitOfWorkBl.TermAccount.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool TermAccountExists(int id)
-        {
-            return _context.TermAccount.Any(e => e.Id == id);
         }
     }
 }

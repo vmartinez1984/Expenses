@@ -13,8 +13,6 @@ namespace Expenses.Models
         public DbSet<Entry> Entry { get; set; }
         public DbSet<Expense> Expense { get; set; }
         public DbSet<ExpenseTdc> ExpenseTdc { get; set; }
-        public DbSet<Expenses.Models.MontsWithoutInterest> MontsWithoutInterest { get; set; }
-        public DbSet<Expenses.Models.MontsWithoutInterestDetails> MontsWithoutInterestDetails { get; set; }
         public DbSet<Subcategory> Subcategory { get; set; }
         public DbSet<Period> Period { get; set; }
         public DbSet<TermAccount> TermAccount { get; set; }

@@ -1,23 +1,19 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Expenses.Models;
 using Expenses.BusinessLayer.Interfaces;
 using System.Collections.Generic;
 using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.BusinessLayer.Dtos.Inputs;
 
 namespace Expenses.Controllers
 {
     public class DepositPlansController : Controller
-    {
-        private readonly AppDbContext _context;
+    {        
         private readonly IUnitOfWorkBl _unitOfWorkBl;
 
-        public DepositPlansController(AppDbContext context, IUnitOfWorkBl unitOfWorkBl)
-        {
-            _context = context;
+        public DepositPlansController(IUnitOfWorkBl unitOfWorkBl)
+        {            
             _unitOfWorkBl = unitOfWorkBl;
         }
 
@@ -39,10 +35,8 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var depositPlan = await _context.DepositPlan
-                .Include(x => x.ListExpenses.Where(x => x.IsActive))
-                .Include(d => d.Subcategory)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            DepositPlanFullDtoOut depositPlan = await _unitOfWorkBl.DepositPlanBl.GetFullAsync((int)id);
+            
             if (depositPlan == null)
             {
                 return NotFound();
@@ -53,9 +47,9 @@ namespace Expenses.Controllers
         }
 
         // GET: DepositPlans/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["SubcategoryId"] = new SelectList(_context.Subcategory, "Id", "Name");
+            ViewData["SubcategoryId"] = new SelectList(await _unitOfWorkBl.Subcategory.GetAsync(), "Id", "Name");
             return View();
         }
 
@@ -64,15 +58,14 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Amount,Goal,SubcategoryId,DateRegister,IsActive")] DepositPlan depositPlan)
+        public async Task<IActionResult> Create([Bind("Id,Name,Amount,Goal,SubcategoryId,DateRegister,IsActive")] DepositPlanDtoIn depositPlan)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(depositPlan);
-                await _context.SaveChangesAsync();
+                await _unitOfWorkBl.DepositPlanBl.AddAsync(depositPlan);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubcategoryId"] = new SelectList(_context.Subcategory, "Id", "Name", depositPlan.SubcategoryId);
+            ViewData["SubcategoryId"] = new SelectList(await _unitOfWorkBl.Subcategory.GetAsync(), "Id", "Name", depositPlan.SubcategoryId);
             return View(depositPlan);
         }
 
@@ -84,12 +77,12 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var depositPlan = await _context.DepositPlan.FindAsync(id);
+            var depositPlan = await _unitOfWorkBl.DepositPlanBl.GetAsync((int) id);
             if (depositPlan == null)
             {
                 return NotFound();
             }
-            ViewData["SubcategoryId"] = new SelectList(_context.Subcategory, "Id", "Name", depositPlan.SubcategoryId);
+            ViewData["SubcategoryId"] = new SelectList(await _unitOfWorkBl.Subcategory.GetAsync(), "Id", "Name", depositPlan.SubcategoryId);
             return View(depositPlan);
         }
 
@@ -98,34 +91,14 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Amount,Goal,SubcategoryId,DateRegister,IsActive")] DepositPlan depositPlan)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Amount,Goal,SubcategoryId,DateRegister,IsActive")] DepositPlanDtoIn depositPlan)
         {
-            if (id != depositPlan.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(depositPlan);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DepositPlanExists(depositPlan.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _unitOfWorkBl.DepositPlanBl.UpdateAsync(depositPlan,id);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubcategoryId"] = new SelectList(_context.Subcategory, "Id", "Name", depositPlan.SubcategoryId);
+            ViewData["SubcategoryId"] = new SelectList(await _unitOfWorkBl.Subcategory.GetAsync(), "Id", "Name", depositPlan.SubcategoryId);
             return View(depositPlan);
         }
 
@@ -151,15 +124,9 @@ namespace Expenses.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var depositPlan = await _context.DepositPlan.FindAsync(id);
-            _context.DepositPlan.Remove(depositPlan);
-            await _context.SaveChangesAsync();
+            var depositPlan = await _unitOfWorkBl.DepositPlanBl.GetAsync(id);            
+            await _unitOfWorkBl.DepositPlanBl.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool DepositPlanExists(int id)
-        {
-            return _context.DepositPlan.Any(e => e.Id == id);
         }
     }
 }

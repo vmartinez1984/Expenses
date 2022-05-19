@@ -8,8 +8,8 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
     /// <summary>
     /// Donde T es la entrada y U la salida
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="U"></typeparam>
+    /// <typeparam name="T">Entrada</typeparam>
+    /// <typeparam name="U">Salida</typeparam>
     public interface IBaseBl<T, U> where T : class
     {
         Task<int> AddAsync(T item);
@@ -34,13 +34,24 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
         Task<PeriodFullDtoOut> GetFullAsync(int id);
     }
 
-    public interface IEntryBl : IGenericBlAAsync<EntryDtoOut, EntryDtoIn> { }
+    public interface IEntryBl : IGenericBlAAsync<EntryDtoOut, EntryDtoIn>
+    {
+        Task<EntryDtoOut> GetByIdAsync(int id);
+    }
 
-    public interface IExpensesBl : IGenericBlAAsync<ExpenseDtoOut, ExpenseDtoIn> { }
+    public interface IExpensesBl : IGenericBlAAsync<ExpenseDtoOut, ExpenseDtoIn>
+    {
+        Task<ExpenseDtoOut> GetByIdAsync(int id);
+    }
 
     public interface ICategoryBl : IBaseBl<CategoryDtoIn, CategoryDtoOut> { }
 
     public interface ISubcategoryBl : IBaseBl<SubcategoryDtoIn, SubcategoryDtoOut> { }
 
-    public interface IDepositPlanBl : IBaseBl<DepositPlanDtoIn, DepositPlanDtoOut> { }
+    public interface IDepositPlanBl : IBaseBl<DepositPlanDtoIn, DepositPlanDtoOut>
+    {
+        Task<DepositPlanFullDtoOut> GetFullAsync(int id);
+    }
+
+    public interface ITermAccountBl : IBaseBl<TermAccountDtoIn, TermAccountDtoOut> { }
 }

@@ -4,48 +4,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Expenses.Models;
+using Expenses.BusinessLayer.Interfaces;
+using Expenses.BusinessLayer.Dtos.Inputs;
+using Expenses.BusinessLayer.Dtos.Outputs;
 
 namespace Expenses.Controllers
 {
     public class EntriesController : Controller
     {
-        private readonly AppDbContext _context;
+        private IUnitOfWorkBl _unitOfWorkBl;
 
-        public EntriesController(AppDbContext context)
+        public EntriesController(IUnitOfWorkBl unitOfWorkBl)
         {
-            _context = context;
-        }
-
-        // GET: Entries
-        public async Task<IActionResult> Index(int periodId)
-        {
-            ViewBag.PeriodId = periodId;
-
-            return View(await _context.Entry.ToListAsync());
-        }
-
-        // GET: Entries/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var entry = await _context.Entry
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (entry == null)
-            {
-                return NotFound();
-            }
-
-            return View(entry);
+            _unitOfWorkBl = unitOfWorkBl;
         }
 
         // GET: Entries/Create
-        public IActionResult Create(int periodId)
+        public async Task<IActionResult> Create(int periodId)
         {
-            ViewData["ListPeriods"] = new SelectList(_context.Period, "Id", "Name");
+            ViewData["ListPeriods"] = new SelectList(await _unitOfWorkBl.Period.GetAsync(), "Id", "Name");
             ViewBag.PeriodId = periodId;
 
             return View();
@@ -56,13 +33,13 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DateRegister,IsActive,PeriodId,Amount")] Entry entry)
+        public async Task<IActionResult> Create([Bind("Id,Name,DateRegister,IsActive,PeriodId,Amount")] EntryDtoIn entry)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(entry);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), "Periods", new { Id = entry.PeriodId });
+                await _unitOfWorkBl.Entry.AddAsync(entry);
+
+                return RedirectToAction("Details", "Periods", new { Id = entry.PeriodId });
             }
             return View(entry);
         }
@@ -75,7 +52,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var entry = await _context.Entry.FindAsync(id);
+            var entry = await _unitOfWorkBl.Entry.GetByIdAsync((int)id);
             if (entry == null)
             {
                 return NotFound();
@@ -88,32 +65,12 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateRegister,IsActive, PeriodId, Amount")] Entry entry)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateRegister,IsActive, PeriodId, Amount")] EntryDtoIn entry)
         {
-            if (id != entry.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(entry);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EntryExists(entry.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Details), "Periods", new
+                await _unitOfWorkBl.Entry.UpdateAsync(entry, id);
+                return RedirectToAction("Details", "Periods", new
                 {
                     Id = entry.PeriodId,
                 });
@@ -129,8 +86,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var entry = await _context.Entry
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var entry = await _unitOfWorkBl.Entry.GetByIdAsync((int) id);                
             if (entry == null)
             {
                 return NotFound();
@@ -144,15 +100,9 @@ namespace Expenses.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var entry = await _context.Entry.FindAsync(id);
-            entry.IsActive = false;
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Details), "Periods", new { Id = entry.PeriodId });
-        }
-
-        private bool EntryExists(int id)
-        {
-            return _context.Entry.Any(e => e.Id == id);
+            EntryDtoOut entry = await _unitOfWorkBl.Entry.GetByIdAsync(id);
+            await _unitOfWorkBl.Entry.DeleteAsync(id);
+            return RedirectToAction("Details", "Periods", new { Id = entry.PeriodId });
         }
     }
 }

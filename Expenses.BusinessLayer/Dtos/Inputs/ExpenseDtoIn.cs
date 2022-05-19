@@ -20,6 +20,12 @@ namespace Expenses.BusinessLayer.Dtos.Inputs
         public int CategoryId { get; set; }
 
         [Required]
+        [Display(Name = "Subcategoria")]
+        public int SubcategoryId { get; set; }
+
+
+        [Required]
+        [Display(Name = "Periodo")]
         public int PeriodId { get; set; }       
     }
 }

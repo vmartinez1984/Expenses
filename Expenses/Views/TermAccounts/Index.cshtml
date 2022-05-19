@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Expenses.Models.TermAccount>
+﻿@model IEnumerable<Expenses.BusinessLayer.Dtos.Outputs.TermAccountDtoOut>
 
 @{
     ViewData["Title"] = "Plazos";
@@ -47,7 +47,7 @@
                     @Html.DisplayFor(modelItem => item.Term)
                 </td>
                 <td>
-                    @item.DateRegistration.AddDays(item.Term).ToShortDateString()
+                      @Html.DisplayFor(modelItem => item.DateExpiration)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
@@ -11,7 +12,7 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
         [Display(Name="Nombre")]
         public string Name { get; set; }
 
-        [Display(Name="Nombre")]
+        [Display(Name="Cantidad")]
         public int Amount { get; set; }
 
         [Display(Name="Meta")]
@@ -29,6 +30,10 @@ namespace Expenses.BusinessLayer.Dtos.Outputs
 
         [Display(Name="Fecha de registro")]
         public DateTime DateRegister { get; set; }
+    }
 
+    public class DepositPlanFullDtoOut: DepositPlanDtoOut
+    {
+        public List<ExpenseDtoOut> ListExpenses { get; set; }
     }
 }
