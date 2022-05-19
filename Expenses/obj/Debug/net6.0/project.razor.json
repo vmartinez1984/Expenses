@@ -16308,18 +16308,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Delete.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterests\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/_ListEntries.cshtml",
       "TargetPath": "Views\\Periods\\_ListEntries.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Entries/Index.cshtml",
-      "TargetPath": "Views\\Entries\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16343,11 +16333,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Details.cshtml",
-      "TargetPath": "Views\\Subcategories\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/TermAccounts/Delete.cshtml",
       "TargetPath": "Views\\TermAccounts\\Delete.cshtml",
       "FileKind": "mvc"
@@ -16360,11 +16345,6 @@
     {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Categories/Index.cshtml",
       "TargetPath": "Views\\Categories\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Index.cshtml",
-      "TargetPath": "Views\\Expenses\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16398,18 +16378,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Edit.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterestDetails\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Create.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterestDetails\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16425,16 +16395,6 @@
     {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/_AddExpense.cshtml",
       "TargetPath": "Views\\DepositPlans\\_AddExpense.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Details.cshtml",
-      "TargetPath": "Views\\ExpenseTdcs\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Edit.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterests\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16463,11 +16423,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Index.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterestDetails\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Edit.cshtml",
       "TargetPath": "Views\\Subcategories\\Edit.cshtml",
       "FileKind": "mvc"
@@ -16483,11 +16438,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Delete.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterestDetails\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Delete.cshtml",
       "TargetPath": "Views\\Periods\\Delete.cshtml",
       "FileKind": "mvc"
@@ -16495,11 +16445,6 @@
     {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/Details.cshtml",
       "TargetPath": "Views\\DepositPlans\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Entries/Details.cshtml",
-      "TargetPath": "Views\\Entries\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16523,18 +16468,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Create.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterests\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Delete.cshtml",
       "TargetPath": "Views\\ExpenseTdcs\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterestDetails/Details.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterestDetails\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16553,11 +16488,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/_ListPays.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterests\\_ListPays.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Delete.cshtml",
       "TargetPath": "Views\\Expenses\\Delete.cshtml",
       "FileKind": "mvc"
@@ -16573,28 +16503,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Details.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterests\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/Index.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterests\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Delete.cshtml",
       "TargetPath": "Views\\Subcategories\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/MontsWithoutInterests/_AddPay.cshtml",
-      "TargetPath": "Views\\MontsWithoutInterests\\_AddPay.cshtml",
       "FileKind": "mvc"
     },
     {

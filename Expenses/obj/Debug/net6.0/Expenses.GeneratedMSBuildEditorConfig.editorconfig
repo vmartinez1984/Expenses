@@ -67,16 +67,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW50cmllcy9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Entries/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW50cmllcy9EZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Entries/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW50cmllcy9FZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Entries/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW50cmllcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Delete.cshtml]
@@ -87,20 +79,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZXMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZXMvSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZVRkY3MvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZVRkY3MvRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZVRkY3MvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Edit.cshtml]
@@ -169,10 +153,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViY2F0ZWdvcmllcy9EZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViY2F0ZWdvcmllcy9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Edit.cshtml]

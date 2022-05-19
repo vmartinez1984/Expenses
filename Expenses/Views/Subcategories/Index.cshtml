@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Expenses.Models.Subcategory>
+﻿@model IEnumerable<Expenses.BusinessLayer.Dtos.Outputs.SubcategoryDtoOut>
 
 @{
     ViewData["Title"] = "Subcategorias";
@@ -26,7 +26,7 @@
                          <a class="dropdown-item" href="~/Subcategories/Index">Todas</a>
                          <a class="dropdown-item" href="~/Subcategories/Index?OrderbyCategory=Asc">a-z</a>
                          <a class="dropdown-item" href="~/Subcategories/Index?OrderbyCategory=Desc">z-a</a>
-                        @foreach (var item in ViewBag.ListCategories as List<Category>)
+                        @foreach (var item in ViewBag.ListCategories as List<Expenses.BusinessLayer.Dtos.Outputs.CategoryDtoOut>)
                         {
                             <a class="dropdown-item" href="~/Subcategories/Index?category=@item.Name">@item.Name</a>
                         }                                            
@@ -58,7 +58,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
+                    @Html.DisplayFor(modelItem => item.CategoryName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Amount)

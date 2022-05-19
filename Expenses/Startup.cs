@@ -4,7 +4,6 @@ using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
 using Expenses.BusinessLayer.Mappers;
-using Expenses.Models;
 using Expenses.RepositoryEF;
 using Expenses.RepositoryEF.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -29,8 +28,7 @@ namespace Expenses
         public void ConfigureServices(IServiceCollection services)
         {
             AddMappers(services);
-            services.AddControllersWithViews();
-            services.AddScoped<AppDbContext>();
+            services.AddControllersWithViews();            
             //Repository
             services.AddScoped<Expenses.RepositoryEF.Contexts.AppDbContext>();            
             services.AddScoped<ICategoryRepository, CategoryRepositoryEF>();
@@ -38,6 +36,7 @@ namespace Expenses
             services.AddScoped<IPeriodRepository, PeriodRepositoryEF>();            
             services.AddScoped<IEntryRepositoy, EntryRepositoryEF>();  
             services.AddScoped<IExpenseRepository, ExpenseRepositoryEF>();  
+            services.AddScoped<IExpenseTdcRepository, ExpenseTdcRepositoryEF>();  
             services.AddScoped<IDepositPlanRepository, DepositPlanRepositoryEF>();  
             services.AddScoped<ITermAccountRepository, TermAccountRepositoryEF>();
             services.AddScoped<IUnitOfWorkRepository, UnitOfWorkEF>();
@@ -47,6 +46,7 @@ namespace Expenses
             services.AddScoped<ICategoryBl, CategoryBl>();
             services.AddScoped<IEntryBl, EntryBl>();  
             services.AddScoped<IExpensesBl, ExpenseBl>();
+            services.AddScoped<IExpenseTdcBl, ExpenseTdcBl>();
             services.AddScoped<IDepositPlanBl, DepositPlanBl>();
             services.AddScoped<ITermAccountBl,TermAccountBl>();
             services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
@@ -60,6 +60,7 @@ namespace Expenses
                 mapperConfig.AddProfile<SubcategoryMapper>();
                 mapperConfig.AddProfile<EntryMapper>();
                 mapperConfig.AddProfile<ExpenseMapper>();
+                mapperConfig.AddProfile<ExpenseTdcMapper>();
                 mapperConfig.AddProfile<PeriodMapper>();
                 mapperConfig.AddProfile<DepositPlanMapper>();
                 mapperConfig.AddProfile<TermAccountMapper>();

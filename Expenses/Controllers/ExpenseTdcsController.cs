@@ -1,47 +1,31 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Expenses.BusinessLayer.Dtos.Inputs;
+using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Expenses.Models;
 
 namespace Expenses.Controllers
 {
     public class ExpenseTdcsController : Controller
     {
-        private readonly AppDbContext _context;
+        private IUnitOfWorkBl _unitOfWorkBl;
 
-        public ExpenseTdcsController(AppDbContext context)
+        public ExpenseTdcsController(IUnitOfWorkBl unitOfWorkBl)
         {
-            _context = context;
+            _unitOfWorkBl = unitOfWorkBl;
         }
 
         // GET: ExpenseTdcs
         public async Task<IActionResult> Index()
         {
-            List<ExpenseTdc> list;
+            IReadOnlyList<ExpenseTdcDtoOut> list;
 
-            list = await _context.ExpenseTdc.Where(x=> x.IsActive).OrderBy(x=> x.DateRegistration).ToListAsync();
+            list = await _unitOfWorkBl.ExpenseTdc.GetAsync();
 
             return View(list);
-        }
-
-        // GET: ExpenseTdcs/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var expenseTdc = await _context.ExpenseTdc
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (expenseTdc == null)
-            {
-                return NotFound();
-            }
-
-            return View(expenseTdc);
         }
 
         // GET: ExpenseTdcs/Create
@@ -55,12 +39,11 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Amount,DateRegistration,MonthsWithoutInterest,IsActive")] ExpenseTdc expenseTdc)
+        public async Task<IActionResult> Create([Bind("Id,Name,Amount,DateRegistration,MonthsWithoutInterest")] ExpenseTdcDtoIn expenseTdc)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(expenseTdc);
-                await _context.SaveChangesAsync();
+               await _unitOfWorkBl.ExpenseTdc.AddAsync(expenseTdc);
                 return RedirectToAction(nameof(Index));
             }
             return View(expenseTdc);
@@ -74,7 +57,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var expenseTdc = await _context.ExpenseTdc.FindAsync(id);
+            var expenseTdc = await _unitOfWorkBl.ExpenseTdc.GetAsync((int)id);
             if (expenseTdc == null)
             {
                 return NotFound();
@@ -87,31 +70,12 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Amount,DateRegistration,IsActive")] ExpenseTdc expenseTdc)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Amount,DateRegistration")] ExpenseTdcDtoIn expenseTdc)
         {
-            if (id != expenseTdc.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(expenseTdc);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ExpenseTdcExists(expenseTdc.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _unitOfWorkBl.ExpenseTdc.UpdateAsync(expenseTdc, id);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(expenseTdc);
@@ -125,8 +89,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var expenseTdc = await _context.ExpenseTdc
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var expenseTdc = await _unitOfWorkBl.ExpenseTdc.GetAsync((int)id);
             if (expenseTdc == null)
             {
                 return NotFound();
@@ -140,15 +103,9 @@ namespace Expenses.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var expenseTdc = await _context.ExpenseTdc.FindAsync(id);
-            expenseTdc.IsActive = false;
-            await _context.SaveChangesAsync();
+            var expenseTdc = await _unitOfWorkBl.ExpenseTdc.GetAsync((int)id);
+            await _unitOfWorkBl.ExpenseTdc.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ExpenseTdcExists(int id)
-        {
-            return _context.ExpenseTdc.Any(e => e.Id == id);
         }
     }
 }

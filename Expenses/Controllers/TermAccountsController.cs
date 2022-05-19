@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Expenses.Models;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Dtos.Inputs;

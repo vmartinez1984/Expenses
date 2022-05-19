@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Expenses.Models;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Dtos.Inputs;
+using Expenses.BusinessLayer.Dtos.Outputs;
+using System.Collections.Generic;
 
 namespace Expenses.Controllers
 {
     public class SubcategoriesController : Controller
     {
-        private readonly AppDbContext _context;
+        
         private readonly IUnitOfWorkBl _unitOfWorkBl;
 
-        public SubcategoriesController(AppDbContext context, IUnitOfWorkBl unitOfWorkBl)
-        {
-            _context = context;
+        public SubcategoriesController(IUnitOfWorkBl unitOfWorkBl)
+        {         
             _unitOfWorkBl = unitOfWorkBl;
         }
 
@@ -31,75 +28,77 @@ namespace Expenses.Controllers
             string category
         )
         {
-            IQueryable<Subcategory> appDbContext;
+            // IQueryable<Subcategory> appDbContext;
 
-            appDbContext = _context.Subcategory.Include(s => s.Category).Where(x => x.IsActive);
-            switch (orderByName)
-            {
-                case "Asc":
-                    appDbContext = appDbContext.OrderBy(x => x.Name);
-                    ViewBag.OrderByName = "Desc";
-                    break;
-                case "Desc":
-                    appDbContext = appDbContext.OrderByDescending(x => x.Name);
-                    ViewBag.OrderByName = string.Empty;
-                    break;
-                default:
-                    ViewBag.OrderByName = "Asc";
-                    break;
-            }
+            // appDbContext = _context.Subcategory.Include(s => s.Category).Where(x => x.IsActive);
+            // switch (orderByName)
+            // {
+            //     case "Asc":
+            //         appDbContext = appDbContext.OrderBy(x => x.Name);
+            //         ViewBag.OrderByName = "Desc";
+            //         break;
+            //     case "Desc":
+            //         appDbContext = appDbContext.OrderByDescending(x => x.Name);
+            //         ViewBag.OrderByName = string.Empty;
+            //         break;
+            //     default:
+            //         ViewBag.OrderByName = "Asc";
+            //         break;
+            // }
 
-            OrderByCategory(ref appDbContext, OrderbyCategory);
-            FilterCategory(ref appDbContext, category);
+            // OrderByCategory(ref appDbContext, OrderbyCategory);
+            // FilterCategory(ref appDbContext, category);
 
-            if (string.IsNullOrEmpty(OrderByAmount))
-            {
-                ViewBag.OrderByAmount = true;
-            }
-            else
-            {
-                ViewBag.OrderByAmount = string.Empty;
-                appDbContext = appDbContext.OrderBy(x => x.Amount);
-            }
-            ViewBag.ListCategories = _context.Category.Where(Category => Category.IsActive).OrderBy(x => x.Name).ToList();
+            // if (string.IsNullOrEmpty(OrderByAmount))
+            // {
+            //     ViewBag.OrderByAmount = true;
+            // }
+            // else
+            // {
+            //     ViewBag.OrderByAmount = string.Empty;
+            //     appDbContext = appDbContext.OrderBy(x => x.Amount);
+            // }
+            // ViewBag.ListCategories = _context.Category.Where(Category => Category.IsActive).OrderBy(x => x.Name).ToList();
+            IReadOnlyList<SubcategoryDtoOut> list;
 
-            return View(await appDbContext.ToListAsync());
+            list = await _unitOfWorkBl.Subcategory.GetAsync();
 
-
+            return View(list);
         }
 
-        private void FilterCategory(ref IQueryable<Subcategory> appDbContext, string category)
-        {
-            if (string.IsNullOrEmpty(category))
-            {
+        // private void FilterCategory(ref IQueryable<Subcategory> appDbContext, string category)
+        // {
+        //     if (string.IsNullOrEmpty(category))
+        //     {
 
-            }
-            else
-            {
-                appDbContext = appDbContext.Where(x => x.Category.Name == category);
-            }
-        }
+        //     }
+        //     else
+        //     {
+        //         appDbContext = appDbContext.Where(x => x.Category.Name == category);
+        //     }
+        // }
 
-        private void OrderByCategory(ref IQueryable<Subcategory> appDbContext, string OrderbyCategory)
-        {
-            switch (OrderbyCategory)
-            {
-                case "Asc":
-                    appDbContext = appDbContext.OrderBy(x => x.Category.Name);
-                    break;
-                case "Desc":
-                    appDbContext = appDbContext.OrderByDescending(x => x.Category.Name);
-                    break;
-                default:
-                    break;
-            }
-        }
+        // private void OrderByCategory(ref IQueryable<Subcategory> appDbContext, string OrderbyCategory)
+        // {
+        //     switch (OrderbyCategory)
+        //     {
+        //         case "Asc":
+        //             appDbContext = appDbContext.OrderBy(x => x.Category.Name);
+        //             break;
+        //         case "Desc":
+        //             appDbContext = appDbContext.OrderByDescending(x => x.Category.Name);
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // }
 
         public async Task<IActionResult> Get(int id)
         {
-            var appDbContext = _context.Subcategory.Where(x => x.IsActive && x.CategoryId == id);
+            var list = await _unitOfWorkBl.Subcategory.GetAsync();
+            list = list.Where(x=> x.CategoryId == id).ToList();
 
-            return Json(await appDbContext.ToListAsync());
+            return Json(list);
         }
 
         // GET: Subcategories/Details/5
@@ -151,7 +150,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var subcategory = await _context.Subcategory.FindAsync(id);
+            var subcategory = await _unitOfWorkBl.Subcategory.GetAsync((int)id);
             if (subcategory == null)
             {
                 return NotFound();
@@ -173,7 +172,7 @@ namespace Expenses.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", subcategory.CategoryId);
+            ViewData["CategoryId"] = new SelectList(await _unitOfWorkBl.Category.GetAsync(), "Id", "Name", subcategory.CategoryId);
             return View(subcategory);
         }
 
@@ -202,11 +201,6 @@ namespace Expenses.Controllers
             await _unitOfWorkBl.Subcategory.DeleteAsync(id);
              
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool SubcategoryExists(int id)
-        {
-            return _context.Subcategory.Any(e => e.Id == id);
         }
     }
 }
