@@ -1,0 +1,5 @@
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dao/obj/Debug/net6.0/Expenses.Repository.csproj.AssemblyReference.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dao/obj/Debug/net6.0/Expenses.Repository.GeneratedMSBuildEditorConfig.editorconfig
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dao/obj/Debug/net6.0/Expenses.Repository.AssemblyInfoInputs.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dao/obj/Debug/net6.0/Expenses.Repository.AssemblyInfo.cs
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dao/obj/Debug/net6.0/Expenses.Repository.csproj.CoreCompileInputs.cache

@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Expenses/bin/Debug/net5.0/Expenses.dll",
+            "program": "${workspaceFolder}/Expenses.Api/bin/Debug/net6.0/Expenses.Api.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Expenses",
             "stopAtEntry": false,

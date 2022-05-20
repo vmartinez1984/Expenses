@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Expenses.Repository.Repositories
 {
@@ -72,7 +73,7 @@ namespace Expenses.Repository.Repositories
                 query = "INSERT INTO Category  VALUES(@Name, 1)  SELECT SCOPE_IDENTITY()";
                 using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
                 {
-                    entity.Id = db.Query<int>(query,entity).FirstOrDefault();
+                    entity.Id = db.Query<int>(query, entity).FirstOrDefault();
                 }
 
                 return entity.Id;
@@ -122,5 +123,29 @@ namespace Expenses.Repository.Repositories
             }
         }
 
+        public Task<CategoryEntity> GetAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyList<CategoryEntity>> GetAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> AddAsync(CategoryEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(CategoryEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }//end class
 }

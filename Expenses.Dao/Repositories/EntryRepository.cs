@@ -63,7 +63,12 @@ namespace Expenses.Repository.Repositories
             });
         }
 
-        public async Task<List<EntryEntity>> GetAsync(int periodId)
+        public async Task<EntryEntity> GetAsync(int id){
+            throw new NotImplementedException();
+        }
+
+
+        public async Task<IReadOnlyList<EntryEntity>> GetAllAsync(int periodId)
         {
             try
             {

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DFAxJoNVMxKwdhMFa3N4Rq7EBLyQbemUh3wmavHi+x67mrB+FHhTQagCAEWegDBRPcwWx4sgI8mP1NnUiFbecQ==",
+  "dgSpecHash": "F3gKg1FGEFSShBhcABejZARSRDgVWOUiGxTos5SsBbs8DEhK+5XWtKY21mN0FHxIweXAXLIpcCBhEbeJ+6g6Dw==",
   "success": true,
   "projectFilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dao/Expenses.Repository.csproj",
   "expectedPackageFiles": [
@@ -19,9 +19,7 @@
     "/home/vmartinez/.nuget/packages/system.data.sqlclient/4.8.3/system.data.sqlclient.4.8.3.nupkg.sha512",
     "/home/vmartinez/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/vmartinez/.nuget/packages/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "/home/vmartinez/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512",
-    "/home/vmartinez/.nuget/packages/microsoft.netcore.app.ref/5.0.0/microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
-    "/home/vmartinez/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+    "/home/vmartinez/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

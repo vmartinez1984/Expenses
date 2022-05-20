@@ -64,7 +64,16 @@ namespace Expenses.Repository.Repositories
             });
         }
 
-        public async Task<List<ExpenseEntity>> GetAsync(int periodId)
+        public Task<ExpenseEntity> GetAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<ExpenseEntity>> GetAllOfDepositPlanAsync(int depositPlanId){
+            throw new NotImplementedException();
+        }
+
+        public async Task<IReadOnlyList<ExpenseEntity>> GetAllAsync(int periodId)
         {
             try
             {

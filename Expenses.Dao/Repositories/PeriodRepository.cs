@@ -211,5 +211,25 @@ namespace Expenses.Repository.Repositories
                 throw;
             }
         }
+
+        public Task<IReadOnlyList<PeriodEntity>> GetAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> AddAsync(PeriodEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(PeriodEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
