@@ -94,7 +94,7 @@ namespace Expenses.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,DateStart,DateStop")] PeriodDtoIn period)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,DateStart,DateStop,IsActive")] PeriodDtoIn period)
         {
             if (ModelState.IsValid)
             {

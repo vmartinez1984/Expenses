@@ -7480,11 +7480,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Expenses.csproj",
+      "projectUniqueName": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Expenses.csproj",
       "projectName": "Expenses",
-      "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Expenses.csproj",
+      "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Expenses.csproj",
       "packagesPath": "/home/vmartinez/.nuget/packages/",
-      "outputPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses/obj/",
+      "outputPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/vmartinez/.nuget/NuGet/NuGet.Config"
@@ -7499,11 +7499,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj": {
-              "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj"
+            "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj": {
+              "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj"
             },
-            "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj": {
-              "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj"
+            "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj": {
+              "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj"
             }
           }
         }
@@ -7559,7 +7559,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -8,185 +8,185 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Expenses
 build_property.RootNamespace = Expenses
-build_property.ProjectDir = /media/vmartinez/X-Files1/Documents/Expenses/Expenses/
+build_property.ProjectDir = /media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /media/vmartinez/X-Files1/Documents/Expenses/Expenses
+build_property.MSBuildProjectDirectory = /media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses
 build_property._RazorSourceGeneratorDebug = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Categories/Create.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Categories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcmllcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Categories/Delete.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Categories/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcmllcy9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Categories/Edit.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Categories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcmllcy9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Categories/Index.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Categories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcmllcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/Create.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/DepositPlans/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwb3NpdFBsYW5zL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/Delete.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/DepositPlans/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwb3NpdFBsYW5zL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/Details.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/DepositPlans/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwb3NpdFBsYW5zL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/Edit.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/DepositPlans/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwb3NpdFBsYW5zL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/Index.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/DepositPlans/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwb3NpdFBsYW5zL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/_AddExpense.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/DepositPlans/_AddExpense.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwb3NpdFBsYW5zL19BZGRFeHBlbnNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/DepositPlans/_ListExpenses.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/DepositPlans/_ListExpenses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwb3NpdFBsYW5zL19MaXN0RXhwZW5zZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Entries/Create.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Entries/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW50cmllcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Entries/Delete.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Entries/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW50cmllcy9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Entries/Edit.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Entries/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW50cmllcy9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Delete.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Expenses/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZXMvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Expenses/Edit.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Expenses/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZXMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Create.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/ExpenseTdcs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZVRkY3MvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Delete.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/ExpenseTdcs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZVRkY3MvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Edit.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/ExpenseTdcs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZVRkY3MvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/ExpenseTdcs/Index.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/ExpenseTdcs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwZW5zZVRkY3MvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Home/Index.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Home/Privacy.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Create.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Periods/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyaW9kcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Delete.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Periods/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyaW9kcy9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Details.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Periods/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyaW9kcy9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Edit.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Periods/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyaW9kcy9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/Index.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Periods/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyaW9kcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/_AddExpense.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Periods/_AddExpense.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyaW9kcy9fQWRkRXhwZW5zZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/_ListEntries.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Periods/_ListEntries.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyaW9kcy9fTGlzdEVudHJpZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Periods/_ListExpenses.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Periods/_ListExpenses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyaW9kcy9fTGlzdEV4cGVuc2VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Shared/Error.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Shared/_Layout.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Create.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Subcategories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViY2F0ZWdvcmllcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Delete.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Subcategories/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViY2F0ZWdvcmllcy9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Edit.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Subcategories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViY2F0ZWdvcmllcy9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/Subcategories/Index.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/Subcategories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3ViY2F0ZWdvcmllcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/TermAccounts/Create.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/TermAccounts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVybUFjY291bnRzL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/TermAccounts/Delete.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/TermAccounts/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVybUFjY291bnRzL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/TermAccounts/Details.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/TermAccounts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVybUFjY291bnRzL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/TermAccounts/Edit.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/TermAccounts/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVybUFjY291bnRzL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/TermAccounts/Index.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/TermAccounts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVybUFjY291bnRzL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/_ViewImports.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/media/vmartinez/X-Files1/Documents/Expenses/Expenses/Views/_ViewStart.cshtml]
+[/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

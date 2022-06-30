@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{F504B5C2-4E6D-4627-8E1B-149F7730538D}|Default">
+  <MonoDevelop.Ide.ItemProperties.V1.Expenses PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../usr/share/dotnet/sdk/6.0.300/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Sdk.ImportWorkloads.props">
+    <Files>
+      <File FileName="../../../../../usr/share/dotnet/sdk/6.0.300/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Sdk.ImportWorkloads.props" Line="14" Column="38" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Expenses" expanded="True">
+            <Node name="V1" expanded="True">
+              <Node name="Expenses" selected="True" />
+            </Node>
+            <Node name="v2" expanded="True" />
+            <Node name="v3" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

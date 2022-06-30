@@ -268,11 +268,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj",
+      "projectUniqueName": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj",
       "projectName": "Expenses.BusinessLayer",
-      "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj",
+      "projectPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/Expenses.BusinessLayer.csproj",
       "packagesPath": "/home/vmartinez/.nuget/packages/",
-      "outputPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/obj/",
+      "outputPath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/vmartinez/.nuget/NuGet/NuGet.Config"
@@ -327,7 +327,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
       }
     }
   }

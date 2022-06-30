@@ -38,6 +38,7 @@ namespace Expenses.RepositoryEF.Repositories
         public async Task<int> AddAsync(CategoryEntity entity)
         {
             await _context.Category.AddAsync(entity);
+            await _context.SaveChangesAsync();
 
             return entity.Id;
         }

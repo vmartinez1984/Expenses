@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TrNP34nR0wUtxaVlbPciGnCjK3pI8zOBK7ucQkSva9BnrBwNS4N6HXuV7vOlNr6d5+pJk4oMeu6XnLvMR06y9A==",
+  "dgSpecHash": "J7SyKUIcT3T6JB1Nbowe6le2oVa/7XsqXujZg5WfCYwC7U2kupFIA+Jok2dc4HwBhaOXIbXLqypZVlOpQHeyDQ==",
   "success": true,
-  "projectFilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj",
+  "projectFilePath": "/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.RepositoryEF/Expenses.RepositoryEF.csproj",
   "expectedPackageFiles": [
     "/home/vmartinez/.nuget/packages/automapper/11.0.1/automapper.11.0.1.nupkg.sha512",
     "/home/vmartinez/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",

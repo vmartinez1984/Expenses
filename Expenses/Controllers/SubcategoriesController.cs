@@ -58,7 +58,7 @@ namespace Expenses.Controllers
             //     ViewBag.OrderByAmount = string.Empty;
             //     appDbContext = appDbContext.OrderBy(x => x.Amount);
             // }
-            // ViewBag.ListCategories = _context.Category.Where(Category => Category.IsActive).OrderBy(x => x.Name).ToList();
+            ViewBag.ListCategories = await _unitOfWorkBl.Category.GetAsync();
             IReadOnlyList<SubcategoryDtoOut> list;
 
             list = await _unitOfWorkBl.Subcategory.GetAsync();

@@ -42,7 +42,10 @@ namespace Expenses.Controllers
             if (ModelState.IsValid)
             {
                 await _unitOfWorkBl.Category.AddAsync(category);
-            }
+
+                return RedirectToAction(nameof(Index));
+            }            
+                
             return View(category);
         }
 

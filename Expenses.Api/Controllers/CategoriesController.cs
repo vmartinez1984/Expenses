@@ -3,6 +3,7 @@ using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Expenses.Api.Controllers
 {
@@ -19,17 +20,17 @@ namespace Expenses.Api.Controllers
 
         // GET: api/<CategoriesController>
         [HttpGet]
-        public IEnumerable<CategoryDtoOut> Get()
+        public async Task<IActionResult> Get()
         {
-            List<CategoryDtoOut> list;
+            IReadOnlyList<CategoryDtoOut> list;
 
-            list = _unitOfWorkBl.Category.Get();
+            list = await _unitOfWorkBl.Category.GetAsync();
 
-            return list;
+            return Ok(list);
         }
 
         [HttpPost]
-        public IActionResult Post(CategoryDtoIn item)
+        public async Task<IActionResult> Post(CategoryDtoIn item)
         {
             try
             {
@@ -38,7 +39,7 @@ namespace Expenses.Api.Controllers
 
                     int id;
 
-                    id = _unitOfWorkBl.Category.Add(item);
+                    id = await _unitOfWorkBl.Category.AddAsync(item);
 
                     return Created($"/Categories/{id}", new { Id = id });
                 }
@@ -55,13 +56,13 @@ namespace Expenses.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, CategoryDtoIn item)
+        public async Task<IActionResult> Put(int id, CategoryDtoIn item)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _unitOfWorkBl.Category.Update(item, id);
+                    await _unitOfWorkBl.Category.UpdateAsync(item, id);
 
                     return Accepted();
                 }
@@ -78,13 +79,13 @@ namespace Expenses.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _unitOfWorkBl.Category.Delete(id);
+                    await _unitOfWorkBl.Category.DeleteAsync(id);
 
                     return NoContent();
                 }

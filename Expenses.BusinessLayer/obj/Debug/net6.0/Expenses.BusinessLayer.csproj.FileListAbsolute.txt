@@ -10,3 +10,15 @@
 /media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/obj/Debug/net6.0/refint/Expenses.BusinessLayer.dll
 /media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/obj/Debug/net6.0/Expenses.BusinessLayer.pdb
 /media/vmartinez/X-Files1/Documents/Expenses/Expenses.BusinessLayer/obj/Debug/net6.0/ref/Expenses.BusinessLayer.dll
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/bin/Debug/net6.0/Expenses.BusinessLayer.deps.json
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/bin/Debug/net6.0/Expenses.BusinessLayer.dll
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/bin/Debug/net6.0/Expenses.BusinessLayer.pdb
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/Expenses.BusinessLayer.csproj.AssemblyReference.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/Expenses.BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/Expenses.BusinessLayer.AssemblyInfoInputs.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/Expenses.BusinessLayer.AssemblyInfo.cs
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/Expenses.BusinessLayer.csproj.CoreCompileInputs.cache
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/Expenses.BusinessLayer.dll
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/refint/Expenses.BusinessLayer.dll
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/Expenses.BusinessLayer.pdb
+/media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses.BusinessLayer/obj/Debug/net6.0/ref/Expenses.BusinessLayer.dll

@@ -13,5 +13,7 @@ namespace Expenses.BusinessLayer.Dtos.Inputs
         public DateTime DateStart { get; set; }
 
         public DateTime? DateStop { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

@@ -23,32 +23,15 @@ namespace Expenses.Api.Controllers
 
         // GET: api/<PeriodsController>
         [HttpGet]
-        public IActionResult Get([FromQuery] LevelDto levelDto)
+        public async Task<IActionResult> Get()
         {
             try
             {
-                IActionResult actionResult;
+                IReadOnlyList<PeriodDtoOut> list;
 
-                actionResult = null;
-                switch(levelDto.Level){
-                    case EnumLevel.Simple:
-                        List<PeriodDtoOut> list;
+                list = await _unitOfWorkBl.Period.GetAsync();
 
-                        list = _unitOfWorkBl.Period.Get();
-
-                        actionResult = Ok(list);
-                    break;
-                  
-                    case EnumLevel.Full:
-                        List<PeriodFullDtoOut> listFull;
-
-                        listFull = _unitOfWorkBl.Period.GetFull();
-
-                        actionResult = Ok(listFull);
-                    break;
-                }
-
-                return actionResult;
+                return Ok(list);
             }
             catch (System.Exception)
             {
@@ -66,8 +49,8 @@ namespace Expenses.Api.Controllers
 
                 PeriodDtoOut item;
 
-                item = await _unitOfWorkBl.Period.GetActiveAsync();  
-                
+                item = await _unitOfWorkBl.Period.GetFullActiveAsync();
+
                 return Ok(item);
             }
             catch (Exception)
@@ -77,7 +60,7 @@ namespace Expenses.Api.Controllers
             }
         }
 
-                // GET api/<PeriodsController>/5
+        // GET api/<PeriodsController>/5
         [HttpGet("/api/Periods/{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -86,7 +69,7 @@ namespace Expenses.Api.Controllers
 
                 PeriodDtoOut item;
 
-                item = await _unitOfWorkBl.Period.GetFullAsync(id);  
+                item = await _unitOfWorkBl.Period.GetFullAsync(id);
 
                 return Ok(item);
             }
@@ -99,7 +82,7 @@ namespace Expenses.Api.Controllers
 
         // POST api/<PeriodsController>
         [HttpPost]
-        public IActionResult Post([FromBody] PeriodDtoIn item)
+        public async Task<IActionResult> Post([FromBody] PeriodDtoIn item)
         {
             try
             {
@@ -108,7 +91,7 @@ namespace Expenses.Api.Controllers
 
                     int id;
 
-                    id = _unitOfWorkBl.Period.Add(item);
+                    id = await _unitOfWorkBl.Period.AddAsync(item);
 
                     return Created($"/Periods/{id}", new { Id = id });
                 }
@@ -124,11 +107,11 @@ namespace Expenses.Api.Controllers
 
         // PUT api/<PeriodsController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] PeriodDtoIn item)
+        public async Task<IActionResult> Put(int id, [FromBody] PeriodDtoIn item)
         {
             try
             {
-                _unitOfWorkBl.Period.Update(item, id);
+                await _unitOfWorkBl.Period.UpdateAsync(item, id);
 
                 return NoContent();
             }
@@ -141,11 +124,11 @@ namespace Expenses.Api.Controllers
 
         // DELETE api/<PeriodsController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                _unitOfWorkBl.Period.Delete(id);
+               await _unitOfWorkBl.Period.DeleteAsync(id);
 
                 return NoContent();
             }
