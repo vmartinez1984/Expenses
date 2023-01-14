@@ -1,20 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Expenses.RepositoryEF.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Expenses.RepositoryEF.Repositories
 {
-    public class EntryRepositoryEF: IEntryRepositoy
+    public class EntryRepositoryEF : BaseRepository, IEntryRepositoy
     {
-        private readonly AppDbContext _appDbContext;
-
-        public EntryRepositoryEF(AppDbContext appDbContext)
+        public EntryRepositoryEF(AppDbContext appDbContext) : base(appDbContext)
         {
-            _appDbContext = appDbContext;
         }
 
         public async Task<int> AddAsync(EntryEntity entity)
@@ -29,7 +26,7 @@ namespace Expenses.RepositoryEF.Repositories
         {
             EntryEntity entity;
 
-            entity= await _appDbContext.Entry.Where(x=> x.Id == id).FirstOrDefaultAsync();
+            entity = await _appDbContext.Entry.Where(x => x.Id == id).FirstOrDefaultAsync();
             entity.IsActive = false;
 
             await _appDbContext.SaveChangesAsync();
@@ -39,16 +36,16 @@ namespace Expenses.RepositoryEF.Repositories
         {
             EntryEntity entity;
 
-            entity= await _appDbContext.Entry.Where(x=> x.Id == id).FirstOrDefaultAsync();
+            entity = await _appDbContext.Entry.Where(x => x.Id == id).FirstOrDefaultAsync();
 
             return entity;
         }
 
-        public async Task<IReadOnlyList<EntryEntity>> GetAllAsync(int periodId)
+        public async Task<List<EntryEntity>> GetAllAsync(int periodId)
         {
-            IReadOnlyList<EntryEntity> entities;
+            List<EntryEntity> entities;
 
-            entities = await _appDbContext.Entry.Where(x=> x.PeriodId == periodId && x.IsActive).ToListAsync();
+            entities = await _appDbContext.Entry.Where(x => x.PeriodId == periodId && x.IsActive).ToListAsync();
 
             return entities;
         }

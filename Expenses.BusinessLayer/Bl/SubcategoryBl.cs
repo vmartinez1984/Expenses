@@ -1,23 +1,19 @@
 ﻿using AutoMapper;
-using Expenses.BusinessLayer.Dtos.Inputs;
-using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+using Expenses.Core.Dtos;
+using Expenses.Core.Entities;
+using Expenses.Core.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Bl
 {
-    public class SubcategoryBl : ISubcategoryBl
+    public class SubcategoryBl : BaseBl, ISubcategoryBl
     {
-        private IUnitOfWorkRepository _unitOfWork;
-        private IMapper _mapper;
-
-        public SubcategoryBl(IMapper mapper, IUnitOfWorkRepository unitOfWork)
+        public SubcategoryBl(IMapper mapper, IRepository unitOfWork) : base(mapper, unitOfWork)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
         }
 
         public async Task<int> AddAsync(SubcategoryDtoIn item)
@@ -35,26 +31,42 @@ namespace Expenses.BusinessLayer.Bl
             await _unitOfWork.Subcategory.DeleteAsync(id);
         }
 
-        public async Task<SubcategoryDtoOut> GetAsync(int id)
+        public async Task<SubcategoryDto> GetAsync(int id)
         {
-            SubcategoryDtoOut item;
+            SubcategoryDto item;
             SubcategoryEntity entity;
 
-            entity= await _unitOfWork.Subcategory.GetAsync(id);
-            item =_mapper.Map<SubcategoryDtoOut>(entity);
+            entity = await _unitOfWork.Subcategory.GetAsync(id);
+            item = _mapper.Map<SubcategoryDto>(entity);
 
             return item;
         }
 
-        public async Task<IReadOnlyList<SubcategoryDtoOut>> GetAsync()
+        public async Task<List<SubcategoryDto>> GetAsync()
         {
-            IReadOnlyList<SubcategoryDtoOut> list;
+            List<SubcategoryDto> list;
             IReadOnlyList<SubcategoryEntity> entities;
 
             entities = await _unitOfWork.Subcategory.GetAsync();
-            list = _mapper.Map<List<SubcategoryDtoOut>>(entities);
+            list = _mapper.Map<List<SubcategoryDto>>(entities);
+            SetCategoryName(list);
 
             return list;
+        }
+
+        private async void SetCategoryName(List<SubcategoryDto> list)
+        {
+            List<CategoryEntity> categories;
+
+            categories = await _unitOfWork.Category.GetAsync();
+            list.ForEach(subcategory =>
+            {
+                CategoryEntity category;
+
+                category = categories.Where(x => x.Id == subcategory.CategoryId).FirstOrDefault();
+
+                subcategory.CategoryName = category.Name;
+            });
         }
 
         public async Task UpdateAsync(SubcategoryDtoIn item, int id)
@@ -64,8 +76,8 @@ namespace Expenses.BusinessLayer.Bl
             entity = await _unitOfWork.Subcategory.GetAsync(id);
             entity.Amount = item.Amount;
             entity.CategoryId = item.CategoryId;
-            entity.IsBudget = item.IsBudget;
             entity.Name = item.Name;
+
             await _unitOfWork.Subcategory.UpdateAsync(entity);
         }
 

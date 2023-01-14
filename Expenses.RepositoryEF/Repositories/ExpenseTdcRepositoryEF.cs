@@ -1,20 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Expenses.RepositoryEF.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Expenses.RepositoryEF.Repositories
 {
-    public class ExpenseTdcRepositoryEF: IExpenseTdcRepository
+    public class ExpenseTdcRepositoryEF : BaseRepository, IExpenseTdcRepository
     {
-         private readonly AppDbContext _appDbContext;
-
-        public ExpenseTdcRepositoryEF(AppDbContext appDbContext)
+        public ExpenseTdcRepositoryEF(AppDbContext appDbContext) : base(appDbContext)
         {
-            _appDbContext = appDbContext;
         }
 
         public async Task<int> AddAsync(ExpenseTdcEntity entity)
@@ -29,7 +26,7 @@ namespace Expenses.RepositoryEF.Repositories
         {
             ExpenseTdcEntity entity;
 
-            entity= await _appDbContext.ExpenseTdc.Where(x=> x.Id == id).FirstOrDefaultAsync();
+            entity = await _appDbContext.ExpenseTdc.Where(x => x.Id == id).FirstOrDefaultAsync();
             entity.IsActive = false;
 
             await _appDbContext.SaveChangesAsync();
@@ -39,16 +36,16 @@ namespace Expenses.RepositoryEF.Repositories
         {
             ExpenseTdcEntity entity;
 
-            entity= await _appDbContext.ExpenseTdc.Where(x=> x.Id == id).FirstOrDefaultAsync();
+            entity = await _appDbContext.ExpenseTdc.Where(x => x.Id == id).FirstOrDefaultAsync();
 
             return entity;
         }
 
-        public async Task<IReadOnlyList<ExpenseTdcEntity>> GetAsync()
+        public async Task<List<ExpenseTdcEntity>> GetAsync()
         {
-            IReadOnlyList<ExpenseTdcEntity> entities;
+            List<ExpenseTdcEntity> entities;
 
-            entities = await _appDbContext.ExpenseTdc.Where(x=> x.IsActive).ToListAsync();
+            entities = await _appDbContext.ExpenseTdc.Where(x => x.IsActive).ToListAsync();
 
             return entities;
         }

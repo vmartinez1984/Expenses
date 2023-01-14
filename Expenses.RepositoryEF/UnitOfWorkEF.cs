@@ -1,10 +1,9 @@
-﻿using Expenses.BusinessLayer.Interfaces;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
-
+﻿using Expenses.Core.InterfaceRepository;
+using Expenses.Core.Interfaces;
 
 namespace Expenses.RepositoryEF
 {
-    public class UnitOfWorkEF : IUnitOfWorkRepository
+    public class UnitOfWorkEF : IRepository
     {
         public UnitOfWorkEF(
            ICategoryRepository categoryRepository

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Interfaces;
-using Expenses.BusinessLayer.Dtos.Inputs;
+using Expenses.Core.Dtos;
 
 namespace Expenses.Controllers
 {
@@ -21,7 +21,7 @@ namespace Expenses.Controllers
         // GET: Periods
         public async Task<IActionResult> Index()
         {
-            IReadOnlyList<PeriodDtoOut> list;
+            IReadOnlyList<PeriodDto> list;
 
             list = await _unitOfWorkBl.Period.GetAsync();
 
@@ -31,7 +31,7 @@ namespace Expenses.Controllers
         // GET: Periods/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            PeriodFullDtoOut period;
+            PeriodFullDto period;
 
             if (id == null)
             {

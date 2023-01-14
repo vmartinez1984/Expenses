@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -10,118 +10,9 @@ using System.Threading.Tasks;
 
 namespace Expenses.Repository.Repositories
 {
-    public class PeriodRepository : IPeriodRepository
+    public class PeriodRepository : BaseRepository, IPeriodRepository
     {
-        private readonly IConfiguration _configuration;
-        const string DefaultConnection = "DefaultConnection";
-
-        public PeriodRepository(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
-        public List<PeriodEntity> Get()
-        {
-            try
-            {
-                List<PeriodEntity> entities;
-                string query;
-
-                query = $"SELECT * FROM Period";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    entities = db.Query<PeriodEntity>(query).ToList();
-                }
-
-                return entities;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public PeriodEntity Get(int id)
-        {
-            try
-            {
-                PeriodEntity entity;
-                string query;
-
-                query = $"SELECT * FROM Period WHERE IsActive = 1 AND  Id = {id}";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    entity = db.Query<PeriodEntity>(query).FirstOrDefault();
-                }
-
-                return entity;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public int Add(PeriodEntity entity)
-        {
-            try
-            {
-                string query;
-
-                query = "INSERT INTO Period (Name,DateStart, DateStop,IsActive) VALUES(@Name, @DateStart, @DateStop, 1)  SELECT SCOPE_IDENTITY()";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    entity.Id = db.Query<int>(query, entity).FirstOrDefault();
-                }
-
-                return entity.Id;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public void Update(PeriodEntity entity)
-        {
-            try
-            {
-                string query;
-
-                query = "UPDATE Period SET Name = @Name, DateStart = @DateStart, DateStop = @DateStop WHERE Id  = @Id";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    db.Query(query, entity);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public void Delete(int id)
-        {
-            try
-            {
-                string query;
-
-                query = $"UPDATE Period SET IsActive = 0 WHERE Id  = {id}";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    db.Query(query);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
+        public PeriodRepository(IConfiguration configuration) : base(configuration) { }
 
         public async Task<PeriodEntity> GetActiveAsync()
         {
@@ -134,7 +25,7 @@ namespace Expenses.Repository.Repositories
 
                 entity = await Task.Run(() =>
                 {
-                    using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                    using (var db = new SqlConnection(_stringConnection))
                     {
                         entity = db.Query<PeriodEntity>(query).FirstOrDefault();
                     }
@@ -158,17 +49,10 @@ namespace Expenses.Repository.Repositories
                 PeriodEntity entity;
                 string query;
 
-                query = $"SELECT TOP(1) * FROM Period WHERE Id = 1 ORDER BY Id DESC";
+                //query = $"SELECT TOP(1) * FROM Period WHERE Id = {periodId}";
+                query = $"SELECT * FROM Period WHERE Id = {periodId} Limit 1";
 
-                entity = await Task.Run(() =>
-                {
-                    using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                    {
-                        entity = db.Query<PeriodEntity>(query).FirstOrDefault();
-                    }
-
-                    return entity;
-                });
+                entity = await db.QueryFirstOrDefaultAsync<PeriodEntity>(query);
 
                 return entity;
             }
@@ -198,7 +82,7 @@ namespace Expenses.Repository.Repositories
                  0,
                  (SELECT SUM(Amount) FROM Expense Where PeriodId = {id} AND IsActive = 1)
                  )";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
+                using (var db = new SqlConnection(_stringConnection))
                 {
                     balance = db.Query<int>(query).FirstOrDefault();
                 }
@@ -212,24 +96,43 @@ namespace Expenses.Repository.Repositories
             }
         }
 
-        public Task<IReadOnlyList<PeriodEntity>> GetAsync()
+        public async Task<List<PeriodEntity>> GetAsync()
         {
-            throw new NotImplementedException();
+            List<PeriodEntity> entities;
+            string query;
+
+            query = $"SELECT * FROM Period WHERE IsActive = 1 ORDER BY Id DESC";
+            entities = (await db.QueryAsync<PeriodEntity>(query)).ToList();
+
+            return entities;
         }
 
-        public Task<int> AddAsync(PeriodEntity entity)
+        public async Task<int> AddAsync(PeriodEntity entity)
         {
-            throw new NotImplementedException();
+            string query;
+
+            query = $"INSERT INTO Period (Name,DateStart, DateStop,IsActive) VALUES(@Name, @DateStart, @DateStop, 1); {LastId}";
+            entity.Id = await db.QueryFirstOrDefaultAsync<int>(query, entity);
+
+            return entity.Id;
         }
 
-        public Task UpdateAsync(PeriodEntity entity)
+        public async Task UpdateAsync(PeriodEntity entity)
         {
-            throw new NotImplementedException();
+            string query;
+
+            query = "UPDATE Period SET Name = @Name, DateStart = @DateStart, DateStop = @DateStop WHERE Id  = @Id";
+
+            await db.QueryAsync(query, entity);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            string query;
+
+            query = $"UPDATE Period SET IsActive = 0 WHERE Id  = {id}";
+
+            await db.QueryAsync(query);
         }
     }
 }

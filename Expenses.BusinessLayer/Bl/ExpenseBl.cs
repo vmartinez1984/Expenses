@@ -1,21 +1,20 @@
 ﻿using AutoMapper;
-using Expenses.BusinessLayer.Dtos.Inputs;
-using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+using Expenses.Core.Dtos;
+using Expenses.Core.Entities;
+using Expenses.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Bl
 {
-    public class ExpenseBl : IExpensesBl
+    public class ExpenseBl : IExpenseBl
     {
         private IMapper _mapper;
-        private IUnitOfWorkRepository _unitOfWork;
+        private IRepository _unitOfWork;
 
-        public ExpenseBl(IMapper mapper, IUnitOfWorkRepository unitOfWork)
+        public ExpenseBl(IMapper mapper, IRepository unitOfWork)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
@@ -43,24 +42,24 @@ namespace Expenses.BusinessLayer.Bl
 
         private async Task SetBudget(ExpenseEntity expense)
         {
-            SubcategoryEntity subcategory;
+            //SubcategoryEntity subcategory;
 
-            subcategory = await _unitOfWork.Subcategory.GetAsync(expense.SubcategoryId);
-            if (subcategory != null && subcategory.IsBudget)
-                expense.BudgetAmount = subcategory.Amount;
-            else
-                expense.BudgetAmount = null;            
+            //subcategory = await _unitOfWork.Subcategory.GetAsync(expense.SubcategoryId);
+            //if (subcategory != null && subcategory.IsBudget)
+            //    expense.BudgetAmount = subcategory.Amount;
+            //else
+            //    expense.BudgetAmount = null;            
         }
 
         private async Task SetDeposit(ExpenseEntity expense)
         {
-            DepositPlanEntity depostiPlanId;
+            //DepositPlanEntity depostiPlanId;
 
-            depostiPlanId = await _unitOfWork.DepositPlan.GetAsync(expense.SubcategoryId);
-            if (depostiPlanId is null)
-                expense.DepositPlanId = null;
-            else
-                expense.DepositPlanId = depostiPlanId.Id;
+            //depostiPlanId = await _unitOfWork.DepositPlan.GetAsync(expense.SubcategoryId);
+            //if (depostiPlanId is null)
+            //    expense.DepositPlanId = null;
+            //else
+            //    expense.DepositPlanId = depostiPlanId.Id;
         }
 
         public async Task DeleteAsync(int id)
@@ -76,35 +75,26 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
-        public async Task<List<ExpenseDtoOut>> GetAsync(int periodId)
+        public async Task<List<ExpenseDto>> GetAsync(int periodId)
         {
-            try
-            {
-                List<ExpenseDtoOut> list;
-                IReadOnlyList<ExpenseEntity> entities;
+            List<ExpenseDto> list;
+            IReadOnlyList<ExpenseEntity> entities;
 
-                entities = await _unitOfWork.Expense.GetAllAsync(periodId);
-                list = _mapper.Map<List<ExpenseDtoOut>>(entities);
+            entities = await _unitOfWork.Expense.GetAllAsync(periodId);
+            list = _mapper.Map<List<ExpenseDto>>(entities);
 
-                return list;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return list;
         }
 
-        public async Task<ExpenseDtoOut> GetByIdAsync(int expenseId)
+        public async Task<ExpenseDto> GetByIdAsync(int expenseId)
         {
             try
             {
-                ExpenseDtoOut item;
+                ExpenseDto item;
                 ExpenseEntity entity;
 
-                entity = await _unitOfWork.Expense.GetAsync(expenseId);
-                await SetBudget(entity);
-                item = _mapper.Map<ExpenseDtoOut>(entity);
+                entity = await _unitOfWork.Expense.GetAsync(expenseId);                
+                item = _mapper.Map<ExpenseDto>(entity);
                 item.CategoryId = await GetCategoryId(item.SubcategoryId);
 
                 return item;

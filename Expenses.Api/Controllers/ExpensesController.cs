@@ -1,6 +1,6 @@
-﻿using Expenses.BusinessLayer.Dtos.Inputs;
-using Expenses.BusinessLayer.Dtos.Outputs;
+﻿using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Interfaces;
+using Expenses.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,13 +20,14 @@ namespace Expenses.Api.Controllers
         {
             _unitOfWorkBl = unitOfWorkBl;
         }
+
         // GET: api/<ExpensesController>
         [HttpGet]
         public async Task<IActionResult> Get(int periodId)
         {
             try
             {
-                List<ExpenseDtoOut> list;
+                List<ExpenseDto> list;
 
                 list = await _unitOfWorkBl.Expense.GetAsync(periodId);
 
@@ -38,13 +39,6 @@ namespace Expenses.Api.Controllers
                 throw;
             }
         }
-
-        //// GET api/<ExpensesController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
 
         // POST api/<ExpensesController>
         [HttpPost]

@@ -1,0 +1,193 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Expenses
+build_property.RootNamespace = Expenses
+build_property.ProjectDir = C:\Users\vmartinez\Source\Repos\vmartinez1984\Expenses\Expenses\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\vmartinez\Source\Repos\vmartinez1984\Expenses\Expenses
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Categories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/DepositPlans/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFBsYW5zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/DepositPlans/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFBsYW5zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/DepositPlans/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFBsYW5zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/DepositPlans/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFBsYW5zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/DepositPlans/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFBsYW5zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/DepositPlans/_AddExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFBsYW5zXF9BZGRFeHBlbnNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/DepositPlans/_ListExpenses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFBsYW5zXF9MaXN0RXhwZW5zZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Entries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50cmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Entries/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50cmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Entries/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW50cmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Expenses/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Expenses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/ExpenseTdcs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVRkY3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/ExpenseTdcs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVRkY3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/ExpenseTdcs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVRkY3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/ExpenseTdcs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVRkY3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Periods/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Periods/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Periods/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Periods/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Periods/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Periods/_AddExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kc1xfQWRkRXhwZW5zZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Periods/_ListEntries.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kc1xfTGlzdEVudHJpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Periods/_ListExpenses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyaW9kc1xfTGlzdEV4cGVuc2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Subcategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViY2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Subcategories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViY2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Subcategories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViY2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/Subcategories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViY2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/TermAccounts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybUFjY291bnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/TermAccounts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybUFjY291bnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/TermAccounts/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybUFjY291bnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/TermAccounts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybUFjY291bnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/TermAccounts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVybUFjY291bnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/Source/Repos/vmartinez1984/Expenses/Expenses/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

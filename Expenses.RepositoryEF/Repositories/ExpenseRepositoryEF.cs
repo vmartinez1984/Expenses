@@ -1,20 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Expenses.RepositoryEF.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Expenses.RepositoryEF.Repositories
 {
-    public class ExpenseRepositoryEF: IExpenseRepository
+    public class ExpenseRepositoryEF:BaseRepository, IExpenseRepository
     {
-         private readonly AppDbContext _appDbContext;
-
-        public ExpenseRepositoryEF(AppDbContext appDbContext)
+        public ExpenseRepositoryEF(AppDbContext appDbContext) : base(appDbContext)
         {
-            _appDbContext = appDbContext;
         }
 
         public async Task<int> AddAsync(ExpenseEntity entity)
@@ -44,22 +41,22 @@ namespace Expenses.RepositoryEF.Repositories
             return entity;
         }
 
-        public async Task<IReadOnlyList<ExpenseEntity>> GetAllAsync(int periodId)
+        public async Task<List<ExpenseEntity>> GetAllAsync(int periodId)
         {
-            IReadOnlyList<ExpenseEntity> entities;
+            List<ExpenseEntity> entities;
 
             entities = await _appDbContext.Expense.Where(x=> x.PeriodId == periodId && x.IsActive).ToListAsync();
 
             return entities;
         }
 
-        public async Task<IList<ExpenseEntity>> GetAllOfDepositPlanAsync(int depositPlanId)
+        public  Task<List<ExpenseEntity>> GetAllOfDepositPlanAsync(int depositPlanId)
         {
-            List<ExpenseEntity> entities;
+            //List<ExpenseEntity> entities;
 
-            entities = await _appDbContext.Expense.Where(x=> x.DepositPlanId == depositPlanId && x.IsActive).ToListAsync();
-
-            return entities;
+            //entities = await _appDbContext.Expense.Where(x=> x.DepositPlanId == depositPlanId && x.IsActive).ToListAsync();
+            throw new System.Exception();
+           // return entities;
         }
 
         public async Task UpdateAsync(ExpenseEntity entity)

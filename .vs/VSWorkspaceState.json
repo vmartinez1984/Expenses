@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Expenses.RepositoryEF",
-    "\\Expenses.RepositoryEF\\Contexts",
-    "\\Expenses.RepositoryEF\\Repositories",
-    "\\Expenses\\Controllers"
+    "\\Expenses.BusinessLayer\\Dtos\\Inputs",
+    "\\Expenses.Dao",
+    "\\Expenses.RepositoryEF"
   ],
-  "SelectedNode": "\\Expenses.sln",
   "PreviewInSolutionExplorer": false
 }

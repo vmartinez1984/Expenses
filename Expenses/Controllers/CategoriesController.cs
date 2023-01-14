@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Dtos.Inputs;
+using Expenses.Core.Dtos;
 
 namespace Expenses.Controllers
 {
@@ -19,7 +20,7 @@ namespace Expenses.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
-            IReadOnlyList<CategoryDtoOut> list;
+            IReadOnlyList<CategoryDto> list;
 
             list = await _unitOfWorkBl.Category.GetAsync();
 

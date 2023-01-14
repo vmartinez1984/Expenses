@@ -1,5 +1,5 @@
-﻿using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+﻿using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Expenses.RepositoryEF.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -8,55 +8,52 @@ using System.Threading.Tasks;
 
 namespace Expenses.RepositoryEF.Repositories
 {
-    public class TermAccountRepositoryEF : ITermAccountRepository
+    public class TermAccountRepositoryEF : BaseRepository, ITermAccountRepository
     {
-        private readonly AppDbContext _context;
-
-        public TermAccountRepositoryEF(AppDbContext context)
+        public TermAccountRepositoryEF(AppDbContext appDbContext) : base(appDbContext)
         {
-            _context = context;
         }
 
         public async Task<TermAccountEntity> GetAsync(int id)
         {
             TermAccountEntity item;
 
-            item = await _context.TermAccount.Where(x => x.Id == id && x.IsActive).FirstOrDefaultAsync();
+            item = await _appDbContext.TermAccount.Where(x => x.Id == id && x.IsActive).FirstOrDefaultAsync();
 
             return item;
         }
 
-        public async Task<IReadOnlyList<TermAccountEntity>> GetAsync()
+        public async Task<List<TermAccountEntity>> GetAsync()
         {
-            IReadOnlyList<TermAccountEntity> list;
+            List<TermAccountEntity> list;
 
-            list = await _context.TermAccount.Where(x => x.IsActive).ToListAsync();            
+            list = await _appDbContext.TermAccount.Where(x => x.IsActive).ToListAsync();            
             return list;
         }
 
         public async Task<int> AddAsync(TermAccountEntity entity)
         {
-            await _context.TermAccount.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            await _appDbContext.TermAccount.AddAsync(entity);
+            await _appDbContext.SaveChangesAsync();
 
             return entity.Id;
         }
 
         public async Task UpdateAsync(TermAccountEntity entity)
         {
-             _context.TermAccount.Update(entity);
+             _appDbContext.TermAccount.Update(entity);
 
-            await _context.SaveChangesAsync();
+            await _appDbContext.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
         {
             TermAccountEntity item;
 
-            item = await _context.TermAccount.Where(x => x.Id == id).FirstOrDefaultAsync();
+            item = await _appDbContext.TermAccount.Where(x => x.Id == id).FirstOrDefaultAsync();
             item.IsActive = false;
 
-            await _context.SaveChangesAsync();
+            await _appDbContext.SaveChangesAsync();
         }
     }
 }

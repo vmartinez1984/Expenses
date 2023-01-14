@@ -1,0 +1,77 @@
+using Expenses.Core.Entities;
+
+namespace Expenses.Core.InterfaceRepository
+{
+    public interface IBaseARepository<T> where T : class
+    {
+        Task<T> GetAsync(int id);
+        Task<List<T>> GetAllAsync(int id);
+        Task<int> AddAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(int id);
+    }
+
+    public interface IBaseRepository<T> where T : class
+    {
+        Task<T> GetAsync(int id);
+        Task<List<T>> GetAsync();
+        Task<int> AddAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(int id);
+    }
+
+    //Como es una linea sera m�s f�cil manipular desde aqui
+
+    public interface ISubcategoryRepository : IBaseRepository<SubcategoryEntity> { }
+
+    public interface IPeriodRepository : IBaseRepository<PeriodEntity>
+    {
+        Task<PeriodEntity> GetActiveAsync();
+        int GetBalance(int id);
+    }
+
+    public interface IEntryRepositoy : IBaseARepository<EntryEntity> { }
+
+    public interface IExpenseRepository : IBaseARepository<ExpenseEntity>
+    {
+        Task<List<ExpenseEntity>> GetAllOfDepositPlanAsync(int depositPlanId);
+    }
+
+    public interface IDepositPlanRepository : IBaseRepository<DepositPlanEntity>
+    {
+        Task<int> GetTotalAsync(int id);
+    }
+
+    public interface ITermAccountRepository : IBaseRepository<TermAccountEntity> { }
+
+    public interface IExpenseTdcRepository : IBaseRepository<ExpenseTdcEntity> { }
+
+    public interface ICategoryRepository : IBaseRepository<CategoryEntity> { }
+}
+
+/*
+  public Task<CategoryEntity> GetAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyList<CategoryEntity>> GetAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> AddAsync(CategoryEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(CategoryEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+*/

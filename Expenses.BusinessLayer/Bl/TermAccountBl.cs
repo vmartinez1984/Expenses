@@ -1,24 +1,19 @@
 ﻿using AutoMapper;
 using Expenses.BusinessLayer.Dtos.Inputs;
 using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+using Expenses.Core.Entities;
+using Expenses.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Bl
 {
-    public class TermAccountBl : ITermAccountBl
+    public class TermAccountBl : BaseBl, ITermAccountBl
     {
-        private IUnitOfWorkRepository _unitOfWork;
-        private IMapper _mapper;
-
-        public TermAccountBl(IMapper mapper, IUnitOfWorkRepository unitOfWork)
+        public TermAccountBl(IMapper mapper, IRepository unitOfWork) : base(mapper, unitOfWork)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
         }
 
         public async Task<TermAccountDtoOut> GetAsync(int id)
@@ -47,7 +42,7 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
-        public async Task<IReadOnlyList<TermAccountDtoOut>> GetAsync()
+        public async Task<List<TermAccountDtoOut>> GetAsync()
         {
             IReadOnlyList<TermAccountEntity> entities;
             List<TermAccountDtoOut> list;

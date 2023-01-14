@@ -1,4 +1,4 @@
-﻿using Expenses.BusinessLayer.Entities;
+﻿using Expenses.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

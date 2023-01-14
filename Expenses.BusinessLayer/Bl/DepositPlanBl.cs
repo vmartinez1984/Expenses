@@ -1,22 +1,22 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Expenses.BusinessLayer.Dtos.Inputs;
 using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces;
+using Expenses.Core.Entities;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+using Expenses.Core.Interfaces;
+using Expenses.Core.Dtos;
 
 namespace Expenses.BusinessLayer.Bl
 {
     public class DepositPlanBl : IDepositPlanBl
     {
-        private IUnitOfWorkRepository _unitOfWork;
+        private IRepository _unitOfWork;
         private IMapper _mapper;
 
-        public DepositPlanBl(IMapper mapper, IUnitOfWorkRepository unitOfWork)
+        public DepositPlanBl(IMapper mapper, IRepository unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -70,21 +70,21 @@ namespace Expenses.BusinessLayer.Bl
             return item;
         }
 
-        private async Task<List<ExpenseDtoOut>> GetListEntriesAsync(int id)
+        private async Task<List<ExpenseDto>> GetListEntriesAsync(int id)
         {
-            List<ExpenseDtoOut> list;
+            List<ExpenseDto> list;
             List<ExpenseEntity> entities;
 
             entities = (await _unitOfWork.Expense.GetAllOfDepositPlanAsync(id)).ToList();
-            list = _mapper.Map<List<ExpenseDtoOut>>(entities);
+            list = _mapper.Map<List<ExpenseDto>>(entities);
 
             return list;
         }
 
-        public async Task<IReadOnlyList<DepositPlanDtoOut>> GetAsync()
+        public async Task<List<DepositPlanDtoOut>> GetAsync()
         {
-            IReadOnlyList<DepositPlanEntity> entities;
-            IReadOnlyList<DepositPlanDtoOut> list;
+            List<DepositPlanEntity> entities;
+            List<DepositPlanDtoOut> list;
 
             entities = await _unitOfWork.DepositPlan.GetAsync();
             list = _mapper.Map<List<DepositPlanDtoOut>>(entities);

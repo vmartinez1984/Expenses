@@ -10,7 +10,7 @@ namespace Expenses.BusinessLayer.Bl
             , ISubcategoryBl subcategoryBl
             , IPeriodBl period
             , IEntryBl entry
-            , IExpensesBl expensesBl
+            , IExpenseBl expensesBl
             , IDepositPlanBl depositPlanBl
             , ITermAccountBl termAccountBl
             , IExpenseTdcBl expenseTdcBl
@@ -31,7 +31,7 @@ namespace Expenses.BusinessLayer.Bl
         public IPeriodBl Period { get; }
 
         public IEntryBl Entry { get; }
-        public IExpensesBl Expense { get; }
+        public IExpenseBl Expense { get; }
 
         public ISubcategoryBl Subcategory { get; }
 

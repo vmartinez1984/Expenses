@@ -2,13 +2,11 @@ using AutoMapper;
 using Expenses.BusinessLayer.Bl;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
 using Expenses.BusinessLayer.Mappers;
+using Expenses.Core.InterfaceRepository;
+using Expenses.Core.Interfaces;
 using Expenses.Repository;
 using Expenses.Repository.Repositories;
-using Expenses.RepositoryEF;
-using Expenses.RepositoryEF.Contexts;
-using Expenses.RepositoryEF.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -32,15 +30,8 @@ namespace Expenses.Api
         {
             AddMappers(services);
             services.AddControllers();
-            services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
-            services.AddScoped<ICategoryBl, CategoryBl>();
-            services.AddScoped<IPeriodBl, PeriodBl>();
-            services.AddScoped<IExpensesBl, ExpenseBl>();
-            services.AddScoped<IEntryBl, EntryBl>();
-            services.AddScoped<ISubcategoryBl, SubcategoryBl>();
-            services.AddScoped<IUnitOfWorkRepository, UnitOfWork>();
-            //services.AddTransient<IUnitOfWorkRepository, UnitOfWorkEF>();           
             AddRepository(services);
+            AddBusinessLayer(services);
             //AddRepositoryEF(services);
             services.AddSwaggerGen(c =>
             {
@@ -49,21 +40,27 @@ namespace Expenses.Api
             services.AddCors(options => options.AddPolicy("AllowWebApp", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
         }
 
-        private void AddRepository(IServiceCollection services){                        
+        private void AddBusinessLayer(IServiceCollection services)
+        {
+            services.AddScoped<ICategoryBl, CategoryBl>();
+            services.AddScoped<IDepositPlanBl, DepositPlanBl>();
+            services.AddScoped<IEntryBl, EntryBl>();
+            services.AddScoped<IExpenseBl, ExpenseBl>();
+            services.AddScoped<IExpenseTdcBl, ExpenseTdcBl>();
+            services.AddScoped<IPeriodBl, PeriodBl>();
+            services.AddScoped<ISubcategoryBl, SubcategoryBl>();            
+            services.AddScoped<ITermAccountBl, TermAccountBl>();            
+            services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
+        }
+
+        private void AddRepository(IServiceCollection services)
+        {
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IPeriodRepository, PeriodRepository>();
             services.AddScoped<IEntryRepositoy, EntryRepository>();
             services.AddScoped<IExpenseRepository, ExpenseRepository>();
-            services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();          
-        }
-
-        private void AddRepositoryEF(IServiceCollection services){
-            services.AddScoped<AppDbContext>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();            
-            services.AddScoped<IPeriodRepository, PeriodRepository>();
-            services.AddScoped<IEntryRepositoy, EntryRepository>();
-            services.AddScoped<IExpenseRepository, ExpenseRepository>();
-            services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();            
+            services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();
+            services.AddScoped<IRepository, UnitOfWork>();
         }
 
         private void AddMappers(IServiceCollection services)

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Expenses.BusinessLayer.Dtos.Outputs.PeriodDtoOut>
+﻿@model IEnumerable<Expenses.Core.Dtos.PeriodDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -19,10 +19,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateStop)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
+            </th>            
             <th></th>
         </tr>
     </thead>
@@ -38,10 +35,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateStop)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
+                </td>                
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Detalles</a>                  

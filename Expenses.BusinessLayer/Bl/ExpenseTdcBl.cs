@@ -1,24 +1,19 @@
 ﻿using AutoMapper;
 using Expenses.BusinessLayer.Dtos.Inputs;
 using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+using Expenses.Core.Entities;
+using Expenses.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Expenses.BusinessLayer.Bl
 {
-    public class ExpenseTdcBl : IExpenseTdcBl
+    public class ExpenseTdcBl : BaseBl, IExpenseTdcBl
     {
-        private IMapper _mapper;
-        private IUnitOfWorkRepository _unitOfWork;
-
-        public ExpenseTdcBl(IMapper mapper, IUnitOfWorkRepository unitOfWork)
+        public ExpenseTdcBl(IMapper mapper, IRepository unitOfWork) : base(mapper, unitOfWork)
         {
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<int> AddAsync(ExpenseTdcDtoIn item)
@@ -109,5 +104,9 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
+        Task<List<ExpenseTdcDtoOut>> IBaseBl<ExpenseTdcDtoIn, ExpenseTdcDtoOut>.GetAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

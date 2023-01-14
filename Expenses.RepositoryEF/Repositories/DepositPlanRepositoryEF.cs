@@ -1,20 +1,17 @@
 using System.Threading.Tasks;
-using Expenses.BusinessLayer.Entities;
 using Expenses.RepositoryEF.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 
 namespace Expenses.RepositoryEF.Repositories
 {
-    public class DepositPlanRepositoryEF : IDepositPlanRepository
+    public class DepositPlanRepositoryEF : BaseRepository,  IDepositPlanRepository
     {
-        private readonly AppDbContext _appDbContext;
-
-        public DepositPlanRepositoryEF(AppDbContext appDbContext)
+        public DepositPlanRepositoryEF(AppDbContext appDbContext) : base(appDbContext)
         {
-            _appDbContext = appDbContext;
         }
 
         public async Task<int> AddAsync(DepositPlanEntity entity)
@@ -44,9 +41,9 @@ namespace Expenses.RepositoryEF.Repositories
             return entity;
         }
 
-        public async Task<IReadOnlyList<DepositPlanEntity>> GetAsync()
+        public async Task<List<DepositPlanEntity>> GetAsync()
         {
-            IReadOnlyList<DepositPlanEntity> entities;
+            List<DepositPlanEntity> entities;
 
             entities = await _appDbContext.DepositPlan.Where(x=> x.IsActive).ToListAsync();
 
@@ -55,9 +52,10 @@ namespace Expenses.RepositoryEF.Repositories
 
         public async Task<int> GetTotalAsync(int id)
         {
-            int total;            
+            int total;
 
-            total = await _appDbContext.Expense.Where(x=> x.DepositPlanId == id).SumAsync(x=> x.Amount);
+            //total = await _appDbContext.Expense.Where(x=> x.DepositPlanId == id).SumAsync(x=> x.Amount);
+            total = 0;
 
             return total;
         }

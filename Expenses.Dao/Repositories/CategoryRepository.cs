@@ -1,151 +1,67 @@
 ﻿using Dapper;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Expenses.Repository.Repositories
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : BaseRepository, ICategoryRepository
     {
-        private readonly IConfiguration _configuration;
-        const string DefaultConnection = "DefaultConnection";
+        public CategoryRepository(IConfiguration configuration) : base(configuration) { }
 
-        public CategoryRepository(IConfiguration configuration)
+
+        public async Task<CategoryEntity> GetAsync(int id)
         {
-            _configuration = configuration;
+            CategoryEntity entity;
+            string query;
+
+            query = $"SELECT * FROM Category WHERE IsActive = 1 AND  Id = {id}";
+            entity = await db.QueryFirstOrDefaultAsync<CategoryEntity>(query);
+
+            return entity;
         }
 
-        public List<CategoryEntity> Get()
+        public async Task<List<CategoryEntity>> GetAsync()
         {
-            try
-            {
-                List<CategoryEntity> entities;
-                string query;
+            IEnumerable<CategoryEntity> entities;
+            string query;
 
-                query = "SELECT * FROM Category WHERE IsActive = 1";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    entities = db.Query<CategoryEntity>(query).ToList();
-                }
+            query = "SELECT * FROM Category WHERE IsActive = 1";
+            entities = await db.QueryAsync<CategoryEntity>(query);
 
-                return entities;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return entities.ToList();
         }
 
-        public CategoryEntity Get(int id)
+        public async Task<int> AddAsync(CategoryEntity entity)
         {
-            try
-            {
-                CategoryEntity entity;
-                string query;
+            string query;
 
-                query = $"SELECT * FROM Category WHERE IsActive = 1 AND  Id = {id}";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    entity = db.Query<CategoryEntity>(query).FirstOrDefault();
-                }
+            query = $"INSERT INTO Category (Name, IsActive)  VALUES(@Name, 1); {LastId}";
 
-                return entity;
-            }
-            catch (Exception)
-            {
+            entity.Id = await db.QueryFirstOrDefaultAsync<int>(query, entity);
 
-                throw;
-            }
+            return entity.Id;
         }
 
-        public int Add(CategoryEntity entity)
+        public async Task UpdateAsync(CategoryEntity entity)
         {
-            try
-            {
-                string query;
+            string query;
 
-                query = "INSERT INTO Category  VALUES(@Name, 1)  SELECT SCOPE_IDENTITY()";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    entity.Id = db.Query<int>(query, entity).FirstOrDefault();
-                }
+            query = "UPDATE Category SET Name = @Name WHERE Id  = @Id";
 
-                return entity.Id;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            await db.QueryAsync(query, entity);
         }
 
-        public void Update(CategoryEntity entity)
+        public async Task DeleteAsync(int id)
         {
-            try
-            {
-                string query;
+            string query;
 
-                query = "UPDATE Category SET Name = @Name WHERE Id  = @Id";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    db.Query(query, entity);
-                }
-            }
-            catch (Exception)
-            {
+            query = $"UPDATE Category SET IsActive = 0 WHERE Id  = {id}";
 
-                throw;
-            }
-        }
-
-        public void Delete(int id)
-        {
-            try
-            {
-                string query;
-
-                query = $"UPDATE Category SET IsActive = 0 WHERE Id  = {id}";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    db.Query(query);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public Task<CategoryEntity> GetAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IReadOnlyList<CategoryEntity>> GetAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> AddAsync(CategoryEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(CategoryEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAsync(int id)
-        {
-            throw new NotImplementedException();
+            await db.QueryAsync(query);
         }
     }//end class
 }

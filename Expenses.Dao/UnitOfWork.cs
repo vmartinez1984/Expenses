@@ -1,9 +1,9 @@
-﻿using Expenses.BusinessLayer.Interfaces;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+﻿using Expenses.Core.InterfaceRepository;
+using Expenses.Core.Interfaces;
 
 namespace Expenses.Repository
 {
-    public class UnitOfWork : IUnitOfWorkRepository
+    public class UnitOfWork : IRepository
     {
 
         public UnitOfWork(
@@ -11,10 +11,10 @@ namespace Expenses.Repository
             IPeriodRepository periodRepository,
             IEntryRepositoy entryRepositoy,
             IExpenseRepository expenseRepository,
-            ISubcategoryRepository subcategory,
-            IDepositPlanRepository depositPlanRepository,
-            IExpenseTdcRepository expenseTdcRepository,
-            ITermAccountRepository termAccountRepository
+            ISubcategoryRepository subcategory
+            //IDepositPlanRepository depositPlanRepository,
+            //IExpenseTdcRepository expenseTdcRepository,
+            //ITermAccountRepository termAccountRepository
         )
         {
             Category = categoryRepository;
@@ -22,9 +22,9 @@ namespace Expenses.Repository
             Entry = entryRepositoy;
             Expense = expenseRepository;
             Subcategory = subcategory;
-            DepositPlan = depositPlanRepository;
-            ExpenseTdc = expenseTdcRepository;
-            TermAccount = termAccountRepository;
+            //DepositPlan = depositPlanRepository;
+            //ExpenseTdc = expenseTdcRepository;
+            //TermAccount = termAccountRepository;
         }
 
         public ICategoryRepository Category { get; }

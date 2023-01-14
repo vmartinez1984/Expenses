@@ -1,11 +1,8 @@
-﻿using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Dtos.Inputs;
-using Expenses.BusinessLayer.Interfaces;
+﻿using Expenses.BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Expenses.Core.Dtos;
 
 namespace Expenses.Api.Controllers
 {
@@ -24,19 +21,12 @@ namespace Expenses.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            IReadOnlyList<SubcategoryDtoOut> list;
+            List<SubcategoryDto> list;
 
             list = await _unitOfWorkBl.Subcategory.GetAsync();
 
             return Ok(list);
         }
-
-        // GET api/<SubcategoriesController>/5
-        // [HttpGet("{id}")]
-        // public string Get(int id)
-        // {
-        //     return "value";
-        // }
 
         // POST api/<SubcategoriesController>
         [HttpPost]
@@ -60,8 +50,11 @@ namespace Expenses.Api.Controllers
 
         // DELETE api/<SubcategoriesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            await _unitOfWorkBl.Subcategory.DeleteAsync(id);
+
+            return NoContent();
         }
     }
 }

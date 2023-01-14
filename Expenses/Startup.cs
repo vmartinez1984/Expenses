@@ -2,8 +2,9 @@ using AutoMapper;
 using Expenses.BusinessLayer.Bl;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
 using Expenses.BusinessLayer.Mappers;
+using Expenses.Core.InterfaceRepository;
+using Expenses.Core.Interfaces;
 using Expenses.RepositoryEF;
 using Expenses.RepositoryEF.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -39,13 +40,13 @@ namespace Expenses
             services.AddScoped<IExpenseTdcRepository, ExpenseTdcRepositoryEF>();  
             services.AddScoped<IDepositPlanRepository, DepositPlanRepositoryEF>();  
             services.AddScoped<ITermAccountRepository, TermAccountRepositoryEF>();
-            services.AddScoped<IUnitOfWorkRepository, UnitOfWorkEF>();
+            services.AddScoped<IRepository, UnitOfWorkEF>();
             //BusinessLAyer
             services.AddScoped<IPeriodBl, PeriodBl>();
             services.AddScoped<ISubcategoryBl, SubcategoryBl>();
             services.AddScoped<ICategoryBl, CategoryBl>();
             services.AddScoped<IEntryBl, EntryBl>();  
-            services.AddScoped<IExpensesBl, ExpenseBl>();
+            services.AddScoped<IExpenseBl, ExpenseBl>();
             services.AddScoped<IExpenseTdcBl, ExpenseTdcBl>();
             services.AddScoped<IDepositPlanBl, DepositPlanBl>();
             services.AddScoped<ITermAccountBl,TermAccountBl>();

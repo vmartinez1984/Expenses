@@ -1,20 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Expenses.RepositoryEF.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Expenses.RepositoryEF.Repositories
 {
-    public class PeriodRepositoryEF : IPeriodRepository
+    public class PeriodRepositoryEF : BaseRepository, IPeriodRepository
     {
-        private readonly AppDbContext _appDbContext;
-
-        public PeriodRepositoryEF(AppDbContext appDbContext)
+        public PeriodRepositoryEF(AppDbContext appDbContext) : base(appDbContext)
         {
-            _appDbContext = appDbContext;
         }
 
         public async Task<PeriodEntity> GetAsync(int id)
@@ -26,9 +23,9 @@ namespace Expenses.RepositoryEF.Repositories
             return entity;
         }
 
-        public async Task<IReadOnlyList<PeriodEntity>> GetAsync()
+        public async Task<List<PeriodEntity>> GetAsync()
         {
-            IReadOnlyList<PeriodEntity> list;
+            List<PeriodEntity> list;
 
             list = await _appDbContext.Period.ToListAsync();
 

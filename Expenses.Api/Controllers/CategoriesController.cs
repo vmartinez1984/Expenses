@@ -1,6 +1,5 @@
-﻿using Expenses.BusinessLayer.Dtos.Inputs;
-using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Interfaces;
+﻿using Expenses.BusinessLayer.Interfaces;
+using Expenses.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,7 +21,7 @@ namespace Expenses.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            IReadOnlyList<CategoryDtoOut> list;
+            List<CategoryDto> list;
 
             list = await _unitOfWorkBl.Category.GetAsync();
 

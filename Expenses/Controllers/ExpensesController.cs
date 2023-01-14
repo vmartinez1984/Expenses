@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Expenses.BusinessLayer.Dtos.Inputs;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Dtos.Outputs;
+using Expenses.Core.Dtos;
 
 namespace Expenses.Controllers
 {
@@ -92,7 +93,7 @@ namespace Expenses.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            ExpenseDtoOut expense;
+            ExpenseDto expense;
 
             expense = await _unitOfWorkBl.Expense.GetByIdAsync(id);
             await _unitOfWorkBl.Expense.DeleteAsync(id);

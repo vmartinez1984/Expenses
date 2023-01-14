@@ -1,4 +1,4 @@
-﻿@model Expenses.BusinessLayer.Dtos.Outputs.SubcategoryDtoOut
+﻿@model Expenses.Core.Dtos.SubcategoryDto
 
 @{
     ViewData["Title"] = "Subcategorias";
@@ -23,11 +23,7 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="IsBudget" class="control-label"></label>
-                <input asp-for="IsBudget" class="form-check" />
-                <span asp-validation-for="IsBudget" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="Amount" class="control-label"></label>
                 <input asp-for="Amount" class="form-control" />

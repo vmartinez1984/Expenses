@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Expenses.RepositoryEF": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:49640;http://localhost:49641"
+    }
+  }
+}

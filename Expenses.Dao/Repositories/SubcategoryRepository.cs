@@ -1,159 +1,68 @@
 using Dapper;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Expenses.Repository.Repositories
 {
-    public class SubcategoryRepository : ISubcategoryRepository
+    public class SubcategoryRepository : BaseRepository, ISubcategoryRepository
     {
-        private readonly IConfiguration _configuration;
-        const string DefaultConnection = "DefaultConnection";
-
-        public SubcategoryRepository(IConfiguration configuration)
+        public SubcategoryRepository(IConfiguration configuration) : base(configuration)
         {
-            _configuration = configuration;
         }
 
         public async Task<int> AddAsync(SubcategoryEntity entity)
         {
-            try
-            {
-                 string query;
+            string query;
 
-                query = @"INSERT INTO Subcategory VALUES(@Name, @CategoryId, @Amount, @IsBudget, 1) 
-                SELECT SCOPE_IDENTITY();
-                ";
-                await Task.Run(()=>{
-                    using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                    {
-                        entity.Id = db.Query<int>(query,entity).FirstOrDefault();
-                    }
-                });
+            query = $@"INSERT INTO Subcategory (Name, CategoryId, Amount, IsActive) VALUES(@Name, @CategoryId, @Amount, 1); {LastId}";
+            entity.Id = await db.QueryFirstOrDefaultAsync<int>(query, entity);
 
-                return entity.Id;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return entity.Id;
         }
 
         public async Task DeleteAsync(int id)
         {
-            try
-            {                
-                string query;
+            string query;
 
-                query = $@"UPDATE Subcategory SET IsActive = 0 WHERE Id = {id}";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    await db.QueryAsync(query);                    
-                }              
-            }
-            catch (Exception)
-            {
+            query = $@"UPDATE Subcategory SET IsActive = 0 WHERE Id = {id}";
 
-                throw;
-            }
+            await db.QueryAsync(query);
         }
 
         public async Task<SubcategoryEntity> GetAsync(int id)
         {
-           try
-            {
-                SubcategoryEntity entity;
-                string query;
+            SubcategoryEntity entity;
+            string query;
 
-                query = $@"SELECT Subcategory.*
-                        FROM Subcategory                         
-                        WHERE Subcategory.Id = {id}";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    var response = await db.QueryAsync<SubcategoryEntity>(query);
-                    entity = response.FirstOrDefault();
-                }
-                SetCategory(entity);
+            query = $@"SELECT Subcategory.* FROM Subcategory WHERE Subcategory.Id = {id}";
+            entity = await db.QueryFirstOrDefaultAsync<SubcategoryEntity>(query);
 
-                return entity;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return entity;
         }
 
-        public async Task<IReadOnlyList<SubcategoryEntity>> GetAsync()
+        public async Task<List<SubcategoryEntity>> GetAsync()
         {
-            try
-            {
-                List<SubcategoryEntity> entities;
-                string query;
+            IEnumerable<SubcategoryEntity> entities;
+            string query;
 
-                query = @"SELECT Subcategory.*
-                        FROM Subcategory                         
-                        WHERE Subcategory.IsActive = 1";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    var response = await db.QueryAsync<SubcategoryEntity>(query);
-                    entities = response.ToList();
-                }
-                SetCategory(entities);
+            query = @"SELECT Subcategory.* FROM Subcategory WHERE Subcategory.IsActive = 1 ORDER BY Name DESC";
+            entities = await db.QueryAsync<SubcategoryEntity>(query);
 
-                return entities;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return entities.ToList();
         }
 
-        private void SetCategory(List<SubcategoryEntity> entities)
-        {
-            List<CategoryEntity> categories;
-            CategoryRepository categoryRepository;
-
-            categoryRepository = new CategoryRepository(_configuration);
-            categories =  categoryRepository.Get();
-            entities.ForEach(item => {
-                item.Category =categories.Where(x=> x.Id == item.CategoryId).FirstOrDefault();
-            });
-        }
-
-        private void SetCategory(SubcategoryEntity entity)
-        {            
-            CategoryRepository categoryRepository;
-
-            categoryRepository = new CategoryRepository(_configuration);
-            
-            entity.Category = categoryRepository.Get(entity.CategoryId);
-        }
-        
         public async Task UpdateAsync(SubcategoryEntity entity)
         {
-            try
-            {                
-                string query;
+            string query;
 
-                query = $@"UPDATE Subcategory SET Nombre = @Nombre, CategoryId = @CategoryId, IsBudget = @IsBudget  WHERE Id = @Id";
-                using (var db = new SqlConnection(_configuration.GetConnectionString(DefaultConnection)))
-                {
-                    await db.QueryAsync(query);                    
-                }              
-            }
-            catch (Exception)
-            {
+            query = $@"UPDATE Subcategory SET Name = @Name, CategoryId = @CategoryId  WHERE Id = @Id";
 
-                throw;
-            }
-        }       
+            await db.QueryAsync(query, entity);
+        }
 
     }//end class
 }

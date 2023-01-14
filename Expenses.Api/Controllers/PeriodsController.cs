@@ -1,6 +1,6 @@
-﻿using Expenses.BusinessLayer.Dtos.Inputs;
-using Expenses.BusinessLayer.Dtos.Outputs;
+﻿using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Interfaces;
+using Expenses.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -27,31 +27,11 @@ namespace Expenses.Api.Controllers
         {
             try
             {
-                IReadOnlyList<PeriodDtoOut> list;
+                IReadOnlyList<PeriodDto> list;
 
                 list = await _unitOfWorkBl.Period.GetAsync();
 
                 return Ok(list);
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-
-        // GET api/<PeriodsController>/5
-        [HttpGet("/api/Periods/Active")]
-        public async Task<IActionResult> GetACtive()
-        {
-            try
-            {
-
-                PeriodDtoOut item;
-
-                item = await _unitOfWorkBl.Period.GetFullActiveAsync();
-
-                return Ok(item);
             }
             catch (Exception)
             {
@@ -67,9 +47,9 @@ namespace Expenses.Api.Controllers
             try
             {
 
-                PeriodDtoOut item;
+                PeriodDto item;
 
-                item = await _unitOfWorkBl.Period.GetFullAsync(id);
+                item = await _unitOfWorkBl.Period.GetAsync(id);
 
                 return Ok(item);
             }

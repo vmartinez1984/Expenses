@@ -6,6 +6,7 @@ using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Dtos.Inputs;
 using Expenses.BusinessLayer.Dtos.Outputs;
 using System.Collections.Generic;
+using Expenses.Core.Dtos;
 
 namespace Expenses.Controllers
 {
@@ -59,7 +60,7 @@ namespace Expenses.Controllers
             //     appDbContext = appDbContext.OrderBy(x => x.Amount);
             // }
             ViewBag.ListCategories = await _unitOfWorkBl.Category.GetAsync();
-            IReadOnlyList<SubcategoryDtoOut> list;
+            IReadOnlyList<SubcategoryDto> list;
 
             list = await _unitOfWorkBl.Subcategory.GetAsync();
 

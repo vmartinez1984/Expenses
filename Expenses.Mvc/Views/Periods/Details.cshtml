@@ -1,0 +1,98 @@
+﻿@using Expenses.Core.Dtos
+@model PeriodFullDto
+
+@{
+    ViewData["Title"] = "Details";
+    decimal balance = 0;    
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-info">@Model.Name</h2>
+        <hr/>
+        @await Html.PartialAsync("../Expenses/_create", ViewBag.ExpenseDto as ExpenseDto)
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.ListExpenses[0].CategoryName)
+                    </th>                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.ListExpenses[0].SubcategoryName)
+                    </th>                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.ListExpenses[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ListExpenses[0].Budget)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ListExpenses[0].Amount)
+                    </th>
+                    <th>
+                        Balance
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ListExpenses[0].DateRegister)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListExpenses)
+                {
+                    <tr>                  
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SubcategoryName)
+                        </td>                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Budget)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @{
+                                if (item.CategoryId == 2){
+                                    balance +=  item.Amount;
+                                }
+                                else
+                                {
+                                    balance -=  item.Amount;                                    
+                                }
+                            }
+                            @balance.ToString("C")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateRegister)
+                        </td>
+                        <td>
+                            @if(item.Id == 0)
+                            {
+                                 <a asp-controller="Periods" asp-action="Details" asp-route-id="@item.PeriodId" asp-route-subcategoryId="@item.SubcategoryId">Agregar</a>
+                            }
+                            else
+                            {                    
+                                <a asp-controller="Periods" asp-action="Details" asp-route-id="@item.PeriodId" asp-route-expenseId="@item.Id">Editar</a>                                
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

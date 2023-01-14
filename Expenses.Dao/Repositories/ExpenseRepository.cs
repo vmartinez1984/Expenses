@@ -1,23 +1,19 @@
 ﻿using Dapper;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Expenses.Repository.Repositories
 {
-    public class ExpenseRepository : IExpenseRepository
+    public class ExpenseRepository : BaseRepository, IExpenseRepository
     {
-        private readonly IConfiguration _configuration;
-
-        public ExpenseRepository(IConfiguration configuration)
+        public ExpenseRepository(IConfiguration configuration) : base(configuration)
         {
-            _configuration = configuration;
         }
 
         public async Task<int> AddAsync(ExpenseEntity entity)
@@ -26,20 +22,11 @@ namespace Expenses.Repository.Repositories
             {
                 string query;
 
-                query = @"INSERT INTO Expense 
+                query = $@"INSERT INTO Expense 
                       (Guid, Name, Amount, BudgetAmount, SubcategoryId, DepositPlanId, PeriodId, DateRegister, IsActive) 
                 VALUES(@Guid,@Name,@Amount,@BudgetAmount,@SubcategoryId,@DepositPlanId,@PeriodId, @DateRegister,@IsActive)
-                        SELECT SCOPE_IDENTITY()
-                ";
-                entity.Id = await Task.Run(() =>
-                {
-                    using (var db = new SqlConnection(_configuration.GetConnectionString(StringConnection.DefaultConnection)))
-                    {
-                        entity.Id = db.Query<int>(query, entity).FirstOrDefault();
-                    }
-
-                    return entity.Id;
-                });
+                {LastId}";
+                entity.Id = await db.QueryFirstOrDefaultAsync<int>(query, entity);
 
                 return entity.Id;
             }
@@ -55,75 +42,54 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = $"UPDATE Expense SET IsActive = 0 WHERE Id  = {id}";
-            await Task.Run(() =>
-            {
-                using (var db = new SqlConnection(_configuration.GetConnectionString(StringConnection.DefaultConnection)))
-                {
-                    db.Query(query);
-                }
-            });
+
+            await db.QueryAsync(query);
         }
 
-        public Task<ExpenseEntity> GetAsync(int id)
+        public async Task<ExpenseEntity> GetAsync(int id)
         {
-            throw new NotImplementedException();
-        }
+            ExpenseEntity entity;
+            string query;
 
-        public Task<IList<ExpenseEntity>> GetAllOfDepositPlanAsync(int depositPlanId){
-            throw new NotImplementedException();
-        }
-
-        public async Task<IReadOnlyList<ExpenseEntity>> GetAllAsync(int periodId)
-        {
-            try
-            {
-                List<ExpenseEntity> entities;
-                string query;
-
-                query = $@"SELECT Expense.*, Category.Name CategoryName 
+            query = $@"SELECT Expense.*, Category.Name CategoryName 
                 FROM Expense 
                 INNER JOIN Subcategory on Expense.SubcategoryId = Subcategory.Id 
                 INNER JOIN Category on Subcategory.CategoryId = Category.Id                 
-                WHERE Expense.IsActive = 1 AND PeriodId = {periodId}";
-                entities = await Task.Run(() =>
-                {
-                    using (var db = new SqlConnection(_configuration.GetConnectionString(StringConnection.DefaultConnection)))
-                    {
-                        entities = db.Query<ExpenseEntity>(query).ToList();
-                    }
+                WHERE Expense.IsActive = 1 AND Expense.Id = {id} LIMIT 1";
+            //entities = (await db.QueryAsync<ExpenseEntity>(query)).ToList();
+            entity = await db.QueryFirstOrDefaultAsync<ExpenseEntity>(query);
 
-                    return entities;
-                });
+            return entity;
+        }
 
-                return entities;
-            }
-            catch (Exception)
-            {
+        public Task<List<ExpenseEntity>> GetAllOfDepositPlanAsync(int depositPlanId)
+        {
+            throw new NotImplementedException();
+        }
 
-                throw;
-            }
+        public async Task<List<ExpenseEntity>> GetAllAsync(int periodId)
+        {
+            IEnumerable<ExpenseEntity> entities;
+            string query;
+
+            query = $@"SELECT Expense.*, Category.Name CategoryName 
+                FROM Expense 
+                INNER JOIN Subcategory on Expense.SubcategoryId = Subcategory.Id 
+                INNER JOIN Category on Subcategory.CategoryId = Category.Id                 
+                WHERE Expense.IsActive = 1 AND PeriodId = {periodId} ORDER BY Expense.Id";
+            //entities = (await db.QueryAsync<ExpenseEntity>(query)).ToList();
+            entities = await db.QueryAsync<ExpenseEntity>(query);
+
+            return entities.ToList();
         }
 
         public async Task UpdateAsync(ExpenseEntity entity)
         {
-            try
-            {
-                string query;
+            string query;
 
-                query = "UPDATE Expense SET Name = @Name, Amount = @Amount, PeriodId = @PeriodId, CategoryId = @CategoryId WHERE Id  = @Id";
-                await Task.Run(() =>
-                {
-                    using (var db = new SqlConnection(_configuration.GetConnectionString(StringConnection.DefaultConnection)))
-                    {
-                        db.Query(query, entity);
-                    }
-                });
-            }
-            catch (Exception)
-            {
+            query = "UPDATE Expense SET Name = @Name, Amount = @Amount, PeriodId = @PeriodId, CategoryId = @CategoryId WHERE Id  = @Id";
 
-                throw;
-            }
+            await db.QueryAsync(query, entity);
         }
     }
 }

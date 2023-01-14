@@ -12,8 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Expenses.BusinessLayer\Expenses.BusinessLayer.csproj" />
+  <ItemGroup>    
+    <ProjectReference Include="..\Expenses.Core\Expenses.Core.csproj" />
   </ItemGroup>
 
 </Project>

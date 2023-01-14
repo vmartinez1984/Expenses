@@ -1,6 +1,8 @@
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Expenses.RepositoryEF.Contexts;
+using Expenses.RepositoryEF.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +10,17 @@ using System.Threading.Tasks;
 
 namespace Expenses.RepositoryEF
 {
-    public class SubcategoryRepositoryEF : ISubcategoryRepository
+    public class SubcategoryRepositoryEF : BaseRepository, ISubcategoryRepository
     {
-
-        private readonly AppDbContext _context;
-
-        public SubcategoryRepositoryEF(AppDbContext context)
+        public SubcategoryRepositoryEF(AppDbContext appDbContext) : base(appDbContext)
         {
-            _context = context;
         }
 
         public async Task<int> AddAsync(SubcategoryEntity entity)
         {
             entity.IsActive = true;            
-            await _context.Subcategory.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            await _appDbContext.Subcategory.AddAsync(entity);
+            await _appDbContext.SaveChangesAsync();
 
             return entity.Id;
         }
@@ -31,29 +29,29 @@ namespace Expenses.RepositoryEF
         {
             SubcategoryEntity item;
 
-            item = await _context.Subcategory.FindAsync(id);
+            item = await _appDbContext.Subcategory.FindAsync(id);
             item.IsActive = false;
 
-            await _context.SaveChangesAsync();
+            await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<SubcategoryEntity> GetAsync(int id)
         {
             SubcategoryEntity entity;
 
-            entity = await _context.Subcategory
+            entity = await _appDbContext.Subcategory
                 .Where(x => x.Id == id && x.IsActive)
                 .FirstOrDefaultAsync();
 
             return entity;
         }
 
-        public async Task<IReadOnlyList<SubcategoryEntity>> GetAsync()
+        public async Task<List<SubcategoryEntity>> GetAsync()
         {
 
-            IReadOnlyList<SubcategoryEntity> list;
+            List<SubcategoryEntity> list;
 
-            list = await _context.Subcategory
+            list = await _appDbContext.Subcategory
                 .Include(x=> x.Category)
                 .Where(x => x.IsActive)
                 .ToListAsync();
@@ -63,9 +61,9 @@ namespace Expenses.RepositoryEF
 
         public async Task UpdateAsync(SubcategoryEntity entity)
         {
-            _context.Subcategory.Update(entity);
+            _appDbContext.Subcategory.Update(entity);
 
-            await _context.SaveChangesAsync();
+            await _appDbContext.SaveChangesAsync();
         }
     }
 }

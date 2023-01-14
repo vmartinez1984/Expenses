@@ -1,12 +1,11 @@
 ﻿using Dapper;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces.InterfaceRepository;
+using Expenses.Core.Entities;
+using Expenses.Core.InterfaceRepository;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Expenses.Repository.Repositories
@@ -63,12 +62,12 @@ namespace Expenses.Repository.Repositories
             });
         }
 
-        public async Task<EntryEntity> GetAsync(int id){
+        public  Task<EntryEntity> GetAsync(int id){
             throw new NotImplementedException();
         }
 
 
-        public async Task<IReadOnlyList<EntryEntity>> GetAllAsync(int periodId)
+        public async Task<List<EntryEntity>> GetAllAsync(int periodId)
         {
             try
             {

@@ -868,3 +868,12 @@
 /media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/obj/Debug/net6.0/Expenses.pdb
 /media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/obj/Debug/net6.0/Expenses.genruntimeconfig.cache
 /media/vmartinez/X-Files1/Documents/Expenses/Expenses.Dotnet/Expenses/obj/Debug/net6.0/ref/Expenses.dll
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.csproj.AssemblyReference.cache
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.AssemblyInfoInputs.cache
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.AssemblyInfo.cs
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.csproj.CoreCompileInputs.cache
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.RazorAssemblyInfo.cache
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses\obj\Debug\net6.0\Expenses.RazorAssemblyInfo.cs

@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using Expenses.BusinessLayer.Dtos.Inputs;
-using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Entities;
-using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+using Expenses.Core.Dtos;
+using Expenses.Core.Entities;
+using Expenses.Core.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,33 +10,33 @@ namespace Expenses.BusinessLayer.Bl
 {
     public class CategoryBl : ICategoryBl
     {
-        private IUnitOfWorkRepository _unitOfWork;
+        private IRepository _unitOfWork;
         private IMapper _mapper;
 
-        public CategoryBl(IMapper mapper, IUnitOfWorkRepository unitOfWork)
+        public CategoryBl(IMapper mapper, IRepository unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<CategoryDtoOut> GetAsync(int id)
+        public async Task<CategoryDto> GetAsync(int id)
         {
             CategoryEntity entity;
-            CategoryDtoOut item;
+            CategoryDto item;
 
             entity = await _unitOfWork.Category.GetAsync(id);
-            item = _mapper.Map<CategoryDtoOut>(entity);
+            item = _mapper.Map<CategoryDto>(entity);
 
             return item;
         }
 
-        public async Task<IReadOnlyList<CategoryDtoOut>> GetAsync()
+        public async Task<List<CategoryDto>> GetAsync()
         {
-            IReadOnlyList<CategoryEntity> entities;
-            IReadOnlyList<CategoryDtoOut> list;
+            List<CategoryEntity> entities;
+            List<CategoryDto> list;
 
             entities = await _unitOfWork.Category.GetAsync();
-            list = _mapper.Map<List<CategoryDtoOut>>(entities);
+            list = _mapper.Map<List<CategoryDto>>(entities);
             
             return list;
         }

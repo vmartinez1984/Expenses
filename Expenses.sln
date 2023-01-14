@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expenses", "Expenses\Expenses.csproj", "{D6E1232D-62AB-4699-AB79-C5034093372D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expenses.Api", "Expenses.Api\Expenses.Api.csproj", "{ADC4DAAF-AE2F-4971-9DE3-D82146EA6688}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expenses.BusinessLayer", "Expenses.BusinessLayer\Expenses.BusinessLayer.csproj", "{C6C624F1-0EDB-4112-9AB0-6250F2FC40D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expenses.Repository", "Expenses.Dao\Expenses.Repository.csproj", "{C19098DA-76C5-4F94-A437-5D07E0CAF364}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expenses.RepositoryEF", "Expenses.RepositoryEF\Expenses.RepositoryEF.csproj", "{6EEDAC1B-1B96-40F8-8F00-6F73DE3922A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expenses.Core", "Expenses.Core\Expenses.Core.csproj", "{8EAEEF6A-6741-4129-B287-5D14CB8326B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expenses.Mvc", "Expenses.Mvc\Expenses.Mvc.csproj", "{053F5434-D72D-499E-90FC-CC511B20B6E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6E1232D-62AB-4699-AB79-C5034093372D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E1232D-62AB-4699-AB79-C5034093372D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E1232D-62AB-4699-AB79-C5034093372D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E1232D-62AB-4699-AB79-C5034093372D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC4DAAF-AE2F-4971-9DE3-D82146EA6688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC4DAAF-AE2F-4971-9DE3-D82146EA6688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC4DAAF-AE2F-4971-9DE3-D82146EA6688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC4DAAF-AE2F-4971-9DE3-D82146EA6688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C624F1-0EDB-4112-9AB0-6250F2FC40D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C624F1-0EDB-4112-9AB0-6250F2FC40D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C624F1-0EDB-4112-9AB0-6250F2FC40D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C624F1-0EDB-4112-9AB0-6250F2FC40D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C19098DA-76C5-4F94-A437-5D07E0CAF364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19098DA-76C5-4F94-A437-5D07E0CAF364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19098DA-76C5-4F94-A437-5D07E0CAF364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19098DA-76C5-4F94-A437-5D07E0CAF364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EEDAC1B-1B96-40F8-8F00-6F73DE3922A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EEDAC1B-1B96-40F8-8F00-6F73DE3922A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EEDAC1B-1B96-40F8-8F00-6F73DE3922A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EEDAC1B-1B96-40F8-8F00-6F73DE3922A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EAEEF6A-6741-4129-B287-5D14CB8326B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EAEEF6A-6741-4129-B287-5D14CB8326B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EAEEF6A-6741-4129-B287-5D14CB8326B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EAEEF6A-6741-4129-B287-5D14CB8326B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053F5434-D72D-499E-90FC-CC511B20B6E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053F5434-D72D-499E-90FC-CC511B20B6E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053F5434-D72D-499E-90FC-CC511B20B6E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053F5434-D72D-499E-90FC-CC511B20B6E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36115CE2-55C9-4E66-B83E-7756CDFC1739}
+	EndGlobalSection
+EndGlobal
