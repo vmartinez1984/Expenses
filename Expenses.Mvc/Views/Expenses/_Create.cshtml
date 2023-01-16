@@ -1,50 +1,73 @@
 ﻿@using Expenses.Core.Dtos;
 @model ExpenseDto
 
-<div class="row">
-    <form asp-action="_Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input asp-for="PeriodId" type="hidden" />
-        <input asp-for="Id" type="hidden" value="@Model.Id" />
-        <div class="row">
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Agregar
+</button>
 
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label asp-for="SubcategoryId" class="control-label"></label>
-                    <select asp-for="SubcategoryId" class="form-select" asp-items="ViewBag.ListSubcategories">
-                        <option value="">Seleccione</option>
-                    </select>
-                    <span asp-validation-for="SubcategoryId" class="text-danger"></span>
+<!-- Modal -->
+<form asp-action="Create" asp-controller="Expenses">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">¿Desea borrar el periodo?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <label>Gaurdar en Apartado N</label>
-                <input type="checkbox" />
-            </div>
+                <div class="modal-body">
 
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="PeriodId" type="hidden" />
+                    <input asp-for="Id" type="hidden" value="@Model.Id" />
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label asp-for="SubcategoryId" class="control-label"></label>
+                            <select asp-for="SubcategoryId" class="form-select" asp-items="ViewBag.ListSubcategories" onchange="loadAmount();">
+                                <option value="">Seleccione</option>
+                            </select>
+                            <span asp-validation-for="SubcategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group">
+                            <label asp-for="IsSaveInApartN"></label>
+                            <input asp-for="IsSaveInApartN" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label asp-for="Amount" class="control-label"></label>
+                            <input asp-for="Amount" class="form-control" />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label asp-for="Amount" class="control-label"></label>
-                    <input asp-for="Amount" class="form-control" />
-                    <span asp-validation-for="Amount" class="text-danger"></span>
-                </div>
-            </div>
-
-
-            <div class="col-md-3">
-                <label class="control-label"></label>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
-                        Guardar
-                    </button>
+                <div class="modal-footer">
+                    <div class="row">
+                        <label class="control-label"></label>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</form>

@@ -8,8 +8,12 @@ namespace Expenses.BusinessLayer.Mappers
     {
         public ExpenseMapper()
         {
+            CreateMap<ApartEntity, ApartDto>();
+
             CreateMap<ExpenseEntity, ExpenseDto>().ReverseMap();
             CreateMap<ExpenseEntity, ExpenseDtoIn>().ReverseMap();
+
+            CreateMap<InvestmentEntity, InvestmentDto>();
         }
     }
 }

@@ -95,7 +95,7 @@ namespace Expenses.BusinessLayer.Bl
             List<ExpenseDto> list;
 
             subcategories = await _unitOfWork.Subcategory.GetAsync();
-            expenses = await _expenseBl.GetAsync(periodId);
+            expenses = await _expenseBl.GetAllAsync(periodId);
             list = new List<ExpenseDto>();
             subcategories.ForEach(subcategory =>
             {

@@ -4,20 +4,24 @@ namespace Expenses.Core.Interfaces
 {
     public interface IRepository
     {
-        public ICategoryRepository Category { get; }
+        IApartRepository Apart { get; }
 
-        public IPeriodRepository Period { get; }
+        ICategoryRepository Category { get; }
 
-        public IEntryRepositoy Entry { get; }
+        IPeriodRepository Period { get; }
 
-        public IExpenseRepository Expense { get; }
-        
-        public ISubcategoryRepository Subcategory { get; }
+        IEntryRepositoy Entry { get; }
 
-        public IDepositPlanRepository DepositPlan { get; }
+        IExpenseRepository Expense { get; }
 
-        public ITermAccountRepository TermAccount { get;  }
+        ISubcategoryRepository Subcategory { get; }
 
-        public IExpenseTdcRepository ExpenseTdc { get; }
+        IDepositPlanRepository DepositPlan { get; }
+
+        ITermAccountRepository TermAccount { get; }
+
+        IExpenseTdcRepository ExpenseTdc { get; }
+
+        IInvesmentRepository Invesment { get; }
     }
 }

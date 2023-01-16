@@ -7,31 +7,31 @@ namespace Expenses.Repository
     {
 
         public UnitOfWork(
+            IApartRepository apartRepository,
             ICategoryRepository categoryRepository,
             IPeriodRepository periodRepository,
             IEntryRepositoy entryRepositoy,
             IExpenseRepository expenseRepository,
-            ISubcategoryRepository subcategory
-            //IDepositPlanRepository depositPlanRepository,
-            //IExpenseTdcRepository expenseTdcRepository,
-            //ITermAccountRepository termAccountRepository
+            ISubcategoryRepository subcategory,
+            IInvesmentRepository invesmentRepository
         )
         {
+            Apart = apartRepository;
             Category = categoryRepository;
             Period = periodRepository;
             Entry = entryRepositoy;
             Expense = expenseRepository;
             Subcategory = subcategory;
-            //DepositPlan = depositPlanRepository;
-            //ExpenseTdc = expenseTdcRepository;
-            //TermAccount = termAccountRepository;
+            Invesment = invesmentRepository;
         }
+
+        public IInvesmentRepository Invesment { get; }
 
         public ICategoryRepository Category { get; }
 
         public IPeriodRepository Period { get; }
 
-        public IEntryRepositoy Entry { get; }       
+        public IEntryRepositoy Entry { get; }
 
         public IExpenseRepository Expense { get; }
 
@@ -39,5 +39,7 @@ namespace Expenses.Repository
         public IDepositPlanRepository DepositPlan { get; }
         public IExpenseTdcRepository ExpenseTdc { get; }
         public ITermAccountRepository TermAccount { get; }
+
+        public IApartRepository Apart { get; }
     }
 }

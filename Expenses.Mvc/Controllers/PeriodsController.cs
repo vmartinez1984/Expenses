@@ -54,13 +54,14 @@ namespace Expenses.Mvc.Controllers
 
             period = await _unitOfWorkBl.Period.GetFullAsync(id);
             ViewBag.ListSubcategories = new SelectList(await _unitOfWorkBl.Subcategory.GetAsync(), "Id", "Name");
+            ViewBag.ListSubcategories2 = await _unitOfWorkBl.Subcategory.GetAsync();
             if (expenseId is null)
             {
                 expenseDto = new ExpenseDto { PeriodId = period.Id, Id = 0 };
             }
             else
             {
-                expenseDto = await _unitOfWorkBl.Expense.GetByIdAsync((int)expenseId);
+                expenseDto = await _unitOfWorkBl.Expense.GetAsync((int)expenseId);
             }
             ViewBag.ExpenseDto = expenseDto;
 

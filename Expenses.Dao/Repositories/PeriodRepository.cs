@@ -52,7 +52,7 @@ namespace Expenses.Repository.Repositories
                 //query = $"SELECT TOP(1) * FROM Period WHERE Id = {periodId}";
                 query = $"SELECT * FROM Period WHERE Id = {periodId} Limit 1";
 
-                entity = await db.QueryFirstOrDefaultAsync<PeriodEntity>(query);
+                entity = await _dbConnection.QueryFirstOrDefaultAsync<PeriodEntity>(query);
 
                 return entity;
             }
@@ -102,7 +102,7 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = $"SELECT * FROM Period WHERE IsActive = 1 ORDER BY Id DESC";
-            entities = (await db.QueryAsync<PeriodEntity>(query)).ToList();
+            entities = (await _dbConnection.QueryAsync<PeriodEntity>(query)).ToList();
 
             return entities;
         }
@@ -112,7 +112,7 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = $"INSERT INTO Period (Name,DateStart, DateStop,IsActive) VALUES(@Name, @DateStart, @DateStop, 1); {LastId}";
-            entity.Id = await db.QueryFirstOrDefaultAsync<int>(query, entity);
+            entity.Id = await _dbConnection.QueryFirstOrDefaultAsync<int>(query, entity);
 
             return entity.Id;
         }
@@ -123,7 +123,7 @@ namespace Expenses.Repository.Repositories
 
             query = "UPDATE Period SET Name = @Name, DateStart = @DateStart, DateStop = @DateStop WHERE Id  = @Id";
 
-            await db.QueryAsync(query, entity);
+            await _dbConnection.QueryAsync(query, entity);
         }
 
         public async Task DeleteAsync(int id)
@@ -132,7 +132,7 @@ namespace Expenses.Repository.Repositories
 
             query = $"UPDATE Period SET IsActive = 0 WHERE Id  = {id}";
 
-            await db.QueryAsync(query);
+            await _dbConnection.QueryAsync(query);
         }
     }
 }

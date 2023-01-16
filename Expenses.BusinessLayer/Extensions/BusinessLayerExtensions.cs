@@ -9,6 +9,7 @@ namespace Expenses.BusinessLayer.Extensors
     {
         public static void AddBl(this IServiceCollection services)
         {
+            services.AddScoped<IApartBl, ApartBl>();
             services.AddScoped<ICategoryBl, CategoryBl>();
             services.AddScoped<IDepositPlanBl, DepositPlanBl>();
             services.AddScoped<IEntryBl, EntryBl>();
@@ -18,6 +19,7 @@ namespace Expenses.BusinessLayer.Extensors
             services.AddScoped<ISubcategoryBl, SubcategoryBl>();
             services.AddScoped<ITermAccountBl, TermAccountBl>();
             services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
+            services.AddScoped<IInvesmentBl, InvesmentBl>();
         }
     }
 }

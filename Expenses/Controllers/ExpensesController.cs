@@ -41,7 +41,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var expense = await _unitOfWorkBl.Expense.GetByIdAsync((int)id);
+            var expense = await _unitOfWorkBl.Expense.GetAsync((int)id);
             if (expense == null)
             {
                 return NotFound();
@@ -79,7 +79,7 @@ namespace Expenses.Controllers
                 return NotFound();
             }
 
-            var expense = await _unitOfWorkBl.Expense.GetByIdAsync((int)id);
+            var expense = await _unitOfWorkBl.Expense.GetAsync((int)id);
             if (expense == null)
             {
                 return NotFound();
@@ -95,7 +95,7 @@ namespace Expenses.Controllers
         {
             ExpenseDto expense;
 
-            expense = await _unitOfWorkBl.Expense.GetByIdAsync(id);
+            expense = await _unitOfWorkBl.Expense.GetAsync(id);
             await _unitOfWorkBl.Expense.DeleteAsync(id);
 
             return RedirectToAction("Details", "Periods", new { Id = expense.PeriodId });

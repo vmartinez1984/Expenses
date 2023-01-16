@@ -23,10 +23,10 @@ namespace Expenses.Repository.Repositories
                 string query;
 
                 query = $@"INSERT INTO Expense 
-                      (Guid, Name, Amount, BudgetAmount, SubcategoryId, DepositPlanId, PeriodId, DateRegister, IsActive) 
-                VALUES(@Guid,@Name,@Amount,@BudgetAmount,@SubcategoryId,@DepositPlanId,@PeriodId, @DateRegister,@IsActive)
+                      ( Amount, SubcategoryId, PeriodId, DateRegistration, IsActive) 
+                VALUES(@Amount,@SubcategoryId,@PeriodId, NOW(),1);
                 {LastId}";
-                entity.Id = await db.QueryFirstOrDefaultAsync<int>(query, entity);
+                entity.Id = await _dbConnection.QueryFirstOrDefaultAsync<int>(query, entity);
 
                 return entity.Id;
             }
@@ -43,7 +43,7 @@ namespace Expenses.Repository.Repositories
 
             query = $"UPDATE Expense SET IsActive = 0 WHERE Id  = {id}";
 
-            await db.QueryAsync(query);
+            await _dbConnection.QueryAsync(query);
         }
 
         public async Task<ExpenseEntity> GetAsync(int id)
@@ -57,7 +57,7 @@ namespace Expenses.Repository.Repositories
                 INNER JOIN Category on Subcategory.CategoryId = Category.Id                 
                 WHERE Expense.IsActive = 1 AND Expense.Id = {id} LIMIT 1";
             //entities = (await db.QueryAsync<ExpenseEntity>(query)).ToList();
-            entity = await db.QueryFirstOrDefaultAsync<ExpenseEntity>(query);
+            entity = await _dbConnection.QueryFirstOrDefaultAsync<ExpenseEntity>(query);
 
             return entity;
         }
@@ -78,7 +78,7 @@ namespace Expenses.Repository.Repositories
                 INNER JOIN Category on Subcategory.CategoryId = Category.Id                 
                 WHERE Expense.IsActive = 1 AND PeriodId = {periodId} ORDER BY Expense.Id";
             //entities = (await db.QueryAsync<ExpenseEntity>(query)).ToList();
-            entities = await db.QueryAsync<ExpenseEntity>(query);
+            entities = await _dbConnection.QueryAsync<ExpenseEntity>(query);
 
             return entities.ToList();
         }
@@ -87,9 +87,9 @@ namespace Expenses.Repository.Repositories
         {
             string query;
 
-            query = "UPDATE Expense SET Name = @Name, Amount = @Amount, PeriodId = @PeriodId, CategoryId = @CategoryId WHERE Id  = @Id";
+            query = "UPDATE Expense SET Name = @Name, Amount = @Amount, PeriodId = @PeriodId, SubcategoryId = @SubcategoryId WHERE Id  = @Id";
 
-            await db.QueryAsync(query, entity);
+            await _dbConnection.QueryAsync(query, entity);
         }
     }
 }

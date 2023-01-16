@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Mvc
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/vmartinez/source/repos/vmartinez1984/Expenses/Expenses.Mvc/Views/Aparts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vmartinez/source/repos/vmartinez1984/Expenses/Expenses.Mvc/Views/CategoryDtoes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlEdG9lc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,6 +70,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/vmartinez/source/repos/vmartinez1984/Expenses/Expenses.Mvc/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vmartinez/source/repos/vmartinez1984/Expenses/Expenses.Mvc/Views/Investments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZXN0bWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/vmartinez/source/repos/vmartinez1984/Expenses/Expenses.Mvc/Views/Periods/Details.cshtml]

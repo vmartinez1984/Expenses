@@ -40,38 +40,48 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubcategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubcategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PeriodId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateRegister)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @if (item.Amount == 0)
+                {
+                    <td class="text-danger">
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                }
+                else
+                {
+                    <td class="text-success">
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubcategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubcategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PeriodId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateRegister)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

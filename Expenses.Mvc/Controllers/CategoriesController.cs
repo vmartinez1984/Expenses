@@ -5,14 +5,12 @@ using Expenses.BusinessLayer.Interfaces;
 
 namespace Expenses.Mvc.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseMvcController
     {
-        private readonly IUnitOfWorkBl _context;
-
-        public CategoriesController(IUnitOfWorkBl context)
+        public CategoriesController(IUnitOfWorkBl context) : base(context)
         {
-            _context = context;
         }
+
 
         // GET: CategoryDtoes
         public async Task<IActionResult> Index()

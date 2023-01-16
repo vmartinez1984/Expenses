@@ -4,7 +4,6 @@ namespace Expenses.Core.Dtos
 {
     public class SubcategoryDtoIn 
     {
-
         [Required]
         [Display(Name = "Nombre")]
         [StringLength(20)]
@@ -16,6 +15,7 @@ namespace Expenses.Core.Dtos
                
         [Display(Name = "Cantidad")]
         [Range(0, 4000)]
+        [DataType(DataType.Currency)]
         public int Amount { get; set; }
     }
 

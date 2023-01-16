@@ -34,12 +34,17 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
+        public Task<int> AddAsync(EntryDtoOut item)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task DeleteAsync(int id)
         {
             await _unitOfWork.Entry.DeleteAsync(id);
         }
 
-        public async Task<List<EntryDtoOut>> GetAsync(int periodId)
+        public async Task<List<EntryDtoOut>> GetAllAsync(int periodId)
         {
             try
             {
@@ -58,7 +63,12 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
-        public async Task<EntryDtoOut> GetByIdAsync(int periodId)
+        public Task<EntryDtoIn> GetAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<EntryDtoOut> GetIdAsync(int periodId)
         {
             try
             {
@@ -92,6 +102,11 @@ namespace Expenses.BusinessLayer.Bl
 
                 throw;
             }
+        }
+
+        public Task UpdateAsync(EntryDtoOut item, int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

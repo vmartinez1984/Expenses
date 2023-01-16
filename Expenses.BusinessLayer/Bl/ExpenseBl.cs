@@ -27,9 +27,9 @@ namespace Expenses.BusinessLayer.Bl
                 ExpenseEntity entity;
 
                 entity = _mapper.Map<ExpenseEntity>(item);
-                await SetDeposit(entity);
-                await SetBudget(entity);
                 entity.Id = await _unitOfWork.Expense.AddAsync(entity);
+                if (item.IsSaveInApartN)
+                    await AddApartAsync(entity);
 
                 return entity.Id;
             }
@@ -40,26 +40,22 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
-        private async Task SetBudget(ExpenseEntity expense)
+        private async Task AddApartAsync(ExpenseEntity expense)
         {
-            //SubcategoryEntity subcategory;
+            ApartEntity apartEntity;
 
-            //subcategory = await _unitOfWork.Subcategory.GetAsync(expense.SubcategoryId);
-            //if (subcategory != null && subcategory.IsBudget)
-            //    expense.BudgetAmount = subcategory.Amount;
-            //else
-            //    expense.BudgetAmount = null;            
-        }
+            apartEntity = new ApartEntity
+            {
+                Amount = expense.Amount,
+                DateRegistration = DateTime.Now,
+                ExpenseId = expense.Id,
+                IsActive = true,
+                IsApartN = true,
+                Name = expense.Name,
+                SubcategoryId = expense.SubcategoryId
+            };
 
-        private async Task SetDeposit(ExpenseEntity expense)
-        {
-            //DepositPlanEntity depostiPlanId;
-
-            //depostiPlanId = await _unitOfWork.DepositPlan.GetAsync(expense.SubcategoryId);
-            //if (depostiPlanId is null)
-            //    expense.DepositPlanId = null;
-            //else
-            //    expense.DepositPlanId = depostiPlanId.Id;
+            await _unitOfWork.Apart.AddAsync(apartEntity);
         }
 
         public async Task DeleteAsync(int id)
@@ -75,7 +71,7 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
-        public async Task<List<ExpenseDto>> GetAsync(int periodId)
+        public async Task<List<ExpenseDto>> GetAllAsync(int periodId)
         {
             List<ExpenseDto> list;
             IReadOnlyList<ExpenseEntity> entities;
@@ -86,14 +82,14 @@ namespace Expenses.BusinessLayer.Bl
             return list;
         }
 
-        public async Task<ExpenseDto> GetByIdAsync(int expenseId)
+        public async Task<ExpenseDto> GetAsync(int expenseId)
         {
             try
             {
                 ExpenseDto item;
                 ExpenseEntity entity;
 
-                entity = await _unitOfWork.Expense.GetAsync(expenseId);                
+                entity = await _unitOfWork.Expense.GetAsync(expenseId);
                 item = _mapper.Map<ExpenseDto>(entity);
                 item.CategoryId = await GetCategoryId(item.SubcategoryId);
 
@@ -123,8 +119,6 @@ namespace Expenses.BusinessLayer.Bl
 
                 entity = _mapper.Map<ExpenseEntity>(item);
                 entity.Id = id;
-                await SetBudget(entity);
-                await SetDeposit(entity);
 
                 await _unitOfWork.Expense.UpdateAsync(entity);
             }

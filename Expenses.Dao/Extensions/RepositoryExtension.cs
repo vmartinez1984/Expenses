@@ -9,12 +9,14 @@ namespace Expenses.Repository.Extensions
     {
         public static void AddRepository(this IServiceCollection services)
         {
+            services.AddScoped<IApartRepository, ApartRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IPeriodRepository, PeriodRepository>();
             services.AddScoped<IEntryRepositoy, EntryRepository>();
             services.AddScoped<IExpenseRepository, ExpenseRepository>();
             services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();
             services.AddScoped<IRepository, UnitOfWork>();
+            services.AddScoped<IInvesmentRepository, InvesmentRepository>();
         }
     }
 }

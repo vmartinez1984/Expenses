@@ -19,7 +19,7 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = $"SELECT * FROM Category WHERE IsActive = 1 AND  Id = {id}";
-            entity = await db.QueryFirstOrDefaultAsync<CategoryEntity>(query);
+            entity = await _dbConnection.QueryFirstOrDefaultAsync<CategoryEntity>(query);
 
             return entity;
         }
@@ -30,7 +30,7 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = "SELECT * FROM Category WHERE IsActive = 1";
-            entities = await db.QueryAsync<CategoryEntity>(query);
+            entities = await _dbConnection.QueryAsync<CategoryEntity>(query);
 
             return entities.ToList();
         }
@@ -41,7 +41,7 @@ namespace Expenses.Repository.Repositories
 
             query = $"INSERT INTO Category (Name, IsActive)  VALUES(@Name, 1); {LastId}";
 
-            entity.Id = await db.QueryFirstOrDefaultAsync<int>(query, entity);
+            entity.Id = await _dbConnection.QueryFirstOrDefaultAsync<int>(query, entity);
 
             return entity.Id;
         }
@@ -52,7 +52,7 @@ namespace Expenses.Repository.Repositories
 
             query = "UPDATE Category SET Name = @Name WHERE Id  = @Id";
 
-            await db.QueryAsync(query, entity);
+            await _dbConnection.QueryAsync(query, entity);
         }
 
         public async Task DeleteAsync(int id)
@@ -61,7 +61,7 @@ namespace Expenses.Repository.Repositories
 
             query = $"UPDATE Category SET IsActive = 0 WHERE Id  = {id}";
 
-            await db.QueryAsync(query);
+            await _dbConnection.QueryAsync(query);
         }
     }//end class
 }

@@ -3,10 +3,8 @@
 namespace Expenses.Core.Entities
 {
     public class ExpenseEntity : BaseBEntity
-    {
-        
-
-        public Guid Guid { get; set; } = Guid.NewGuid();
+    {        
+        //public string Guid { get; set; } = new Guid.NewGuid().ToString();
 
         public string Name { get; set; }
 

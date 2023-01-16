@@ -22,7 +22,7 @@ namespace Expenses.Mvc.Controllers
                 return NotFound();
             }
 
-            var expenseDto = await _context.Expense.GetAsync((int)id);                
+            var expenseDto = await _context.Expense.GetAsync((int)id);
             if (expenseDto == null)
             {
                 return NotFound();
@@ -37,21 +37,39 @@ namespace Expenses.Mvc.Controllers
             return View();
         }
 
-        //// POST: Expenses/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Id,Name,Amount,CategoryName,CategoryId,SubcategoryName,SubcategoryId,PeriodId,DateRegister")] ExpenseDto expenseDto)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(expenseDto);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(expenseDto);
-        //}
+        // POST: Expenses/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ExpenseDto expenseDto)
+        {
+            if (ModelState.IsValid)
+            {
+                ExpenseDtoIn expenseDtoIn;
+
+                expenseDtoIn = new ExpenseDtoIn
+                {
+                    Amount = expenseDto.Amount,
+                    CategoryId = expenseDto.CategoryId,
+                    Name = expenseDto.Name,
+                    PeriodId = expenseDto.PeriodId,
+                    SubcategoryId = expenseDto.SubcategoryId,
+                    IsSaveInApartN = expenseDto.IsSaveInApartN
+                };
+                if (expenseDto.Id == 0)
+                {
+                    await _context.Expense.AddAsync(expenseDtoIn);
+                }
+                else
+                {
+                    await _context.Expense.UpdateAsync(expenseDtoIn, expenseDto.Id);
+                }
+
+                return RedirectToAction("Details","Periods", new {Id = expenseDto.PeriodId});
+            }
+            return View(expenseDto);
+        }
 
         //// GET: Expenses/Edit/5
         //public async Task<IActionResult> Edit(int? id)
@@ -136,7 +154,7 @@ namespace Expenses.Mvc.Controllers
         //    {
         //        _context.ExpenseDto.Remove(expenseDto);
         //    }
-            
+
         //    await _context.SaveChangesAsync();
         //    return RedirectToAction(nameof(Index));
         //}

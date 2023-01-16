@@ -27,6 +27,7 @@ namespace Expenses.Core.Dtos
         [Required]
         [Display(Name = "Periodo")]
         public int PeriodId { get; set; }
+        public bool IsSaveInApartN { get; set; }
     }
 
     public class ExpenseDto
@@ -62,5 +63,8 @@ namespace Expenses.Core.Dtos
         [Display(Name = "Fecha de registro")]
         [DataType(DataType.Date)]
         public DateTime? DateRegister { get; set; } = DateTime.Now;
+
+        [Display(Name = "Guardar en Apartado N")]
+        public bool IsSaveInApartN { get; set; }
     }
 }

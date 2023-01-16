@@ -19,7 +19,7 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = $@"INSERT INTO Subcategory (Name, CategoryId, Amount, IsActive) VALUES(@Name, @CategoryId, @Amount, 1); {LastId}";
-            entity.Id = await db.QueryFirstOrDefaultAsync<int>(query, entity);
+            entity.Id = await _dbConnection.QueryFirstOrDefaultAsync<int>(query, entity);
 
             return entity.Id;
         }
@@ -30,7 +30,7 @@ namespace Expenses.Repository.Repositories
 
             query = $@"UPDATE Subcategory SET IsActive = 0 WHERE Id = {id}";
 
-            await db.QueryAsync(query);
+            await _dbConnection.QueryAsync(query);
         }
 
         public async Task<SubcategoryEntity> GetAsync(int id)
@@ -39,7 +39,7 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = $@"SELECT Subcategory.* FROM Subcategory WHERE Subcategory.Id = {id}";
-            entity = await db.QueryFirstOrDefaultAsync<SubcategoryEntity>(query);
+            entity = await _dbConnection.QueryFirstOrDefaultAsync<SubcategoryEntity>(query);
 
             return entity;
         }
@@ -50,7 +50,7 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = @"SELECT Subcategory.* FROM Subcategory WHERE Subcategory.IsActive = 1 ORDER BY Name DESC";
-            entities = await db.QueryAsync<SubcategoryEntity>(query);
+            entities = await _dbConnection.QueryAsync<SubcategoryEntity>(query);
 
             return entities.ToList();
         }
@@ -61,7 +61,7 @@ namespace Expenses.Repository.Repositories
 
             query = $@"UPDATE Subcategory SET Name = @Name, CategoryId = @CategoryId  WHERE Id = @Id";
 
-            await db.QueryAsync(query, entity);
+            await _dbConnection.QueryAsync(query, entity);
         }
 
     }//end class

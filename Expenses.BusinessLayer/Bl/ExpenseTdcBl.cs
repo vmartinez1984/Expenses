@@ -103,10 +103,6 @@ namespace Expenses.BusinessLayer.Bl
                 throw;
             }
         }
-
-        Task<List<ExpenseTdcDtoOut>> IBaseBl<ExpenseTdcDtoIn, ExpenseTdcDtoOut>.GetAsync()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -4,6 +4,7 @@ using Expenses.Core.Dtos;
 using Expenses.Core.Entities;
 using Expenses.Core.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -81,5 +82,13 @@ namespace Expenses.BusinessLayer.Bl
             await _unitOfWork.Subcategory.UpdateAsync(entity);
         }
 
+        public async Task<List<SubcategoryDto>> GetByApartsAsync()
+        {
+            List<SubcategoryDto> list;
+
+            list = await GetAsync();
+            
+            return  list.Where(x=> x.CategoryId == 3).ToList();
+        }
     }//end class
 }

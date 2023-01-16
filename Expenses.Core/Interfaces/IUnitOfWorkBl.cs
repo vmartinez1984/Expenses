@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Interfaces.InterfaceBl;
+﻿using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 
 namespace Expenses.BusinessLayer.Interfaces
 {
     public interface IUnitOfWorkBl
     {
+        IApartBl Apart { get; }
+
         ICategoryBl Category { get; }
 
         IPeriodBl Period { get; }
@@ -22,5 +21,7 @@ namespace Expenses.BusinessLayer.Interfaces
         ITermAccountBl TermAccount {get;}
 
         IExpenseTdcBl ExpenseTdc { get; }
+
+        IInvesmentBl Investment { get; }
     }
 }

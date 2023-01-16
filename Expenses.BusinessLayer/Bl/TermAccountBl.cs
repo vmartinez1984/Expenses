@@ -47,7 +47,7 @@ namespace Expenses.BusinessLayer.Bl
             IReadOnlyList<TermAccountEntity> entities;
             List<TermAccountDtoOut> list;
 
-            entities = await _unitOfWork.TermAccount.GetAsync();
+            entities = await _unitOfWork.TermAccount.GetAllAsync();
             list = _mapper.Map<List<TermAccountDtoOut>>(entities);
             list.ForEach(item=>{
                 AddTerm(item);
