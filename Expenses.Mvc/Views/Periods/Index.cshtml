@@ -2,20 +2,17 @@
 @model IEnumerable<PeriodDto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Periodos";
 }
 
-<h1>Index</h1>
+<h1 class="text-info">Periodos</h1>
 
 <p>
     @await Html.PartialAsync("_Create",  ViewBag.Period as PeriodDto)
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
+        <tr>            
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -31,10 +28,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
+            <tr>            
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -45,8 +39,10 @@
                     @Html.DisplayFor(modelItem => item.DateStop)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Index", new {  periodId=item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |                    
+                    <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalPeriod" onclick="editPeriod(@item.Id);">
+                        Editar
+                    </button>        
+                    @Html.ActionLink("Detalles", "Details",null, new {  Id=item.Id }, new { @class="btn btn-info text-white"})
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="deletePeriod(@item.Id);">
                         Borrar
                     </button>
@@ -56,50 +52,7 @@
     </tbody>
 </table>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">¿Desea borrar el periodo?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div>                   
-                    <dl class="row">        
-                        <dt class = "col-sm-4">
-                            @Html.DisplayNameFor(model => model.Name)
-                        </dt>
-                        <dd class = "col-sm-8">
-                            <span id="periodName"></span>
-                        </dd>
-                        <dt class = "col-sm-4">
-                            @Html.DisplayNameFor(model => model.DateStart)
-                        </dt>
-                        <dd class = "col-sm-8">
-                            <span id="periodDateStart"></span>
-                        </dd>
-                        <dt class = "col-sm-4">
-                            @Html.DisplayNameFor(model => model.DateStop)
-                        </dt>
-                        <dd class = "col-sm-8">
-                            <span id="periodDateStop"></span>
-                        </dd>
-                    </dl>
-    
-                  
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <form asp-action="Delete">
-                        <input type="hidden" name="periodId" id="periodId"/>
-                        <input type="submit" value="Borrar" class="btn btn-danger" />        
-                  </form>
-            </div>
-        </div>
-    </div>
-</div>
+@await Html.PartialAsync("_Delete", new List<PeriodDto>())
 
 @section Scripts {
     @{
@@ -109,12 +62,13 @@
         var periods = new Array()
         @foreach (var item in Model)
         {        
-            var DateStop = ((DateTime)item.DateStop).ToString("d");
+            var DateStop = ((DateTime)item.DateStop).ToString("s");
         
             <text>
-                periods.push({Id : @item.Id, Name : '@item.Name', DateStart : '@item.DateStart.ToString("d")', DateStop : '@DateStop' })
+                periods.push({Id : @item.Id, Name : '@item.Name', DateStart : '@item.DateStart.ToString("s")', DateStop : '@DateStop' })
             </text>
         }
+
         function deletePeriod(periodId){
             var period
             for(i=0; i<periods.length; i++){
@@ -124,8 +78,29 @@
             }
             document.getElementById('periodId').value = period.Id
             document.getElementById('periodName').innerText = period.Name
-            document.getElementById('periodDateStart').innerText = period.DateStart
-            document.getElementById('periodDateStop').innerText = period.DateStop
+            document.getElementById('periodDateStart').innerText = period.DateStart.substring(0,10)
+            document.getElementById('periodDateStop').innerText = period.DateStop.substring(0,10)
+        }
+
+         function editPeriod(periodId){
+            var period
+            for(i=0; i<periods.length; i++){
+                if(periods[i].Id == periodId){
+                    period = periods[i]
+                }
+            } console.log(period)
+            document.getElementById('Id').value = period.Id
+            document.getElementById('Name').value = period.Name
+            document.getElementById('DateStart').value = period.DateStart.substring(0,10)
+            document.getElementById('DateStop').value = period.DateStop.substring(0,10)
+        }
+
+        function cancelPeriod(){
+            location.href= 'Periods'      
+        }
+
+        function addPeriod(){
+
         }
     </script>
 }
