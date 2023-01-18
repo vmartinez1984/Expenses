@@ -29,7 +29,7 @@ namespace Expenses.Api.Controllers
             {
                 List<ExpenseDto> list;
 
-                list = await _unitOfWorkBl.Expense.GetAsync(periodId);
+                list = await _unitOfWorkBl.Expense.GetAllAsync(periodId);
 
                 return Ok(list);
             }

@@ -1,11 +1,14 @@
 using AutoMapper;
 using Expenses.BusinessLayer.Bl;
+using Expenses.BusinessLayer.Extensors;
 using Expenses.BusinessLayer.Interfaces;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 using Expenses.BusinessLayer.Mappers;
 using Expenses.Core.InterfaceRepository;
 using Expenses.Core.Interfaces;
+using Expenses.Core.Mappers;
 using Expenses.Repository;
+using Expenses.Repository.Extensions;
 using Expenses.Repository.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,53 +31,16 @@ namespace Expenses.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            AddMappers(services);
+            services.AddMappers();
             services.AddControllers();
-            AddRepository(services);
-            AddBusinessLayer(services);
+            services.AddRepository();
+            services.AddBl();
             //AddRepositoryEF(services);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Expenses.Api", Version = "v1" });
             });
             services.AddCors(options => options.AddPolicy("AllowWebApp", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
-        }
-
-        private void AddBusinessLayer(IServiceCollection services)
-        {
-            services.AddScoped<ICategoryBl, CategoryBl>();
-            services.AddScoped<IDepositPlanBl, DepositPlanBl>();
-            services.AddScoped<IEntryBl, EntryBl>();
-            services.AddScoped<IExpenseBl, ExpenseBl>();
-            services.AddScoped<IExpenseTdcBl, ExpenseTdcBl>();
-            services.AddScoped<IPeriodBl, PeriodBl>();
-            services.AddScoped<ISubcategoryBl, SubcategoryBl>();            
-            services.AddScoped<ITermAccountBl, TermAccountBl>();            
-            services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
-        }
-
-        private void AddRepository(IServiceCollection services)
-        {
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IPeriodRepository, PeriodRepository>();
-            services.AddScoped<IEntryRepositoy, EntryRepository>();
-            services.AddScoped<IExpenseRepository, ExpenseRepository>();
-            services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();
-            services.AddScoped<IRepository, UnitOfWork>();
-        }
-
-        private void AddMappers(IServiceCollection services)
-        {
-            var mapperConfig = new MapperConfiguration(mapperConfig =>
-            {
-                mapperConfig.AddProfile<CategoryMapper>();
-                mapperConfig.AddProfile<PeriodMapper>();
-                mapperConfig.AddProfile<EntryMapper>();
-                mapperConfig.AddProfile<ExpenseMapper>();
-                mapperConfig.AddProfile<SubcategoryMapper>();
-            });
-            IMapper mapper = mapperConfig.CreateMapper();
-            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

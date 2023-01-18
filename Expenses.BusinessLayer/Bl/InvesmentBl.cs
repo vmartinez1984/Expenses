@@ -15,9 +15,14 @@ namespace Expenses.BusinessLayer.Bl
         {
         }
 
-        public Task<int> AddAsync(InvesmentDtoIn item)
+        public async Task<int> AddAsync(InvesmentDtoIn item)
         {
-            throw new NotImplementedException();
+            InvestmentEntity entity;
+
+            entity = _mapper.Map<InvestmentEntity>(item);
+            await _unitOfWork.Invesment.AddAsync(entity);
+
+            return entity.Id;
         }
 
         public Task DeleteAsync(int id)

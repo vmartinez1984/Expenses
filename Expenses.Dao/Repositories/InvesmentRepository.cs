@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Dapper.SqlMapper;
 
 namespace Expenses.Repository.Repositories
 {
@@ -15,14 +16,28 @@ namespace Expenses.Repository.Repositories
         {
         }
 
-        public Task<int> AddAsync(InvestmentEntity entity)
+        public async Task<int> AddAsync(InvestmentEntity entity)
         {
-            throw new NotImplementedException();
+            string query;
+
+            query = $@"INSERT INTO investment 
+                   (Name, DateStart, DateStop, Interest, Amount, InstructionId, Term, AmountFinal, IsActive) 
+            VALUES (@Name, @DateStart, @DateStop, @Interest, @Amount, @InstructionId, @Term, @AmountFinal, 1); {LastId}";
+            entity.Id = await _dbConnection.QueryFirstOrDefaultAsync<int>(query,entity);
+
+            return entity.Id;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            string query;
+
+            query = $@"UPDATE investment 
+            SET IsActive = {id}
+            WHERE Id = @Id
+            ";
+
+            await _dbConnection.QueryAsync(query);
         }
 
         public async Task<List<InvestmentEntity>> GetAllAsync()
@@ -30,20 +45,32 @@ namespace Expenses.Repository.Repositories
             string query;
             IEnumerable<InvestmentEntity> entities;
 
-            query = "SELECT * FROM investment WHERE IsActive = 1";
+            query = "SELECT * FROM investment WHERE IsActive = 1 ORDER BY Id DESC";
             entities = await _dbConnection.QueryAsync<InvestmentEntity>(query);
 
             return entities.ToList();
         }
 
-        public Task<InvestmentEntity> GetAsync(int id)
+        public async Task<InvestmentEntity> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            string query;
+            InvestmentEntity entity;
+
+            query = $"SELECT * FROM investment WHERE Id = {id}";
+            entity = await _dbConnection.QueryFirstOrDefaultAsync<InvestmentEntity>(query);
+
+            return entity;
         }
 
-        public Task UpdateAsync(InvestmentEntity entity)
+        public async Task UpdateAsync(InvestmentEntity entity)
         {
-            throw new NotImplementedException();
+            string query;
+
+            query = $@"UPDATE investment 
+            SET Name = @Name, DateStart=@DateStart, DateStop=@DateStop, Amount=@Amount, InstructionId=@InstructionId, Term=@Term, AmountFinal=@AmountFinal
+            WHERE Id = @Id";
+
+            await _dbConnection.QueryAsync(query, entity);
         }
     }
 }

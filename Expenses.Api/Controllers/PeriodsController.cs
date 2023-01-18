@@ -1,5 +1,4 @@
-﻿using Expenses.BusinessLayer.Dtos.Outputs;
-using Expenses.BusinessLayer.Interfaces;
+﻿using Expenses.BusinessLayer.Interfaces;
 using Expenses.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System;

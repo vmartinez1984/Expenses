@@ -25,6 +25,8 @@ namespace Expenses.Core.Entities
 
         [Required]
         public decimal Amount { get; set; }
+                
+        public decimal AmountFinal { get; set; }
 
         [Required]
         public int InstructionId { get; set; }

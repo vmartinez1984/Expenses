@@ -1,0 +1,84 @@
+﻿@model Expenses.Core.Dtos.InvestmentDto
+
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalPeriod" onclick="addPeriod();">
+    Agregar
+</button>
+
+<!-- Modal -->
+<form asp-action="Save">
+    <div class="modal fade" id="modalPeriod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Periodo</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <input asp-for="Id" type="hidden" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateStart" class="control-label"></label>
+                            <input asp-for="DateStart" class="form-control" />
+                            <span asp-validation-for="DateStart" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateStop" class="control-label"></label>
+                            <input asp-for="DateStop" class="form-control" />
+                            <span asp-validation-for="DateStop" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Interest" class="control-label"></label>
+                            <input asp-for="Interest" class="form-control" />
+                            <span asp-validation-for="Interest" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Amount" class="control-label"></label>
+                            <input asp-for="Amount" class="form-control" />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AmountFinal" class="control-label"></label>
+                            <input asp-for="AmountFinal" class="form-control" />
+                            <span asp-validation-for="AmountFinal" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="InstructionId" class="control-label"></label>
+                            <select asp-for="InstructionId" class="form-select">
+                                <option>Seleccione</option>
+                                <option value="1">Renovación con intereses</option>
+                                <option value="2">Renovación sin intereses</option>
+                                <option value="3" selected>Sin renovación</option>
+                            </select>
+                            <span asp-validation-for="InstructionId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Term" class="control-label"></label>
+                            <select asp-for="Term" class="form-select">
+                                <option>Seleccione</option>
+                                <option value="1">1</option>
+                                <option value="7">7</option>
+                                <option value="28">28</option>
+                                <option value="30">30</option>
+                                <option value="90">90</option>
+                                <option value="180">180</option>
+                            </select>
+                            <span asp-validation-for="Term" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cancelPeriod();">Cancelar</button>
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
