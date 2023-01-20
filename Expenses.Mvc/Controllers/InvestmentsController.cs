@@ -37,5 +37,13 @@ namespace Expenses.Mvc.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int investmentIdForDelete)
+        {
+            await _context.Investment.DeleteAsync(investmentIdForDelete);
+             
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -75,9 +75,13 @@
                         @Html.DisplayFor(modelItem => item.Term)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalPeriod" onclick="editInvestment(@item.Id);">
+                            Editar
+                        </button>
+                               
+                        <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#modalDeleteInvestment" onclick="deleteInvestment(@item.Id);">
+                            Borrar
+                        </button>
                     </td>
                 </tr>
             }
@@ -85,9 +89,83 @@
     </table>
 </div>
 
-
+@await Html.PartialAsync("_Delete", new InvestmentDto())
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        var investments = new Array()
+        @foreach (var item in Model)
+        {        
+            var DateStop = ((DateTime)item.DateStop).ToString("s");
+        
+            <text>
+                investments.push({
+                    Id : @item.Id, 
+                    Name : '@item.Name', 
+                    DateStart : '@item.DateStart.ToString("s")', 
+                    DateStop : '@DateStop', 
+                    Interest: @item.Interest,
+                    Amount : @item.Amount,
+                    AmountFinal : @item.AmountFinal,
+                    InstructionId: @item.InstructionId,
+                    Term: @item.Term
+                })
+            </text>
+        }
+
+        function editInvestment(invesmentId){
+            var investment;
+
+            investment = getinvestmentById(invesmentId)
+            setInvestmentInForm(investment)
+        }
+
+        function setInvestmentInForm(investment){
+            document.getElementById('Id').value = investment.Id
+            document.getElementById('Name').value = investment.Name
+            document.getElementById('DateStart').value = investment.DateStart.substring(0,10)
+            document.getElementById('DateStop').value = investment.DateStop.substring(0,10)
+            document.getElementById('InstructionId').value = investment.InstructionId
+            document.getElementById('Interest').value = investment.Interest
+            document.getElementById('Name').value = investment.Name
+            document.getElementById('Term').value = investment.Term
+            document.getElementById('Amount').value = investment.Amount
+            document.getElementById('AmountFinal').value = investment.AmountFinal
+        }
+
+        function deleteInvestment(investmentId){
+            var investment;
+
+            investment = getinvestmentById(investmentId)
+            document.getElementById('investmentIdForDelete').value = investment.Id
+            document.getElementById('investmentId').innerText = investment.Id
+            document.getElementById('investmentName').innerText = investment.Name
+            document.getElementById('investmentDateStart').innerText = investment.DateStart.substring(0,10)
+            document.getElementById('investmentDateStop').innerText = investment.DateStop.substring(0,10)
+            document.getElementById('investmentInstructionId').innerText = investment.InstructionId
+            document.getElementById('investmentInterest').innerText = investment.Interest
+            document.getElementById('investmentName').innerText = investment.Name
+            document.getElementById('investmentTerm').innerText = investment.Term
+            document.getElementById('investmentAmount').innerText = investment.Amount
+            document.getElementById('investmentAmountFinal').innerText = investment.AmountFinal
+        }
+
+        function getinvestmentById(id){
+            var investment;
+
+            for(i=0; i< investments.length; i++){
+                if(investments[i].Id == id)
+                    investment = investments[i]
+            }
+            console.log(investment)
+
+            return investment
+        }
+
+         function cancel(){
+            location.href= 'Investments'      
+        }
+    </script>
 }

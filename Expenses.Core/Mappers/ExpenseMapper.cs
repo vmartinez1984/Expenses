@@ -16,6 +16,8 @@ namespace Expenses.BusinessLayer.Mappers
             CreateMap<InvestmentEntity, InvestmentDto>();
 
             CreateMap<InvesmentDtoIn, InvestmentEntity>();
+
+            CreateMap<InvestmentEntity, InvestmentDto>();
         }
     }
 }

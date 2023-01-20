@@ -1,0 +1,96 @@
+﻿@model Expenses.Core.Dtos.InvestmentDto
+
+<div class="modal fade" id="modalDeleteInvestment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">                
+                <h5 class="text-danger">¿Desea borrar la inversión?</h5>
+            </div>
+            <div class="modal-body">
+
+                <div>                    
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Id)
+                        </dt>
+                        <dd class="col-sm-10">
+                            <span id="investmentId">@Html.DisplayFor(model => model.Id)</span>
+                        </dd>
+                        <dt class="col-sm-2">                            
+                                @Html.DisplayNameFor(model => model.Name)                            
+                        </dt>
+                        <dd class="col-sm-10">
+                            <span id="investmentName">
+                                @Html.DisplayFor(model => model.Name)
+                            </span>
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.DateStart)
+                        </dt>
+                        <dd class="col-sm-10">
+                            <span id="investmentDateStart">
+                            @Html.DisplayFor(model => model.DateStart)
+                            </span>
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.DateStop)
+                        </dt>
+                        <dd class="col-sm-10">
+                            <span id="investmentDateStop">
+                                @Html.DisplayFor(model => model.DateStop)
+                            </span>
+                        </dd>
+                        <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Interest)
+                        </dt>
+                        <dd class="col-sm-10">
+                            <span id="investmentInterest">
+                                @Html.DisplayFor(model => model.Interest)
+                            </span>
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Amount)
+                        </dt>
+                        <dd class="col-sm-10">
+                            <span id="investmentAmoun">
+                                @Html.DisplayFor(model => model.Amount)
+                            </span>
+                        </dd>
+                        <dt class="col-sm-2">
+                            <span id="investmentAmountFinal">
+                                @Html.DisplayNameFor(model => model.AmountFinal)
+                            </span>
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.AmountFinal)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.InstructionId)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.InstructionId)
+                        </dd>                        
+                        <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Term)
+                        </dt>
+                        <dd class="col-sm-10">
+                            <span id="investmentTerm">
+                                @Html.DisplayFor(model => model.Term)
+                            </span>
+                        </dd>
+                    </dl>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form asp-action="Delete" asp-controller="Investments" method="post">
+                        <input type="hidden" name="investmentIdForDelete" id="investmentIdForDelete" />
+                        <input type="submit" value="Borrar" class="btn btn-danger" />
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

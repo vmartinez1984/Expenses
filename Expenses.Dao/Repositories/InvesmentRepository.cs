@@ -33,8 +33,8 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = $@"UPDATE investment 
-            SET IsActive = {id}
-            WHERE Id = @Id
+            SET IsActive = 0
+            WHERE Id = {id}
             ";
 
             await _dbConnection.QueryAsync(query);

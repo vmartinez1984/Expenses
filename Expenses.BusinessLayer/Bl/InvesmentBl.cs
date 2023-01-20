@@ -25,9 +25,9 @@ namespace Expenses.BusinessLayer.Bl
             return entity.Id;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _unitOfWork.Invesment.DeleteAsync(id);
         }
 
         public async Task<List<InvestmentDto>> GetAllAsync()
@@ -41,14 +41,32 @@ namespace Expenses.BusinessLayer.Bl
             return list;
         }
 
-        public Task<InvestmentDto> GetAsync(int id)
+        public async Task<InvestmentDto> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            InvestmentEntity entity;
+            InvestmentDto dto;
+
+            entity = await _unitOfWork.Invesment.GetAsync(id);
+            dto = _mapper.Map<InvestmentDto>(entity);
+
+            return dto;
         }
 
-        public Task UpdateAsync(InvesmentDtoIn item, int id)
+        public async Task UpdateAsync(InvesmentDtoIn item, int id)
         {
-            throw new NotImplementedException();
+            InvestmentEntity entity;
+
+            entity = await _unitOfWork.Invesment.GetAsync(id);
+            entity.Amount = item.Amount;
+            entity.AmountFinal= item.AmountFinal;
+            entity.DateStart = item.DateStart;
+            entity.DateStop= item.DateStop;
+            entity.InstructionId = item.InstructionId;
+            entity.Interest = item.Interest;
+            entity.Name = item.Name;
+            entity.Term = item.Term;
+
+            await _unitOfWork.Invesment.UpdateAsync(entity);
         }
     }
 }

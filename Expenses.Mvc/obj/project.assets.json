@@ -10624,6 +10624,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Users\\vmartinez\\Downloads\\Nugets": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
