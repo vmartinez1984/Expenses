@@ -67,7 +67,7 @@ namespace Expenses.Repository.Repositories
             string query;
 
             query = $@"UPDATE investment 
-            SET Name = @Name, DateStart=@DateStart, DateStop=@DateStop, Amount=@Amount, InstructionId=@InstructionId, Term=@Term, AmountFinal=@AmountFinal
+            SET Name = @Name, DateStart=@DateStart, DateStop=@DateStop, Amount=@Amount, InstructionId=@InstructionId, Term=@Term, AmountFinal=@AmountFinal, Interest=@Interest
             WHERE Id = @Id";
 
             await _dbConnection.QueryAsync(query, entity);

@@ -4,12 +4,12 @@ namespace Expenses.Core.Dtos
 {
     public class SubcategoryDtoIn 
     {
-        [Required]
+        [Required(ErrorMessage = "El {0} es obligatorio")]
         [Display(Name = "Nombre")]
         [StringLength(20)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El {0} es obligatorio")]
         [Display(Name = "Categoria")]
         public int CategoryId { get; set; }
                

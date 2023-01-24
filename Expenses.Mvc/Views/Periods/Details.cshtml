@@ -8,6 +8,73 @@
 }
 
 <div class="card">
+    <div class="card-body">
+         @foreach (var item in Model.ListExpenses)
+         {
+            <div class="row border border-primary mt-1 p-1">
+
+                <div class="col-4 text-secondary">
+                    <div class="row">
+                        <div class="col">@Html.DisplayFor(modelItem => item.CategoryName)</div>                        
+                
+                        <div class="col">@Html.DisplayFor(modelItem => item.SubcategoryName)</div>                        
+                
+                        <div class="col">@Html.DisplayFor(modelItem => item.Name)</div>
+
+                        <div class="col">@Html.DisplayFor(modelItem => item.DateRegister)</div>
+                    </div>
+                </div>
+                
+                <div class="col-2">@Html.DisplayFor(modelItem => item.Budget)</div>
+
+                @if (item.Amount == 0)
+                {
+                    <div class="text-danger col-2">
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </div>
+                }
+                else
+                {
+                    <div class="text-success col-2">
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </div>
+                }
+                
+                <div class="col-2">
+                    @{
+                        if (item.CategoryId == 2){
+                            balance +=  item.Amount;
+                        }
+                        else
+                        {
+                            balance -=  item.Amount;                                    
+                        }
+                    }
+                    @balance.ToString("C")
+                </div>
+
+
+                <div class="col-2 text-center">                
+                    @if(item.Id == 0)
+                    {                                 
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="addExpense(@item.SubcategoryId)">
+                            Agregar
+                        </button>
+                    }
+                    else
+                    {                    
+                        <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="editExpense(@item.Id)">
+                            Editar
+                        </button>
+                    }
+                </div>
+                
+            </div>
+         }            
+    </div>
+</div>
+
+@*<div class="card">
     <div class="card-header">
         <h2 class="text-info">@Model.Name</h2>
         <hr/>
@@ -103,7 +170,7 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>*@
 
 
 @section Scripts {

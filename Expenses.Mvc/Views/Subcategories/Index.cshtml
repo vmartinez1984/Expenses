@@ -1,14 +1,14 @@
-﻿@model IEnumerable<Expenses.Core.Dtos.SubcategoryDto>
+﻿@using Expenses.Core.Dtos
+@model IEnumerable<SubcategoryDto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Subcategories";
 }
 
-<h1>Index</h1>
+<h1 class="text-info">Subcategorias</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@await Html.PartialAsync("_Save", new SubcategoryDto())
+
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +17,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>           
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
@@ -25,22 +25,70 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalSubcategory" onclick="editSubcategory(@item.Id)">
+                        editar
+                    </button>
+                    <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#modaldeleteSubcategory" onclick="deleteSubcategory(@item.Id)">
+                        borrar
+                    </button>
+                </td>
+            </tr>
+        }
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>           
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |                
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Model.Sum(x=> x.Amount).ToString("c")
+            </td>
+            <td>
             </td>
         </tr>
-}
     </tbody>
 </table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        var subcategories = new Array()
+        @foreach (var item in Model)
+        {
+            <text>
+                subcategories.push({Id : @item.Id, Name : '@item.Name', CategoryId: @item.CategoryId, Amount: @item.Amount})
+            </text>
+        }
+
+        function editSubcategory(subcategoryId){
+            var subcategory
+
+            subcategory = subcategories.find(x=>x.Id == subcategoryId)
+            document.getElementById("Id").value = subcategory.Id
+            document.getElementById("CategoryId").value = subcategory.CategoryId
+            document.getElementById("Name").value = subcategory.Name
+            document.getElementById("Amount").value = subcategory.Amount
+        }
+
+        function cancelSubcategory(){
+            document.getElementById("Id").value = 0
+            document.getElementById("CategoryId").value = ""
+            document.getElementById("Name").value = ""
+            document.getElementById("Amount").value = 0
+        }
+    </script>
+}

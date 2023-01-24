@@ -1,9 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Expenses.BusinessLayer\\Dtos\\Inputs",
-    "\\Expenses.Dao",
-    "\\Expenses.RepositoryEF"
+    "\\Expenses.BusinessLayer",
+    "\\Expenses.BusinessLayer\\Bl",
+    "\\Expenses.Mvc",
+    "\\Expenses.Mvc\\Views",
+    "\\Expenses.Mvc\\Views\\Investments",
+    "\\Expenses.RepositoryEF",
+    "\\Expenses.RepositoryEF\\Repositories"
   ],
+  "SelectedNode": "\\Expenses.Mvc\\Views\\Investments\\_Save.cshtml",
   "PreviewInSolutionExplorer": false
 }

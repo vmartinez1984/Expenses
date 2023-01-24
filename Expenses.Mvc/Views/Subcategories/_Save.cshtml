@@ -1,0 +1,48 @@
+﻿@model Expenses.Core.Dtos.SubcategoryDto
+
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalSubcategory">
+    Agregar
+</button>
+
+<!-- Modal -->
+<form asp-action="Save">
+    <div class="modal fade" id="modalSubcategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Subcategoria</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <input type="hidden" asp-for="Id"/>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CategoryId" class="control-label"></label>
+                            <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.SelectCategories">
+                                <option value="">Seleccione</option>
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Amount" class="control-label"></label>
+                            <input asp-for="Amount" class="form-control" type="number" />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>                      
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cancelSubcategory();">Cancelar</button>
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
