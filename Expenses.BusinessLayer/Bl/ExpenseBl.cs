@@ -28,8 +28,7 @@ namespace Expenses.BusinessLayer.Bl
 
                 entity = _mapper.Map<ExpenseEntity>(item);
                 entity.Id = await _unitOfWork.Expense.AddAsync(entity);
-                if (item.IsSaveInApartN)
-                    await AddApartAsync(entity);
+                await AddApartAsync(entity, item.IsSaveInApartN);
 
                 return entity.Id;
             }
@@ -40,7 +39,7 @@ namespace Expenses.BusinessLayer.Bl
             }
         }
 
-        private async Task AddApartAsync(ExpenseEntity expense)
+        private async Task AddApartAsync(ExpenseEntity expense, bool isSaveInApartN)
         {
             ApartEntity apartEntity;
 
@@ -50,9 +49,9 @@ namespace Expenses.BusinessLayer.Bl
                 DateRegistration = DateTime.Now,
                 ExpenseId = expense.Id,
                 IsActive = true,
-                IsApartN = true,
+                IsApartN = isSaveInApartN,
                 Name = expense.Name,
-                SubcategoryId = expense.SubcategoryId
+                SubcategoryId = expense.SubcategoryId                
             };
 
             await _unitOfWork.Apart.AddAsync(apartEntity);

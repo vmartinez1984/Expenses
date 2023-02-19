@@ -31,7 +31,10 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Amount)
                     </th>
-                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateRegistration)
+                    </th>
+                   @* <th></th>*@
                 </tr>
             </thead>
             <tbody>
@@ -57,17 +60,20 @@
                                 @Html.DisplayFor(modelItem => item.Amount)
                             </td>
                         }
-                        <td>                            
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateRegistration)
+                        </td>
+                        @*<td>                            
                             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |                            
                             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                        </td>
+                        </td>*@
                     </tr>
                 }
                 <tr>
                     <td></td>
                     <td></td>
                     <td>@Model.Sum(x=> x.Amount).ToString("c")</td>
-                    <td></td>
+                    @*<td></td>*@
                 </tr>
             </tbody>
         </table>

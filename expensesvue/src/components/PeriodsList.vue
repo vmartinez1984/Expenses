@@ -11,41 +11,44 @@
                 </button>
 
                 <!-- Modal -->
-                <form v-on:submit.prevent="savePeriod">
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Periodo</h1>
-                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                        </div>
-                        <div class="modal-body">
-
-                                <input type="text" class="form-control" v-model="period.id"/>
-                                <div class="form-group">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" v-model="period.name"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="nombre">Fecha de inicio</label>
-                                    <input type="date" class="form-control" v-model="period.dateStart"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="nombre">Fecha de inicio</label>
-                                    <input type="date" class="form-control" v-model="period.dateStop"/>
-                                </div>
-
+                <form v-on:submit.prevent="savePeriod" class="needs-validation" novalidate>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Periodo</h1>
+                                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                             </div>
-                            <div class="modal-footer">
-                                <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetPeriod">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            <div class="modal-body">
+
+                                    <input type="hidden" class="form-control" v-model="period.id"/>
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" v-model="period.name" required/>
+                                        <div class="invalid-feedback">
+                                            El nombre es requerido
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="nombre">Fecha de inicio</label>
+                                        <input type="date" class="form-control" v-model="period.dateStart"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="nombre">Fecha de inicio</label>
+                                        <input type="date" class="form-control" v-model="period.dateStop"/>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
             </div>
             <div class="card-body">
@@ -87,28 +90,42 @@
     </div>
 </template>
 <script>
+import service from '@/services/periodService'
+
 export default {
     name: 'PeriodsList',
     data(){
         return{
             periods:[],
-            period:{}
+            period:{},            
         }
     },
     created: function(){
         this.getPeriods()
         this.period.id= 0
+        this.validation()
     },
     methods:{
-        getPeriods(){
-            var url = 'https://localhost:44361/api/Periods'
+        validation(){
+            'use strict'
 
-            fetch(url)
-            .then(response => response.json())
-            .then((data)=>{
-                this.periods = data
-                //console.log(data)
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+                }, false)
             })
+        },
+        async getPeriods(){
+            this.periods = await service.getAllPeriodsAsycn()
+            //console.log(this.periods)
         },
         deletePeriod(periodId){
             alert(periodId);
@@ -122,7 +139,8 @@ export default {
             this.period.id = 0
             this.period.name = ""
         },
-        savePeriod(){
+        savePeriod(){      
+            this.validation()    
             console.log(this.period)
             if(this.period.id == 0){
                 this.addPeriod(this.period)

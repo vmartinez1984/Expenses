@@ -45,12 +45,11 @@ namespace Expenses.Api.Controllers
         {
             try
             {
+                PeriodFullDto period;                
 
-                PeriodDto item;
+                period = await _unitOfWorkBl.Period.GetFullAsync(id);
 
-                item = await _unitOfWorkBl.Period.GetAsync(id);
-
-                return Ok(item);
+                return Ok(period);
             }
             catch (Exception)
             {

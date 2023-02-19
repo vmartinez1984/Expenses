@@ -3,7 +3,6 @@ using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 using Expenses.Core.Dtos;
 using Expenses.Core.Entities;
 using Expenses.Core.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -30,15 +29,19 @@ namespace Expenses.BusinessLayer.Bl
             await _unitOfWork.Invesment.DeleteAsync(id);
         }
 
-        public async Task<List<InvestmentDto>> GetAllAsync()
+        public async Task<PagerDto> GetAllAsync(PagerDto pagerDto)
         {
             List<InvestmentEntity> entities;
             List<InvestmentDto> list;
+            PagerEntity pagerEntity;
 
-            entities = await _unitOfWork.Invesment.GetAllAsync();
+            pagerEntity = _mapper.Map<PagerEntity>(pagerDto);
+            entities = await _unitOfWork.Invesment.GetAllAsync(pagerEntity);
             list = _mapper.Map<List<InvestmentDto>>(entities);
+            pagerDto = _mapper.Map<PagerDto>(pagerEntity);
+            pagerDto.List = list;            
 
-            return list;
+            return pagerDto;
         }
 
         public async Task<InvestmentDto> GetAsync(int id)

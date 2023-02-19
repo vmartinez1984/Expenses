@@ -1,7 +1,6 @@
 ﻿using Expenses.BusinessLayer.Dtos.Inputs;
 using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.Core.Dtos;
-using System.Collections;
 
 namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
 {
@@ -20,7 +19,8 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
 
     public interface IInvesmentBl: IBaseBl<InvesmentDtoIn, InvestmentDto>
     {
-        Task<List<InvestmentDto>> GetAllAsync();
+        //Task<List<InvestmentDto>> GetAllAsync();
+        Task<PagerDto> GetAllAsync(PagerDto pager);
     }
     public interface IApartBl : IBaseBl<ApartDtoIn, ApartDto>
     {

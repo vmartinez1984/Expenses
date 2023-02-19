@@ -21,5 +21,9 @@ namespace Expenses.Core.Dtos
         [Display(Name = "$")]
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
+
+        [Display(Name = "Fecha")]
+        [DataType(DataType.Date)]
+        public DateTime DateRegistration { get; set; }
     }
 }

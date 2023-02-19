@@ -18,6 +18,8 @@ namespace Expenses.BusinessLayer.Mappers
             CreateMap<InvesmentDtoIn, InvestmentEntity>();
 
             CreateMap<InvestmentEntity, InvestmentDto>();
+
+            CreateMap<PagerDto, PagerEntity>().ReverseMap();
         }
     }
 }

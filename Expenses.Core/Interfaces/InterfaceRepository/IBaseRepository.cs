@@ -13,7 +13,7 @@ namespace Expenses.Core.InterfaceRepository
     //Como es una linea sera m�s f�cil manipular desde aqui
 
     public interface IInvesmentRepository: IBaseRepository<InvestmentEntity> {
-        Task<List<InvestmentEntity>> GetAllAsync();
+        Task<List<InvestmentEntity>> GetAllAsync(PagerEntity pagerEntity);
     }
 
     public interface ISubcategoryRepository : IBaseRepository<SubcategoryEntity>

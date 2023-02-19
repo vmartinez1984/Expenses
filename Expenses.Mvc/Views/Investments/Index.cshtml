@@ -16,6 +16,15 @@
             </div>
         </div>
     </div>
+    <div class="card-body">
+        @*<form>
+            <label>Registros por página</label>
+            <select class="form-select">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+        </form>*@
     <table class="table">
         <thead>
             <tr>
@@ -27,6 +36,9 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DateStop)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpireState)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Interest)
@@ -43,10 +55,26 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Term)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@Model.Sum(x=>x.Amount).ToString("c")</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
             @foreach (var item in Model)
             {
                 <tr>
@@ -54,11 +82,21 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DateStart)
+                        @Html.DisplayFor(modelItem => item.DateStart)                        
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateStop)
-                    </td>
+                    @if(item.ExpireState < 7)
+                    {
+                        <td class="text-danger">
+                            @Html.DisplayFor(modelItem => item.DateStop)
+                        </td>
+                    }
+                    else
+                    {                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateStop)
+                        </td>
+                    }
+                    <td>@item.ExpireState</td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Interest)
                     </td>
@@ -75,6 +113,9 @@
                         @Html.DisplayFor(modelItem => item.Term)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Note)
+                    </td>
+                    <td>
                         <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalPeriod" onclick="editInvestment(@item.Id);">
                             Editar
                         </button>
@@ -87,6 +128,21 @@
             }
         </tbody>
     </table>
+    
+    </div>
+    <div class="card-footer">
+        <div>
+            @{
+                PagerDto pagerDto = ViewBag.Pager;
+            }
+            Página @pagerDto.PageCurrent de @pagerDto.CountPage | Total de registros filtrados @pagerDto.TotalRecordsFiltered / Total de registros @pagerDto.TotalRecords
+            |
+            @for (int i = 1; i <= pagerDto.CountPage; i++)
+            {
+                <a href="~/Investments/index?PageCurrent=@i">@i</a>                
+            }
+        </div>
+    </div>
 </div>
 
 @await Html.PartialAsync("_Delete", new InvestmentDto())
@@ -110,7 +166,8 @@
                     Amount : @item.Amount,
                     AmountFinal : @item.AmountFinal,
                     InstructionId: @item.InstructionId,
-                    Term: @item.Term
+                    Term: @item.Term,
+                    Note: '@item.Note'
                 })
             </text>
         }
@@ -133,6 +190,7 @@
             document.getElementById('Term').value = investment.Term
             document.getElementById('Amount').value = investment.Amount
             document.getElementById('AmountFinal').value = investment.AmountFinal
+            document.getElementById('Note').value = investment.Note
         }
 
         function deleteInvestment(investmentId){
@@ -150,6 +208,7 @@
             document.getElementById('investmentTerm').innerText = investment.Term
             document.getElementById('investmentAmount').innerText = investment.Amount
             document.getElementById('investmentAmountFinal').innerText = investment.AmountFinal
+            document.getElementById('Note').innerText = investment.Note
         }
 
         function getinvestmentById(id){

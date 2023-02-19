@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Expenses.Core.Dtos
 {
@@ -9,7 +10,7 @@ namespace Expenses.Core.Dtos
 
     public class InvesmentDtoIn
     {
-        [Required]
+        [Required(ErrorMessage ="El nombre no puede ser vacio")]
         [StringLength(255)]
         [Display(Name = "Nombre")]
         public string Name { get; set; }
@@ -32,22 +33,37 @@ namespace Expenses.Core.Dtos
         [Required]
         [Display(Name = "Cantidad")]
         [DataType(DataType.Currency)]
-        [Range(1, 24000)]
+        [Range(1, 50000,ErrorMessage ="La cantida debe ser entre {0} y {1}")]
         public decimal Amount { get; set; }
                 
         [Display(Name = "Cantidad")]
         [DataType(DataType.Currency)]
-        [Range(1, 24000)]
+        [Range(1, 50000, ErrorMessage = "La cantida debe ser entre {0} y {1}")]
         public decimal AmountFinal { get; set; }
-
-        [Required]
+                
+        [Required(ErrorMessage ="Elija una opción")]
         [Range(1,3)]
         [Display(Name = "Instrucción")]
         public int InstructionId { get; set; }
 
-        [Required]
-        [Range(7,180)]
+        [Required(ErrorMessage ="Elija una opción")]
+        [Range(1,180)]
         [Display(Name = "Plazo")]
         public int Term { get; set; }
+
+        [StringLength(250)]
+        [Display(Name = "Nota")]
+        public string Note { get; set; }
+
+        [DisplayName("Vence")]
+        public int ExpireState { 
+            get {
+                TimeSpan dateDiference;
+
+                dateDiference = this.DateStop.Date - DateTime.Now.Date;
+
+                return dateDiference.Days;
+            }  
+        }
     }
 }

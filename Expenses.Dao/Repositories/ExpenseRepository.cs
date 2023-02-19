@@ -23,8 +23,8 @@ namespace Expenses.Repository.Repositories
                 string query;
 
                 query = $@"INSERT INTO Expense 
-                      ( Amount, SubcategoryId, PeriodId, DateRegistration, IsActive) 
-                VALUES(@Amount,@SubcategoryId,@PeriodId, NOW(),1);
+                      (Name, Amount, SubcategoryId, PeriodId, DateRegistration, IsActive) 
+                VALUES(@Name,@Amount,@SubcategoryId,@PeriodId, NOW(),1);
                 {LastId}";
                 entity.Id = await _dbConnection.QueryFirstOrDefaultAsync<int>(query, entity);
 

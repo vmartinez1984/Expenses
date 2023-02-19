@@ -10,21 +10,23 @@ namespace Expenses.Mvc.Controllers
         {
         }
 
-        public async Task<IActionResult> Index(int? investmentId)
+        public async Task<IActionResult> Index(PagerDto pager)
         {
-            List<InvestmentDto> list;
+            //List<InvestmentDto> list;
+            PagerDto pagerDto;
 
-            list = await _context.Investment.GetAllAsync();
-            if (investmentId is null)
-            {
-                ViewBag.Investment = new InvestmentDto();
-            }
-            else
-            {
-                ViewBag.Investment = await _context.Investment.GetAsync((int)investmentId);
-            }
+            pagerDto = await _context.Investment.GetAllAsync(pager);
+            ViewBag.Pager = pagerDto;
+            //if (investmentId is null)
+            //{
+                ViewBag.Investment = new InvestmentDto();            
+            //}
+            //else
+            //{
+            //    ViewBag.Investment = await _context.Investment.GetAsync((int)investmentId);
+            //}
 
-            return View(list);
+            return View(pagerDto.List);
         }
 
         [HttpPost]

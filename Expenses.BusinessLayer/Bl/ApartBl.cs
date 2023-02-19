@@ -30,11 +30,13 @@ namespace Expenses.BusinessLayer.Bl
         {
             List<ApartEntity> entities;
             List<ApartDto> list;
+            const int AhorroN = 16;
 
             entities = await _unitOfWork.Apart.GetAsync(subcategoryId);
             list = _mapper.Map<List<ApartDto>>(entities);
             await SetCategoryNameAsync(list);
-            await SetApartN(list);
+            if(subcategoryId == AhorroN)
+                await SetApartN(list);
 
             return list;
         }
