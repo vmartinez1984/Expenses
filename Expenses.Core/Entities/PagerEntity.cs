@@ -15,5 +15,7 @@
         public int TotalRecords { get; set; }
 
         public int TotalRecordsFiltered { get; set; }
+
+        public string SubcategoryId { get; set; }
     }
 }

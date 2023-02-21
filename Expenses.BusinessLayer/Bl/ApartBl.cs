@@ -26,19 +26,38 @@ namespace Expenses.BusinessLayer.Bl
             throw new System.NotImplementedException();
         }
 
-        public async Task<List<ApartDto>> GetAsync(int? subcategoryId)
+        //public async Task<List<ApartDto>> GetAsync(int? subcategoryId)
+        //{
+        //    List<ApartEntity> entities;
+        //    List<ApartDto> list;
+        //    const int AhorroN = 16;
+
+        //    entities = await _unitOfWork.Apart.GetAsync(subcategoryId);
+        //    list = _mapper.Map<List<ApartDto>>(entities);
+        //    await SetCategoryNameAsync(list);
+        //    if(subcategoryId == AhorroN)
+        //        await SetApartN(list);
+
+        //    return list;
+        //}
+
+        public async Task<PagerDto> GetAsync(PagerDto pagerDto)
         {
             List<ApartEntity> entities;
             List<ApartDto> list;
-            const int AhorroN = 16;
+            PagerEntity pagerEntity;
+            const string AhorroN = "16";
 
-            entities = await _unitOfWork.Apart.GetAsync(subcategoryId);
+            pagerEntity = _mapper.Map<PagerEntity>(pagerDto);
+            entities = await _unitOfWork.Apart.GetAsync(pagerEntity);
             list = _mapper.Map<List<ApartDto>>(entities);
             await SetCategoryNameAsync(list);
-            if(subcategoryId == AhorroN)
+            if (pagerDto.SubcategoryId == AhorroN)
                 await SetApartN(list);
+            pagerDto = _mapper.Map<PagerDto>(pagerEntity);
+            pagerDto.List = list;
 
-            return list;
+            return pagerDto;
         }
 
         private async Task SetApartN(List<ApartDto> list)
@@ -46,7 +65,7 @@ namespace Expenses.BusinessLayer.Bl
             List<ApartEntity> entities;
             List<ApartDto> dtos;
 
-            entities = await _unitOfWork.Apart.GetAsync(null);
+            entities = await _unitOfWork.Apart.GetAsync();
             entities = entities.Where(x=> x.IsApartN == true).ToList();
             dtos = _mapper.Map<List<ApartDto>>(entities);
 

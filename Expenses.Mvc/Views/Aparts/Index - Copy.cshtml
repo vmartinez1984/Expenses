@@ -1,0 +1,81 @@
+﻿@using Expenses.Core.Dtos
+@model IEnumerable<ApartDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-info">Apartados</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="card">
+    <div class="card-header">
+        @foreach (SubcategoryDto item in ViewBag.Subcategories)
+        {
+            <a href="/Aparts/index?subcategoryId=@item.Id" class="btn btn-info text-white m-1">@item.Name</a>
+        }
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SubcategoryName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateRegistration)
+                    </th>
+                   @* <th></th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SubcategoryName)
+                        </td>
+                        @if (item.Amount < 0)
+                        {
+                            <td class="text-danger">
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+
+                        }
+                        else
+                        {
+                            <td class="text-success">
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                        }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateRegistration)
+                        </td>
+                        @*<td>                            
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |                            
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>*@
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>@Model.Sum(x=> x.Amount).ToString("c")</td>
+                    @*<td></td>*@
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

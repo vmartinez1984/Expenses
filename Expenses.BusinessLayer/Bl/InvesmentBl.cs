@@ -68,6 +68,7 @@ namespace Expenses.BusinessLayer.Bl
             entity.Interest = item.Interest;
             entity.Name = item.Name;
             entity.Term = item.Term;
+            entity.Note = item.Note;
 
             await _unitOfWork.Invesment.UpdateAsync(entity);
         }

@@ -56,13 +56,13 @@ namespace Expenses.Repository.Repositories
             }
             else
             {
-                queryForCountFiltered = $"{queryForCount} AND LOWER(Name, DateStart, DateStop, Interest, Amount, AmountFinal, Term) LIKE '%{pagerEntity.Search}%'";
+                queryForCountFiltered = $"{queryForCount} AND LOWER(CONCAT(Name, DateStart, DateStop, Interest, Amount, AmountFinal, Term)) LIKE '%{pagerEntity.Search.ToLower()}%'";
             }
 
             query1 = "SELECT * FROM investment WHERE IsActive = 1";
             if (!string.IsNullOrEmpty(pagerEntity.Search))
             {
-                query1 += $" AND LOWER(Name, DateStart, DateStop, Interest, Amount, AmountFinal, Term) LIKE '%{pagerEntity.Search}%'";
+                query1 += $" AND LOWER(CONCAT(Name, DateStart, DateStop, Interest, Amount, AmountFinal, Term)) LIKE '%{pagerEntity.Search.ToLower()}%'";
             }
 
             query2 = $@"{query1}                 
@@ -112,7 +112,7 @@ namespace Expenses.Repository.Repositories
 
             query = $@"UPDATE investment 
             SET Name = @Name, DateStart=@DateStart, DateStop=@DateStop, Amount=@Amount, 
-            InstructionId=@InstructionId, Term=@Term, AmountFinal=@AmountFinal, Interest=@Interest
+            InstructionId=@InstructionId, Term=@Term, AmountFinal=@AmountFinal, Interest=@Interest,
             Note = @Note
             WHERE Id = @Id";
 

@@ -9,7 +9,7 @@
         {
             get
             {
-                return (int)Math.Ceiling((double)TotalRecords / RecordsPerPage);
+                return (int)Math.Ceiling((double)TotalRecordsFiltered / RecordsPerPage);
             }
         }
 
@@ -20,6 +20,8 @@
         public string Search { get; set; }
         public string SortColumn { get; set; } = "Id";
         public string SortColumnDir { get; set; } = "DESC";
+
+        public string SubcategoryId { get; set; }
     }
 
     public class SearchDtoIn

@@ -2,26 +2,85 @@
 @model IEnumerable<ApartDto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Apartados";
+    PagerDto pagerDto = ViewBag.Pager;
+    int[] recordsPePAge = new int[] { 10, 25, 50, 100 };
 }
+
 
 <h1 class="text-info">Apartados</h1>
 
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 
 <div class="card">
     <div class="card-header">
-        @foreach (SubcategoryDto item in ViewBag.Subcategories)
-        {
-            <a href="/Aparts/index?subcategoryId=@item.Id" class="btn btn-info text-white m-1">@item.Name</a>
-        }
+        <form>
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="row">
+                        <label class="form-label col-4">Buscar</label>
+                        <input class="form-control col-8" name="Search" type="text" value="@pagerDto.Search" />
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="row">
+                        <label class="form-label col-4">Registros por página</label>
+                        <select class="form-select col-8" name="RecordsPerPage">
+                            @foreach (var item in recordsPePAge)
+                            {
+                                if (item == pagerDto.RecordsPerPage)
+                                {
+                                    <option value="@item" selected="selected">@item</option>
+                                }
+                                else
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                @foreach (SubcategoryDto item in ViewBag.Subcategories)
+                {
+                    if (item.Id.ToString() == pagerDto.SubcategoryId)
+                    {
+                        <div class="form-check col-3">
+                            <input class="form-check-input" type="radio" name="SubcategoryId" value="@item.Id" checked="checked">
+                            <label class="form-check-label">
+                                @item.Name
+                            </label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-check col-3">
+                            <input class="form-check-input" type="radio" name="SubcategoryId" value="@item.Id">
+                            <label class="form-check-label">
+                                @item.Name
+                            </label>
+                        </div>
+                    }
+                }
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
     </div>
     <div class="card-body">
         <table class="table">
             <thead>
                 <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
@@ -34,13 +93,16 @@
                     <th>
                         @Html.DisplayNameFor(model => model.DateRegistration)
                     </th>
-                   @* <th></th>*@
+                    @* <th></th>*@
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
@@ -63,13 +125,14 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.DateRegistration)
                         </td>
-                        @*<td>                            
-                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |                            
-                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                        </td>*@
+                        @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
                     </tr>
                 }
                 <tr>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td>@Model.Sum(x=> x.Amount).ToString("c")</td>
@@ -77,5 +140,25 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="card-footer">
+        <div>
+            <p class="text-info">
+                Página @pagerDto.PageCurrent de @pagerDto.CountPage | Total de registros filtrados @pagerDto.TotalRecordsFiltered / Total de registros @pagerDto.TotalRecords
+            </p>
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                @for (int i = 1; i <= pagerDto.CountPage; i++)
+                {
+                    if (i == pagerDto.PageCurrent)
+                    {
+                        <button class="btn btn-primary" disabled>@i</button>
+                    }
+                    else
+                    {
+                        <a href="~/Aparts/index?PageCurrent=@i&Search=@pagerDto.Search&RecordsPerPage=@pagerDto.RecordsPerPage" class="btn btn-primary">@i</a>
+                    }
+                }
+            </div>
+        </div>
     </div>
 </div>

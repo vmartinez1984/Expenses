@@ -2,7 +2,7 @@
 @model PeriodFullDto
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Periodos";
     decimal balance = 0;
     List<SubcategoryDto> subcategories = ViewBag.ListSubcategories2;
 }
@@ -232,6 +232,16 @@
             document.getElementById('SubcategoryId').value = expense.subcategoryId
             document.getElementById('Name').value = expense.name
             document.getElementById('Amount').value = expense.amount
+        }
+
+        function saveInApartN(){
+            var subcategory 
+            var subcategoryId
+
+            subcategoryId = document.getElementById('SubcategoryId').value
+            subcategory = subcategories.find(item => item.Id == subcategoryId)
+            document.getElementById('Name').value = subcategory.Name
+
         }
     </script>
 }

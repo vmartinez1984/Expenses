@@ -63,6 +63,8 @@ namespace Expenses.Core.InterfaceRepository
 
     public interface IApartRepository : IBaseRepository<ApartEntity>
     {
-        Task<List<ApartEntity>> GetAsync(int? subcategoryId);
+        Task<List<ApartEntity>> GetAsync();
+
+        Task<List<ApartEntity>> GetAsync(PagerEntity pagerEntity);
     }
 }

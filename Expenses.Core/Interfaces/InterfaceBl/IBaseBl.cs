@@ -24,8 +24,8 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
     }
     public interface IApartBl : IBaseBl<ApartDtoIn, ApartDto>
     {
-        Task<List<ApartDto>> GetAsync(int? subcategoryId);
-
+        //Task<List<ApartDto>> GetAsync(int? subcategoryId);
+        Task<PagerDto> GetAsync(PagerDto pagerDto);
     }
 
     public interface IGenericBlAAsync<T, U> where T : class

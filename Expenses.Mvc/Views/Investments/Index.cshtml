@@ -2,6 +2,9 @@
 @model IEnumerable<InvestmentDto>
 
 @{
+            
+    PagerDto pagerDto = ViewBag.Pager;
+            
     ViewData["Title"] = "Inversiones";
 }
 
@@ -17,14 +20,17 @@
         </div>
     </div>
     <div class="card-body">
-        @*<form>
+        <form>
+            <label>Buscar</label>
+            <input type="text" name="Search" class="form-control" placeholder="Buscar" />
             <label>Registros por página</label>
-            <select class="form-select">
+            <select class="form-select" name="RecordsPerPage">
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>
             </select>
-        </form>*@
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
     <table class="table">
         <thead>
             <tr>
@@ -68,8 +74,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td>@Model.Sum(x=>x.Amount).ToString("c")</td>
+                <td>@Model.Sum(x=>x.AmountFinal).ToString("c")</td>                
                 <td></td>
                 <td></td>
                 <td></td>
@@ -132,14 +138,11 @@
     </div>
     <div class="card-footer">
         <div>
-            @{
-                PagerDto pagerDto = ViewBag.Pager;
-            }
             Página @pagerDto.PageCurrent de @pagerDto.CountPage | Total de registros filtrados @pagerDto.TotalRecordsFiltered / Total de registros @pagerDto.TotalRecords
             |
             @for (int i = 1; i <= pagerDto.CountPage; i++)
             {
-                <a href="~/Investments/index?PageCurrent=@i">@i</a>                
+                <a href="~/Investments/index?PageCurrent=@i&Search=@pagerDto.Search&RecordsPerPage=@pagerDto.RecordsPerPage">@i</a>                
             }
         </div>
     </div>
