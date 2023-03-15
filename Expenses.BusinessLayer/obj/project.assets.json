@@ -355,7 +355,7 @@
       "projectName": "Expenses.BusinessLayer",
       "projectPath": "C:\\Users\\vmartinez\\source\\repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\Expenses.BusinessLayer.csproj",
       "packagesPath": "C:\\Users\\vmartinez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vmartinez\\Source\\Repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\obj\\",
+      "outputPath": "C:\\Users\\vmartinez\\source\\repos\\vmartinez1984\\Expenses\\Expenses.BusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vmartinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -421,7 +421,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

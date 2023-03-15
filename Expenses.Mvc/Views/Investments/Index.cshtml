@@ -138,12 +138,22 @@
     </div>
     <div class="card-footer">
         <div>
-            Página @pagerDto.PageCurrent de @pagerDto.CountPage | Total de registros filtrados @pagerDto.TotalRecordsFiltered / Total de registros @pagerDto.TotalRecords
-            |
-            @for (int i = 1; i <= pagerDto.CountPage; i++)
-            {
-                <a href="~/Investments/index?PageCurrent=@i&Search=@pagerDto.Search&RecordsPerPage=@pagerDto.RecordsPerPage">@i</a>                
-            }
+            <p class="text-info">
+                Página @pagerDto.PageCurrent de @pagerDto.CountPage | Total de registros filtrados @pagerDto.TotalRecordsFiltered / Total de registros @pagerDto.TotalRecords
+            </p>
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                @for (int i = 1; i <= pagerDto.CountPage; i++)
+                {
+                    if (i == pagerDto.PageCurrent)
+                    {
+                        <button class="btn btn-primary" disabled>@i</button>
+                    }
+                    else
+                    {
+                        <a href="~/Investments/index?PageCurrent=@i&Search=@pagerDto.Search&RecordsPerPage=@pagerDto.RecordsPerPage" class="btn btn-primary">@i</a>
+                    }
+                }
+            </div>
         </div>
     </div>
 </div>

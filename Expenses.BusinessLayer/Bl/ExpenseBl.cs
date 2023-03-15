@@ -41,20 +41,52 @@ namespace Expenses.BusinessLayer.Bl
 
         private async Task AddApartAsync(ExpenseEntity expense, bool isSaveInApartN)
         {
-            ApartEntity apartEntity;
-
-            apartEntity = new ApartEntity
+            if (isSaving(expense.SubcategoryId) || isSaveInApartN)
             {
-                Amount = expense.Amount,
-                DateRegistration = DateTime.Now,
-                ExpenseId = expense.Id,
-                IsActive = true,
-                IsApartN = isSaveInApartN,
-                Name = expense.Name,
-                SubcategoryId = expense.SubcategoryId                
-            };
+                ApartEntity apartEntity;
 
-            await _unitOfWork.Apart.AddAsync(apartEntity);
+                apartEntity = new ApartEntity
+                {
+                    Amount = expense.Amount,
+                    DateRegistration = DateTime.Now,
+                    ExpenseId = expense.Id,
+                    IsActive = true,
+                    IsApartN = isSaveInApartN,
+                    Name = expense.Name,
+                    SubcategoryId = expense.SubcategoryId
+                };
+
+                await _unitOfWork.Apart.AddAsync(apartEntity);
+            }
+        }
+
+        private bool isSaving(int subcategoryId)
+        {
+            List<int> ahorros;
+            int contador;
+
+            const int AhorroCamioneta = 6;
+            const int AhorroGastosMedicos = 15;
+            const int AhorroGastosTlax = 13;
+            const int AhorroLisbrosTec = 43;
+            const int AhorroN = 16;
+            const int AhorroRopa = 14;
+            const int AhorroVacaciones = 12;
+            ahorros = new List<int> { AhorroCamioneta, AhorroGastosMedicos, AhorroGastosTlax,AhorroLisbrosTec,AhorroN, AhorroRopa, AhorroVacaciones };
+
+                        contador = 0;
+            ahorros.ForEach(ahorro =>
+            {
+                if(ahorro == subcategoryId)
+                {
+                    contador++;
+                }
+            });
+
+            if(contador == 0)
+                return false;
+            else
+                return true;
         }
 
         public async Task DeleteAsync(int id)

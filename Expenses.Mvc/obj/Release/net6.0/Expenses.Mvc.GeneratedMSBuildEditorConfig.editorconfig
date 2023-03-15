@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Mvc
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/vmartinez/source/repos/vmartinez1984/Expenses/Expenses.Mvc/Views/Aparts/Index - Copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRzXEluZGV4IC0gQ29weS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vmartinez/source/repos/vmartinez1984/Expenses/Expenses.Mvc/Views/Aparts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
