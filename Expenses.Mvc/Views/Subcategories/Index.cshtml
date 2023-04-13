@@ -1,66 +1,126 @@
 ﻿@using Expenses.Core.Dtos
+@using System.Text
 @model IEnumerable<SubcategoryDto>
-
 @{
     ViewData["Title"] = "Subcategories";
+    List<SubcategoryDto> entrys;
+    List<SubcategoryDto> expenses;
+    List<SubcategoryDto> aparts;
+
+    decimal total = 0;
+    entrys = Model.Where(x => x.CategoryName == "Ingresos").ToList();
+    expenses = Model.Where(x => x.CategoryName == "Gastos").ToList();
+    aparts = Model.Where(x => x.CategoryName == "Apartado").ToList();
 }
 
 <h1 class="text-info">Subcategorias</h1>
 
 @await Html.PartialAsync("_Save", new SubcategoryDto())
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+<div class="card">
+    <div class="card-header">
+        <h3 class="text-info">Ingresos</h3>
+    </div>
+    <div class="card-body">
+        @foreach (var item in entrys)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
+            <div class="row mt-1">
+                <div class="col">@item.CategoryName</div>
+                <div class="col">@item.Name</div>
+                <div class="col">@item.Amount.ToString("c")</div>
+                <div class="col">
                     <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalSubcategory" onclick="editSubcategory(@item.Id)">
                         editar
                     </button>
-                    <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#modaldeleteSubcategory" onclick="deleteSubcategory(@item.Id)">
-                        borrar
-                    </button>
-                </td>
-            </tr>
+                    <a asp-action="delete" asp-controller="Subcategories" asp-route-id="@item.Id" class="btn btn-danger text-white">
+                        Borrar
+                    </a>
+                </div>
+            </div>
         }
-        <tr>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-                @Model.Sum(x=> x.Amount).ToString("c")
-            </td>
-            <td>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">@entrys.Sum(x=> x.Amount).ToString("c")</div>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>
 
+<div class="card mt-1">
+    <div class="card-header">
+        <h3 class="text-info">Apartados</h3>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">@aparts.Sum(x=> x.Amount).ToString("c")</div>
+            <div class="col"></div>
+        </div>
+        @foreach (var item in aparts)
+        {
+            <div class="row mt-1">                
+                <div class="col">@item.Name</div>
+                <div class="col">@item.Amount.ToString("c")</div>
+                @{total += item.Amount;}
+                <div class="col">@total.ToString("c")</div>
+                <div class="col">
+                    <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalSubcategory" onclick="editSubcategory(@item.Id)">
+                        editar
+                    </button>
+                    <a asp-action="delete" asp-controller="Subcategories" asp-route-id="@item.Id" class="btn btn-danger text-white">
+                        Borrar
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="card mt-1">
+    <div class="card-header">
+        <h3 class="text-info">Gastos</h3>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">@expenses.Sum(x=> x.Amount).ToString("c")</div>
+            <div class="col"></div>
+        </div>
+        @foreach (var item in expenses)
+        {
+            <div class="row mt-1">                
+                <div class="col">@item.Name</div>
+                <div class="col">@item.Amount.ToString("c")</div>
+                @{
+                    total += item.Amount;
+                }
+                <div class="col">@total.ToString("c")</div>
+                <div class="col">
+                    <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalSubcategory" onclick="editSubcategory(@item.Id)">
+                        editar
+                    </button>
+                    <a asp-action="delete" asp-controller="Subcategories" asp-route-id="@item.Id" class="btn btn-danger text-white">
+                        Borrar
+                    </a>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">@expenses.Sum(x=> x.Amount).ToString("c")</div>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
@@ -69,22 +129,20 @@
         var subcategories = new Array()
         @foreach (var item in Model)
         {
-            <text>
-                subcategories.push({Id : @item.Id, Name : '@item.Name', CategoryId: @item.CategoryId, Amount: @item.Amount})
-            </text>
+            @:subcategories.push({ Id: @item.Id, Name: '@item.Name', CategoryId: @item.CategoryId, Amount: @item.Amount})
         }
 
-        function editSubcategory(subcategoryId){
-            var subcategory
+            function editSubcategory(subcategoryId) {
+                var subcategory
 
-            subcategory = subcategories.find(x=>x.Id == subcategoryId)
-            document.getElementById("Id").value = subcategory.Id
-            document.getElementById("CategoryId").value = subcategory.CategoryId
-            document.getElementById("Name").value = subcategory.Name
-            document.getElementById("Amount").value = subcategory.Amount
-        }
+                subcategory = subcategories.find(x => x.Id == subcategoryId)
+                document.getElementById("Id").value = subcategory.Id
+                document.getElementById("CategoryId").value = subcategory.CategoryId
+                document.getElementById("Name").value = subcategory.Name
+                document.getElementById("Amount").value = subcategory.Amount
+            }
 
-        function cancelSubcategory(){
+        function cancelSubcategory() {
             document.getElementById("Id").value = 0
             document.getElementById("CategoryId").value = ""
             document.getElementById("Name").value = ""

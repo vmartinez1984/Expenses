@@ -17,8 +17,12 @@ namespace Expenses.Mvc.Controllers
         // GET: Subcategories
         public async Task<IActionResult> Index()
         {
+            List<SubcategoryDto> subcategories;
+
             ViewBag.SelectCategories = new SelectList(await _context.Category.GetAsync(), "Id", "Name");
-            return View(await _context.Subcategory.GetAsync());
+            subcategories = await _context.Subcategory.GetAsync();
+
+            return View(subcategories);
         }
 
         // POST: Subcategories/Create
@@ -32,7 +36,7 @@ namespace Expenses.Mvc.Controllers
             {
                 if (subcategory.Id == 0)
                 {
-                    await _context.Subcategory.AddAsync(subcategory);
+                    await _context.Subcategory.AddAsync(subcategory);                    
                 }
                 else
                 {
@@ -41,6 +45,14 @@ namespace Expenses.Mvc.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }       
+        
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var entity = await _context.Subcategory.GetAsync(id);
+
+            return View(entity);
         }
 
         // POST: Subcategories/Delete/5

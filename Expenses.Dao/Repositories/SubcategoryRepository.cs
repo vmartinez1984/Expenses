@@ -4,6 +4,7 @@ using Expenses.Core.InterfaceRepository;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Expenses.Repository.Repositories
@@ -40,7 +41,7 @@ namespace Expenses.Repository.Repositories
 
             query = $@"SELECT Subcategory.* FROM Subcategory WHERE Subcategory.Id = {id}";
             entity = await _dbConnection.QueryFirstOrDefaultAsync<SubcategoryEntity>(query);
-
+            
             return entity;
         }
 
@@ -59,7 +60,7 @@ namespace Expenses.Repository.Repositories
         {
             string query;
 
-            query = $@"UPDATE Subcategory SET Name = @Name, CategoryId = @CategoryId  WHERE Id = @Id";
+            query = $@"UPDATE Subcategory SET Name = @Name, CategoryId = @CategoryId, Amount = @Amount   WHERE Id = @Id";
 
             await _dbConnection.QueryAsync(query, entity);
         }

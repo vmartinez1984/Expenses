@@ -23,5 +23,11 @@ namespace Expenses.Core.Interfaces
         IExpenseTdcRepository ExpenseTdc { get; }
 
         IInvesmentRepository Invesment { get; }
+
+        IBuyRepository Buy { get; }
+
+        IPayRepository Pay { get; }
+
+        ITdcRepository Tdc { get; }
     }
 }

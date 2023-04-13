@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Expenses.Core.Dtos.BuyDto>
+
+@{
+    ViewData["Title"] = "Compras TDC";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p class="text-info">03/04/2023 -> $ 18637.30 </p>
+<p>Para no generar intereses $ 14717.58</p>
+<p>
+    <a asp-action="Create">Agregar nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonthsWhithoutInterest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRegistration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pay)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MonthsWhithoutInterest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateRegistration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem =>  item.PayNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pay)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Model.Where(x=> x.MonthsWhithoutInterest !=0 ).Sum(x=> x.Amount).ToString("c")</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Model.Where(x=> x.MonthsWhithoutInterest !=0 ).Sum(x=> x.Pay).ToString("c")</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Model.Sum(x=> x.Amount).ToString("c")</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Model.Sum(x=> x.Pay).ToString("c")</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

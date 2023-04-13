@@ -10,9 +10,21 @@ namespace Expenses.Core.InterfaceRepository
         Task DeleteAsync(int id);
     }
 
-    //Como es una linea sera m�s f�cil manipular desde aqui
 
-    public interface IInvesmentRepository: IBaseRepository<InvestmentEntity> {
+    public interface ITdcRepository: IBaseRepository<TdcEntity> { }
+
+    public interface IBuyRepository : IBaseRepository<BuyEntity>
+    {
+        Task<List<BuyEntity>> GetAsync();
+    }
+
+    public interface IPayRepository : IBaseRepository<PayEntity>
+    {
+        Task<List<PayEntity>> GetAsync(int? buyId);
+    }
+
+    public interface IInvesmentRepository : IBaseRepository<InvestmentEntity>
+    {
         Task<List<InvestmentEntity>> GetAllAsync(PagerEntity pagerEntity);
     }
 
@@ -30,7 +42,7 @@ namespace Expenses.Core.InterfaceRepository
 
     public interface IEntryRepositoy : IBaseRepository<EntryEntity>
     {
-        Task<List<EntryEntity>> GetAllAsync(int id);        
+        Task<List<EntryEntity>> GetAllAsync(int id);
     }
 
     public interface IExpenseRepository : IBaseRepository<ExpenseEntity>

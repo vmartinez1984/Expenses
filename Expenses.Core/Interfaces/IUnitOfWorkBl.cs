@@ -23,5 +23,9 @@ namespace Expenses.BusinessLayer.Interfaces
         IExpenseTdcBl ExpenseTdc { get; }
 
         IInvesmentBl Investment { get; }
+
+        IBuyBl Buy { get; }
+
+        IPayBl Pay { get; }
     }
 }

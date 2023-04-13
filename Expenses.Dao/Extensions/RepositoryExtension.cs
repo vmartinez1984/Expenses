@@ -17,6 +17,9 @@ namespace Expenses.Repository.Extensions
             services.AddScoped<ISubcategoryRepository, SubcategoryRepository>();
             services.AddScoped<IRepository, UnitOfWork>();
             services.AddScoped<IInvesmentRepository, InvesmentRepository>();
+            services.AddScoped<IBuyRepository, BuyRepository>();
+            services.AddScoped<IPayRepository, PayRepository>();
+            services.AddScoped<ITdcRepository, TdcRepository>();
         }
     }
 }

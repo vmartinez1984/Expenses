@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Expenses.Core.Dtos;
 using Expenses.BusinessLayer.Interfaces;
 

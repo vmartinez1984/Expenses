@@ -33,12 +33,12 @@ namespace Expenses.Core.Dtos
         [Required]
         [Display(Name = "Cantidad")]
         [DataType(DataType.Currency)]
-        [Range(1, 50000,ErrorMessage ="La cantida debe ser entre {0} y {1}")]
+        [Range(1, 100000,ErrorMessage ="La cantida debe ser entre {1} y {2}")]
         public decimal Amount { get; set; }
                 
         [Display(Name = "Cantidad")]
         [DataType(DataType.Currency)]
-        [Range(1, 50000, ErrorMessage = "La cantida debe ser entre {0} y {1}")]
+        [Range(1, 100000, ErrorMessage = "La cantida debe ser entre {1} y {2}")]
         public decimal AmountFinal { get; set; }
                 
         [Required(ErrorMessage ="Elija una opción")]

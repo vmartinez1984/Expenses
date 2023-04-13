@@ -13,11 +13,21 @@ namespace Expenses.BusinessLayer.Interfaces.InterfaceBl
     {
         Task<int> AddAsync(T item);
         Task DeleteAsync(int id);
-        Task<U> GetAsync(int id);        
+        Task<U> GetAsync(int id);
         Task UpdateAsync(T item, int id);
     }
 
-    public interface IInvesmentBl: IBaseBl<InvesmentDtoIn, InvestmentDto>
+    public interface IPayBl : IBaseBl<PayDtoIn, PayDto>
+    {
+        Task<List<PayDto>> GetAsync();
+    }
+
+    public interface IBuyBl : IBaseBl<BuyDtoIn, BuyDto>
+    {
+        Task<List<BuyDto>> GetAsync();
+    }
+
+    public interface IInvesmentBl : IBaseBl<InvesmentDtoIn, InvestmentDto>
     {
         //Task<List<InvestmentDto>> GetAllAsync();
         Task<PagerDto> GetAllAsync(PagerDto pager);

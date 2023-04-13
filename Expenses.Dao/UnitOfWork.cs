@@ -13,7 +13,10 @@ namespace Expenses.Repository
             IEntryRepositoy entryRepositoy,
             IExpenseRepository expenseRepository,
             ISubcategoryRepository subcategory,
-            IInvesmentRepository invesmentRepository
+            IInvesmentRepository invesmentRepository,
+            IBuyRepository buyRepository,
+            IPayRepository payRepository,
+            ITdcRepository tdcRepository
         )
         {
             Apart = apartRepository;
@@ -23,7 +26,12 @@ namespace Expenses.Repository
             Expense = expenseRepository;
             Subcategory = subcategory;
             Invesment = invesmentRepository;
+            Buy = buyRepository;
+            Pay = payRepository;
+            Tdc = tdcRepository;
         }
+
+        public ITdcRepository Tdc { get; }
 
         public IInvesmentRepository Invesment { get; }
 
@@ -41,5 +49,9 @@ namespace Expenses.Repository
         public ITermAccountRepository TermAccount { get; }
 
         public IApartRepository Apart { get; }
+
+        public IBuyRepository Buy { get; }
+
+        public IPayRepository Pay { get; }
     }
 }

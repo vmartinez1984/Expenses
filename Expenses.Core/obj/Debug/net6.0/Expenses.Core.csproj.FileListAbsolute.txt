@@ -1,11 +1,11 @@
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\bin\Debug\net6.0\Expenses.Core.deps.json
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\bin\Debug\net6.0\Expenses.Core.dll
+C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\bin\Debug\net6.0\Expenses.Core.pdb
 C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\obj\Debug\net6.0\Expenses.Core.csproj.AssemblyReference.cache
 C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\obj\Debug\net6.0\Expenses.Core.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\obj\Debug\net6.0\Expenses.Core.AssemblyInfoInputs.cache
 C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\obj\Debug\net6.0\Expenses.Core.AssemblyInfo.cs
 C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\obj\Debug\net6.0\Expenses.Core.csproj.CoreCompileInputs.cache
-C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\bin\Debug\net6.0\Expenses.Core.deps.json
-C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\bin\Debug\net6.0\Expenses.Core.dll
-C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\bin\Debug\net6.0\Expenses.Core.pdb
 C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\obj\Debug\net6.0\Expenses.Core.dll
 C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\obj\Debug\net6.0\refint\Expenses.Core.dll
 C:\Users\vmartinez\source\repos\vmartinez1984\Expenses\Expenses.Core\obj\Debug\net6.0\Expenses.Core.pdb

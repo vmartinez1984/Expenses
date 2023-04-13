@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Expenses.BusinessLayer.Dtos.Outputs;
 using Expenses.BusinessLayer.Interfaces.InterfaceBl;
 using Expenses.Core.Dtos;
 using Expenses.Core.Entities;
@@ -139,7 +138,7 @@ namespace Expenses.BusinessLayer.Bl
             });
             await SetCategoryNameAsync(list);
 
-            return list.OrderBy(x => x.SubcategoryName).ToList();
+            return list.OrderByDescending(x => x.SubcategoryName).ToList();
         }
 
         private async Task SetCategoryNameAsync(List<ExpenseDto> list)

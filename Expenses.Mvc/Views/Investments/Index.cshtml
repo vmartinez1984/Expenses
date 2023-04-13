@@ -90,7 +90,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.DateStart)                        
                     </td>
-                    @if(item.ExpireState < 7)
+                    @if(item.ExpireState < 4)
                     {
                         <td class="text-danger">
                             @Html.DisplayFor(modelItem => item.DateStop)

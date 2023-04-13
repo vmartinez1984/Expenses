@@ -24,7 +24,7 @@ namespace Expenses.Mvc.Controllers
 
         public async Task<IActionResult> Index(PagerDto pagerDto)
         {
-            List<ApartDto> list;
+            //List<ApartDto> list;
             List<SubcategoryDto> subcategories;
             PagerDto pager;
 

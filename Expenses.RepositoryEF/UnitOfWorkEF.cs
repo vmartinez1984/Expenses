@@ -1,5 +1,6 @@
 ﻿using Expenses.Core.InterfaceRepository;
 using Expenses.Core.Interfaces;
+using Expenses.RepositoryEF.Repositories;
 
 namespace Expenses.RepositoryEF
 {
@@ -7,13 +8,14 @@ namespace Expenses.RepositoryEF
     {
         public UnitOfWorkEF(
            ICategoryRepository categoryRepository
-           ,  ISubcategoryRepository subcategory
+           , ISubcategoryRepository subcategory
            , IPeriodRepository periodRepository
            , IEntryRepositoy entryRepositoy
            , IExpenseRepository expenseRepository
            , IDepositPlanRepository depositPlanRepository
            , ITermAccountRepository termAccountRepository
            , IExpenseTdcRepository expenseTdcRepository
+           , TdcRepository tdcRepository
         )
         {
             Category = categoryRepository;
@@ -24,6 +26,7 @@ namespace Expenses.RepositoryEF
             DepositPlan = depositPlanRepository;
             TermAccount = termAccountRepository;
             ExpenseTdc = expenseTdcRepository;
+            Tdc = tdcRepository;
         }
 
         public ICategoryRepository Category { get; }
@@ -37,9 +40,19 @@ namespace Expenses.RepositoryEF
         public ISubcategoryRepository Subcategory { get; }
 
         public IDepositPlanRepository DepositPlan { get; }
-        
+
         public ITermAccountRepository TermAccount { get; }
-        
+
         public IExpenseTdcRepository ExpenseTdc { get; }
+
+        public IApartRepository Apart => throw new System.NotImplementedException();
+
+        public IInvesmentRepository Invesment => throw new System.NotImplementedException();
+
+        public IBuyRepository Buy { get; }
+
+        public IPayRepository Pay { get; }
+
+        public ITdcRepository Tdc { get; }
     }
 }

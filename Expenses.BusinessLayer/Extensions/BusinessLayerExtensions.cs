@@ -20,6 +20,8 @@ namespace Expenses.BusinessLayer.Extensors
             services.AddScoped<ITermAccountBl, TermAccountBl>();
             services.AddScoped<IUnitOfWorkBl, UnitOfWorkBl>();
             services.AddScoped<IInvesmentBl, InvesmentBl>();
+            services.AddScoped<IBuyBl,BuyBl>();            
+            services.AddScoped<IPayBl, PayBl>();            
         }
     }
 }

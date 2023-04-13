@@ -14,7 +14,7 @@ namespace Expenses.Core.Dtos
         public int CategoryId { get; set; }
                
         [Display(Name = "Cantidad")]
-        [Range(0, 4000)]
+        [Range(0, 13000)]
         [DataType(DataType.Currency)]
         public int Amount { get; set; }
     }
