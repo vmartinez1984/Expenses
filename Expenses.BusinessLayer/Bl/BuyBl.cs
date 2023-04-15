@@ -28,7 +28,7 @@ namespace Expenses.BusinessLayer.Bl
 
         public async Task DeleteAsync(int id)
         {
-           await _unitOfWork.Buy.DeleteAsync(id);
+            await _unitOfWork.Buy.DeleteAsync(id);
         }
 
         public async Task<BuyDto> GetAsync(int id)
@@ -53,27 +53,18 @@ namespace Expenses.BusinessLayer.Bl
             list = _mapper.Map<List<BuyDto>>(entities);
             list.ForEach(item =>
             {
+                DatePayDto datePay;
+
                 //Fecha de corte                
                 item.DateCut = GetDateCut(tdcDto.DateCut.Day, item.DateRegistration);
                 item.ListDatePays = GetListDatePays(item.DateCut, item.MonthsWhithoutInterest);
-
-                //if (item.MonthsWhithoutInterest != 0)
-                //{
-                    DatePayDto datePay;
-
-                    datePay = item.ListDatePays.Where(x => x.IsCurrent).FirstOrDefault();
-                    if (datePay == null)
-                    {
-                        datePay = item.ListDatePays.FirstOrDefault();
-                    }
-                    item.DatePay = datePay.Date;
-                    item.PayNumber = datePay.PayNumber;
-                //}
-                //else
-                //{
-                //    item.DatePay = new DateTime(item.DateCut.Year, item.DateCut.Month, item.DateCut.Day + 20);
-                //}
-
+                datePay = item.ListDatePays.Where(x => x.IsCurrent).FirstOrDefault();
+                if (datePay == null)
+                {
+                    datePay = item.ListDatePays.FirstOrDefault();
+                }
+                item.DatePay = datePay.Date;
+                item.PayNumber = datePay.PayNumber;
                 if (item.MonthsWhithoutInterest == 0)
                 {
                     item.Pay = item.Amount;
